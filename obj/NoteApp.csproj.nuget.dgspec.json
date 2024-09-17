@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/amiinahmed/Documents/GitHub/NoteApp/NoteApp.csproj": {}
+    "/Users/selmersolland/Documents/GitHub/NoteApp/NoteApp.csproj": {}
   },
   "projects": {
-    "/Users/amiinahmed/Documents/GitHub/NoteApp/NoteApp.csproj": {
+    "/Users/selmersolland/Documents/GitHub/NoteApp/NoteApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/amiinahmed/Documents/GitHub/NoteApp/NoteApp.csproj",
+        "projectUniqueName": "/Users/selmersolland/Documents/GitHub/NoteApp/NoteApp.csproj",
         "projectName": "NoteApp",
-        "projectPath": "/Users/amiinahmed/Documents/GitHub/NoteApp/NoteApp.csproj",
-        "packagesPath": "/Users/amiinahmed/.nuget/packages/",
-        "outputPath": "/Users/amiinahmed/Documents/GitHub/NoteApp/obj/",
+        "projectPath": "/Users/selmersolland/Documents/GitHub/NoteApp/NoteApp.csproj",
+        "packagesPath": "/Users/selmersolland/.nuget/packages/",
+        "outputPath": "/Users/selmersolland/Documents/GitHub/NoteApp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/amiinahmed/.nuget/NuGet/NuGet.Config"
+          "/Users/selmersolland/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
