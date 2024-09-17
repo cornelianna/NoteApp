@@ -40,9 +40,53 @@ namespace NoteApp.Controllers
             post.Username = User.Identity.Name;  // Get the current user's username
 
             post.CreatedAt = DateTime.Now;
-            _context.Add(post);
+            post.Username = User.Identity?.Name ?? "Unknown";  // Get the current user's username
+            await _context.Posts.AddAsync(post);
             await _context.SaveChangesAsync();
 
+            return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        public async Task<IActionResult> EditPost(int id)
+        {
+            var post = await _context.Posts.FindAsync(id);
+            if (post == null || post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                return NotFound();  // Ensure the user can only edit their own post
+            }
+            return View(post);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditPost(int id, Post editedPost)
+        {
+            var post = await _context.Posts.FindAsync(id);
+            if (post == null || post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                return NotFound();  // Ensure the user can only edit their own post
+            }
+
+            post.Content = editedPost.Content;
+            post.ImageUrl = editedPost.ImageUrl;  // Update the image if necessary
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> DeletePost(int id)
+        {
+            var post = await _context.Posts.FindAsync(id);
+            if (post == null || post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                return NotFound();  // Ensure the user can only delete their own post
+            }
+
+            _context.Posts.Remove(post);
+            await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
@@ -58,11 +102,53 @@ namespace NoteApp.Controllers
                 comment.Username = User.Identity.Name;  // Get the current user's username
 
                 comment.PostId = post.Id;
-                comment.CreatedAt = DateTime.Now;
+                comment.Username = User.Identity?.Name ?? "Unknown";  // Get the current user's username
                 _context.Comments.Add(comment);
                 await _context.SaveChangesAsync();
             }
 
+            return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        public async Task<IActionResult> EditComment(int id)
+        {
+            var comment = await _context.Comments.FindAsync(id);
+            if (comment == null || comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                return NotFound();  // Ensure the user can only edit their own comment
+            }
+            return View(comment);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditComment(int id, Comment editedComment)
+        {
+            var comment = await _context.Comments.FindAsync(id);
+            if (comment == null || comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                return NotFound();  // Ensure the user can only edit their own comment
+            }
+
+            comment.Content = editedComment.Content;
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> DeleteComment(int id)
+        {
+            var comment = await _context.Comments.FindAsync(id);
+            if (comment == null || comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                return NotFound();  // Ensure the user can only delete their own comment
+            }
+
+            _context.Comments.Remove(comment);
+            await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
     }
