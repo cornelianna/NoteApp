@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/annacornelia/Downloads/NoteApp/NoteApp.csproj": {}
+    "/Users/amiinahmed/Documents/GitHub/NoteApp/NoteApp.csproj": {}
   },
   "projects": {
-    "/Users/annacornelia/Downloads/NoteApp/NoteApp.csproj": {
+    "/Users/amiinahmed/Documents/GitHub/NoteApp/NoteApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/annacornelia/Downloads/NoteApp/NoteApp.csproj",
+        "projectUniqueName": "/Users/amiinahmed/Documents/GitHub/NoteApp/NoteApp.csproj",
         "projectName": "NoteApp",
-        "projectPath": "/Users/annacornelia/Downloads/NoteApp/NoteApp.csproj",
-        "packagesPath": "/Users/annacornelia/.nuget/packages/",
-        "outputPath": "/Users/annacornelia/Downloads/NoteApp/obj/",
+        "projectPath": "/Users/amiinahmed/Documents/GitHub/NoteApp/NoteApp.csproj",
+        "packagesPath": "/Users/amiinahmed/.nuget/packages/",
+        "outputPath": "/Users/amiinahmed/Documents/GitHub/NoteApp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/annacornelia/.nuget/NuGet/NuGet.Config"
+          "/Users/amiinahmed/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
