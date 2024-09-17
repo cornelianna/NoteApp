@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace NoteApp.Models
 {
     public class Post
+
     {
         public int Id { get; set; }
 
@@ -13,6 +14,7 @@ namespace NoteApp.Models
         public string? ImageUrl { get; set; }
 
         public DateTime CreatedAt { get; set; }
+
 
         [MaxLength(50)]
         public string? UserId { get; set; }
