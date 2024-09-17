@@ -1,17 +1,22 @@
-namespace NoteApp.Models
+using System.ComponentModel.DataAnnotations;
+
+namespace NoteApp.Models //namespace for comments
 {
-    public class Comment
-{
-    public int Id { get; set; }
-    public int PostId { get; set; }  // Foreign key to the post
-    public string Content { get; set; }
-    public DateTime CreatedAt { get; set; }
+    public class Comment //class for comments
+    {
+        public int Id { get; set; } //getters and setters
+        public int PostId { get; set; } 
+        
+        [MaxLength(500)]
+        public string? Content { get; set; }
+        public System.DateTime CreatedAt { get; set; }
 
-    // Add these fields to link the comment to a user
-    public string UserId { get; set; }
-    public string Username { get; set; }
+        
+        [MaxLength(50)]
+        public string? UserId { get; set; }
+        [MaxLength(50)]
+        public string? Username { get; set; } 
 
-    public Post Post { get; set; }
-}
-
+        public Post? Post { get; set; } 
+    }
 }

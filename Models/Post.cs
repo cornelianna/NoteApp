@@ -1,19 +1,25 @@
-
+using System.ComponentModel.DataAnnotations;
 
 namespace NoteApp.Models
 {
     public class Post
-{
-    public int Id { get; set; }
-    public string Content { get; set; }
-    public string ImageUrl { get; set; }
-    public DateTime CreatedAt { get; set; }
+    {
+        public int Id { get; set; }
 
-    // Add these fields to link the post to a user
-    public string UserId { get; set; }
-    public string Username { get; set; }
+        [MaxLength(1000)]
+        public string? Content { get; set; }
 
-    public List<Comment> Comments { get; set; } = new List<Comment>();
-}
+        [MaxLength(500)]
+        public string? ImageUrl { get; set; }
 
+        public DateTime CreatedAt { get; set; }
+
+        [MaxLength(50)]
+        public string? UserId { get; set; }
+
+        [MaxLength(50)]
+        public string? Username { get; set; }
+
+        public List<Comment> Comments { get; set; } = new List<Comment>();
+    }
 }
