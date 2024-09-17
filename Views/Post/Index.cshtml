@@ -1,0 +1,35 @@
+@model List<NoteApp.Models.Post>
+
+<h2>Create a new post</h2>
+<form asp-action="CreatePost" method="post" enctype="multipart/form-data">
+    <input type="text" name="Username" placeholder="Username" required />
+    <textarea name="Content" placeholder="Write your note here..." required></textarea>
+    <input type="file" name="image" accept="image/*" />
+    <input type="submit" value="Post" />
+</form>
+
+
+<h2>Feed</h2>
+@foreach (var post in Model)
+{
+    <div class="post">
+        <h3>@post.Username</h3> <!-- Display the username of the post creator -->
+        <p>@post.Content</p>
+        @if (!string.IsNullOrEmpty(post.ImageUrl))
+        {
+            <img src="@post.ImageUrl" alt="Image" width="200" />
+        }
+
+        <form asp-action="AddComment" method="post">
+            <input type="hidden" name="postId" value="@post.Id" />
+            <textarea name="Content" placeholder="Add a comment"></textarea>
+            <input type="submit" value="Comment" />
+        </form>
+
+        <h4>Comments:</h4>
+        @foreach (var comment in post.Comments)
+        {
+            <p><strong>@comment.Username</strong>: @comment.Content</p> <!-- Display the username of the comment creator -->
+        }
+    </div>
+}
