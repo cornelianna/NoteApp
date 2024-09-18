@@ -5,7 +5,7 @@
 namespace NoteApp.Migrations
 {
     /// <inheritdoc />
-    public partial class AllowNullForImageUrl : Migration
+    public partial class MakeImageUrlNullable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
