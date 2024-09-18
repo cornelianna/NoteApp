@@ -6,7 +6,7 @@ namespace NoteApp.Models
 {
     public int Id { get; set; }
     public string Content { get; set; }
-    public string ImageUrl { get; set; }
+    public string? ImageUrl { get; set; }
     public DateTime CreatedAt { get; set; }
 
     // Add these fields to link the post to a user
