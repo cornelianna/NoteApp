@@ -12,73 +12,24 @@
 <h2>Feed</h2>
 @foreach (var post in Model)
 {
-       <div class="post">
-        <div class="feed">
-            <!-- Display user image and username -->
-            <div class="userImg">
-                <img src="~/images/icon.svg" alt="AvatarImg" />
-                @post.Username
-            </div>
-            
-            <!-- Post content and image -->
-            <div class="content">
-                <!-- Add See More/See Less functionality for post content -->
-                <div class="text-container">
-                    @if (post.Content.Length > 100)
-                    {
-                        <!-- Display the first 100 characters -->
-                        <span class="short-text">
-                            @post.Content.Substring(0, 200)...
-                        </span>
-
-                        <!-- The rest of the content, hidden initially -->
-                        <span class="long-text" style="display: none;">
-                            @post.Content.Substring(100)
-                        </span>
-
-                        <!-- See More/See Less link -->
-                        <a href="#" class="see-more" onclick="toggleText(this); return false;">See More</a>
-                    }
-                    else
-                    {
-                        <!-- If content is shorter than 100 characters, display all -->
-                        <p>@post.Content</p>
-                    }
-                </div>
-
-                <!-- Post image, if available -->
-                <div class="contentImg">
-                    @if (!string.IsNullOrEmpty(post.ImageUrl))
-                    {
-                        <img src="@post.ImageUrl" alt="Image" width="200" />
-                    }
-                </div>
-            </div>
-        </div>
+    <div class="post">
+        <h3>@post.Username</h3> <!-- Display the username of the post creator -->
+        <p>@post.Content</p>
+        @if (!string.IsNullOrEmpty(post.ImageUrl))
+        {
+            <img src="@post.ImageUrl" alt="Image" width="200" />
         }
-<div class="discussions">
-    <h5 class="headinDiscussion">Discussion</h5>
-    <div class="discussion">
-        
+
+        <form asp-action="AddComment" method="post">
+            <input type="hidden" name="postId" value="@post.Id" />
+            <textarea name="Content" placeholder="Add a comment"></textarea>
+            <input type="submit" value="Comment" />
+        </form>
 
         <h4>Comments:</h4>
         @foreach (var comment in post.Comments)
         {
-             <div class="userImg">
-                    <img src="~/images/icon.svg" alt="AvatarImg" /> <strong>@comment.Username</strong> 
-                  </div>
-                  <div class="comment">
-                    <p>@comment.Content</p>
-                  </div>
-             <!-- Display the username of the comment creator -->
+            <p><strong>@comment.Username</strong>: @comment.Content</p> <!-- Display the username of the comment creator -->
         }
-        <form class="form-group" asp-action="AddComment" method="post">
-            <input class="form-control" type="hidden" name="postId" value="@post.Id" />
-            <textarea class="form-control" name="Content" placeholder="Add a comment"></textarea>
-            <input class="btn btn-primary mb-2" type="submit" value="Comment" />
-        </form>
-</div>
-</div>
-        
     </div>
 }
