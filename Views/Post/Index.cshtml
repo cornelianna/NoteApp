@@ -4,15 +4,19 @@
 <form asp-action="CreatePost" method="post" enctype="multipart/form-data">
     <input type="text" name="Username" placeholder="Username" required />
     <textarea name="Content" placeholder="Write your note here..." required></textarea>
-    <input type="file" name="image" accept="image/*" />
+    <div class="form-group">
+    <input type="file" name="image" accept="image/*" class="form-control-file " style="width: 212px;" id="exampleFormControlFile1" >
+  </div>
     <input type="submit" value="Post" />
 </form>
 
 
-<h2>Feed</h2>
+<h2>Posts</h2>
+<div class="float-end mb-2"><a href=""> <button class="btn btn-primary btn-Color mb-2"  />Create Post </button></a></div>
 @foreach (var post in Model)
 {
-       <div class="post">
+    
+       <div  class="post">
         <div class="feed">
             <!-- Display user image and username -->
             <div class="userImg">
@@ -21,7 +25,7 @@
             </div>
             
             <!-- Post content and image -->
-            <div class="content">
+            <div class="contentPost">
                 <!-- Add See More/See Less functionality for post content -->
                 <div class="text-container">
                     @if (post.Content.Length > 100)
@@ -47,15 +51,17 @@
                 </div>
 
                 <!-- Post image, if available -->
-                <div class="contentImg">
-                    @if (!string.IsNullOrEmpty(post.ImageUrl))
+                 @if (!string.IsNullOrEmpty(post.ImageUrl))
                     {
+                <div class="contentImg">
+                   
                         <img src="@post.ImageUrl" alt="Image" width="200" />
-                    }
+                   
                 </div>
+                 }
             </div>
         </div>
-        }
+        
 <div class="discussions">
     <h5 class="headinDiscussion">Discussion</h5>
     <div class="discussion">
