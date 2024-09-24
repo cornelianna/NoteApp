@@ -4834,19 +4834,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Michael\\.nuget\\packages\\": {}
+    "C:\\Users\\karia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\NoteApp.csproj",
+      "projectUniqueName": "C:\\Users\\karia\\Documents\\NoteApp\\NoteApp.csproj",
       "projectName": "NoteApp",
-      "projectPath": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\NoteApp.csproj",
-      "packagesPath": "C:\\Users\\Michael\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\obj\\",
+      "projectPath": "C:\\Users\\karia\\Documents\\NoteApp\\NoteApp.csproj",
+      "packagesPath": "C:\\Users\\karia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\karia\\Documents\\NoteApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Michael\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\karia\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
