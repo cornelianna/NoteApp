@@ -40,123 +40,224 @@ header .nav-links a {
 main {
   padding-top: 80px; /* Add padding to prevent overlap from the top bar */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start; /* Align content to the left */
+  align-items: flex-start;
   flex-direction: column;
   min-height: 100vh; /* Ensure it takes full height */
   background-color: #f5f5f5;
+  margin-left: 240px; /* Align the content and post with space for the sidebar */
 }
 
 /* Create a new post section */
 .create-post-container {
-  display: flex;
-  flex-direction: column; /* Align elements vertically */
-  align-items: center; /* Center the elements horizontally */
-  gap: 10px; /* Add space between elements */
+  display: grid;
+  grid-template-columns: 300px 1fr; /* Fixed width for the image preview, flexible for text side */
+  gap: 40px;
+  max-width: 900px; /* Set a maximum width */
+  width: 100%; /* Make sure it's the same width as the posts */
   padding: 20px;
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 100%;
-  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0; /* Add vertical spacing between the form and posts */
 }
 
-.create-post-container input,
-.create-post-container textarea,
-.create-post-container button {
-  width: 100%; /* Make input fields and button take full width */
-  padding: 10px;
-  border: 1px solid #ddd;
+.left-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 200px;
+  background-color: #f5c6c3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  color: #7b524b;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.custom-file-upload {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background-color: #e9ecef;
   border-radius: 5px;
 }
 
-.create-post-container textarea {
-  resize: none;
+.custom-file-upload img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
 }
 
-.create-post-container button {
-  background-color: #258cfb;
-  color: #fff;
-  cursor: pointer;
+.right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+textarea#noteInput {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  textarea#noteInput {
+      margin-bottom: 20px; /* Extra margin for spacing */
+  }
+}
+
+button.submit-button {
+  background-color: #6c757d;
+  color: white;
+  padding: 10px 20px;
   border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-start;
 }
 
-.create-post-container button:hover {
-  background-color: #0056b3;
+button.submit-button:hover {
+  background-color: #5a6268;
 }
 
-.create-post-container label {
-  font-weight: bold;
+/* Make it responsive for smaller screens */
+@media (max-width: 768px) {
+  .create-post-container {
+      grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
+
+  .left-column, .right-column {
+      width: 100%;
+  }
+
+  .right-column {
+      padding-left: 0;
+  }
 }
 
 /* Container for the feed content */
 .feed-container {
   width: 100%;
-  max-width: 1200px; /* Limit the width of the container */
+  max-width: 900px; /* Same width as create-post-container */
   display: grid;
-  grid-template-columns: 1fr; /* Single column layout for smaller screens */
+  grid-template-columns: 1fr; /* Single column layout */
   gap: 20px;
   justify-items: center;
 }
 
-@media (min-width: 768px) {
-  .feed-container {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
-  }
-}
-
-/* Post Styling */
+/* Post container styling */
 .post {
-  background-color: #fff;
-  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  max-width: 900px;
   width: 100%;
-  margin-bottom: 20px; /* Add space between posts */
 }
 
-.post img {
-  max-width: 100%;
+/* Left side: image or note */
+.contentPost {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.contentImg img {
+  width: 100%; /* Ensure the image takes up full width */
   height: auto;
-  border-radius: 50%;
+  border-radius: 10px;
 }
 
-.post h2 {
-  font-size: 18px;
-  margin: 10px 0;
+/* Right side: note and comments */
+.discussions {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.post p {
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.post .comment-section {
-  margin-top: 20px;
-}
-
-.post textarea {
+.noteContent {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 10px;
   width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Comments section styling */
+.comment {
+  background-color: #f9f9f9;
   padding: 10px;
-  border: 1px solid #ddd;
+  margin-bottom: 10px;
   border-radius: 5px;
-  resize: none;
 }
 
-.post button {
-  margin-top: 10px;
-  padding: 10px 15px;
+/* User image for comments */
+.userImg {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.userImg img {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px; /* Make the avatar square */
+  margin-right: 10px;
+}
+
+/* Styling for the comment form */
+textarea.form-control {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+input.btn-primary {
   background-color: #258cfb;
-  color: #fff;
-  border: none;
+  color: white;
   border-radius: 5px;
-  cursor: pointer;
+  padding: 10px 15px;
 }
 
-.post button:hover {
+input.btn-primary:hover {
   background-color: #0056b3;
+}
+
+/* Ensure responsiveness on smaller screens */
+@media (max-width: 768px) {
+  .post {
+      flex-direction: column; /* Stack image/note and comments vertically */
+  }
+
+  .contentPost, .discussions {
+      width: 100%;
+  }
 }
 
 /* Footer */
