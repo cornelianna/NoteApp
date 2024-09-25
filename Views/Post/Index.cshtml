@@ -1,6 +1,5 @@
 @model List<NoteApp.Models.Post>
-
-<div class="container">
+<div class="main-content">
     <h2>Create a new post</h2>
     <div class="create-post-container">
         <!-- Left side for image preview and selecting image -->
@@ -46,15 +45,6 @@
 
         <!-- Right side: Note and Comments -->
         <div class="discussions">
-            <!-- Always display the note here, even when there is an image -->
-            @if (!string.IsNullOrEmpty(post.ImageUrl))
-            {
-                <!-- Move note to the comments area if there's an image -->
-                <div class="noteContent">
-                    <p>@post.Content</p>
-                </div>
-            }
-
             <!-- Comments section -->
             <h4>Comments:</h4>
             @foreach (var comment in post.Comments)
