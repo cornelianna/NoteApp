@@ -40,7 +40,7 @@ a img {
   margin-bottom: 20px;
 }
 .feed {
-  display: flex;
+  display: flow-root;
   flex-direction: column;
   padding: 20px;
   width: 50%;
@@ -100,4 +100,7 @@ a img {
 }
 .btn-Color:hover {
   background-color: #6c757d;
+}
+.tool {
+  width: 20px;
 }

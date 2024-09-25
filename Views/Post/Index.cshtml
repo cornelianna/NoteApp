@@ -1,13 +1,26 @@
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@* Post/Index.html *@
 @model List<NoteApp.Models.Post>
 
 <h2>Create a new post</h2>
 <form asp-action="CreatePost" method="post" enctype="multipart/form-data">
-    <input type="text" name="Username" placeholder="Username" required />
-    <textarea name="Content" placeholder="Write your note here..." required></textarea>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <input type="text" name="Username" placeholder="Username" value="@UserManager.GetUserName(User)" required />
+        <textarea name="Content" placeholder="Write your note here..." required></textarea>
     <div class="form-group">
     <input type="file" name="image" accept="image/*" class="form-control-file " style="width: 212px;" id="exampleFormControlFile1" >
   </div>
     <input type="submit" value="Post" />
+    } else{
+        <div class="alert alert-warning" role="alert">
+        Login to create a post
+        </div>
+    }
+    
 </form>
 
 
@@ -18,6 +31,30 @@
     
        <div  class="post">
         <div class="feed">
+            
+            <div class="dropdown">
+                <img class="tool float-end mb-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" src="~/images/more.svg" alt="More" />
+                <ul class="dropdown-menu">
+                    
+                     @if (post.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
+                    {
+                        <li> <a class="dropdown-item" href="@Url.Action("EditPost", new { id = post.Id })">Edit<img class="p-1" src="~/images/edit.svg " alt="Edit"/></a></li>
+                        <li> 
+                            
+                            <form asp-action="DeletePost" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this post?');">
+                        <input type="hidden" name="id" value="@post.Id" />
+                        <button type="submit" class="btn text-danger">Delete Post</button>
+                    </form>
+
+
+                        </li>
+                    }
+                    <li><a class="dropdown-item text-danger" href="#">Report</a></li>
+                    
+                </ul>
+                </div>
+            
+            
             <!-- Display user image and username -->
             <div class="userImg">
                 <img src="~/images/icon.svg" alt="AvatarImg" />
@@ -58,7 +95,9 @@
                         <img src="@post.ImageUrl" alt="Image" width="200" />
                    
                 </div>
+                
                  }
+                
             </div>
         </div>
         
