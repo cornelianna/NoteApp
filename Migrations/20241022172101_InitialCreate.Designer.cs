@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace NoteApp.Migrations
 {
     [DbContext(typeof(NoteAppContext))]
-    [Migration("20241022123004_AddProfilePictureToUser")]
-    partial class AddProfilePictureToUser
+    [Migration("20241022172101_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,69 +71,66 @@ namespace NoteApp.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
                 {
                     b.Property<string>("Id")
-        .HasColumnType("TEXT");
+                        .HasColumnType("TEXT");
 
-    b.Property<int>("AccessFailedCount")
-        .HasColumnType("INTEGER");
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("INTEGER");
 
-    b.Property<string>("ConcurrencyStamp")
-        .IsConcurrencyToken()
-        .HasColumnType("TEXT");
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
 
-    b.Property<string>("Email")
-        .HasMaxLength(256)
-        .HasColumnType("TEXT");
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
 
-    b.Property<bool>("EmailConfirmed")
-        .HasColumnType("INTEGER");
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("INTEGER");
 
-    b.Property<bool>("LockoutEnabled")
-        .HasColumnType("INTEGER");
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("INTEGER");
 
-    b.Property<DateTimeOffset?>("LockoutEnd")
-        .HasColumnType("TEXT");
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("TEXT");
 
-    b.Property<string>("NormalizedEmail")
-        .HasMaxLength(256)
-        .HasColumnType("TEXT");
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
 
-    b.Property<string>("NormalizedUserName")
-        .HasMaxLength(256)
-        .HasColumnType("TEXT");
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
 
-    b.Property<string>("PasswordHash")
-        .HasColumnType("TEXT");
+                    b.Property<string>("PasswordHash")
+                        .HasColumnType("TEXT");
 
-    b.Property<string>("PhoneNumber")
-        .HasColumnType("TEXT");
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("TEXT");
 
-    b.Property<bool>("PhoneNumberConfirmed")
-        .HasColumnType("INTEGER");
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("INTEGER");
 
-    b.Property<string>("ProfilePictureUrl")  // Add ProfilePictureUrl here
-        .HasColumnType("TEXT");
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("TEXT");
 
-    b.Property<string>("SecurityStamp")
-        .HasColumnType("TEXT");
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("INTEGER");
 
-    b.Property<bool>("TwoFactorEnabled")
-        .HasColumnType("INTEGER");
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
 
-    b.Property<string>("UserName")
-        .HasMaxLength(256)
-        .HasColumnType("TEXT");
+                    b.HasKey("Id");
 
-    b.HasKey("Id");
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
 
-    b.HasIndex("NormalizedEmail")
-        .HasDatabaseName("EmailIndex");
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex");
 
-    b.HasIndex("NormalizedUserName")
-        .IsUnique()
-        .HasDatabaseName("UserNameIndex");
-
-    b.ToTable("AspNetUsers", (string)null);
-});
+                    b.ToTable("AspNetUsers", (string)null);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
