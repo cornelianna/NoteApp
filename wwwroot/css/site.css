@@ -1,7 +1,6 @@
 /* Reset */
 * {
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
@@ -9,162 +8,281 @@
 html, body {
   height: 100%;
   font-family: 'Arial', sans-serif;
+  background-color: #edf3f9; /* Soft light blue for the background */
 }
 
-/* Top Bar (Navigation) */
-header {
-  background-color: #fff;
-  border-bottom: 1px solid #e5e5e5;
-  padding: 10px;
-  position: fixed;
-  width: 100%;
+
+/* Sidebar Styles */
+.sidebar {
+  position: fixed; /* Ensures the sidebar stays in place when scrolling */
   top: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  left: 0;
+  height: 100vh; /* Full viewport height */
+  width: 239px;
+  background-color: #bcd7d2; /* Soft green for the sidebar */
+  font-size: 17px;
+  z-index: 1000; /* Ensures the sidebar stays on top of other elements */
+  overflow-y: auto; /* Allows scrolling if content overflows */
 }
 
-header .nav-links {
-  display: flex;
-  gap: 20px;
-}
-
-header .nav-links a {
+.sidebar ul li a {
+  color: white;
   text-decoration: none;
-  color: #333;
-  font-size: 14px;
+  display: block;
+  padding: 10px 15px 15px 34px;
+}
+
+.sidebar a:hover {
+  background-color: #86b0a9; /* Darker green for hover effect */
+}
+
+.brand-image {
+  width: 190px;
+  margin: 20px auto; /* Adds some space at the top */
+  display: block;
 }
 
 /* Main Content Wrapper */
 main {
-  padding-top: 80px; /* Add padding to prevent overlap from the top bar */
+  padding-top: 20px; /* Space at the top for aesthetic */
+  padding-left: 260px; /* Adds margin to the left to account for the sidebar */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-direction: column;
-  min-height: 100vh; /* Ensure it takes full height */
-  background-color: #f5f5f5;
+  min-height: 100vh;
+  background-color: #edf3f9;
 }
 
 /* Create a new post section */
 .create-post-container {
-  display: flex;
-  flex-direction: column; /* Align elements vertically */
-  align-items: center; /* Center the elements horizontally */
-  gap: 10px; /* Add space between elements */
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  display: grid;
+  grid-template-columns: 300px 1fr; /* Fixed width for the image preview, flexible for text side */
+  gap: 40px;
+  max-width: 900px;
   width: 100%;
-  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f7f9fc; /* Very light blue for post creation background */
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
 }
 
-.create-post-container input,
-.create-post-container textarea,
-.create-post-container button {
-  width: 100%; /* Make input fields and button take full width */
-  padding: 10px;
-  border: 1px solid #ddd;
+.left-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #eef4f8; /* Light blue for image placeholder */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 200px;
+  background-color: #dae8f2; /* Slightly darker blue for the image placeholder */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  color: #4f6b7f;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.custom-file-upload {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background-color: #d1e6dd; /* Light green for upload button */
   border-radius: 5px;
 }
 
-.create-post-container textarea {
-  resize: none;
+.custom-file-upload img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
 }
 
-.create-post-container button {
-  background-color: #258cfb;
-  color: #fff;
-  cursor: pointer;
+.right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+textarea#noteInput {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  background-color: #eef4f8; /* Light blue for input fields */
+  color: #4f4f4f;
+}
+
+button.submit-button {
+  background-color: #bcd7d2; /* Light green for buttons */
+  color: #2f4f4f;
+  padding: 10px 20px;
   border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-start;
 }
 
-.create-post-container button:hover {
-  background-color: #0056b3;
-}
-
-.create-post-container label {
-  font-weight: bold;
+button.submit-button:hover {
+  background-color: #86b0a9; /* Darker green on hover */
 }
 
 /* Container for the feed content */
 .feed-container {
   width: 100%;
-  max-width: 1200px; /* Limit the width of the container */
+  max-width: 900px; /* Same width as create-post-container */
   display: grid;
-  grid-template-columns: 1fr; /* Single column layout for smaller screens */
+  grid-template-columns: 1fr; /* Single column layout */
   gap: 20px;
   justify-items: center;
 }
 
-@media (min-width: 768px) {
-  .feed-container {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns for larger screens */
-  }
-}
-
-/* Post Styling */
+/* Post container styling */
 .post {
-  background-color: #fff;
-  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f7f9fc;
+  border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
+  max-width: 900px;
   width: 100%;
-  margin-bottom: 20px; /* Add space between posts */
 }
 
-.post img {
-  max-width: 100%;
-  height: auto;
+/* Left side: image or note */
+.contentPost {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  flex: 1;
+  margin-right: 20px;
+  align-items: center;
+  justify-content: center;
+  max-width: 400px;
+  height: 300px;
+}
+
+.contentImg {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  border: solid 1px #cfd9dd;
+  border-radius: 15px;
+}
+
+.contentImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Note content */
+.noteContent {
+  background-color: #e0e7f1;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  color: #4f4f4f;
+  word-wrap: break-word;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Right side: comments */
+.discussions {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-left: solid 1px #000000;
+  padding: 20px;
+}
+
+.comment {
+  background-color: #eef4f8;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* User image for comments */
+.userImg img {
+  width: 45px;
+  height: 45px;
+  padding-right: 10px;
   border-radius: 50%;
 }
 
-.post h2 {
-  font-size: 18px;
-  margin: 10px 0;
-}
-
-.post p {
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.post .comment-section {
-  margin-top: 20px;
-}
-
-.post textarea {
-  width: 100%;
+/* Comment form */
+textarea.form-control {
+  margin-bottom: 10px;
   padding: 10px;
-  border: 1px solid #ddd;
   border-radius: 5px;
-  resize: none;
+  width: 100%;
+  background-color: #f7f9fc;
+  color: #4f4f4f;
 }
 
-.post button {
-  margin-top: 10px;
+input.btn-primary {
+  background-color: #bcd7d2;
+  color: #2f4f4f;
+  border-radius: 5px;
   padding: 10px 15px;
-  background-color: #258cfb;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
-.post button:hover {
-  background-color: #0056b3;
+input.btn-primary:hover {
+  background-color: #86b0a9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .post {
+    flex-direction: column;
+  }
+
+  .contentPost, .discussions {
+    width: 100%;
+  }
+
+  .contentPost {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .contentImg img, .noteContent {
+    height: auto;
+  }
 }
 
 /* Footer */
 footer {
-  background-color: #fff;
+  background-color: #e0e7f1;
   padding: 10px;
   text-align: center;
   font-size: 12px;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid #b4c8dc;
   margin-top: auto;
 }

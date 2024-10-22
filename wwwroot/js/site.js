@@ -1,17 +1,23 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿function toggleText(link) {
+    var shortText = link.previousElementSibling.previousElementSibling;
+    var longText = link.previousElementSibling;
 
-// Write your JavaScript code.
+    if (longText.style.display === "none") {
+        shortText.style.display = "none";
+        longText.style.display = "inline";
+        link.innerText = "See Less";
+    } else {
+        shortText.style.display = "inline";
+        longText.style.display = "none";
+        link.innerText = "See More";
+    }
+}
 
-function toggleText(link) {
-  var longText = link.previousElementSibling;
-  var shortText = longText.previousElementSibling;
-
-  if (longText.style.display === "none") {
-    longText.style.display = "inline";
-    link.innerHTML = "See Less";
-  } else {
-    longText.style.display = "none";
-    link.innerHTML = "See More";
-  }
+function previewImage(event) {
+  var reader = new FileReader();
+  reader.onload = function() {
+      var output = document.getElementById('imagePreview');
+      output.innerHTML = `<img src="${reader.result}" alt="Uploaded Image" style="width: 100%; height: auto;">`;
+  };
+  reader.readAsDataURL(event.target.files[0]);
 }
