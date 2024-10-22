@@ -9,55 +9,59 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = NoteApp
 build_property.RootNamespace = NoteApp
-build_property.ProjectDir = /Users/amiinahmed/Documents/GitHub/NoteApp/
+build_property.ProjectDir = C:\Users\Michael\Documents\GitHub\itpe3200\NoteApp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/amiinahmed/Documents/GitHub/NoteApp
+build_property.MSBuildProjectDirectory = C:\Users\Michael\Documents\GitHub\itpe3200\NoteApp
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/amiinahmed/Documents/GitHub/NoteApp/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+[C:/Users/Michael/Documents/GitHub/itpe3200/NoteApp/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/amiinahmed/Documents/GitHub/NoteApp/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+[C:/Users/Michael/Documents/GitHub/itpe3200/NoteApp/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/amiinahmed/Documents/GitHub/NoteApp/Views/Post/EditComment.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUG9zdC9FZGl0Q29tbWVudC5jc2h0bWw=
+[C:/Users/Michael/Documents/GitHub/itpe3200/NoteApp/Views/Post/EditComment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxFZGl0Q29tbWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/amiinahmed/Documents/GitHub/NoteApp/Views/Post/EditPost.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUG9zdC9FZGl0UG9zdC5jc2h0bWw=
+[C:/Users/Michael/Documents/GitHub/itpe3200/NoteApp/Views/Post/EditPost.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxFZGl0UG9zdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/amiinahmed/Documents/GitHub/NoteApp/Views/Post/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUG9zdC9JbmRleC5jc2h0bWw=
+[C:/Users/Michael/Documents/GitHub/itpe3200/NoteApp/Views/Post/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9zdFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/amiinahmed/Documents/GitHub/NoteApp/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+[C:/Users/Michael/Documents/GitHub/itpe3200/NoteApp/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/amiinahmed/Documents/GitHub/NoteApp/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+[C:/Users/Michael/Documents/GitHub/itpe3200/NoteApp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/amiinahmed/Documents/GitHub/NoteApp/Views/Shared/_LoginPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
+[C:/Users/Michael/Documents/GitHub/itpe3200/NoteApp/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/amiinahmed/Documents/GitHub/NoteApp/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[C:/Users/Michael/Documents/GitHub/itpe3200/NoteApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/amiinahmed/Documents/GitHub/NoteApp/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[C:/Users/Michael/Documents/GitHub/itpe3200/NoteApp/Views/User/Settings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxTZXR0aW5ncy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/amiinahmed/Documents/GitHub/NoteApp/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/Michael/Documents/GitHub/itpe3200/NoteApp/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Michael/Documents/GitHub/itpe3200/NoteApp/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

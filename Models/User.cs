@@ -4,6 +4,6 @@ namespace NoteApp.Models
     {
         public int Id { get; set; }
         public string Username { get; set; } = string.Empty;
-        
+        public string? ProfilePictureUrl { get; set; } // Add this property for profile picture URL
     }
 }
