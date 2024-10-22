@@ -143,5 +143,72 @@ public async Task<IActionResult> DeletePost(int id)
 
     return RedirectToAction("Index");
 }
+
+[Authorize]
+[HttpGet]
+public async Task<IActionResult> EditComment(int id)
+{
+    var comment = await _context.Comments.FindAsync(id);
+
+    if (comment == null)
+    {
+        return NotFound();
+    }
+
+    if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+    {
+        return Forbid();
+    }
+
+    return View(comment);  // Return the comment for editing
+}
+
+[Authorize]
+[HttpPost]
+public async Task<IActionResult> EditComment(int id, Comment updatedComment)
+{
+    var comment = await _context.Comments.FindAsync(id);
+
+    if (comment == null)
+    {
+        return NotFound();
+    }
+
+    if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+    {
+        return Forbid();
+    }
+
+    comment.Content = updatedComment.Content;
+
+    _context.Update(comment);
+    await _context.SaveChangesAsync();
+
+    return RedirectToAction("Index");
+}
+
+
+[Authorize]
+[HttpPost]
+public async Task<IActionResult> DeleteComment(int id)
+{
+    var comment = await _context.Comments.FindAsync(id);
+
+    if (comment == null)
+    {
+        return NotFound();
+    }
+
+    if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+    {
+        return Forbid();
+    }
+
+    _context.Comments.Remove(comment);
+    await _context.SaveChangesAsync();
+
+    return RedirectToAction("Index");
+}
+
     }
 }

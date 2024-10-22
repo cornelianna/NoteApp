@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/amiinahmed/Desktop/Github/NoteApp/NoteApp.csproj": {}
+    "/Users/amiinahmed/Documents/GitHub/NoteApp/NoteApp.csproj": {}
   },
   "projects": {
-    "/Users/amiinahmed/Desktop/Github/NoteApp/NoteApp.csproj": {
+    "/Users/amiinahmed/Documents/GitHub/NoteApp/NoteApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/amiinahmed/Desktop/Github/NoteApp/NoteApp.csproj",
+        "projectUniqueName": "/Users/amiinahmed/Documents/GitHub/NoteApp/NoteApp.csproj",
         "projectName": "NoteApp",
-        "projectPath": "/Users/amiinahmed/Desktop/Github/NoteApp/NoteApp.csproj",
+        "projectPath": "/Users/amiinahmed/Documents/GitHub/NoteApp/NoteApp.csproj",
         "packagesPath": "/Users/amiinahmed/.nuget/packages/",
-        "outputPath": "/Users/amiinahmed/Desktop/Github/NoteApp/obj/",
+        "outputPath": "/Users/amiinahmed/Documents/GitHub/NoteApp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/amiinahmed/.nuget/NuGet/NuGet.Config"
