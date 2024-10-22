@@ -502,9 +502,7 @@ C:\Users\Michael\Documents\GitHub\itpe3200\NoteApp\obj\Debug\net8.0\staticwebass
 C:\Users\Michael\Documents\GitHub\itpe3200\NoteApp\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.NoteApp.props
 C:\Users\Michael\Documents\GitHub\itpe3200\NoteApp\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.NoteApp.props
 C:\Users\Michael\Documents\GitHub\itpe3200\NoteApp\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\Michael\Documents\GitHub\itpe3200\NoteApp\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Michael\Documents\GitHub\itpe3200\NoteApp\obj\Debug\net8.0\scopedcss\bundle\NoteApp.styles.css
-C:\Users\Michael\Documents\GitHub\itpe3200\NoteApp\obj\Debug\net8.0\scopedcss\projectbundle\NoteApp.bundle.scp.css
 C:\Users\Michael\Documents\GitHub\itpe3200\NoteApp\obj\Debug\net8.0\NoteApp.csproj.Up2Date
 C:\Users\Michael\Documents\GitHub\itpe3200\NoteApp\obj\Debug\net8.0\NoteApp.dll
 C:\Users\Michael\Documents\GitHub\itpe3200\NoteApp\obj\Debug\net8.0\refint\NoteApp.dll

@@ -1,16 +1,20 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\NoteApp.bundle.scp.css",
-      "PackagePath": "staticwebassets\\NoteApp.bundle.scp.css"
-    },
-    {
       "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\images\\SnapNoteLogo.png",
+      "PackagePath": "staticwebassets\\images\\SnapNoteLogo.png"
+    },
+    {
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\images\\icon.svg",
+      "PackagePath": "staticwebassets\\images\\icon.svg"
     },
     {
       "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\js\\site.js",
@@ -243,6 +247,14 @@
     {
       "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\uploads\\Screenshot 2024-08-14 at 15.53.27.png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot 2024-08-14 at 15.53.27.png"
+    },
+    {
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\uploads\\Screenshot 2024-09-17 at 14.04.56.png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot 2024-09-17 at 14.04.56.png"
     },
     {
       "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\uploads\\fa2fd58084e7f38b1e36021ac42c2a03.jpg",
