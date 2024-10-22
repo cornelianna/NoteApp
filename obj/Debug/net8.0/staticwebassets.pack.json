@@ -1,24 +1,46 @@
 {
   "Files": [
     {
-      "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/obj/Debug/net8.0/scopedcss/projectbundle/NoteApp.bundle.scp.css",
-      "PackagePath": "staticwebassets/NoteApp.bundle.scp.css"
-    },
-    {
-      "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/css/navFeed.css",
-      "PackagePath": "staticwebassets/css/navFeed.css"
-    },
-    {
       "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },
     {
+<<<<<<< HEAD
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\css\\navFeed.css",
+      "PackagePath": "staticwebassets\\css\\navFeed.css"
+    },
+    {
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+=======
       "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/favicon.ico",
       "PackagePath": "staticwebassets/favicon.ico"
+>>>>>>> f4f02b77c0a131408ac2ce93aa28f735b49d420d
     },
     {
       "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/images/SnapNoteLogo.png",
       "PackagePath": "staticwebassets/images/SnapNoteLogo.png"
+    },
+    {
+<<<<<<< HEAD
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\images\\SnapNoteLogo.png",
+      "PackagePath": "staticwebassets\\images\\SnapNoteLogo.png"
+    },
+    {
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\images\\icon.svg",
+      "PackagePath": "staticwebassets\\images\\icon.svg"
+    },
+    {
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+=======
+      "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/images/bl.svg",
+      "PackagePath": "staticwebassets/images/bl.svg"
+>>>>>>> f4f02b77c0a131408ac2ce93aa28f735b49d420d
+    },
+    {
+      "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/images/delete.svg",
+      "PackagePath": "staticwebassets/images/delete.svg"
     },
     {
       "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/images/edit.svg",
@@ -29,8 +51,8 @@
       "PackagePath": "staticwebassets/images/icon.svg"
     },
     {
-      "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/images/more.svg",
-      "PackagePath": "staticwebassets/images/more.svg"
+      "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/images/report.svg",
+      "PackagePath": "staticwebassets/images/report.svg"
     },
     {
       "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/js/site.js",
@@ -245,8 +267,21 @@
       "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.js"
     },
     {
+<<<<<<< HEAD
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\uploads\\Screenshot 2024-08-14 at 15.53.27.png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot 2024-08-14 at 15.53.27.png"
+    },
+    {
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\uploads\\Screenshot 2024-09-17 at 14.04.56.png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot 2024-09-17 at 14.04.56.png"
+    },
+    {
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\uploads\\fa2fd58084e7f38b1e36021ac42c2a03.jpg",
+      "PackagePath": "staticwebassets\\uploads\\fa2fd58084e7f38b1e36021ac42c2a03.jpg"
+=======
       "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
       "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.min.js"
+>>>>>>> f4f02b77c0a131408ac2ce93aa28f735b49d420d
     },
     {
       "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/lib/jquery/LICENSE.txt",
@@ -265,6 +300,10 @@
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
     },
     {
+      "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/uploads/LWScreenShot 2024-10-19 at 15.56.08.png",
+      "PackagePath": "staticwebassets/uploads/LWScreenShot 2024-10-19 at 15.56.08.png"
+    },
+    {
       "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/uploads/Screenshot 2024-08-14 at 15.53.27.png",
       "PackagePath": "staticwebassets/uploads/Screenshot 2024-08-14 at 15.53.27.png"
     },
@@ -273,8 +312,8 @@
       "PackagePath": "staticwebassets/uploads/Screenshot 2024-09-17 at 14.04.56.png"
     },
     {
-      "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/uploads/cool2.png",
-      "PackagePath": "staticwebassets/uploads/cool2.png"
+      "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/uploads/coll3.png",
+      "PackagePath": "staticwebassets/uploads/coll3.png"
     },
     {
       "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/uploads/fa2fd58084e7f38b1e36021ac42c2a03.jpg",
@@ -287,10 +326,6 @@
     {
       "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/uploads/nikocado-nikocado-avocado.gif",
       "PackagePath": "staticwebassets/uploads/nikocado-nikocado-avocado.gif"
-    },
-    {
-      "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/uploads/rose.png",
-      "PackagePath": "staticwebassets/uploads/rose.png"
     },
     {
       "Id": "obj/Debug/net8.0/staticwebassets/msbuild.NoteApp.Microsoft.AspNetCore.StaticWebAssets.props",

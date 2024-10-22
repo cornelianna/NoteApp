@@ -26,6 +26,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/amiinahmed/Documents/GitHub/NoteApp/Views/Post/EditComment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUG9zdC9FZGl0Q29tbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/amiinahmed/Documents/GitHub/NoteApp/Views/Post/EditPost.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUG9zdC9FZGl0UG9zdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -36,6 +40,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/amiinahmed/Documents/GitHub/NoteApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/amiinahmed/Documents/GitHub/NoteApp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/amiinahmed/Documents/GitHub/NoteApp/Views/Shared/_LoginPartial.cshtml]
@@ -53,7 +61,3 @@ build_metadata.AdditionalFiles.CssScope =
 [/Users/amiinahmed/Documents/GitHub/NoteApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/amiinahmed/Documents/GitHub/NoteApp/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-6pcgz2slxy
