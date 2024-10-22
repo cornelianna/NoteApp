@@ -4,25 +4,24 @@
   box-sizing: border-box;
 }
 
-/* Ensure html and body take full height */
 html, body {
   height: 100%;
   font-family: 'Arial', sans-serif;
-  background-color: #edf3f9; /* Soft light blue for the background */
+  background-color: #edf3f9; 
 }
-
+  
 
 /* Sidebar Styles */
 .sidebar {
-  position: fixed; /* Ensures the sidebar stays in place when scrolling */
+  position: fixed; 
   top: 0;
   left: 0;
-  height: 100vh; /* Full viewport height */
+  height: 100vh; 
   width: 239px;
-  background-color: #bcd7d2; /* Soft green for the sidebar */
+  background-color: #bcd7d2; 
   font-size: 17px;
-  z-index: 1000; /* Ensures the sidebar stays on top of other elements */
-  overflow-y: auto; /* Allows scrolling if content overflows */
+  z-index: 1000; 
+  overflow-y: auto; 
 }
 
 .sidebar ul li a {
@@ -33,19 +32,19 @@ html, body {
 }
 
 .sidebar a:hover {
-  background-color: #86b0a9; /* Darker green for hover effect */
+  background-color: #86b0a9; 
 }
 
 .brand-image {
   width: 190px;
-  margin: 20px auto; /* Adds some space at the top */
+  margin: 20px auto;
   display: block;
 }
 
 /* Main Content Wrapper */
 main {
-  padding-top: 20px; /* Space at the top for aesthetic */
-  padding-left: 260px; /* Adds margin to the left to account for the sidebar */
+  padding-top: 20px; 
+  padding-left: 260px; 
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -57,12 +56,12 @@ main {
 /* Create a new post section */
 .create-post-container {
   display: grid;
-  grid-template-columns: 300px 1fr; /* Fixed width for the image preview, flexible for text side */
+  grid-template-columns: 300px 1fr; 
   gap: 40px;
   max-width: 900px;
   width: 100%;
   padding: 20px;
-  background-color: #f7f9fc; /* Very light blue for post creation background */
+  background-color: #f7f9fc; 
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   margin: 20px 0;
@@ -73,7 +72,7 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  background-color: #eef4f8; /* Light blue for image placeholder */
+  background-color: #eef4f8; 
   padding: 20px;
   border-radius: 10px;
 }
@@ -81,7 +80,7 @@ main {
 .image-placeholder {
   width: 100%;
   height: 200px;
-  background-color: #dae8f2; /* Slightly darker blue for the image placeholder */
+  background-color: #dae8f2; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -99,8 +98,7 @@ main {
   cursor: pointer;
   padding: 8px 16px;
   border: 1px solid #ccc;
-  background-color: #d1e6dd; /* Light green for upload button */
-  border-radius: 5px;
+  background-color: #d1e6dd;
 }
 
 .custom-file-upload img {
@@ -123,12 +121,12 @@ textarea#noteInput {
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-bottom: 15px;
-  background-color: #eef4f8; /* Light blue for input fields */
+  background-color: #eef4f8; 
   color: #4f4f4f;
 }
 
 button.submit-button {
-  background-color: #bcd7d2; /* Light green for buttons */
+  background-color: #bcd7d2; 
   color: #2f4f4f;
   padding: 10px 20px;
   border: none;
@@ -138,15 +136,15 @@ button.submit-button {
 }
 
 button.submit-button:hover {
-  background-color: #86b0a9; /* Darker green on hover */
+  background-color: #86b0a9;
 }
 
 /* Container for the feed content */
 .feed-container {
   width: 100%;
-  max-width: 900px; /* Same width as create-post-container */
+  max-width: 900px; 
   display: grid;
-  grid-template-columns: 1fr; /* Single column layout */
+  grid-template-columns: 1fr;
   gap: 20px;
   justify-items: center;
 }

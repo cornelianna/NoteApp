@@ -75,8 +75,7 @@ public async Task<IActionResult> EditPost(int id)
     {
         return NotFound();
     }
-
-  
+    
     if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
     {
         return Forbid();  
