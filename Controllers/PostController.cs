@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using NoteApp.Models;
+using NoteApp.Data;
 using System.Security.Claims;
 
 namespace NoteApp.Controllers
@@ -36,8 +37,13 @@ namespace NoteApp.Controllers
             }
 
             // Associate the post with the logged-in user
-            post.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);  // Get the current user's ID
-            post.Username = User.Identity.Name;  // Get the current user's username
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null)
+            {
+                return Unauthorized();  // or handle the null case as appropriate
+            }
+            post.UserId = userId;  // Get the current user's ID
+            post.Username = User.Identity?.Name ?? "Unknown";  // Get the current user's username or set to "Unknown" if null
 
             post.CreatedAt = DateTime.Now;
             _context.Add(post);
@@ -55,7 +61,7 @@ namespace NoteApp.Controllers
             {
                 // Associate the comment with the logged-in user
                 comment.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);  // Get the current user's ID
-                comment.Username = User.Identity.Name;  // Get the current user's username
+                comment.Username = User.Identity?.Name ?? "Unknown";  // Get the current user's username or set to "Unknown" if null
 
                 comment.PostId = post.Id;
                 comment.CreatedAt = DateTime.Now;
@@ -65,149 +71,148 @@ namespace NoteApp.Controllers
 
             return RedirectToAction("Index");
         }
+
         [Authorize]
-[HttpGet]
-public async Task<IActionResult> EditPost(int id)
-{
-    var post = await _context.Posts.FindAsync(id);
-
-    if (post == null)
-    {
-        return NotFound();
-    }
-    
-    if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
-    {
-        return Forbid();  
-    }
-
-    return View(post);  
-}
-
-[Authorize]
-[HttpPost]
-public async Task<IActionResult> EditPost(int id, Post updatedPost, IFormFile? newImage)
-{
-    var post = await _context.Posts.FindAsync(id);
-
-    if (post == null)
-    {
-        return NotFound();
-    }
-
-    
-    if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
-    {
-        return Forbid();
-    }
-
-    if (newImage != null && newImage.Length > 0)
-    {
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", newImage.FileName);
-        using (var stream = new FileStream(filePath, FileMode.Create))
+        [HttpGet]
+        public async Task<IActionResult> EditPost(int id)
         {
-            await newImage.CopyToAsync(stream);
+            var post = await _context.Posts.FindAsync(id);
+
+            if (post == null)
+            {
+                return NotFound();
+            }
+            
+            if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                return Forbid();  
+            }
+
+            return View(post);  
         }
-        post.ImageUrl = "/uploads/" + newImage.FileName;
-    }
 
-    post.Content = updatedPost.Content;
-    post.CreatedAt = DateTime.Now;  // Update timestamp, optional
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditPost(int id, Post updatedPost, IFormFile? newImage)
+        {
+            var post = await _context.Posts.FindAsync(id);
 
-    _context.Update(post);
-    await _context.SaveChangesAsync();
+            if (post == null)
+            {
+                return NotFound();
+            }
 
-    return RedirectToAction("Index");
-}
+            
+            if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                return Forbid();
+            }
 
-[Authorize]
-[HttpPost]
-public async Task<IActionResult> DeletePost(int id)
-{
-    var post = await _context.Posts.FindAsync(id);
+            if (newImage != null && newImage.Length > 0)
+            {
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", newImage.FileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await newImage.CopyToAsync(stream);
+                }
+                post.ImageUrl = "/uploads/" + newImage.FileName;
+            }
 
-    if (post == null)
-    {
-        return NotFound();
-    }
+            post.Content = updatedPost.Content;
+            post.CreatedAt = DateTime.Now;  // Update timestamp, optional
 
-    // Ensure that only the user who created the post can delete it
-    if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
-    {
-        return Forbid();  // Return a 403 Forbidden response if the user is not the owner
-    }
+            _context.Update(post);
+            await _context.SaveChangesAsync();
 
-    _context.Posts.Remove(post);
-    await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
 
-    return RedirectToAction("Index");
-}
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> DeletePost(int id)
+        {
+            var post = await _context.Posts.FindAsync(id);
 
-[Authorize]
-[HttpGet]
-public async Task<IActionResult> EditComment(int id)
-{
-    var comment = await _context.Comments.FindAsync(id);
+            if (post == null)
+            {
+                return NotFound();
+            }
 
-    if (comment == null)
-    {
-        return NotFound();
-    }
+            // Ensure that only the user who created the post can delete it
+            if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                return Forbid();  // Return a 403 Forbidden response if the user is not the owner
+            }
 
-    if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
-    {
-        return Forbid();
-    }
+            _context.Posts.Remove(post);
+            await _context.SaveChangesAsync();
 
-    return View(comment);  // Return the comment for editing
-}
+            return RedirectToAction("Index");
+        }
 
-[Authorize]
-[HttpPost]
-public async Task<IActionResult> EditComment(int id, Comment updatedComment)
-{
-    var comment = await _context.Comments.FindAsync(id);
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> EditComment(int id)
+        {
+            var comment = await _context.Comments.FindAsync(id);
 
-    if (comment == null)
-    {
-        return NotFound();
-    }
+            if (comment == null)
+            {
+                return NotFound();
+            }
 
-    if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
-    {
-        return Forbid();
-    }
+            if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                return Forbid();
+            }
 
-    comment.Content = updatedComment.Content;
+            return View(comment);  // Return the comment for editing
+        }
 
-    _context.Update(comment);
-    await _context.SaveChangesAsync();
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> EditComment(int id, Comment updatedComment)
+        {
+            var comment = await _context.Comments.FindAsync(id);
 
-    return RedirectToAction("Index");
-}
+            if (comment == null)
+            {
+                return NotFound();
+            }
 
+            if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                return Forbid();
+            }
 
-[Authorize]
-[HttpPost]
-public async Task<IActionResult> DeleteComment(int id)
-{
-    var comment = await _context.Comments.FindAsync(id);
+            comment.Content = updatedComment.Content;
 
-    if (comment == null)
-    {
-        return NotFound();
-    }
+            _context.Update(comment);
+            await _context.SaveChangesAsync();
 
-    if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
-    {
-        return Forbid();
-    }
+            return RedirectToAction("Index");
+        }
 
-    _context.Comments.Remove(comment);
-    await _context.SaveChangesAsync();
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> DeleteComment(int id)
+        {
+            var comment = await _context.Comments.FindAsync(id);
 
-    return RedirectToAction("Index");
-}
+            if (comment == null)
+            {
+                return NotFound();
+            }
 
+            if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                return Forbid();
+            }
+
+            _context.Comments.Remove(comment);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
     }
 }
