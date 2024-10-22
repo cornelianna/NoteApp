@@ -1,8 +1,15 @@
 @model List<NoteApp.Models.Post>
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 <div class="main-content">
     <h2>Create a new post</h2>
-    <div class="create-post-container">
+
+    <form asp-action="CreatePost" method="post" enctype="multipart/form-data" class="create-post-container">
         <!-- Left side for image preview and selecting image -->
+        @if (SignInManager.IsSignedIn(User))
+        {
         <div class="left-column">
             <div class="image-placeholder" id="imagePreview">
                 <span id="imageText">Display selected image</span>
@@ -11,26 +18,74 @@
                 <img src="~/images/icon.svg" alt="Upload Image Icon" />
                 Select Image
             </label>
-            <input type="file" id="fileUpload" style="display: none;" onchange="previewImage(event)">
+            <input type="file" accept="image/*" class="form-control-file" name="image" id="fileUpload" style="display: none;" onchange="previewImage(event)">
         </div>
 
         <!-- Right side for writing the note -->
         <div class="right-column">
-            <textarea id="noteInput" placeholder="Write note here..."></textarea>
+            <input class="d-none" type="text" name="Username" placeholder="Username" value="@UserManager.GetUserName(User)" required />
+            <textarea name="Content"  id="noteInput" placeholder="Write note here..." required></textarea>
             <button type="submit" class="submit-button">Post</button>
         </div>
-    </div>
+        }
+        else
+        {
+             <div class="alert alert-success" role="alert">
+        Login to create a post
+        </div>
+        }
+    </form>
+    
 
-<h2>Posts</h2>
-@foreach (var post in Model)
-{
-    <div class="post">
-        <!-- Left side: Image or Note -->
-        <div class="contentPost">
-            @if (!string.IsNullOrEmpty(post.ImageUrl))
-            {
-                <!-- If an image exists, display the image -->
-                <div class="contentImg">
+    <h2>Posts</h2>
+    @foreach (var post in Model)
+    {
+        <div class="post">
+            <div class="dropdown">
+    <!-- Toggle for the dropdown menu -->
+    <img class="tool float-end mb-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" src="~/images/more.svg" alt="More" />
+    
+    <!-- Dropdown menu -->
+    <ul class="dropdown-menu">
+        @if (post.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
+        {
+            <!-- Edit option -->
+            <li>
+                <a class="dropdown-item d-flex align-items-center" href="@Url.Action("EditPost", new { id = post.Id })">
+                    <img class="p-1 me-2" src="~/images/edit.svg" alt="Edit" style="width: 20px; height: 20px;" />
+                    Edit
+                </a>
+            </li>
+
+            <!-- Delete option -->
+            <li>
+                <form asp-action="DeletePost" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this post?');">
+                    <input type="hidden" name="id" value="@post.Id" />
+                    <button type="submit" class="dropdown-item text-danger d-flex align-items-center">
+                        <img class="p-1 me-2" src="~/images/delete.svg" alt="Delete" style="width: 20px; height: 20px; " />
+                        Delete Post
+                    </button>
+                </form>
+            </li>
+        }
+        
+        <!-- Report option -->
+        <li>
+            <a class="dropdown-item text-danger d-flex align-items-center" href="#">
+                <img class="p-1 me-2" src="~/images/report.svg" alt="Report" style="width: 20px; height: 20px;" />
+                Report
+            </a>
+        </li>
+    </ul>
+</div>
+            <!-- Left side: Image or Note -->
+            <div class="contentPost">
+                
+                @if (!string.IsNullOrEmpty(post.ImageUrl))
+                {
+                    <!-- If an image exists, display the image -->
+
+                    <div class="contentImg">
                     <img src="@post.ImageUrl" alt="Post image">
                 </div>
             }

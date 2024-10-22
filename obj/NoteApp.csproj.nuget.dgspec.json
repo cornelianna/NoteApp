@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\NoteApp.csproj": {}
+    "/Users/amiinahmed/Desktop/Github/NoteApp/NoteApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\NoteApp.csproj": {
+    "/Users/amiinahmed/Desktop/Github/NoteApp/NoteApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\NoteApp.csproj",
+        "projectUniqueName": "/Users/amiinahmed/Desktop/Github/NoteApp/NoteApp.csproj",
         "projectName": "NoteApp",
-        "projectPath": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\NoteApp.csproj",
-        "packagesPath": "C:\\Users\\Michael\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\obj\\",
+        "projectPath": "/Users/amiinahmed/Desktop/Github/NoteApp/NoteApp.csproj",
+        "packagesPath": "/Users/amiinahmed/.nuget/packages/",
+        "outputPath": "/Users/amiinahmed/Desktop/Github/NoteApp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Michael\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/Users/amiinahmed/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -89,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.401/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
