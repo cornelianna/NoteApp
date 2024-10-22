@@ -1,24 +1,22 @@
-obj/Debug/net8.0/NoteApp.AssemblyInfo.cs
-obj/Debug/net8.0/NoteApp.AssemblyInfoInputs.cache
-obj/NoteApp.csproj.nuget.dgspec.json
-obj/NoteApp.csproj.nuget.g.props
-obj/NoteApp.csproj.nuget.g.targets
-obj/project.assets.json
-obj/project.nuget.cache
-obj/Debug/net8.0/apphost.exe
-obj/Debug/net8.0/NoteApp.AssemblyInfo.cs
-obj/Debug/net8.0/NoteApp.AssemblyInfoInputs.cache
-obj/Debug/net8.0/NoteApp.assets.cache
-obj/Debug/net8.0/NoteApp.csproj.AssemblyReference.cache
-obj/Debug/net8.0/NoteApp.csproj.CoreCompileInputs.cache
-obj/Debug/net8.0/NoteApp.dll
-obj/Debug/net8.0/NoteApp.pdb
-obj/Debug/net8.0/NoteApp.sourcelink.json
-obj/Debug/net8.0/refint/NoteApp.dll
-obj/Debug/net8.0/apphost.exe
-obj/Debug/net8.0/NoteApp.AssemblyInfo.cs
-obj/Debug/net8.0/NoteApp.AssemblyInfoInputs.cache
-obj/Debug/net8.0/NoteApp.dll
-obj/Debug/net8.0/NoteApp.pdb
-obj/Debug/net8.0/NoteApp.sourcelink.json
-obj/Debug/net8.0/refint/NoteApp.dll
+# Ignore DLL files and other binaries
+*.dll
+*.exe
+*.pdb
+
+# Ignore build directories
+/bin/
+/obj/
+
+# Ignore user-specific files (e.g., Visual Studio)
+*.user
+*.suo
+*.vs/
+
+# Ignore temporary files and logs
+*.tmp
+*.log
+*.cache
+
+# Ignore IDE settings
+.vscode/
+.idea/
