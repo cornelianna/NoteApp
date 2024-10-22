@@ -289,3 +289,13 @@ footer {
   border-top: 1px solid #b4c8dc;
   margin-top: auto;
 }
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
+
+.list-group-item.active {
+  background-color: #e9ecef;
+}
+
