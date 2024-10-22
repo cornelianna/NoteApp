@@ -1,90 +1,71 @@
 @model List<NoteApp.Models.Post>
+<div class="main-content">
+    <h2>Create a new post</h2>
+    <div class="create-post-container">
+        <!-- Left side for image preview and selecting image -->
+        <div class="left-column">
+            <div class="image-placeholder" id="imagePreview">
+                <span id="imageText">Display selected image</span>
+            </div>
+            <label for="fileUpload" class="custom-file-upload">
+                <img src="~/images/icon.svg" alt="Upload Image Icon" />
+                Select Image
+            </label>
+            <input type="file" id="fileUpload" style="display: none;" onchange="previewImage(event)">
+        </div>
 
-<h2>Create a new post</h2>
-<form asp-action="CreatePost" method="post" enctype="multipart/form-data">
-    <input type="text" name="Username" placeholder="Username" required />
-    <textarea name="Content" placeholder="Write your note here..." required></textarea>
-    <div class="form-group">
-    <input type="file" name="image" accept="image/*" class="form-control-file " style="width: 212px;" id="exampleFormControlFile1" >
-  </div>
-    <input type="submit" value="Post" />
-</form>
-
+        <!-- Right side for writing the note -->
+        <div class="right-column">
+            <textarea id="noteInput" placeholder="Write note here..."></textarea>
+            <button type="submit" class="submit-button">Post</button>
+        </div>
+    </div>
 
 <h2>Posts</h2>
-<div class="float-end mb-2"><a href=""> <button class="btn btn-primary btn-Color mb-2"  />Create Post </button></a></div>
 @foreach (var post in Model)
 {
-    
-       <div  class="post">
-        <div class="feed">
-            <!-- Display user image and username -->
-            <div class="userImg">
-                <img src="~/images/icon.svg" alt="AvatarImg" />
-                @post.Username
-            </div>
-            
-            <!-- Post content and image -->
-            <div class="contentPost">
-                <!-- Add See More/See Less functionality for post content -->
-                <div class="text-container">
-                    @if (post.Content.Length > 100)
-                    {
-                        <!-- Display the first 100 characters -->
-                        <span class="short-text">
-                            @post.Content.Substring(0, 200)...
-                        </span>
-
-                        <!-- The rest of the content, hidden initially -->
-                        <span class="long-text" style="display: none;">
-                            @post.Content.Substring(100)
-                        </span>
-
-                        <!-- See More/See Less link -->
-                        <a href="#" class="see-more" onclick="toggleText(this); return false;">See More</a>
-                    }
-                    else
-                    {
-                        <!-- If content is shorter than 100 characters, display all -->
-                        <p>@post.Content</p>
-                    }
-                </div>
-
-                <!-- Post image, if available -->
-                 @if (!string.IsNullOrEmpty(post.ImageUrl))
-                    {
+    <div class="post">
+        <!-- Left side: Image or Note -->
+        <div class="contentPost">
+            @if (!string.IsNullOrEmpty(post.ImageUrl))
+            {
+                <!-- If an image exists, display the image -->
                 <div class="contentImg">
-                   
-                        <img src="@post.ImageUrl" alt="Image" width="200" />
-                   
+                    <img src="@post.ImageUrl" alt="Post image">
                 </div>
-                 }
-            </div>
+            }
+            else
+            {
+                <!-- If no image, display the note content here -->
+                <div class="noteContent">
+                    <p>@post.Content</p>
+                </div>
+            }
         </div>
-        
-<div class="discussions">
-    <h5 class="headinDiscussion">Discussion</h5>
-    <div class="discussion">
-        
 
-        <h4>Comments:</h4>
-        @foreach (var comment in post.Comments)
-        {
-             <div class="userImg">
-                    <img src="~/images/icon.svg" alt="AvatarImg" /> <strong>@comment.Username</strong> 
-                  </div>
-                  <div class="comment">
-                    <p>@comment.Content</p>
-                  </div>
-             <!-- Display the username of the comment creator -->
-        }
-        <form class="form-group" asp-action="AddComment" method="post">
-            <input class="form-control" type="hidden" name="postId" value="@post.Id" />
-            <textarea class="form-control" name="Content" placeholder="Add a comment"></textarea>
-            <input class="btn btn-primary mb-2" type="submit" value="Comment" />
-        </form>
-</div>
-</div>
-        
+        <!-- Right side: Note and Comments -->
+        <div class="discussions">
+            <!-- Comments section -->
+            <h4>Comments:</h4>
+            @foreach (var comment in post.Comments)
+            {
+                <div class="discussion">
+                    <div class="userImg">
+                        <img src="~/images/icon.svg" alt="Avatar">
+                        <strong>@comment.Username</strong>
+                    </div>
+                    <div class="comment">
+                        <p>@comment.Content</p>
+                    </div>
+                </div>
+            }
+
+            <!-- Comment form -->
+            <form asp-action="AddComment" method="post">
+                <input type="hidden" name="postId" value="@post.Id" />
+                <textarea class="form-control" name="Content" placeholder="Add a comment"></textarea>
+                <input class="btn btn-primary" type="submit" value="Comment" />
+            </form>
+        </div>
     </div>
 }
