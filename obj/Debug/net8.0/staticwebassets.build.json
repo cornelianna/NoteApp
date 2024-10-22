@@ -1,10 +1,14 @@
 {
   "Version": 1,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "Hash": "KJabuG1bgp50wGnohv+x9vVrsdLzktAW60vGOBi4a+s=",
 =======
   "Hash": "VT3vb9aBmnTzGMzZpqSGfMZlpSkacMxTmcHB6PLIF10=",
 >>>>>>> f4f02b77c0a131408ac2ce93aa28f735b49d420d
+=======
+  "Hash": "RE7C4dqMh8ul3ywGDrPBSwoRnEWjdkMRs//EwrlR95E=",
+>>>>>>> michael-test
   "Source": "NoteApp",
   "BasePath": "_content/NoteApp",
   "Mode": "Default",
@@ -1162,6 +1166,7 @@
     },
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
       "Identity": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\NoteApp.styles.css",
       "SourceId": "NoteApp",
       "SourceType": "Computed",
@@ -1201,6 +1206,9 @@
     },
     {
       "Identity": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\css\\navFeed.css",
+=======
+      "Identity": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\css\\site.css",
+>>>>>>> michael-test
       "SourceId": "NoteApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\",
@@ -1261,7 +1269,49 @@
     },
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
       "Identity": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\images\\icon.svg",
+=======
+      "Identity": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\images\\icon.svg",
+      "SourceId": "NoteApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\",
+      "BasePath": "_content/NoteApp",
+      "RelativePath": "images/icon.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icon.svg"
+    },
+    {
+      "Identity": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\images\\SnapNoteLogo.png",
+      "SourceId": "NoteApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\",
+      "BasePath": "_content/NoteApp",
+      "RelativePath": "images/SnapNoteLogo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\SnapNoteLogo.png"
+    },
+    {
+      "Identity": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\js\\site.js",
+>>>>>>> michael-test
       "SourceId": "NoteApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\",
@@ -2618,6 +2668,7 @@
       "SourceId": "NoteApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\",
+<<<<<<< HEAD
 =======
       "OriginalItemSpec": "wwwroot/uploads/nikocado-nikocado-avocado.gif"
     },
@@ -2627,6 +2678,8 @@
       "SourceType": "Discovered",
       "ContentRoot": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/",
 >>>>>>> f4f02b77c0a131408ac2ce93aa28f735b49d420d
+=======
+>>>>>>> michael-test
       "BasePath": "_content/NoteApp",
       "RelativePath": "uploads/Screenshot 2024-08-14 at 15.53.27.png",
       "AssetKind": "All",
@@ -2640,6 +2693,9 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> michael-test
       "OriginalItemSpec": "wwwroot\\uploads\\Screenshot 2024-08-14 at 15.53.27.png"
     },
     {
@@ -2647,6 +2703,7 @@
       "SourceId": "NoteApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\",
+<<<<<<< HEAD
 =======
       "OriginalItemSpec": "wwwroot/uploads/Screenshot 2024-08-14 at 15.53.27.png"
     },
@@ -2656,6 +2713,8 @@
       "SourceType": "Discovered",
       "ContentRoot": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/",
 >>>>>>> f4f02b77c0a131408ac2ce93aa28f735b49d420d
+=======
+>>>>>>> michael-test
       "BasePath": "_content/NoteApp",
       "RelativePath": "uploads/Screenshot 2024-09-17 at 14.04.56.png",
       "AssetKind": "All",
@@ -2669,10 +2728,14 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "OriginalItemSpec": "wwwroot\\uploads\\Screenshot 2024-09-17 at 14.04.56.png"
 =======
       "OriginalItemSpec": "wwwroot/uploads/Screenshot 2024-09-17 at 14.04.56.png"
 >>>>>>> f4f02b77c0a131408ac2ce93aa28f735b49d420d
+=======
+      "OriginalItemSpec": "wwwroot\\uploads\\Screenshot 2024-09-17 at 14.04.56.png"
+>>>>>>> michael-test
     }
   ]
 }

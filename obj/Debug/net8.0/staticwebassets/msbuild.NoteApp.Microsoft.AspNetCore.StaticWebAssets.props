@@ -1056,6 +1056,7 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery\LICENSE.txt))</OriginalItemSpec>
     </StaticWebAsset>
+<<<<<<< HEAD
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\coll3.png))">
       <SourceType>Package</SourceType>
       <SourceId>NoteApp</SourceId>
@@ -1072,6 +1073,8 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\coll3.png))</OriginalItemSpec>
     </StaticWebAsset>
+=======
+>>>>>>> michael-test
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\uploads\fa2fd58084e7f38b1e36021ac42c2a03.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>NoteApp</SourceId>

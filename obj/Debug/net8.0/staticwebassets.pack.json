@@ -1,6 +1,7 @@
 {
   "Files": [
     {
+<<<<<<< HEAD
       "Id": "/Users/amiinahmed/Documents/GitHub/NoteApp/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },
@@ -10,6 +11,8 @@
       "PackagePath": "staticwebassets\\css\\navFeed.css"
     },
     {
+=======
+>>>>>>> michael-test
       "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
 =======
@@ -23,6 +26,14 @@
     },
     {
 <<<<<<< HEAD
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\images\\SnapNoteLogo.png",
+      "PackagePath": "staticwebassets\\images\\SnapNoteLogo.png"
+    },
+    {
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\images\\icon.svg",
+      "PackagePath": "staticwebassets\\images\\icon.svg"
+    },
+    {
       "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\images\\SnapNoteLogo.png",
       "PackagePath": "staticwebassets\\images\\SnapNoteLogo.png"
     },
@@ -268,6 +279,14 @@
     },
     {
 <<<<<<< HEAD
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\uploads\\Screenshot 2024-08-14 at 15.53.27.png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot 2024-08-14 at 15.53.27.png"
+    },
+    {
+      "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\uploads\\Screenshot 2024-09-17 at 14.04.56.png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot 2024-09-17 at 14.04.56.png"
+    },
+    {
       "Id": "C:\\Users\\Michael\\Documents\\GitHub\\itpe3200\\NoteApp\\wwwroot\\uploads\\Screenshot 2024-08-14 at 15.53.27.png",
       "PackagePath": "staticwebassets\\uploads\\Screenshot 2024-08-14 at 15.53.27.png"
     },
