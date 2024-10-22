@@ -178,19 +178,19 @@ button.submit-button:hover {
   width: 100%;
   height: 100%;
   border-radius: 15px;
-  box-sizing: border-box; /* Ensure padding doesn’t increase the size */
+  box-sizing: border-box; 
 }
 
 .contentImg img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure the image always fills the box */
+  object-fit: cover;
   border-radius: 10px;
 }
 
 .noteContent {
   width: 100%;
-  height: 100%; /* Fill the entire box when no image */
+  height: 100%; 
   background-color: #e0e7f1;
   padding: 20px;
   border-radius: 10px;
