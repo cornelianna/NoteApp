@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NoteApp.Models;
+using NoteApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

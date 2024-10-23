@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using NoteApp.Models;
-
 namespace NoteApp.Controllers;
 
 public class HomeController : Controller

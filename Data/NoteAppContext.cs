@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using NoteApp.Models;
 
+namespace NoteApp.Data;
+
 public class NoteAppContext : IdentityDbContext
 {
     public NoteAppContext(DbContextOptions<NoteAppContext> options)

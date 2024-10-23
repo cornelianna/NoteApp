@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
+
 namespace NoteApp.Models
 {
     public class EditProfileViewModel
