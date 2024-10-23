@@ -7,20 +7,20 @@ namespace NoteApp.Models
     {
         [Required]
         [Display(Name = "Username")]
-        public string Username { get; set; }
+        public string? Username { get; set; }
 
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Current Password")]
-        public string CurrentPassword { get; set; }
+        public string? CurrentPassword { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "New Password")]
-        public string NewPassword { get; set; }
+        public string? NewPassword { get; set; }
 
         public string? ProfilePictureUrl { get; set; }
     }

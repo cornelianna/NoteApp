@@ -18,10 +18,10 @@ namespace NoteApp.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var posts = _context.Posts
-            .OrderByDescending(post => post.CreatedAt) 
-            .Include(post => post.Comments)
-            .ToList();
+            var posts = await _context.Posts
+                .OrderByDescending(post => post.CreatedAt)
+                .Include(post => post.Comments)
+                .ToListAsync();
             return View(posts);
         }
 
@@ -40,15 +40,24 @@ namespace NoteApp.Controllers
             }
 
             // Associate the post with the logged-in user
-            post.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            post.Username = User.Identity.Name;  
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var username = User.Identity?.Name;
+
+            if (userId == null || username == null)
+            {
+                // Handle the case where the user is not authenticated properly
+                return Unauthorized();
+            }
+
+            post.UserId = userId;
+            post.Username = username;
 
             post.CreatedAt = DateTime.Now;
             _context.Add(post);
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
-        }
+}
 
         [Authorize]
         [HttpPost]
@@ -58,8 +67,17 @@ namespace NoteApp.Controllers
             if (post != null)
             {
                 // Associate the comment with the logged-in user
-                comment.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier); 
-                comment.Username = User.Identity.Name;  
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var username = User.Identity?.Name;
+
+                if (userId == null || username == null)
+                {
+                    // Handle the case where the user is not authenticated properly
+                    return Unauthorized();
+                }
+
+                comment.UserId = userId;
+                comment.Username = username;
 
                 comment.PostId = post.Id;
                 comment.CreatedAt = DateTime.Now;
