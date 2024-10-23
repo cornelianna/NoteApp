@@ -6,7 +6,7 @@
 
 html, body {
   height: 100%;
-  font-family: 'Arial', sans-serif;
+  font-family: 'roboto', sans-serif;
   background-color: #edf3f9; 
 }
 
@@ -162,6 +162,19 @@ button.submit-button:hover {
   gap: 20px;
 }
 
+/* Post header styling */
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Post owner container styling */
+.post-owner {
+  display: flex;
+  align-items: center;
+}
+
 /* Left side: image or note */
 .left-content {
   width: 50%;
@@ -214,10 +227,8 @@ button.submit-button:hover {
 .post-date {
   font-size: 14px;
   color: #888;
-  margin-top: 10px;
-  align-self: flex-start;
-  text-align: right;
-  width: 100%;
+  margin-left: 80px;
+  align-self: center;
 }
 
 /* Right side: note and comments */
@@ -303,6 +314,11 @@ input.btn-primary:hover {
 
   .contentImg img, .noteContent {
     height: auto;
+  }
+
+  .post-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 
