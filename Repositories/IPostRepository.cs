@@ -11,12 +11,4 @@ public interface IPostRepository
     Task UpdatePostAsync(Post post);
     Task DeletePostAsync(int id);
 }
-
-public interface ICommentRepository
-{
-    Task<Comment> GetCommentByIdAsync(int id);
-    Task AddCommentAsync(Comment comment);
-    Task UpdateCommentAsync(Comment comment);
-    Task DeleteCommentAsync(int id);
-}
 }
