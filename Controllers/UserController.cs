@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NoteApp.Models; // Add this line to reference EditProfileViewModel
+using NoteApp.Data;
 
 namespace NoteApp.Controllers
 {
-    [Authorize]
+[Authorize]
 public class UserController : Controller
 {
     public IActionResult Settings()

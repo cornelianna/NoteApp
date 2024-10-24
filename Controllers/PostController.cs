@@ -1,218 +1,69 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using NoteApp.Models;
-using NoteApp.Data;
 using System.Security.Claims;
+using NoteApp.Repositories;
 
 namespace NoteApp.Controllers
 {
     public class PostController : Controller
+{
+    private readonly IPostRepository _postRepository;
+    private readonly ICommentRepository _commentRepository;
+
+    public PostController(IPostRepository postRepository, ICommentRepository commentRepository)
     {
-        private readonly NoteAppContext _context;
-
-        public PostController(NoteAppContext context)
-        {
-            _context = context;
+        _postRepository = postRepository;
+        _commentRepository = commentRepository;
         }
+    
 
-        public async Task<IActionResult> Index()
-        {
-            var posts = await _context.Posts.Include(p => p.Comments).ToListAsync();
-            return View(posts);
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> CreatePost(Post post, IFormFile image)
-        {
-            if (image != null && image.Length > 0)
-            {
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", image.FileName);
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await image.CopyToAsync(stream);
-                }
-                post.ImageUrl = "/uploads/" + image.FileName;
-            }
-
-            // Associate the post with the logged-in user
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId == null)
-            {
-                return Unauthorized();  // or handle the null case as appropriate
-            }
-            post.UserId = userId;  // Get the current user's ID
-            post.Username = User.Identity?.Name ?? "Unknown";  // Get the current user's username or set to "Unknown" if null
-
-            post.CreatedAt = DateTime.Now;
-            _context.Add(post);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> AddComment(int postId, Comment comment)
-        {
-            var post = await _context.Posts.FindAsync(postId);
-            if (post != null)
-            {
-                // Associate the comment with the logged-in user
-                comment.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);  // Get the current user's ID
-                comment.Username = User.Identity?.Name ?? "Unknown";  // Get the current user's username or set to "Unknown" if null
-
-                comment.PostId = post.Id;
-                comment.CreatedAt = DateTime.Now;
-                _context.Comments.Add(comment);
-                await _context.SaveChangesAsync();
-            }
-
-            return RedirectToAction("Index");
-        }
-
-        [Authorize]
-        [HttpGet]
-        public async Task<IActionResult> EditPost(int id)
-        {
-            var post = await _context.Posts.FindAsync(id);
-
-            if (post == null)
-            {
-                return NotFound();
-            }
-            
-            if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
-            {
-                return Forbid();  
-            }
-
-            return View(post);  
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> EditPost(int id, Post updatedPost, IFormFile? newImage)
-        {
-            var post = await _context.Posts.FindAsync(id);
-
-            if (post == null)
-            {
-                return NotFound();
-            }
-
-            
-            if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
-            {
-                return Forbid();
-            }
-
-            if (newImage != null && newImage.Length > 0)
-            {
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", newImage.FileName);
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await newImage.CopyToAsync(stream);
-                }
-                post.ImageUrl = "/uploads/" + newImage.FileName;
-            }
-
-            post.Content = updatedPost.Content;
-            post.CreatedAt = DateTime.Now;  // Update timestamp, optional
-
-            _context.Update(post);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> DeletePost(int id)
-        {
-            var post = await _context.Posts.FindAsync(id);
-
-            if (post == null)
-            {
-                return NotFound();
-            }
-
-            // Ensure that only the user who created the post can delete it
-            if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
-            {
-                return Forbid();  // Return a 403 Forbidden response if the user is not the owner
-            }
-
-            _context.Posts.Remove(post);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
-        }
-
-        [Authorize]
-        [HttpGet]
-        public async Task<IActionResult> EditComment(int id)
-        {
-            var comment = await _context.Comments.FindAsync(id);
-
-            if (comment == null)
-            {
-                return NotFound();
-            }
-
-            if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
-            {
-                return Forbid();
-            }
-
-            return View(comment);  // Return the comment for editing
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> EditComment(int id, Comment updatedComment)
-        {
-            var comment = await _context.Comments.FindAsync(id);
-
-            if (comment == null)
-            {
-                return NotFound();
-            }
-
-            if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
-            {
-                return Forbid();
-            }
-
-            comment.Content = updatedComment.Content;
-
-            _context.Update(comment);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> DeleteComment(int id)
-        {
-            var comment = await _context.Comments.FindAsync(id);
-
-            if (comment == null)
-            {
-                return NotFound();
-            }
-
-            if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
-            {
-                return Forbid();
-            }
-
-            _context.Comments.Remove(comment);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
-        }
+    public async Task<IActionResult> Index()
+    {
+        var posts = await _postRepository.GetAllPostsAsync();
+        return View(posts);
     }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> CreatePost(Post post, IFormFile image)
+    {
+        if (image != null && image.Length > 0)
+        {
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", image.FileName);
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await image.CopyToAsync(stream);
+            }
+            post.ImageUrl = "/uploads/" + image.FileName;
+        }
+
+        post.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        post.Username = User.Identity?.Name;
+        post.CreatedAt = DateTime.Now;
+
+        await _postRepository.AddPostAsync(post);
+        return RedirectToAction("Index");
+    }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> DeletePost(int id)
+    {
+        await _postRepository.DeletePostAsync(id);
+        return RedirectToAction("Index");
+    }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> AddComment(Comment comment)
+    {
+        comment.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        comment.Username = User.Identity?.Name;
+        comment.CreatedAt = DateTime.Now;
+
+        await _commentRepository.AddCommentAsync(comment);
+        return RedirectToAction("Index");
+    }
+}
 }

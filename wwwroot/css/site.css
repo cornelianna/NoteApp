@@ -6,7 +6,7 @@
 
 html, body {
   height: 100%;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', sans-serif;
   background-color: #edf3f9; 
 }
 
@@ -98,6 +98,7 @@ main {
   padding: 8px 16px;
   border: 1px solid #ccc;
   background-color: #d1e6dd;
+  border-radius: 5px;
 }
 
 .custom-file-upload img {
@@ -162,6 +163,19 @@ button.submit-button:hover {
   gap: 20px;
 }
 
+/* Post header styling */
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Post owner container styling */
+.post-owner {
+  display: flex;
+  align-items: center;
+}
+
 /* Left side: image or note */
 .left-content {
   width: 50%;
@@ -169,54 +183,70 @@ button.submit-button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 400px; /* Fixed height for the box */
-  overflow: hidden; /* Ensure content fits within the fixed size */
+  padding: 10px;
+  height: 400px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+/* Dropdown toggle styling */
+.dropdown-toggle {
+  cursor: pointer;
 }
 
-.contentImg {
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
-  box-sizing: border-box; 
-}
-
-.contentImg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.noteContent {
+/* Image and Note Containers */
+.contentImg, .noteContent {
   width: 100%;
   height: 100%; 
-  background-color: #e0e7f1;
-  padding: 20px;
   border-radius: 10px;
+  background-color: #e0e7f1;
+  margin-bottom: 15px;
+  box-sizing: border-box;
   display: flex;
-  justify-content: left;
+  align-items: center;
+}
+
+/* Proper handling for the image to make it fill the container */
+.contentImg img {
+  width: 100%;
+  height: 100%; 
+  object-fit: cover; 
+  border-radius: 10px; 
+}
+
+/* Post note styling */
+.noteContent p {
   text-align: left;
+  padding: 20px;
   font-size: 16px;
   color: #4f4f4f;
   word-wrap: break-word;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* Right side: note and comments */
-.right-content {
-  width: 50%; 
-  display: flex;
-  flex-direction: column;
-  height: 100%; 
-  box-sizing: border-box;
+
+/* Post date styling */
+.post-date {
+  font-size: 14px;
+  color: #888;
+  margin-left: 80px;
+  align-self: center;
 }
 
+/* Right side: note and comments */
+.right-content {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  height: auto; 
+  box-sizing: border-box;
+}
 .discussions {
   border-top: 1px solid #cfd9dd;
   display: flex;
   flex-direction: column;
+  font-size: 12px;
 }
+
 .comments-scrollable {
   flex: 1;
   overflow-y: auto;
@@ -234,12 +264,19 @@ button.submit-button:hover {
 
 /* User image for comments */
 .userImg img {
-  width: 45px;
-  height: 45px;
-  padding-right: 10px;
+  width: 35px;
+  height: 35px;
+  margin-bottom: 5px;
   border-radius: 50%;
 }
-
+.userImg strong {
+  margin-right: 13px;
+}
+/* comment date styling */
+.comment-date {
+  color: #888;
+  margin-left: 125px;
+}
 /* Comment form */
 textarea.form-control {
   margin-bottom: 10px;
@@ -277,6 +314,11 @@ input.btn-primary:hover {
 
   .contentImg img, .noteContent {
     height: auto;
+  }
+
+  .post-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
 

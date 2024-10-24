@@ -14,10 +14,10 @@
 }
 
 function previewImage(event) {
-  var reader = new FileReader();
-  reader.onload = function() {
-      var output = document.getElementById('imagePreview');
-      output.innerHTML = `<img src="${reader.result}" alt="Uploaded Image" style="width: 100%; height: auto;">`;
-  };
-  reader.readAsDataURL(event.target.files[0]);
+var reader = new FileReader();
+reader.onload = function() {
+    var output = document.getElementById('imagePreview');
+    output.innerHTML = `<img src="${reader.result}" alt="Uploaded Image" style="width: 100%; height: auto;">`;
+};
+reader.readAsDataURL(event.target.files[0]);
 }
