@@ -1,26 +1,40 @@
 /* Reset */
 * {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 html, body {
   height: 100%;
   font-family: 'Roboto', sans-serif;
-  background-color: #edf3f9; 
+  background-color: #dae8f2;
+}
+
+/* Body Padding to avoid content behind navbar */
+body {
+  padding-top: 56px;
+}
+
+/* Navbar Styles */
+.navbar {
+  z-index: 1030; /* Ensure navbar is above other elements */
 }
 
 /* Sidebar Styles */
 .sidebar {
-  position: fixed; 
-  top: 0;
+  position: fixed;
+  background-color: #bcd7d2;
+  top: 56px; 
   left: 0;
-  height: 100vh; 
-  width: 239px;
-  background-color: #bcd7d2; 
+  width: 250px; 
+  height: calc(100% - 56px); 
   font-size: 17px;
-  z-index: 1000; 
-  overflow-y: auto; 
+  z-index: 1000;
+  overflow-y: auto;
+  /* Transition for slide effect on mobile */
+  transition: left 0.3s ease;
+  padding-top: 30px;
 }
 
 .sidebar ul li a {
@@ -31,7 +45,7 @@ html, body {
 }
 
 .sidebar a:hover {
-  background-color: #86b0a9; 
+  background-color: #86b0a9;
 }
 
 .brand-image {
@@ -41,45 +55,59 @@ html, body {
 }
 
 /* Main Content Wrapper */
-main {
-  padding-top: 20px; 
-  padding-left: 260px; 
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #edf3f9;
+.main-content {
+  padding: 20px;
+  max-width: 900px;
+  margin-right: auto;
+  margin-left: auto;
+  min-height: calc(100vh - 56px);
 }
 
-/* Create a new post section */
+/* Adjust main-content on small screens */
+@media (max-width: 767.98px) {
+  .main-content {
+      margin-left: 0;
+      padding: 20px;
+  }
+}
+
+/* Sidebar hidden on small screens */
+@media (max-width: 767.98px) {
+  .sidebar {
+      left: -240px; /* Hide sidebar off-screen */
+  }
+  .sidebar.show {
+      left: 0; /* Show sidebar */
+  }
+}
+/* Create Post Section */
 .create-post-container {
-  display: grid;
-  grid-template-columns: 300px 1fr; 
-  gap: 40px;
-  max-width: 900px;
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
   padding: 20px;
-  background-color: #f7f9fc; 
+  background-color: #f7f9fc;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 20px 0;
+  margin-bottom: 20px;
 }
 
-.left-column {
+/* Left and Right columns in create post form */
+.create-post-container .left-column,
+.create-post-container .right-column {
+  width: 50%; /* Adjust percentage as needed */
+}
+
+.create-post-container .left-column {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: center;
-  background-color: #eef4f8; 
-  padding: 20px;
-  border-radius: 10px;
 }
 
-.image-placeholder {
+.create-post-container .image-placeholder {
   width: 100%;
   height: 200px;
-  background-color: #dae8f2; 
+  background-color: #dae8f2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -91,7 +119,13 @@ main {
   overflow: hidden;
 }
 
-.custom-file-upload {
+.create-post-container .image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.create-post-container .custom-file-upload {
   display: inline-flex;
   align-items: center;
   cursor: pointer;
@@ -101,32 +135,32 @@ main {
   border-radius: 5px;
 }
 
-.custom-file-upload img {
+.create-post-container .custom-file-upload img {
   width: 20px;
   height: 20px;
   margin-right: 8px;
 }
 
-.right-column {
+.create-post-container .right-column {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-textarea#noteInput {
+.create-post-container textarea#noteInput {
   width: 100%;
-  height: 120px;
+  height: 200px;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-bottom: 15px;
-  background-color: #eef4f8; 
+  background-color: #eef4f8;
   color: #4f4f4f;
 }
 
-button.submit-button {
-  background-color: #bcd7d2; 
+.create-post-container button.submit-button {
+  background-color: #bcd7d2;
   color: #2f4f4f;
   padding: 10px 20px;
   border: none;
@@ -135,32 +169,77 @@ button.submit-button {
   align-self: flex-start;
 }
 
-button.submit-button:hover {
+.create-post-container button.submit-button:hover {
   background-color: #86b0a9;
 }
-
-/* Container for the feed content */
-.feed-container {
-  width: 100%;
-  max-width: 900px; 
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  justify-items: center;
+/* Posts header styling */
+.posts-header {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #bcd7d2;
+  padding-bottom: 10px;
 }
-
 /* Post container styling */
 .post {
   display: flex;
   flex-direction: row;
-  padding: 20px;
-  margin-bottom: 20px;
+  align-items: stretch; /* Make child elements the same height */
+  padding: 10px;
   background-color: #f7f9fc;
+  margin-bottom: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  max-width: 900px;
-  width: 100%;
-  gap: 20px;
+}
+
+
+/* Left and right content */
+.left-content,
+.right-content {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Content image and note styling */
+.contentImg,
+.noteContent {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentImg img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Note content styling when there is no image */
+.noteContent {
+  background-color: #dfe6ed;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 30px; /* Larger font size */
+  font-family: 'Georgia', serif; 
+  color: #333333;
+  line-height: 1.6;
+  flex: 1; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Container for post header and note content when there is an image */
+.post-details-box {
+  background-color: #dfe6ed; 
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 /* Post header styling */
@@ -170,91 +249,62 @@ button.submit-button:hover {
   gap: 10px;
 }
 
-/* Post owner container styling */
-.post-owner {
+/* User image styling */
+.post-header .userImg img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+/* Post info styling */
+.post-header .post-info {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
-/* Left side: image or note */
-.left-content {
-  width: 50%;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  height: 400px;
-  overflow: hidden;
-  box-sizing: border-box;
-}
-/* Dropdown toggle styling */
-.dropdown-toggle {
-  cursor: pointer;
-}
-
-/* Image and Note Containers */
-.contentImg, .noteContent {
-  width: 100%;
-  height: 100%; 
-  border-radius: 10px;
-  background-color: #e0e7f1;
-  margin-bottom: 15px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-}
-
-/* Proper handling for the image to make it fill the container */
-.contentImg img {
-  width: 100%;
-  height: 100%; 
-  object-fit: cover; 
-  border-radius: 10px; 
-}
-
-/* Post note styling */
-.noteContent p {
-  text-align: left;
-  padding: 20px;
+/* Username styling */
+.post-header .username {
   font-size: 16px;
-  color: #4f4f4f;
-  word-wrap: break-word;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  font-weight: bold;
+  color: #2f4f4f;
 }
 
 /* Post date styling */
-.post-date {
+.post-header .post-date {
   font-size: 14px;
-  color: #888;
-  margin-left: 80px;
-  align-self: center;
+  color: #888888;
 }
 
-/* Right side: note and comments */
-.right-content {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  height: auto; 
-  box-sizing: border-box;
+/* Note content styling when there is an image */
+.noteContentWithImage {
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  color: #333333;
+  line-height: 1.4;
+  margin-top: 10px;
 }
+
+/* Adjust text color inside the dark box */
+.post-details-box .username,
+.post-details-box .post-date,
+.post-details-box .noteContentWithImage p {
+  color: #2f4f4f;
+}
+
+/* Comments Section */
 .discussions {
   border-top: 1px solid #cfd9dd;
-  display: flex;
-  flex-direction: column;
-  font-size: 12px;
+  margin-top: 20px;
 }
 
 .comments-scrollable {
-  flex: 1;
+  max-height: 200px;
   overflow-y: auto;
-  min-height: 150px;
-  max-height: 150px; 
-  padding-right: 10px; 
-  margin-top: 10px; 
+  margin-top: 10px;
 }
+
+/* Comment styling */
 .comment {
   background-color: #eef4f8;
   padding: 10px;
@@ -262,22 +312,19 @@ button.submit-button:hover {
   border-radius: 5px;
 }
 
-/* User image for comments */
-.userImg img {
+.comment .userImg img {
   width: 35px;
   height: 35px;
-  margin-bottom: 5px;
+  margin-right: 10px;
   border-radius: 50%;
 }
-.userImg strong {
-  margin-right: 13px;
-}
-/* comment date styling */
+
 .comment-date {
   color: #888;
-  margin-left: 125px;
+  font-size: 12px;
 }
-/* Comment form */
+
+/* Input and button styling */
 textarea.form-control {
   margin-bottom: 10px;
   padding: 10px;
@@ -292,34 +339,11 @@ input.btn-primary {
   color: #2f4f4f;
   border-radius: 5px;
   padding: 10px 15px;
+  border: none;
 }
 
 input.btn-primary:hover {
   background-color: #86b0a9;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .post {
-    flex-direction: column;
-  }
-
-  .left-content, .right-content {
-    width: 100%;
-  }
-
-  .contentImg, .noteContent {
-    height: auto;
-  }
-
-  .contentImg img, .noteContent {
-    height: auto;
-  }
-
-  .post-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 
 /* Footer */
@@ -330,4 +354,69 @@ footer {
   font-size: 12px;
   border-top: 1px solid #b4c8dc;
   margin-top: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+  .main-content {
+      margin-left: 0;
+      padding: 20px;
+  }
+  
+  /* Sidebar adjustments for mobile */
+  .sidebar {
+      left: -240px; /* Hide sidebar off-screen */
+  }
+  .sidebar.show {
+      left: 0; /* Show sidebar */
+  }
+  
+  /* Adjust post layout on mobile */
+  .post {
+      flex-direction: column; /* Stack content vertically on small screens */
+  }
+  .left-content,
+  .right-content {
+      width: 100%;
+      margin-right: 0;
+  }
+  
+  /* Adjust create post layout on mobile */
+  .create-post-container {
+      flex-direction: column;
+  }
+  .create-post-container .left-column,
+  .create-post-container .right-column {
+      width: 100%;
+  }
+}
+
+/* Transition for sidebar */
+.sidebar {
+  transition: left 0.3s ease;
+}
+
+/* Additional styles for the sidebar toggle button */
+.navbar .btn {
+  border: none;
+}
+
+/* Custom scrollbar styling (optional) */
+.comments-scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.comments-scrollable::-webkit-scrollbar-thumb {
+  background-color: #bcd7d2;
+  border-radius: 3px;
+}
+
+.comments-scrollable::-webkit-scrollbar-track {
+  background-color: #f7f9fc;
+}
+
+/* Ensure the dropdown menus in the navbar display correctly */
+.navbar .dropdown-menu {
+  right: 0;
+  left: auto;
 }

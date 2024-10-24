@@ -63,37 +63,37 @@
         </ul>
     </div>
 
-    <!-- Right side: Note and Comments -->
+    <!-- Right side: Post Details and Comments -->
     <div class="right-content">
-        <!-- Post header with user image, username, and date -->
-        <div class="post-header d-flex align-items-center">
-            <div class="userImg">
-                <img src="~/images/icon.svg" alt="Avatar">
-            </div>
-            <div class="post-owner">
-                <strong class="username">@Model.Username</strong>
-                <div class="post-date">
-                    <small>@Model.CreatedAt.ToString("g")</small>
+        <!-- Post Details Box (always present) -->
+        <div class="post-details-box">
+            <!-- Post header -->
+            <div class="post-header">
+                <div class="userImg">
+                    <img src="~/images/icon.svg" alt="Avatar">
+                </div>
+                <div class="post-info">
+                    <span class="username">@Model.Username</span>
+                    <span class="post-date">@Model.CreatedAt.ToString("g")</span>
                 </div>
             </div>
+
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <!-- Note content under header when there is an image -->
+                <div class="noteContentWithImage">
+                    <p>@Model.Content</p>
+                </div>
+            }
         </div>
 
-        @if (!string.IsNullOrEmpty(Model.ImageUrl))
-        {
-            <!-- If there is an image, show the note above comments -->
-            <div class="noteContent">
-                <p>@Model.Content</p>
-            </div>
-        }
-
         <!-- Comments section -->
-        <h5 style="margin-top: 20px;">Comments:</h5>
+        <h5 class="comments-header">Comments</h5>
         <div class="discussions">
             <div class="comments-scrollable">
                 @foreach (var comment in Model.Comments)
                 {
-                    @Html.Partial("~/Views/Comments/_CommentPartial.cshtml", comment)
-
+                    @Html.Partial("_CommentPartial.cshtml", comment)
                 }
             </div>
         </div>
@@ -106,3 +106,47 @@
         </form>
     </div>
 </div>
+@section Scripts {
+    <script>
+        (function() {
+            var form = document.getElementById('commentForm-@Model.Id');
+            var commentsContainer = document.getElementById('commentsContainer-@Model.Id');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent default form submission
+
+                var formData = new FormData(form);
+                var postId = '@Model.Id';
+
+                fetch('@Url.Action("AddComment", "Post")', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    credentials: 'same-origin' // Include cookies for CSRF protection
+                })
+                .then(function (response) {
+                    if (response.ok) {
+                        return response.text();
+                    } else {
+                        return response.text().then(function (text) {
+                            throw new Error(text);
+                        });
+                    }
+                })
+                .then(function (html) {
+                    // Update the comments section with the new comment
+                    commentsContainer.innerHTML = html;
+
+                    // Clear the textarea
+                    form.querySelector('textarea[name="Content"]').value = '';
+                })
+                .catch(function (error) {
+                    console.error('There was a problem with the fetch operation:', error);
+                    alert('An error occurred while adding your comment.');
+                });
+            });
+        })();
+    </script>
+}
