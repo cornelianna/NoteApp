@@ -94,8 +94,6 @@ namespace NoteApp.Controllers
         return RedirectToAction("Index");
     }
     
-
-
     [Authorize]
     [HttpPost]
     public async Task<IActionResult> AddComment(Comment comment)
@@ -138,8 +136,9 @@ namespace NoteApp.Controllers
     public async Task<IActionResult> UpdateComment(int id, Comment updatedComment)
     {   
         var comment = await _commentRepository.GetCommentByIdAsync(id);
-
+        
         comment.Content = updatedComment.Content;
+        await _commentRepository.UpdateCommentAsync(comment);
         return RedirectToAction("Index");
         
     }
