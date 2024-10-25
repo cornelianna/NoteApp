@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+
 using Microsoft.AspNetCore.Authorization;
 using NoteApp.Models;
 using System.Security.Claims;
@@ -53,6 +54,47 @@ namespace NoteApp.Controllers
         await _postRepository.DeletePostAsync(id);
         return RedirectToAction("Index");
     }
+    [Authorize]
+    [HttpGet]
+    public async Task<IActionResult> UpdatePost(int id)
+    {
+        var post = await _postRepository.GetPostByIdAsync(id);
+
+        if (post == null)
+        {
+            return NotFound();
+        }
+        
+        if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+        {
+            return Forbid();  
+        }
+
+        return View(post);  
+    }
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> UpdatePost(int id, Post updatedPost, IFormFile? newImage)
+    {
+        var post = await _postRepository.GetPostByIdAsync(id);
+            
+            if (newImage != null && newImage.Length > 0)
+            {
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", newImage.FileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await newImage.CopyToAsync(stream);
+                }
+                updatedPost.ImageUrl = "/uploads/" + newImage.FileName;
+            }
+        post.ImageUrl = updatedPost.ImageUrl;
+        post.Content = updatedPost.Content;
+        await _postRepository.UpdatePostAsync(post);
+
+        return RedirectToAction("Index");
+    }
+    
+
 
     [Authorize]
     [HttpPost]
@@ -64,6 +106,42 @@ namespace NoteApp.Controllers
 
         await _commentRepository.AddCommentAsync(comment);
         return RedirectToAction("Index");
+    }
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> DeleteComment(int id)
+    {
+        await _commentRepository.DeleteCommentAsync(id);
+        return RedirectToAction("Index");
+    }
+
+    [Authorize]
+    [HttpGet]
+    public async Task<IActionResult> UpdateComment(int id)
+    {
+        var comment = await _commentRepository.GetCommentByIdAsync(id);
+
+        if (comment == null)
+        {
+            return NotFound();
+        }
+
+        if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+        {
+            return Forbid();
+        }
+
+        return View(comment); 
+    }
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> UpdateComment(int id, Comment updatedComment)
+    {   
+        var comment = await _commentRepository.GetCommentByIdAsync(id);
+
+        comment.Content = updatedComment.Content;
+        return RedirectToAction("Index");
+        
     }
 }
 }
