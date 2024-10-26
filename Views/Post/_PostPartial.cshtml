@@ -1,6 +1,8 @@
 @model NoteApp.Models.Post
 @using System.Security.Claims
-
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 <div class="post">
     <!-- Left side: Image or Note -->
     <div class="left-content">
@@ -106,47 +108,4 @@
         </form>
     </div>
 </div>
-@section Scripts {
-    <script>
-        (function() {
-            var form = document.getElementById('commentForm-@Model.Id');
-            var commentsContainer = document.getElementById('commentsContainer-@Model.Id');
 
-            form.addEventListener('submit', function (event) {
-                event.preventDefault(); // Prevent default form submission
-
-                var formData = new FormData(form);
-                var postId = '@Model.Id';
-
-                fetch('@Url.Action("AddComment", "Post")', {
-                    method: 'POST',
-                    body: formData,
-                    headers: {
-                        'X-Requested-With': 'XMLHttpRequest'
-                    },
-                    credentials: 'same-origin' // Include cookies for CSRF protection
-                })
-                .then(function (response) {
-                    if (response.ok) {
-                        return response.text();
-                    } else {
-                        return response.text().then(function (text) {
-                            throw new Error(text);
-                        });
-                    }
-                })
-                .then(function (html) {
-                    // Update the comments section with the new comment
-                    commentsContainer.innerHTML = html;
-
-                    // Clear the textarea
-                    form.querySelector('textarea[name="Content"]').value = '';
-                })
-                .catch(function (error) {
-                    console.error('There was a problem with the fetch operation:', error);
-                    alert('An error occurred while adding your comment.');
-                });
-            });
-        })();
-    </script>
-}
