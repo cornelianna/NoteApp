@@ -1,7 +1,7 @@
 @model NoteApp.Models.Comment
 
+<div class="container">
 <h2>Edit Comment</h2>
-
 <form asp-action="UpdateComment" method="post">
     <input type="hidden" name="Id" value="@Model.Id" />
     <div class="form-group">
@@ -10,3 +10,4 @@
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
 </form>
+</div>

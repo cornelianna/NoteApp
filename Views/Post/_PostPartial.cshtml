@@ -3,21 +3,25 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+
 <div class="post">
     <!-- Left side: Image or Note -->
     <div class="left-content">
         @if (!string.IsNullOrEmpty(Model.ImageUrl))
+
         {
             <!-- If an image exists, display the image -->
             <div class="contentImg">
-                <img src="@Model.ImageUrl" alt="Post image">
+                <img src="@Model.ImageUrl" alt="Post image" class="img-fluid" />
             </div>
         }
+
         else
+
         {
             <!-- If no image, display the note content here -->
             <div class="noteContent">
-                <p>@Model.Content</p>
+                <p>@Html.Raw(Model.Content)</p>
             </div>
         }
     </div>
@@ -32,14 +36,12 @@
             @if (Model.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
             {
                 <!-- User is the owner -->
-                <!-- Edit option -->
                 <li>
                     <a class="dropdown-item d-flex align-items-center" href="@Url.Action("UpdatePost", new { id = Model.Id })">
                         <img class="p-1 me-2" src="~/images/edit.svg" alt="Edit" style="width: 20px; height: 20px;" />
                         Edit
                     </a>
                 </li>
-                <!-- Delete option -->
                 <li>
                     <form asp-action="DeletePost" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this post?');">
                         <input type="hidden" name="id" value="@Model.Id" />
@@ -49,12 +51,10 @@
                         </button>
                     </form>
                 </li>
-                <!-- Do not show 'Report' option to the owner -->
             }
             else
             {
                 <!-- User is not the owner -->
-                <!-- Report option -->
                 <li>
                     <a class="dropdown-item text-danger d-flex align-items-center" href="#">
                         <img class="p-1 me-2" src="~/images/report.svg" alt="Report" style="width: 20px; height: 20px;" />
@@ -67,16 +67,15 @@
 
     <!-- Right side: Post Details and Comments -->
     <div class="right-content">
-        <!-- Post Details Box (always present) -->
         <div class="post-details-box">
             <!-- Post header -->
             <div class="post-header">
                 <div class="userImg">
-                    <img src="~/images/icon.svg" alt="Avatar">
+                    <img src="~/images/icon.svg" alt="Avatar" class="rounded-circle" />
                 </div>
                 <div class="post-info">
                     <span class="username">@Model.Username</span>
-                    <span class="post-date">@Model.CreatedAt.ToString("g")</span>
+                    <p class="post-date">@Model.CreatedAt.ToString("g")</p>
                 </div>
             </div>
 
@@ -84,7 +83,7 @@
             {
                 <!-- Note content under header when there is an image -->
                 <div class="noteContentWithImage">
-                    <p>@Model.Content</p>
+                    <p>@Html.Raw(Model.Content)</p>
                 </div>
             }
         </div>
@@ -94,6 +93,7 @@
         <div class="discussions">
             <div class="comments-scrollable">
                 @foreach (var comment in Model.Comments)
+
                 {
                     @Html.Partial("_CommentPartial.cshtml", comment)
                 }
@@ -108,4 +108,3 @@
         </form>
     </div>
 </div>
-

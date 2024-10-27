@@ -3,23 +3,43 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<form asp-action="CreatePost" method="post" enctype="multipart/form-data" class="create-post-container">
+<form asp-action="CreatePost" method="post" enctype="multipart/form-data" class="create-post-container d-flex">
     <!-- Left side for image preview and selecting image -->
-    <div class="left-column">
+    <div class="left-column me-3">
         <div class="image-placeholder" id="imagePreview">
             <span id="imageText">Display selected image</span>
         </div>
-        <label for="fileUpload" class="custom-file-upload">
-            <img src="~/images/icon.svg" alt="Upload Image Icon" />
+        <label for="fileUpload" class="custom-file-upload btn btn-outline-secondary mt-2">
+            <img src="~/images/icon.svg" alt="Upload Image Icon" class="me-1" />
             Select Image
         </label>
         <input type="file" accept="image/*" class="form-control-file" name="image" id="fileUpload" style="display: none;" onchange="previewImage(event)">
     </div>
 
     <!-- Right side for writing the note -->
-    <div class="right-column">
+    <div class="right-column flex-grow-1">
         <input class="d-none" type="text" name="Username" placeholder="Username" value="@UserManager.GetUserName(User)" required />
-        <textarea name="Content" id="noteInput" placeholder="Write note here..." required></textarea>
-        <button type="submit" class="submit-button">Post</button>
+        <textarea name="Content" id="noteInput" class="form-control" placeholder="Write note here..." required></textarea>
+        <button type="submit" class=" postbutton btn btn-primary mt-3">Post</button>
     </div>
 </form>
+
+@section Scripts {
+    <script>
+        function previewImage(event) {
+            const imagePreview = document.getElementById('imagePreview');
+            const imageText = document.getElementById('imageText');
+
+                if (event.target.files && event.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    imagePreview.style.backgroundImage = `url(${e.target.result})`;
+                    imagePreview.style.backgroundSize = 'cover';
+                    imagePreview.style.backgroundPosition = 'center';
+                    imageText.style.display = 'none'; // Hide the placeholder text
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        }
+    </script>
+}
