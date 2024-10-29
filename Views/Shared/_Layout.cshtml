@@ -96,20 +96,20 @@
         <!-- Sidebar -->
         <div class="sidebar collapse d-md-block" id="sidebar">
             <ul class="nav flex-column mb-auto">
-                    @if (SignInManager.IsSignedIn(User))
-                {
+                @if (SignInManager.IsSignedIn(User))
+            {
                 <li class="nav-item">
                     <a href="#home" class="nav-link text-black">
                     <img src="~/images/icon.svg" alt="AvatarImg" />
                     @UserManager.GetUserName(User)</a>
                 </li>
                 <li>
-                    <a href="#Friends" class="nav-link text-black">Friends</a>
+                    <a href="@Url.Action("Index", "Friend")" class="nav-link text-black">Friends</a>
                 </li>
                 } else { // nothing when logged out
                 }
             </ul>
-    </div>
+        </div>
     </div>
 
         <!-- Main Content -->
