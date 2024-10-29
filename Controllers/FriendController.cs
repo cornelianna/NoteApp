@@ -1,8 +1,9 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using NoteApp.Models;
 using NoteApp.Repositories;
+using Microsoft.AspNetCore.Identity;
+using Serilog;
+using Microsoft.EntityFrameworkCore;
+using NoteApp.Models;
 
 namespace NoteApp.Controllers
 {
@@ -10,11 +11,13 @@ namespace NoteApp.Controllers
     {
         private readonly IFriendRepository _friendRepository;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly ILogger<FriendController> _logger;
 
-        public FriendController(IFriendRepository friendRepository, UserManager<IdentityUser> userManager)
+        public FriendController(IFriendRepository friendRepository, UserManager<IdentityUser> userManager, ILogger<FriendController> logger)
         {
             _friendRepository = friendRepository;
             _userManager = userManager;
+            _logger = logger;
         }
 
         public async Task<IActionResult> Index()
@@ -22,67 +25,45 @@ namespace NoteApp.Controllers
             var currentUser = await _userManager.GetUserAsync(User);
             if (currentUser == null)
             {
-                // Redirect to login if user is not authenticated
+                _logger.LogWarning("Current user is null. Redirecting to login.");
                 return RedirectToAction("Login", "Account");
             }
 
             var friends = await _friendRepository.GetFriendsByUserIdAsync(currentUser.Id);
+            _logger.LogInformation("Fetched friends for user {UserId}", currentUser.Id);
             return View(friends);
         }
 
-        // Add this action to search for users
-        [HttpPost]
-        public async Task<IActionResult> SearchUsers(string searchTerm)
+        [HttpGet]
+        public async Task<IActionResult> SearchUsers(string query)
         {
             var users = await _userManager.Users
-                .Where(u => u.UserName.Contains(searchTerm) || u.Email.Contains(searchTerm))
+                .Where(u => u.UserName.Contains(query) || u.Email.Contains(query))
                 .ToListAsync();
 
-            return PartialView("_UserSearchResults", users);
+            return PartialView("_UserSearchResultsPartial", users);
         }
 
-        // Add this action to add a friend
         [HttpPost]
         public async Task<IActionResult> AddFriend(string friendId)
         {
             var currentUser = await _userManager.GetUserAsync(User);
             if (currentUser == null)
             {
-                return Json(new { success = false, message = "User not logged in." });
+                _logger.LogWarning("Current user is null. Redirecting to login.");
+                return RedirectToAction("Login", "Account");
             }
 
-            if (currentUser.Id == friendId)
-            {
-                return Json(new { success = false, message = "You cannot add yourself as a friend." });
-            }
-
-            var existingFriendship = await _friendRepository.GetFriendshipAsync(currentUser.Id, friendId);
-            if (existingFriendship != null)
-            {
-                return Json(new { success = false, message = "You are already friends with this user." });
-            }
-
-            var friendship = new Friend
+            var friend = new Friend
             {
                 UserId = currentUser.Id,
                 FriendId = friendId
             };
 
-            await _friendRepository.AddFriendAsync(friendship);
-            return Json(new { success = true, message = "Friend added successfully." });
-        }
-        [HttpPost]
-        public async Task<IActionResult> DeleteFriend(string friendId)
-        {
-            var currentUser = await _userManager.GetUserAsync(User);
-            if (currentUser == null)
-            {
-                return Json(new { success = false, message = "User not logged in." });
-            }
+            await _friendRepository.AddFriendAsync(friend);
+            _logger.LogInformation("User {UserId} added friend {FriendId}", currentUser.Id, friendId);
 
-            await _friendRepository.DeleteFriendAsync(currentUser.Id, friendId);
-            return Json(new { success = true, message = "Friend deleted successfully." });
+            return RedirectToAction("Index");
         }
-
     }
 }
