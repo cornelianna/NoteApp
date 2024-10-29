@@ -1,0 +1,255 @@
+2024-10-29 18:39:28.749 +01:00 [INF] User profile is available. Using '/Users/selmersolland/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-10-29 18:39:28.835 +01:00 [INF] Now listening on: http://localhost:5164
+2024-10-29 18:39:28.836 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-29 18:39:28.836 +01:00 [INF] Hosting environment: Development
+2024-10-29 18:39:28.836 +01:00 [INF] Content root path: /Users/selmersolland/Documents/GitHub/NoteApp
+2024-10-29 18:39:36.796 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-10-29 18:39:36.871 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:39:36.893 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-10-29 18:39:37.515 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-10-29 18:39:37.522 +01:00 [INF] Executing ViewResult, running view Index.
+2024-10-29 18:39:37.573 +01:00 [INF] Executed ViewResult - view Index executed in 40.9205ms.
+2024-10-29 18:39:37.574 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 675.0281ms
+2024-10-29 18:39:37.574 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:39:37.596 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/js/site.js - null null
+2024-10-29 18:39:37.600 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 803.8768ms
+2024-10-29 18:39:37.600 +01:00 [INF] The file /js/site.js was not modified
+2024-10-29 18:39:37.600 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/js/site.js - 304 null text/javascript 4.0099ms
+2024-10-29 18:39:37.600 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-10-29 18:39:37.601 +01:00 [INF] The file /css/site.css was not modified
+2024-10-29 18:39:37.601 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 1.1264ms
+2024-10-29 18:39:46.868 +01:00 [INF] Application is shutting down...
+2024-10-29 18:39:50.770 +01:00 [INF] User profile is available. Using '/Users/selmersolland/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-10-29 18:39:50.846 +01:00 [INF] Now listening on: http://localhost:5164
+2024-10-29 18:39:50.847 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-29 18:39:50.847 +01:00 [INF] Hosting environment: Development
+2024-10-29 18:39:50.847 +01:00 [INF] Content root path: /Users/selmersolland/Documents/GitHub/NoteApp
+2024-10-29 18:41:05.971 +01:00 [INF] Application is shutting down...
+2024-10-29 18:41:10.106 +01:00 [INF] User profile is available. Using '/Users/selmersolland/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-10-29 18:41:10.182 +01:00 [INF] Now listening on: http://localhost:5164
+2024-10-29 18:41:10.183 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-29 18:41:10.183 +01:00 [INF] Hosting environment: Development
+2024-10-29 18:41:10.183 +01:00 [INF] Content root path: /Users/selmersolland/Documents/GitHub/NoteApp
+2024-10-29 18:41:57.589 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-10-29 18:41:57.807 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:41:57.818 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-10-29 18:41:58.235 +01:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-10-29 18:41:58.240 +01:00 [INF] Fetched all posts.
+2024-10-29 18:41:58.244 +01:00 [INF] Executing ViewResult, running view Index.
+2024-10-29 18:41:58.277 +01:00 [INF] Executed ViewResult - view Index executed in 34.6808ms.
+2024-10-29 18:41:58.278 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 459.969ms
+2024-10-29 18:41:58.278 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:41:58.281 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 693.5725ms
+2024-10-29 18:43:07.350 +01:00 [INF] Application is shutting down...
+2024-10-29 18:43:13.558 +01:00 [INF] User profile is available. Using '/Users/selmersolland/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-10-29 18:43:13.648 +01:00 [INF] Now listening on: http://localhost:5164
+2024-10-29 18:43:13.649 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-29 18:43:13.649 +01:00 [INF] Hosting environment: Development
+2024-10-29 18:43:13.649 +01:00 [INF] Content root path: /Users/selmersolland/Documents/GitHub/NoteApp
+2024-10-29 18:43:16.084 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-10-29 18:43:16.218 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:43:16.226 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-10-29 18:43:16.616 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-10-29 18:43:16.620 +01:00 [INF] Fetched all posts.
+2024-10-29 18:43:16.623 +01:00 [INF] Executing ViewResult, running view Index.
+2024-10-29 18:43:16.646 +01:00 [INF] Executed ViewResult - view Index executed in 23.6772ms.
+2024-10-29 18:43:16.647 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 420.5775ms
+2024-10-29 18:43:16.647 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:43:16.649 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 566.2865ms
+2024-10-29 18:43:16.685 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-10-29 18:43:16.685 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/js/site.js - null null
+2024-10-29 18:43:16.690 +01:00 [INF] The file /js/site.js was not modified
+2024-10-29 18:43:16.690 +01:00 [INF] The file /css/site.css was not modified
+2024-10-29 18:43:16.691 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 5.9473ms
+2024-10-29 18:43:16.691 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/js/site.js - 304 null text/javascript 5.9347ms
+2024-10-29 18:45:20.992 +01:00 [INF] Application is shutting down...
+2024-10-29 18:45:25.738 +01:00 [INF] User profile is available. Using '/Users/selmersolland/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-10-29 18:45:25.820 +01:00 [INF] Now listening on: http://localhost:5164
+2024-10-29 18:45:25.820 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-29 18:45:25.821 +01:00 [INF] Hosting environment: Development
+2024-10-29 18:45:25.821 +01:00 [INF] Content root path: /Users/selmersolland/Documents/GitHub/NoteApp
+2024-10-29 18:45:28.626 +01:00 [INF] Application is shutting down...
+2024-10-29 18:48:24.019 +01:00 [INF] User profile is available. Using '/Users/selmersolland/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-10-29 18:48:24.098 +01:00 [INF] Now listening on: http://localhost:5164
+2024-10-29 18:48:24.099 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-29 18:48:24.099 +01:00 [INF] Hosting environment: Development
+2024-10-29 18:48:24.100 +01:00 [INF] Content root path: /Users/selmersolland/Documents/GitHub/NoteApp
+2024-10-29 18:48:26.663 +01:00 [INF] Application is shutting down...
+2024-10-29 18:48:44.939 +01:00 [INF] User profile is available. Using '/Users/selmersolland/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-10-29 18:48:45.027 +01:00 [INF] Now listening on: http://localhost:5164
+2024-10-29 18:48:45.028 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-29 18:48:45.028 +01:00 [INF] Hosting environment: Development
+2024-10-29 18:48:45.028 +01:00 [INF] Content root path: /Users/selmersolland/Documents/GitHub/NoteApp
+2024-10-29 18:48:54.564 +01:00 [INF] Application is shutting down...
+2024-10-29 18:49:02.941 +01:00 [INF] User profile is available. Using '/Users/selmersolland/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-10-29 18:49:03.017 +01:00 [INF] Now listening on: http://localhost:5164
+2024-10-29 18:49:03.018 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-29 18:49:03.018 +01:00 [INF] Hosting environment: Development
+2024-10-29 18:49:03.018 +01:00 [INF] Content root path: /Users/selmersolland/Documents/GitHub/NoteApp
+2024-10-29 18:51:38.074 +01:00 [INF] Application is shutting down...
+2024-10-29 18:51:50.259 +01:00 [INF] User profile is available. Using '/Users/selmersolland/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-10-29 18:51:50.340 +01:00 [INF] Now listening on: http://localhost:5164
+2024-10-29 18:51:50.341 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-29 18:51:50.341 +01:00 [INF] Hosting environment: Development
+2024-10-29 18:51:50.341 +01:00 [INF] Content root path: /Users/selmersolland/Documents/GitHub/NoteApp
+2024-10-29 18:51:52.652 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-10-29 18:51:52.846 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:51:52.864 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-10-29 18:51:52.872 +01:00 [INF] Fetching all posts
+2024-10-29 18:51:53.438 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-10-29 18:51:53.442 +01:00 [INF] Fetched all posts.
+2024-10-29 18:51:53.445 +01:00 [INF] Executing ViewResult, running view Index.
+2024-10-29 18:51:53.470 +01:00 [INF] Executed ViewResult - view Index executed in 25.5933ms.
+2024-10-29 18:51:53.471 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 606.3958ms
+2024-10-29 18:51:53.471 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:51:53.476 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 824.6655ms
+2024-10-29 18:51:53.499 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/js/site.js - null null
+2024-10-29 18:51:53.499 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-10-29 18:51:53.504 +01:00 [INF] The file /css/site.css was not modified
+2024-10-29 18:51:53.504 +01:00 [INF] The file /js/site.js was not modified
+2024-10-29 18:51:53.504 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 5.2399ms
+2024-10-29 18:51:53.505 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/js/site.js - 304 null text/javascript 5.2105ms
+2024-10-29 18:52:07.526 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Post/CreatePost - multipart/form-data; boundary=----WebKitFormBoundary7mGLK2A6zSPXCBBr 704
+2024-10-29 18:52:07.544 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-10-29 18:52:07.557 +01:00 [INF] Route matched with {action = "CreatePost", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePost(NoteApp.Models.Post, Microsoft.AspNetCore.Http.IFormFile) on controller NoteApp.Controllers.PostController (NoteApp).
+2024-10-29 18:52:07.640 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (Size = 36), @p4='?' (Size = 12)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("Content", "CreatedAt", "ImageUrl", "UserId", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+2024-10-29 18:52:07.648 +01:00 [INF] Added new post with ID 1
+2024-10-29 18:52:07.649 +01:00 [INF] Post created successfully.
+2024-10-29 18:52:07.649 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2024-10-29 18:52:07.649 +01:00 [INF] Executed action NoteApp.Controllers.PostController.CreatePost (NoteApp) in 92.2589ms
+2024-10-29 18:52:07.649 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-10-29 18:52:07.649 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Post/CreatePost - 302 0 null 124.2766ms
+2024-10-29 18:52:07.653 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-10-29 18:52:07.657 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:52:07.657 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-10-29 18:52:07.657 +01:00 [INF] Fetching all posts
+2024-10-29 18:52:07.677 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-10-29 18:52:07.685 +01:00 [INF] Fetched all posts.
+2024-10-29 18:52:07.685 +01:00 [INF] Executing ViewResult, running view Index.
+2024-10-29 18:52:07.692 +01:00 [INF] Executed ViewResult - view Index executed in 6.7828ms.
+2024-10-29 18:52:07.692 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 34.8429ms
+2024-10-29 18:52:07.692 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:52:07.692 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 39.0575ms
+2024-10-29 18:52:07.719 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/edit.svg - null null
+2024-10-29 18:52:07.719 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/delete.svg - null null
+2024-10-29 18:52:07.725 +01:00 [INF] Sending file. Request path: '/images/delete.svg'. Physical path: '/Users/selmersolland/Documents/GitHub/NoteApp/wwwroot/images/delete.svg'
+2024-10-29 18:52:07.725 +01:00 [INF] Sending file. Request path: '/images/edit.svg'. Physical path: '/Users/selmersolland/Documents/GitHub/NoteApp/wwwroot/images/edit.svg'
+2024-10-29 18:52:07.725 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/delete.svg - 200 577 image/svg+xml 5.9581ms
+2024-10-29 18:52:07.725 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/edit.svg - 200 575 image/svg+xml 5.9446ms
+2024-10-29 18:52:26.081 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Post/DeletePost - application/x-www-form-urlencoded 230
+2024-10-29 18:52:26.090 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.DeletePost (NoteApp)'
+2024-10-29 18:52:26.097 +01:00 [INF] Route matched with {action = "DeletePost", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeletePost(Int32) on controller NoteApp.Controllers.PostController (NoteApp).
+2024-10-29 18:52:26.123 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__p_0
+LIMIT 1
+2024-10-29 18:52:26.128 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Posts"
+WHERE "Id" = @p0
+RETURNING 1;
+2024-10-29 18:52:26.131 +01:00 [INF] Deleted post with ID 1
+2024-10-29 18:52:26.131 +01:00 [INF] Post deleted successfully.
+2024-10-29 18:52:26.131 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2024-10-29 18:52:26.131 +01:00 [INF] Executed action NoteApp.Controllers.PostController.DeletePost (NoteApp) in 34.659ms
+2024-10-29 18:52:26.132 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.DeletePost (NoteApp)'
+2024-10-29 18:52:26.132 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Post/DeletePost - 302 0 null 51.0144ms
+2024-10-29 18:52:26.134 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-10-29 18:52:26.135 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:52:26.135 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-10-29 18:52:26.135 +01:00 [INF] Fetching all posts
+2024-10-29 18:52:26.136 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-10-29 18:52:26.136 +01:00 [INF] Fetched all posts.
+2024-10-29 18:52:26.136 +01:00 [INF] Executing ViewResult, running view Index.
+2024-10-29 18:52:26.137 +01:00 [INF] Executed ViewResult - view Index executed in 1.169ms.
+2024-10-29 18:52:26.138 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 2.6454ms
+2024-10-29 18:52:26.138 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:52:26.138 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 4.2591ms
+2024-10-29 18:52:48.657 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Post/CreatePost - multipart/form-data; boundary=----WebKitFormBoundaryBNmOuE7g6RLkfyUS 704
+2024-10-29 18:52:48.664 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-10-29 18:52:48.665 +01:00 [INF] Route matched with {action = "CreatePost", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePost(NoteApp.Models.Post, Microsoft.AspNetCore.Http.IFormFile) on controller NoteApp.Controllers.PostController (NoteApp).
+2024-10-29 18:52:48.674 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (Size = 36), @p4='?' (Size = 12)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("Content", "CreatedAt", "ImageUrl", "UserId", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+2024-10-29 18:52:48.676 +01:00 [INF] Added new post with ID 2
+2024-10-29 18:52:48.676 +01:00 [INF] Post created successfully.
+2024-10-29 18:52:48.676 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2024-10-29 18:52:48.676 +01:00 [INF] Executed action NoteApp.Controllers.PostController.CreatePost (NoteApp) in 11.6185ms
+2024-10-29 18:52:48.677 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-10-29 18:52:48.677 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Post/CreatePost - 302 0 null 19.6437ms
+2024-10-29 18:52:48.679 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-10-29 18:52:48.680 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:52:48.680 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-10-29 18:52:48.681 +01:00 [INF] Fetching all posts
+2024-10-29 18:52:48.682 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-10-29 18:52:48.683 +01:00 [INF] Fetched all posts.
+2024-10-29 18:52:48.684 +01:00 [INF] Executing ViewResult, running view Index.
+2024-10-29 18:52:48.688 +01:00 [INF] Executed ViewResult - view Index executed in 4.1357ms.
+2024-10-29 18:52:48.689 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 8.4038ms
+2024-10-29 18:52:48.689 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:52:48.690 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 10.4861ms
+2024-10-29 18:52:55.322 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Post/DeletePost - application/x-www-form-urlencoded 230
+2024-10-29 18:52:55.323 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.DeletePost (NoteApp)'
+2024-10-29 18:52:55.323 +01:00 [INF] Route matched with {action = "DeletePost", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeletePost(Int32) on controller NoteApp.Controllers.PostController (NoteApp).
+2024-10-29 18:52:55.329 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username"
+FROM "Posts" AS "p"
+WHERE "p"."Id" = @__p_0
+LIMIT 1
+2024-10-29 18:52:55.332 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Posts"
+WHERE "Id" = @p0
+RETURNING 1;
+2024-10-29 18:52:55.333 +01:00 [INF] Deleted post with ID 2
+2024-10-29 18:52:55.333 +01:00 [INF] Post deleted successfully.
+2024-10-29 18:52:55.334 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2024-10-29 18:52:55.334 +01:00 [INF] Executed action NoteApp.Controllers.PostController.DeletePost (NoteApp) in 10.5738ms
+2024-10-29 18:52:55.334 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.DeletePost (NoteApp)'
+2024-10-29 18:52:55.335 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Post/DeletePost - 302 0 null 12.776ms
+2024-10-29 18:52:55.337 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-10-29 18:52:55.339 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:52:55.339 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-10-29 18:52:55.340 +01:00 [INF] Fetching all posts
+2024-10-29 18:52:55.341 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-10-29 18:52:55.342 +01:00 [INF] Fetched all posts.
+2024-10-29 18:52:55.342 +01:00 [INF] Executing ViewResult, running view Index.
+2024-10-29 18:52:55.345 +01:00 [INF] Executed ViewResult - view Index executed in 2.8018ms.
+2024-10-29 18:52:55.345 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 5.658ms
+2024-10-29 18:52:55.345 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 18:52:55.346 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 8.6505ms
