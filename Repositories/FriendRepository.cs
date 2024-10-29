@@ -41,6 +41,7 @@ namespace NoteApp.Repositories
             {
                 _context.Friends.Remove(friendship);
                 await _context.SaveChangesAsync();
+                
             }
         }
     }
