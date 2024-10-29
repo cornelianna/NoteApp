@@ -21,3 +21,13 @@ reader.onload = function() {
 };
 reader.readAsDataURL(event.target.files[0]);
 }
+var formData = new FormData(form);
+formData.append('__RequestVerificationToken', document.querySelector('input[name="__RequestVerificationToken"]').value);
+fetch('@Url.Action("AddComment", "Post")', {
+    method: 'POST',
+    body: formData,
+    headers: {
+        'X-Requested-With': 'XMLHttpRequest'
+    },
+    credentials: 'same-origin'
+})
