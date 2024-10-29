@@ -366,3 +366,13 @@ footer {
         margin-right: 0; /* Remove right margin on smaller screens */
     }
 }
+
+.list-group-item:hover {
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
+
+.list-group-item.active {
+  background-color: #e9ecef;
+}
+
