@@ -1,12 +1,12 @@
 using NoteApp.Models;
-
 namespace NoteApp.Repositories
 {
     public interface IFriendRepository
     {
         Task<IEnumerable<Friend>> GetFriendsByUserIdAsync(string userId);
-        Task<Friend> GetFriendshipAsync(string userId, string friendId);
+        Task<Friend> GetFriendByIdAsync(int id);
         Task AddFriendAsync(Friend friendship);
-        Task DeleteFriendAsync(string userId, string friendId);
+        Task UpdateFriendAsync(Friend friendship);
+        Task DeleteFriendAsync(int id);
     }
 }
