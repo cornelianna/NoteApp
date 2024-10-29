@@ -27,6 +27,16 @@ builder.Services.AddScoped<IFriendRepository, FriendRepository>();
 
 
 var app = builder.Build();
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+else
+{
+    // Optional: Configure error handling for production environment
+    // app.UseExceptionHandler("/Home/Error");
+    // app.UseHsts();
+}
 
 app.UseStaticFiles();
 app.UseRouting();

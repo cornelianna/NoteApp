@@ -21,29 +21,25 @@ namespace NoteApp.Repositories
                 .ToListAsync();
         }
 
-        public async Task<Friend> GetFriendByIdAsync(int id)
+        public async Task<Friend> GetFriendshipAsync(string userId, string friendId)
         {
-            return await _context.Friends.FindAsync(id);
+            return await _context.Friends
+                .FirstOrDefaultAsync(f => f.UserId == userId && f.FriendId == friendId);
         }
 
-        public async Task AddFriendAsync(Friend friend)
+        public async Task AddFriendAsync(Friend friendship)
         {
-            await _context.Friends.AddAsync(friend);
+            await _context.Friends.AddAsync(friendship);
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateFriendAsync(Friend friend)
+        public async Task DeleteFriendAsync(string userId, string friendId)
         {
-            _context.Friends.Update(friend);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task DeleteFriendAsync(int id)
-        {
-            var friend = await _context.Friends.FindAsync(id);
-            if (friend != null)
+            var friendship = await _context.Friends
+                .FirstOrDefaultAsync(f => f.UserId == userId && f.FriendId == friendId);
+            if (friendship != null)
             {
-                _context.Friends.Remove(friend);
+                _context.Friends.Remove(friendship);
                 await _context.SaveChangesAsync();
             }
         }
