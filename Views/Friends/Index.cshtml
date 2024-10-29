@@ -1,0 +1,61 @@
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Antiforgery
+@inject IAntiforgery Antiforgery
+@model IEnumerable<IdentityUser>
+@{
+    ViewData["Title"] = "Friends";
+}
+
+<h2>Friends</h2>
+<p>This is the Friends page.</p>
+
+<button id="findFriendsButton" class="btn btn-primary">Find Friends</button>
+
+<div id="searchBar" style="display:none; margin-top: 20px;">
+    <form id="searchForm">
+        @Html.AntiForgeryToken()
+        <input type="text" id="searchInput" class="form-control" placeholder="Search by username or email" />
+        <ul id="searchResults" class="list-group mt-2" style="display:none;"></ul>
+    </form>
+</div>
+
+@if (Model != null && Model.Any())
+{
+    <div class="mt-4">
+        <input type="text" id="friendSearchInput" class="form-control mb-3" placeholder="Search friends..." onkeyup="filterFriends()" />
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="friendsTable">
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.UserName</td>
+                            <td>@user.Email</td>
+                            <td>
+                                <button class="btn btn-danger delete-friend-btn" data-friend-id="@user.Id" style="display:none;">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else
+{
+    <p>No friends found.</p>
+}
+
+<div id="feedbackMessage" class="alert alert-success" style="display:none;"></div>
+
+@section Scripts {
+    <script src="~/js/friends.js"></script>
+}
