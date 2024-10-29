@@ -128,40 +128,6 @@ namespace NoteApp.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "user1-id",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "58bf7c80-24d4-42d5-a07a-45e17e3aaf98",
-                            Email = "user1@example.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "USER1@EXAMPLE.COM",
-                            NormalizedUserName = "USER1",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAzUJKbU+bMwz75METVLYCGuOqRnJlOK1PBLBlVQgLCjFC3NXQlN6ZaC8G8Aj/tvOQ==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "bf6f2227-14ed-42ad-bf79-cfda3a45085f",
-                            TwoFactorEnabled = false,
-                            UserName = "user1"
-                        },
-                        new
-                        {
-                            Id = "user2-id",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "9eb21bdb-aa78-4374-8e95-07edc6124b8d",
-                            Email = "user2@example.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "USER2@EXAMPLE.COM",
-                            NormalizedUserName = "USER2",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJpLy767WxcMbVEVIQsNqh41PaQEXjscC71CECLcQ+NBndy7CnrQrmtRzRxiwwfGGA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "211f940a-6ed0-47b5-bceb-46e3e599dd66",
-                            TwoFactorEnabled = false,
-                            UserName = "user2"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -288,17 +254,13 @@ namespace NoteApp.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-<<<<<<< HEAD
                     b.Property<string>("FriendUserId")
                         .HasColumnType("TEXT");
 
-=======
->>>>>>> origin/anna-test
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-<<<<<<< HEAD
                     b.Property<string>("UsernameId")
                         .HasColumnType("TEXT");
 
@@ -307,13 +269,6 @@ namespace NoteApp.Migrations
                     b.HasIndex("FriendUserId");
 
                     b.HasIndex("UsernameId");
-=======
-                    b.HasKey("Id");
-
-                    b.HasIndex("FriendId");
-
-                    b.HasIndex("UserId");
->>>>>>> origin/anna-test
 
                     b.ToTable("Friends");
                 });
@@ -413,7 +368,6 @@ namespace NoteApp.Migrations
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "FriendUser")
                         .WithMany()
-<<<<<<< HEAD
                         .HasForeignKey("FriendUserId");
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Username")
@@ -423,21 +377,6 @@ namespace NoteApp.Migrations
                     b.Navigation("FriendUser");
 
                     b.Navigation("Username");
-=======
-                        .HasForeignKey("FriendId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("FriendUser");
-
-                    b.Navigation("User");
->>>>>>> origin/anna-test
                 });
 
             modelBuilder.Entity("NoteApp.Models.Post", b =>

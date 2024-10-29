@@ -2,10 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NoteApp.Data;
 using NoteApp.Repositories;
-<<<<<<< HEAD
 using Serilog;
-=======
->>>>>>> origin/anna-test
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,22 +35,8 @@ builder.Services.AddAuthentication();
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IFriendRepository, FriendRepository>(); 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/anna-test
 
 var app = builder.Build();
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-}
-else
-{
-    // Optional: Configure error handling for production environment
-    // app.UseExceptionHandler("/Home/Error");
-    // app.UseHsts();
-}
 
 app.UseStaticFiles();
 app.UseRouting();
