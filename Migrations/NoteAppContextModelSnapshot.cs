@@ -244,6 +244,35 @@ namespace NoteApp.Migrations
                     b.ToTable("Comments");
                 });
 
+            modelBuilder.Entity("NoteApp.Models.Friend", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("FriendId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FriendUserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UsernameId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FriendUserId");
+
+                    b.HasIndex("UsernameId");
+
+                    b.ToTable("Friends");
+                });
+
             modelBuilder.Entity("NoteApp.Models.Post", b =>
                 {
                     b.Property<int>("Id")
@@ -333,6 +362,21 @@ namespace NoteApp.Migrations
                         .IsRequired();
 
                     b.Navigation("Post");
+                });
+
+            modelBuilder.Entity("NoteApp.Models.Friend", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "FriendUser")
+                        .WithMany()
+                        .HasForeignKey("FriendUserId");
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Username")
+                        .WithMany()
+                        .HasForeignKey("UsernameId");
+
+                    b.Navigation("FriendUser");
+
+                    b.Navigation("Username");
                 });
 
             modelBuilder.Entity("NoteApp.Models.Post", b =>
