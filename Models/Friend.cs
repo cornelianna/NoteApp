@@ -1,4 +1,8 @@
 using Microsoft.AspNetCore.Identity;
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/anna-test
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NoteApp.Models

@@ -11,7 +11,11 @@ using NoteApp.Data;
 namespace NoteApp.Migrations
 {
     [DbContext(typeof(NoteAppContext))]
+<<<<<<<< HEAD:Migrations/20241029135049_InitialCreate.Designer.cs
     [Migration("20241029135049_InitialCreate")]
+========
+    [Migration("20241029181315_InitialCreate")]
+>>>>>>>> origin/anna-test:Migrations/20241029181315_InitialCreate.Designer.cs
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -257,13 +261,17 @@ namespace NoteApp.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+<<<<<<<< HEAD:Migrations/20241029135049_InitialCreate.Designer.cs
                     b.Property<string>("FriendUserId")
                         .HasColumnType("TEXT");
 
+========
+>>>>>>>> origin/anna-test:Migrations/20241029181315_InitialCreate.Designer.cs
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+<<<<<<<< HEAD:Migrations/20241029135049_InitialCreate.Designer.cs
                     b.Property<string>("UsernameId")
                         .HasColumnType("TEXT");
 
@@ -272,6 +280,13 @@ namespace NoteApp.Migrations
                     b.HasIndex("FriendUserId");
 
                     b.HasIndex("UsernameId");
+========
+                    b.HasKey("Id");
+
+                    b.HasIndex("FriendId");
+
+                    b.HasIndex("UserId");
+>>>>>>>> origin/anna-test:Migrations/20241029181315_InitialCreate.Designer.cs
 
                     b.ToTable("Friends");
                 });
@@ -371,6 +386,7 @@ namespace NoteApp.Migrations
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "FriendUser")
                         .WithMany()
+<<<<<<<< HEAD:Migrations/20241029135049_InitialCreate.Designer.cs
                         .HasForeignKey("FriendUserId");
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Username")
@@ -380,6 +396,21 @@ namespace NoteApp.Migrations
                     b.Navigation("FriendUser");
 
                     b.Navigation("Username");
+========
+                        .HasForeignKey("FriendId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("FriendUser");
+
+                    b.Navigation("User");
+>>>>>>>> origin/anna-test:Migrations/20241029181315_InitialCreate.Designer.cs
                 });
 
             modelBuilder.Entity("NoteApp.Models.Post", b =>

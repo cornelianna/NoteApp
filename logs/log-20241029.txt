@@ -1312,3 +1312,65 @@ WHERE "f"."UserId" = @__userId_0
 2024-10-29 19:15:40.838 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Friend?friendId=76ba4bb7-04ad-443a-9627-532732b6eadb - 200 null text/html; charset=utf-8 18.436ms
 2024-10-29 19:15:40.885 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
 2024-10-29 19:15:40.885 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.6007ms
+2024-10-29 22:50:08.503 +01:00 [INF] User profile is available. Using 'C:\Users\selme\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-10-29 22:50:08.674 +01:00 [INF] Now listening on: https://localhost:7087
+2024-10-29 22:50:08.674 +01:00 [INF] Now listening on: http://localhost:5164
+2024-10-29 22:50:08.675 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-29 22:50:08.675 +01:00 [INF] Hosting environment: Development
+2024-10-29 22:50:08.675 +01:00 [INF] Content root path: C:\Users\selme\Documents\GitHub\NoteApp
+2024-10-29 22:50:11.355 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7087/ - null null
+2024-10-29 22:50:11.386 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 22:50:11.407 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-10-29 22:50:11.512 +01:00 [INF] Fetching all posts
+2024-10-29 22:50:12.348 +01:00 [INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-10-29 22:50:12.358 +01:00 [INF] Fetched all posts.
+2024-10-29 22:50:12.364 +01:00 [INF] Executing ViewResult, running view Index.
+2024-10-29 22:50:12.430 +01:00 [INF] Executed ViewResult - view Index executed in 63.952ms.
+2024-10-29 22:50:12.431 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 1023.5891ms
+2024-10-29 22:50:12.431 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-10-29 22:50:12.437 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7087/ - 200 null text/html; charset=utf-8 1082.6029ms
+2024-10-29 22:50:12.443 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7087/css/site.css - null null
+2024-10-29 22:50:12.450 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7087/js/site.js - null null
+2024-10-29 22:50:12.450 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7087/images/SnapNoteLogo.png - null null
+2024-10-29 22:50:12.466 +01:00 [INF] Sending file. Request path: '/images/SnapNoteLogo.png'. Physical path: 'C:\Users\selme\Documents\GitHub\NoteApp\wwwroot\images\SnapNoteLogo.png'
+2024-10-29 22:50:12.466 +01:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'C:\Users\selme\Documents\GitHub\NoteApp\wwwroot\js\site.js'
+2024-10-29 22:50:12.466 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\selme\Documents\GitHub\NoteApp\wwwroot\css\site.css'
+2024-10-29 22:50:12.466 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7087/css/site.css - 200 8174 text/css 23.254ms
+2024-10-29 22:50:12.466 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7087/images/SnapNoteLogo.png - 200 82911 image/png 16.1263ms
+2024-10-29 22:50:12.467 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7087/js/site.js - 200 1148 text/javascript 16.1258ms
+2024-10-29 22:50:19.549 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7087/Identity/Account/Login - null null
+2024-10-29 22:50:19.551 +01:00 [INF] Executing endpoint '/Account/Login'
+2024-10-29 22:50:19.561 +01:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2024-10-29 22:50:19.573 +01:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnGetAsync - ModelState is "Valid"
+2024-10-29 22:50:19.576 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2024-10-29 22:50:19.577 +01:00 [INF] Executed handler method OnGetAsync, returned result .
+2024-10-29 22:50:19.578 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2024-10-29 22:50:19.578 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2024-10-29 22:50:19.617 +01:00 [INF] Executed page /Account/Login in 55.0173ms
+2024-10-29 22:50:19.617 +01:00 [INF] Executed endpoint '/Account/Login'
+2024-10-29 22:50:19.617 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7087/Identity/Account/Login - 200 null text/html; charset=utf-8 68.2087ms
+2024-10-29 22:50:19.631 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7087/Identity/lib/bootstrap/dist/css/bootstrap.css - null null
+2024-10-29 22:50:19.634 +01:00 [INF] Sending file. Request path: '/Identity/lib/bootstrap/dist/css/bootstrap.css'. Physical path: 'C:\Users\selme\.nuget\packages\microsoft.aspnetcore.identity.ui\8.0.8\staticwebassets\V5\lib\bootstrap\dist\css\bootstrap.css'
+2024-10-29 22:50:19.635 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7087/Identity/lib/bootstrap/dist/css/bootstrap.css - 200 204136 text/css 4.0245ms
+2024-10-29 22:50:19.636 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7087/Identity/css/site.css - null null
+2024-10-29 22:50:19.636 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7087/Identity/lib/jquery/dist/jquery.js - null null
+2024-10-29 22:50:19.636 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7087/Identity/lib/bootstrap/dist/js/bootstrap.bundle.js - null null
+2024-10-29 22:50:19.636 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7087/Identity/js/site.js?v=hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo - null null
+2024-10-29 22:50:19.636 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7087/Identity/lib/jquery-validation/dist/jquery.validate.js - null null
+2024-10-29 22:50:19.636 +01:00 [INF] Request starting HTTP/2 GET https://localhost:7087/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - null null
+2024-10-29 22:50:19.637 +01:00 [INF] Sending file. Request path: '/Identity/js/site.js'. Physical path: 'C:\Users\selme\.nuget\packages\microsoft.aspnetcore.identity.ui\8.0.8\staticwebassets\V5\js\site.js'
+2024-10-29 22:50:19.638 +01:00 [INF] Sending file. Request path: '/Identity/css/site.css'. Physical path: 'C:\Users\selme\.nuget\packages\microsoft.aspnetcore.identity.ui\8.0.8\staticwebassets\V5\css\site.css'
+2024-10-29 22:50:19.638 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7087/Identity/js/site.js?v=hRQyftXiu1lLX2P9Ly9xa4gHJgLeR1uGN5qegUobtGo - 200 231 text/javascript 1.3638ms
+2024-10-29 22:50:19.639 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7087/Identity/css/site.css - 200 1592 text/css 2.3162ms
+2024-10-29 22:50:19.641 +01:00 [INF] Sending file. Request path: '/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js'. Physical path: 'C:\Users\selme\.nuget\packages\microsoft.aspnetcore.identity.ui\8.0.8\staticwebassets\V5\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js'
+2024-10-29 22:50:19.642 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7087/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - 200 19385 text/javascript 5.3958ms
+2024-10-29 22:50:19.642 +01:00 [INF] Sending file. Request path: '/Identity/lib/jquery-validation/dist/jquery.validate.js'. Physical path: 'C:\Users\selme\.nuget\packages\microsoft.aspnetcore.identity.ui\8.0.8\staticwebassets\V5\lib\jquery-validation\dist\jquery.validate.js'
+2024-10-29 22:50:19.642 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7087/Identity/lib/jquery-validation/dist/jquery.validate.js - 200 51171 text/javascript 5.9364ms
+2024-10-29 22:50:19.645 +01:00 [INF] Sending file. Request path: '/Identity/lib/bootstrap/dist/js/bootstrap.bundle.js'. Physical path: 'C:\Users\selme\.nuget\packages\microsoft.aspnetcore.identity.ui\8.0.8\staticwebassets\V5\lib\bootstrap\dist\js\bootstrap.bundle.js'
+2024-10-29 22:50:19.645 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7087/Identity/lib/bootstrap/dist/js/bootstrap.bundle.js - 200 208492 text/javascript 9.3683ms
+2024-10-29 22:50:19.647 +01:00 [INF] Sending file. Request path: '/Identity/lib/jquery/dist/jquery.js'. Physical path: 'C:\Users\selme\.nuget\packages\microsoft.aspnetcore.identity.ui\8.0.8\staticwebassets\V5\lib\jquery\dist\jquery.js'
+2024-10-29 22:50:19.647 +01:00 [INF] Request finished HTTP/2 GET https://localhost:7087/Identity/lib/jquery/dist/jquery.js - 200 288580 text/javascript 10.9398ms

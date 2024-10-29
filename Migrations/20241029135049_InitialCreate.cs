@@ -180,14 +180,19 @@ namespace NoteApp.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UserId = table.Column<string>(type: "TEXT", nullable: false),
+<<<<<<<< HEAD:Migrations/20241029135049_InitialCreate.cs
                     UsernameId = table.Column<string>(type: "TEXT", nullable: true),
                     FriendId = table.Column<string>(type: "TEXT", nullable: false),
                     FriendUserId = table.Column<string>(type: "TEXT", nullable: true)
+========
+                    FriendId = table.Column<string>(type: "TEXT", nullable: false)
+>>>>>>>> origin/anna-test:Migrations/20241029181315_InitialCreate.cs
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Friends", x => x.Id);
                     table.ForeignKey(
+<<<<<<<< HEAD:Migrations/20241029135049_InitialCreate.cs
                         name: "FK_Friends_AspNetUsers_FriendUserId",
                         column: x => x.FriendUserId,
                         principalTable: "AspNetUsers",
@@ -197,6 +202,19 @@ namespace NoteApp.Migrations
                         column: x => x.UsernameId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id");
+========
+                        name: "FK_Friends_AspNetUsers_FriendId",
+                        column: x => x.FriendId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Friends_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+>>>>>>>> origin/anna-test:Migrations/20241029181315_InitialCreate.cs
                 });
 
             migrationBuilder.CreateTable(
@@ -265,6 +283,7 @@ namespace NoteApp.Migrations
                 column: "PostId");
 
             migrationBuilder.CreateIndex(
+<<<<<<<< HEAD:Migrations/20241029135049_InitialCreate.cs
                 name: "IX_Friends_FriendUserId",
                 table: "Friends",
                 column: "FriendUserId");
@@ -273,6 +292,16 @@ namespace NoteApp.Migrations
                 name: "IX_Friends_UsernameId",
                 table: "Friends",
                 column: "UsernameId");
+========
+                name: "IX_Friends_FriendId",
+                table: "Friends",
+                column: "FriendId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Friends_UserId",
+                table: "Friends",
+                column: "UserId");
+>>>>>>>> origin/anna-test:Migrations/20241029181315_InitialCreate.cs
         }
 
         /// <inheritdoc />

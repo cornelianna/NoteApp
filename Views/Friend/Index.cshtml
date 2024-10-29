@@ -4,18 +4,28 @@
 @{
     ViewData["Title"] = "Friends";
 }
+<<<<<<< HEAD
 
 <h2>Friends</h2>
 <p>This is the Friends page.</p>
+=======
+<div class="main-content">
+<h2>Friends</h2>
+>>>>>>> origin/anna-test
 
 <button id="findFriendsButton" class="btn btn-primary">Find Friends</button>
 
 <div id="searchBar" style="display:none; margin-top: 20px;">
+<<<<<<< HEAD
     <form id="searchForm" method="get" asp-action="SearchUsers">
         <input type="text" id="searchInput" name="query" class="form-control" placeholder="Search by username or email" />
         <button type="submit" class="btn btn-primary mt-2">Search</button>
     </form>
     <div id="searchResults" class="mt-2"></div>
+=======
+    <input type="text" id="searchInput" class="form-control" placeholder="Search by username or email" />
+    <ul id="searchResults" class="list-group mt-2" style="display:none;"></ul>
+>>>>>>> origin/anna-test
 </div>
 
 @if (Model != null && Model.Any())
@@ -37,7 +47,11 @@
                         <tr>
                             <td>@friend.FriendUser.UserName</td>
                             <td>
+<<<<<<< HEAD
                                 <button class="btn btn-danger delete-friend-btn" data-friend-id="@friend.Id" style="display:none;">Delete</button>
+=======
+                                <button class="btn btn-danger delete-friend-btn" data-friend-id="@friend.FriendId">Delete</button>
+>>>>>>> origin/anna-test
                             </td>
                         </tr>
                     }
@@ -52,6 +66,7 @@ else
 }
 
 <div id="feedbackMessage" class="alert alert-success" style="display:none;"></div>
+<<<<<<< HEAD
 
 @section Scripts {
     <script>
@@ -89,3 +104,49 @@ else
         }
     </script>
 }
+=======
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#findFriendsButton').click(function () {
+                $('#searchBar').toggle();
+            });
+
+            $('#searchInput').on('input', function () {
+                var searchTerm = $(this).val();
+                if (searchTerm.length > 2) {
+                    $.post('@Url.Action("SearchUsers", "Friend")', { searchTerm: searchTerm }, function (data) {
+                        $('#searchResults').html(data);
+                        $('#searchResults').show();
+                    });
+                } else {
+                    $('#searchResults').hide();
+                }
+            });
+
+            $(document).on('click', '.add-friend-btn', function () {
+                var friendId = $(this).data('friend-id');
+                $.post('@Url.Action("AddFriend", "Friend")', { friendId: friendId }, function (response) {
+                    alert(response.message);
+                    if (response.success) {
+                        location.reload();
+                    }
+                });
+            });
+        });
+            $(document).on('click', '.delete-friend-btn', function () {
+            var friendId = $(this).data('friend-id');
+            if (confirm('Are you sure you want to delete this friend?')) {
+                $.post('@Url.Action("DeleteFriend", "Friend")', { friendId: friendId }, function (response) {
+                    alert(response.message);
+                    if (response.success) {
+                        location.reload();
+                    }
+                });
+            }
+        });
+    </script>
+}
+>>>>>>> origin/anna-test
