@@ -1,9 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using NoteApp.Models;
 using NoteApp.Data;
 using NoteApp.Repositories;
-using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +23,8 @@ builder.Services.AddAuthentication();
 // Register the IPostRepository service
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<IFriendRepository, FriendRepository>(); 
+
 
 var app = builder.Build();
 
