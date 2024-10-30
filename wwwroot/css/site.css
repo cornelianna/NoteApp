@@ -366,3 +366,175 @@ footer {
         margin-right: 0; /* Remove right margin on smaller screens */
     }
 }
+
+
+
+/* Profile Header */
+.profile-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-header .profile-picture img {
+    border: 5px solid #bcd7d2;
+}
+
+.profile-header h2 {
+    margin-top: 15px;
+    font-size: 28px;
+    color: #333;
+}
+
+.card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-img-top {
+    height: 150px; /* Set a fixed height for images to make all cards uniform */
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px; /* Limit the height for text to keep uniformity */
+}
+
+.profile-header img {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Container for ViewPost */
+.view-post-container {
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+}
+
+.view-post-flex {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+/* Post Content (Left) */
+.post-content {
+    flex: 1; /* Take up available space */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Post Header */
+.post-header {
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.username {
+    font-weight: bold;
+    color: #2f4f4f;
+}
+
+.text-muted {
+    font-size: 14px;
+    color: #888888;
+}
+
+/* Post Content */
+.post-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.post-text {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #4f4f4f;
+    margin-top: 15px;
+}
+
+/* Comments Section (Right) */
+.comments-section {
+    flex: 1; /* Take up available space */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f7f9fc;
+    color: #4f4f4f;
+    margin-bottom: 10px;
+}
+
+.comment-form button {
+    background-color: #bcd7d2;
+    color: #2f4f4f;
+    border-radius: 5px;
+    padding: 10px 20px;
+    border: none;
+}
+
+.comment-form button:hover {
+    background-color: #86b0a9;
+    color: #ffffff;
+}
+
+/* Existing Comments */
+.existing-comments .comment {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 15px;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+}
+
+.comment-header .user-avatar img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.comment-text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #4f4f4f;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+    .view-post-flex {
+        flex-direction: column; /* Stack post and comments vertically on small screens */
+    }
+}
