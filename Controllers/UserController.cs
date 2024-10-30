@@ -1,7 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using NoteApp.Models; // Add this line to reference EditProfileViewModel
+using NoteApp.Models;
 using NoteApp.Data;
+using Serilog;
 
 namespace NoteApp.Controllers
 {
