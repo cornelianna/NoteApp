@@ -1,25 +1,25 @@
 @model NoteApp.Models.Post
-@using System.Security.Claims
 @using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<div class="post"> 
-    <!-- Left side: Image or Note --> 
-    <div class="left-content"> 
-        @if (!string.IsNullOrEmpty(Model.ImageUrl)) 
-        { 
-            <div class="imagecontent">
+<div class="post">
+    <!-- Left side: Image or Note -->
+    <div class="left-content">
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <!-- If an image exists, display the image -->
+            <div class="contentImg">
                 <img src="@Model.ImageUrl" alt="Post image" class="img-fluid" />
-            </div> 
-        } 
-        else 
-        { 
-            <div class="notecontentwithoutimage">
-                <p>@Html.Raw(Model.Content)</p> 
-            </div> 
-        } 
-    </div> 
+            </div>
+        }
+        else
+        {
+            <!-- If no image, display the note content here -->
+            <div class="noteContent">
+                <p>@Html.Raw(Model.Content)</p>
+            </div>
+        }
+    </div>
 
     <!-- Dropdown for post actions -->
     <div class="dropdown">
@@ -28,11 +28,11 @@
 
         <!-- Dropdown menu -->
         <ul class="dropdown-menu">
-            @if (Model.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
+            @if (Model.UserId == UserManager.GetUserId(User))
             {
                 <!-- User is the owner -->
                 <li>
-                    <a class="dropdown-item d-flex align-items-center" href="@Url.Action("UpdatePost", new { id = Model.Id })">
+                    <a class="dropdown-item d-flex align-items-center" href="@Url.Action("UpdatePost", "Post", new { id = Model.Id })">
                         <img class="p-1 me-2" src="~/images/edit.svg" alt="Edit" style="width: 20px; height: 20px;" />
                         Edit
                     </a>
@@ -60,43 +60,49 @@
         </ul>
     </div>
 
-     <!-- Right side: Post Details and Comments --> 
-    <div class="right-content"> 
-        <div class="post-details-box"> 
-            <!-- Post header --> 
-            <div class="post-header"> 
-                <div class="userImg"> 
-                    <img src="~/images/icon.svg" alt="Avatar" class="rounded-circle" /> 
-                </div> 
-                <div class="post-info"> 
-                    <span class="username">@Model.Username</span> 
-                    <p class="post-date">@Model.CreatedAt.ToString("g")</p> 
-                </div> 
-            </div> 
+    <!-- Right side: Post Details and Comments -->
+    <div class="right-content">
+        <div class="post-details-box">
+            <!-- Post header -->
+            <div class="post-header">
+                <div class="userImg">
+                    <img src="~/images/icon.svg" alt="Avatar" class="rounded-circle" />
+                </div>
+                <div class="post-info">
+                    <span class="username">
+                        <a href="@Url.Action("Profile", "User", new { userId = Model.UserId })">
+                            @Model.Username
+                        </a>
+                    </span>
+                    <p class="post-date">@Model.CreatedAt.ToString("g")</p>
+                </div>
+            </div>
 
-            @if (!string.IsNullOrEmpty(Model.ImageUrl)) 
-            { 
-                <div class="noteContentWithImage"> 
-                    <p>@Html.Raw(Model.Content)</p> 
-                </div> 
-            } 
-        </div> 
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <!-- Note content under header when there is an image -->
+                <div class="noteContentWithImage">
+                    <p>@Html.Raw(Model.Content)</p>
+                </div>
+            }
+        </div>
 
-        <!-- Comments section --> 
-        <h5 class="comments-header">Comments</h5> 
-        <div class="discussions"> 
-            <div class="comments-scrollable"> 
-                @foreach (var comment in Model.Comments) 
-                { 
-                    @Html.Partial("_CommentPartial.cshtml", comment) 
-                } 
-            </div> 
-        </div> 
-        <!-- Comment form --> 
-        <form asp-action="AddComment" method="post" class="comment-form mt-3"> 
-            <input type="hidden" name="postId" value="@Model.Id" /> 
-            <textarea class="form-control" name="Content" placeholder="Add a comment" required></textarea> 
-            <input class="btn btn-primary mt-2" type="submit" value="Comment" /> 
-        </form> 
-    </div> 
-</div> 
+        <!-- Comments section -->
+        <h5 class="comments-header">Comments</h5>
+        <div class="discussions">
+            <div class="comments-scrollable">
+                @foreach (var comment in Model.Comments)
+                {
+                    @Html.Partial("_CommentPartial", comment)
+                }
+            </div>
+        </div>
+
+        <!-- Comment form -->
+        <form asp-action="AddComment" method="post" class="comment-form mt-3">
+            <input type="hidden" name="postId" value="@Model.Id" />
+            <textarea class="form-control" name="Content" placeholder="Add a comment" required></textarea>
+            <input class="btn btn-primary mt-2" type="submit" value="Comment" />
+        </form>
+    </div>
+</div>

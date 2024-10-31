@@ -58,5 +58,17 @@ public class PostRepository : IPostRepository
             _logger.LogWarning("Post with ID {Id} not found", id);
         }
     }
+
+    // Implementation for GetPostsByUserIdAsync
+        public async Task<IEnumerable<Post>> GetPostsByUserIdAsync(string userId)
+        {
+            _logger.LogInformation("Fetching posts for user {UserId}", userId);
+            return await _context.Posts
+                .Where(p => p.UserId == userId)
+                .Include(p => p.Comments)
+                .OrderByDescending(p => p.CreatedAt)
+                .ToListAsync();
+        }
+    }
 }
-}
+
