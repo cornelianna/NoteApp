@@ -155,17 +155,5 @@ namespace NoteApp.Controllers
         return RedirectToAction("Index");
         
     }
-
-     public async Task<IActionResult> ViewPost(int id)
-    {
-        var post = await _postRepository.GetPostByIdAsync(id);
-        if (post == null)
-        {
-            return NotFound();
-        }
-
-        return View(post);
-    }
-
 }
 }
