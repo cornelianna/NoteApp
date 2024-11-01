@@ -8,12 +8,12 @@ namespace NoteApp.Models
     {
         public int Id { get; set; }
 
-        public string? UserId { get; set; }
+        public string UserId { get; set; }
         [ForeignKey("UserId")]
-        public IdentityUser? User { get; set; }
+        public IdentityUser User { get; set; }
 
-        public string? FriendId { get; set; }
+        public string FriendId { get; set; }
         [ForeignKey("FriendId")]
-        public IdentityUser? FriendUser { get; set; }
+        public IdentityUser FriendUser { get; set; }
     }
 }

@@ -77,32 +77,28 @@ html, body {
             left: 0; /* Show sidebar */
         }
 }
-/* Main Content Styling */
-.main-content, .settings-container { 
-    margin-top: 20px; 
-    max-width: 1100px; 
-    width: 100%; 
-    margin-left: auto; 
-    margin-right: auto; 
-    padding: 20px; 
-    box-sizing: border-box;/
-} 
-
-@media (min-width: 992px) { 
-    .main-content, .settings-container { 
-        margin-left: 210px; 
-        margin-right: 10px; 
-        padding: 20px; 
-    } 
-} 
-
-@media (max-width: 991px) { /* For tablet and mobile screens */ 
-    .main-content, .settings-container { 
-        margin-left: 0; /* Remove left margin on smaller screens */ 
-        margin-right: 0; 
-        padding: 15px; /* Adjust padding */
-    } 
+@media (max-width: 767.98px) {
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+  .post {
+    flex-direction: column; /* Stack content vertically on small screens */
+  }
+  .left-content,
+  .right-content {
+    width: 100%;
+    margin-right: 0;
+  }
+  .create-post-container {
+    flex-direction: column;
+  }
+  .create-post-container .left-column,
+  .create-post-container .right-column {
+    width: 100%;
+  }
 }
+
 /* Create Post Section */
 .create-post-container { 
     display: flex; 
