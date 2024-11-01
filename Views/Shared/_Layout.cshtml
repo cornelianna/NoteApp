@@ -100,11 +100,11 @@
                 @if (SignInManager.IsSignedIn(User))
                 {
                     <li class="nav-item">
-        <a href="@Url.Action("Profile", "User")" class="nav-link text-black">
-            <img src="~/images/icon.svg" alt="AvatarImg" />
-            @UserManager.GetUserName(User)
-        </a>
-    </li>
+                        <a href="#home" class="nav-link text-black">
+                            <img src="~/images/icon.svg" alt="AvatarImg" />
+                            @UserManager.GetUserName(User)
+                        </a>
+                    </li>
                     <li>
                         <a href="@Url.Action("Index", "Friend")" class="nav-link text-black">Friends</a>
                     </li>
