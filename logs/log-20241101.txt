@@ -1856,3 +1856,846 @@ ORDER BY "p"."CreatedAt" DESC, "p"."Id"
 2024-11-01 01:24:45.445 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Post/ViewPost/4 - null null
 2024-11-01 01:24:45.449 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Post/ViewPost/4 - 404 0 null 2.9823ms
 2024-11-01 01:24:45.449 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5164/Post/ViewPost/4, Response status code: 404
+2024-11-01 20:43:18.161 +01:00 [INF] User profile is available. Using '/Users/amiinahmed/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-11-01 20:43:18.273 +01:00 [INF] Now listening on: http://localhost:5164
+2024-11-01 20:43:18.274 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-01 20:43:18.276 +01:00 [INF] Hosting environment: Development
+2024-11-01 20:43:18.276 +01:00 [INF] Content root path: /Users/amiinahmed/Desktop/Github/NoteApp
+2024-11-01 20:43:22.038 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 20:43:23.211 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-01 20:43:23.219 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2024-11-01 20:43:23.220 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2024-11-01 20:43:23.220 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2024-11-01 20:43:23.220 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorRememberMe signed out.
+2024-11-01 20:43:23.221 +01:00 [INF] Identity.Application was not authenticated. Failure message: No principal.
+2024-11-01 20:43:23.223 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:43:23.230 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:43:23.231 +01:00 [INF] Fetching all posts
+2024-11-01 20:43:23.259 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:43:23.291 +01:00 [INF] Fetched all posts
+2024-11-01 20:43:23.293 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 20:43:23.340 +01:00 [INF] Executed ViewResult - view Index executed in 46.4171ms.
+2024-11-01 20:43:23.342 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 111.7837ms
+2024-11-01 20:43:23.342 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:43:23.348 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 1310.8009ms
+2024-11-01 20:43:23.398 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 20:43:23.407 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/css/site.css'
+2024-11-01 20:43:23.408 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 200 10045 text/css 9.3457ms
+2024-11-01 20:44:40.386 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Identity/Account/Login - null null
+2024-11-01 20:44:40.397 +01:00 [INF] Executing endpoint '/Account/Login'
+2024-11-01 20:44:40.443 +01:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2024-11-01 20:44:40.460 +01:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnGetAsync - ModelState is "Valid"
+2024-11-01 20:44:40.462 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2024-11-01 20:44:40.463 +01:00 [INF] Executed handler method OnGetAsync, returned result .
+2024-11-01 20:44:40.464 +01:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2024-11-01 20:44:40.464 +01:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2024-11-01 20:44:40.560 +01:00 [INF] Executed page /Account/Login in 117.7322ms
+2024-11-01 20:44:40.562 +01:00 [INF] Executed endpoint '/Account/Login'
+2024-11-01 20:44:40.564 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Identity/Account/Login - 200 null text/html; charset=utf-8 178.5304ms
+2024-11-01 20:44:42.019 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Identity/Account/Login - application/x-www-form-urlencoded 267
+2024-11-01 20:44:42.030 +01:00 [INF] Executing endpoint '/Account/Login'
+2024-11-01 20:44:42.031 +01:00 [INF] Route matched with {page = "/Account/Login", area = "Identity", action = "", controller = ""}. Executing page /Account/Login
+2024-11-01 20:44:42.046 +01:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnPostAsync - ModelState is "Valid"
+2024-11-01 20:44:42.088 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedUserName_0='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2024-11-01 20:44:42.150 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."ClaimType", "a"."ClaimValue", "a"."UserId"
+FROM "AspNetUserClaims" AS "a"
+WHERE "a"."UserId" = @__user_Id_0
+2024-11-01 20:44:42.151 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2024-11-01 20:44:42.151 +01:00 [INF] User logged in.
+2024-11-01 20:44:42.152 +01:00 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.LocalRedirectResult.
+2024-11-01 20:44:42.152 +01:00 [INF] Executing LocalRedirectResult, redirecting to /.
+2024-11-01 20:44:42.152 +01:00 [INF] Executed page /Account/Login in 120.9542ms
+2024-11-01 20:44:42.152 +01:00 [INF] Executed endpoint '/Account/Login'
+2024-11-01 20:44:42.152 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Identity/Account/Login - 302 0 null 132.8967ms
+2024-11-01 20:44:42.157 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 20:44:42.158 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:44:42.158 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:44:42.158 +01:00 [INF] Fetching all posts
+2024-11-01 20:44:42.164 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:44:42.165 +01:00 [INF] Fetched all posts
+2024-11-01 20:44:42.165 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 20:44:42.168 +01:00 [INF] Executed ViewResult - view Index executed in 3.3751ms.
+2024-11-01 20:44:42.168 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 10.147ms
+2024-11-01 20:44:42.168 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:44:42.168 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 11.4725ms
+2024-11-01 20:44:42.191 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 20:44:42.204 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/css/site.css'
+2024-11-01 20:44:42.207 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 200 10071 text/css 15.8735ms
+2024-11-01 20:44:44.341 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Post/CreatePost - multipart/form-data; boundary=----WebKitFormBoundaryYu2zd6s8Be5SnAJw 713
+2024-11-01 20:44:44.348 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-11-01 20:44:44.356 +01:00 [INF] Route matched with {action = "CreatePost", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePost(NoteApp.Models.Post, Microsoft.AspNetCore.Http.IFormFile) on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:44:44.410 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 4), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (Size = 36), @p4='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("Content", "CreatedAt", "ImageUrl", "UserId", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+2024-11-01 20:44:44.419 +01:00 [INF] Added new post with ID 5
+2024-11-01 20:44:44.419 +01:00 [INF] Post created successfully.
+2024-11-01 20:44:44.419 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2024-11-01 20:44:44.419 +01:00 [INF] Executed action NoteApp.Controllers.PostController.CreatePost (NoteApp) in 63.5602ms
+2024-11-01 20:44:44.419 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-11-01 20:44:44.420 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Post/CreatePost - 302 0 null 78.1514ms
+2024-11-01 20:44:44.421 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 20:44:44.422 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:44:44.422 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:44:44.422 +01:00 [INF] Fetching all posts
+2024-11-01 20:44:44.423 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:44:44.424 +01:00 [INF] Fetched all posts
+2024-11-01 20:44:44.424 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 20:44:44.426 +01:00 [INF] Executed ViewResult - view Index executed in 2.1647ms.
+2024-11-01 20:44:44.426 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 3.6416ms
+2024-11-01 20:44:44.426 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:44:44.426 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 4.8339ms
+2024-11-01 20:44:44.438 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 20:44:44.439 +01:00 [INF] The file /css/site.css was not modified
+2024-11-01 20:44:44.440 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 2.1663ms
+2024-11-01 20:44:46.526 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Post/CreatePost - multipart/form-data; boundary=----WebKitFormBoundaryPtJ2kjzZY8q84u22 713
+2024-11-01 20:44:46.529 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-11-01 20:44:46.529 +01:00 [INF] Route matched with {action = "CreatePost", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePost(NoteApp.Models.Post, Microsoft.AspNetCore.Http.IFormFile) on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:44:46.532 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 4), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (Size = 36), @p4='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("Content", "CreatedAt", "ImageUrl", "UserId", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+2024-11-01 20:44:46.532 +01:00 [INF] Added new post with ID 6
+2024-11-01 20:44:46.533 +01:00 [INF] Post created successfully.
+2024-11-01 20:44:46.533 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2024-11-01 20:44:46.533 +01:00 [INF] Executed action NoteApp.Controllers.PostController.CreatePost (NoteApp) in 3.6302ms
+2024-11-01 20:44:46.533 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-11-01 20:44:46.533 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Post/CreatePost - 302 0 null 7.3833ms
+2024-11-01 20:44:46.535 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 20:44:46.536 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:44:46.536 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:44:46.536 +01:00 [INF] Fetching all posts
+2024-11-01 20:44:46.537 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:44:46.537 +01:00 [INF] Fetched all posts
+2024-11-01 20:44:46.537 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 20:44:46.538 +01:00 [INF] Executed ViewResult - view Index executed in 1.3933ms.
+2024-11-01 20:44:46.539 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 2.5821ms
+2024-11-01 20:44:46.539 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:44:46.539 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 3.7571ms
+2024-11-01 20:44:46.551 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 20:44:46.552 +01:00 [INF] The file /css/site.css was not modified
+2024-11-01 20:44:46.552 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 1.5408ms
+2024-11-01 20:44:48.674 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Post/AddComment - application/x-www-form-urlencoded 247
+2024-11-01 20:44:48.675 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.AddComment (NoteApp)'
+2024-11-01 20:44:48.678 +01:00 [INF] Route matched with {action = "AddComment", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddComment(NoteApp.Models.Comment) on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:44:48.685 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 4), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (Size = 36), @p4='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("Content", "CreatedAt", "PostId", "UserId", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+2024-11-01 20:44:48.686 +01:00 [INF] Added new comment with ID 12
+2024-11-01 20:44:48.686 +01:00 [INF] Comment added successfully.
+2024-11-01 20:44:48.686 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2024-11-01 20:44:48.686 +01:00 [INF] Executed action NoteApp.Controllers.PostController.AddComment (NoteApp) in 8.2102ms
+2024-11-01 20:44:48.686 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.AddComment (NoteApp)'
+2024-11-01 20:44:48.686 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Post/AddComment - 302 0 null 12.589ms
+2024-11-01 20:44:48.689 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 20:44:48.689 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:44:48.689 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:44:48.690 +01:00 [INF] Fetching all posts
+2024-11-01 20:44:48.690 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:44:48.691 +01:00 [INF] Fetched all posts
+2024-11-01 20:44:48.691 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 20:44:48.692 +01:00 [INF] Executed ViewResult - view Index executed in 1.6768ms.
+2024-11-01 20:44:48.692 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 2.8597ms
+2024-11-01 20:44:48.692 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:44:48.693 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 4.6593ms
+2024-11-01 20:44:48.708 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 20:44:48.708 +01:00 [INF] The file /css/site.css was not modified
+2024-11-01 20:44:48.710 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 2.2107ms
+2024-11-01 20:44:51.637 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Post/AddComment - application/x-www-form-urlencoded 247
+2024-11-01 20:44:51.639 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.AddComment (NoteApp)'
+2024-11-01 20:44:51.639 +01:00 [INF] Route matched with {action = "AddComment", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddComment(NoteApp.Models.Comment) on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:44:51.643 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 4), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (Size = 36), @p4='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("Content", "CreatedAt", "PostId", "UserId", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+2024-11-01 20:44:51.645 +01:00 [INF] Added new comment with ID 13
+2024-11-01 20:44:51.645 +01:00 [INF] Comment added successfully.
+2024-11-01 20:44:51.645 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2024-11-01 20:44:51.646 +01:00 [INF] Executed action NoteApp.Controllers.PostController.AddComment (NoteApp) in 6.1227ms
+2024-11-01 20:44:51.646 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.AddComment (NoteApp)'
+2024-11-01 20:44:51.646 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Post/AddComment - 302 0 null 8.7774ms
+2024-11-01 20:44:51.649 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 20:44:51.651 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:44:51.651 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:44:51.651 +01:00 [INF] Fetching all posts
+2024-11-01 20:44:51.653 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:44:51.654 +01:00 [INF] Fetched all posts
+2024-11-01 20:44:51.654 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 20:44:51.657 +01:00 [INF] Executed ViewResult - view Index executed in 2.8533ms.
+2024-11-01 20:44:51.657 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 5.9057ms
+2024-11-01 20:44:51.657 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:44:51.658 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 8.6913ms
+2024-11-01 20:44:51.680 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 20:44:51.706 +01:00 [INF] The file /css/site.css was not modified
+2024-11-01 20:44:51.708 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 27.3717ms
+2024-11-01 20:44:55.926 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Post/AddComment - application/x-www-form-urlencoded 247
+2024-11-01 20:44:55.930 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.AddComment (NoteApp)'
+2024-11-01 20:44:55.930 +01:00 [INF] Route matched with {action = "AddComment", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddComment(NoteApp.Models.Comment) on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:44:55.953 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 4), @p1='?' (DbType = DateTime), @p2='?' (DbType = Int32), @p3='?' (Size = 36), @p4='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Comments" ("Content", "CreatedAt", "PostId", "UserId", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+2024-11-01 20:44:55.953 +01:00 [INF] Added new comment with ID 14
+2024-11-01 20:44:55.954 +01:00 [INF] Comment added successfully.
+2024-11-01 20:44:55.954 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2024-11-01 20:44:55.954 +01:00 [INF] Executed action NoteApp.Controllers.PostController.AddComment (NoteApp) in 23.838ms
+2024-11-01 20:44:55.954 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.AddComment (NoteApp)'
+2024-11-01 20:44:55.954 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Post/AddComment - 302 0 null 28.2105ms
+2024-11-01 20:44:55.956 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 20:44:55.957 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:44:55.958 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:44:55.958 +01:00 [INF] Fetching all posts
+2024-11-01 20:44:55.959 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:44:55.959 +01:00 [INF] Fetched all posts
+2024-11-01 20:44:55.959 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 20:44:55.960 +01:00 [INF] Executed ViewResult - view Index executed in 1.2744ms.
+2024-11-01 20:44:55.960 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 2.7549ms
+2024-11-01 20:44:55.961 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:44:55.961 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 4.3144ms
+2024-11-01 20:44:55.976 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 20:44:55.977 +01:00 [INF] The file /css/site.css was not modified
+2024-11-01 20:44:55.977 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 1.4094ms
+2024-11-01 20:45:08.365 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - null null
+2024-11-01 20:45:08.376 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 20:45:08.384 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-01 20:45:08.397 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-01 20:45:08.399 +01:00 [INF] Fetching posts for user b93599ec-ad78-48c5-90ea-00dcca10c35b
+2024-11-01 20:45:08.407 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:45:08.408 +01:00 [INF] Displaying profile for user b93599ec-ad78-48c5-90ea-00dcca10c35b.
+2024-11-01 20:45:08.408 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-01 20:45:08.413 +01:00 [INF] Executed ViewResult - view Profile executed in 4.8467ms.
+2024-11-01 20:45:08.413 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 28.6444ms
+2024-11-01 20:45:08.413 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 20:45:08.413 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - 200 null text/html; charset=utf-8 48.1901ms
+2024-11-01 20:45:08.442 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/default-profile.png - null null
+2024-11-01 20:45:08.443 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 20:45:08.452 +01:00 [INF] The file /css/site.css was not modified
+2024-11-01 20:45:08.452 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 8.9333ms
+2024-11-01 20:45:08.473 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/default-profile.png - 404 0 null 31.2695ms
+2024-11-01 20:45:08.474 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5164/images/default-profile.png, Response status code: 404
+2024-11-01 20:45:09.929 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Post/ViewPost/5 - null null
+2024-11-01 20:45:09.931 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Post/ViewPost/5 - 404 0 null 1.9508ms
+2024-11-01 20:45:09.932 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5164/Post/ViewPost/5, Response status code: 404
+2024-11-01 20:45:11.682 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - null null
+2024-11-01 20:45:11.684 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 20:45:11.685 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-01 20:45:11.686 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-01 20:45:11.687 +01:00 [INF] Fetching posts for user b93599ec-ad78-48c5-90ea-00dcca10c35b
+2024-11-01 20:45:11.688 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:45:11.688 +01:00 [INF] Displaying profile for user b93599ec-ad78-48c5-90ea-00dcca10c35b.
+2024-11-01 20:45:11.689 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-01 20:45:11.690 +01:00 [INF] Executed ViewResult - view Profile executed in 1.5265ms.
+2024-11-01 20:45:11.690 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 5.7021ms
+2024-11-01 20:45:11.691 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 20:45:11.691 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - 200 null text/html; charset=utf-8 9.1948ms
+2024-11-01 20:45:12.936 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 20:45:12.937 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:45:12.937 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:45:12.937 +01:00 [INF] Fetching all posts
+2024-11-01 20:45:12.939 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:45:12.939 +01:00 [INF] Fetched all posts
+2024-11-01 20:45:12.940 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 20:45:12.942 +01:00 [INF] Executed ViewResult - view Index executed in 2.3008ms.
+2024-11-01 20:45:12.943 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 5.5697ms
+2024-11-01 20:45:12.943 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:45:12.943 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 7.6646ms
+2024-11-01 20:45:52.980 +01:00 [INF] User profile is available. Using '/Users/amiinahmed/.aspnet/DataProtection-Keys' as key repository; keys will not be encrypted at rest.
+2024-11-01 20:45:53.063 +01:00 [INF] Now listening on: http://localhost:5164
+2024-11-01 20:45:53.064 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-01 20:45:53.064 +01:00 [INF] Hosting environment: Development
+2024-11-01 20:45:53.064 +01:00 [INF] Content root path: /Users/amiinahmed/Desktop/Github/NoteApp
+2024-11-01 20:45:53.384 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 20:45:53.527 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:45:53.535 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:45:53.539 +01:00 [INF] Fetching all posts
+2024-11-01 20:45:54.332 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:45:54.371 +01:00 [INF] Fetched all posts
+2024-11-01 20:45:54.374 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 20:45:54.413 +01:00 [INF] Executed ViewResult - view Index executed in 39.5312ms.
+2024-11-01 20:45:54.415 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 879.271ms
+2024-11-01 20:45:54.415 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:45:54.422 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 1039.3092ms
+2024-11-01 20:45:54.465 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 20:45:54.467 +01:00 [INF] The file /css/site.css was not modified
+2024-11-01 20:45:54.468 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 3.0715ms
+2024-11-01 20:45:54.497 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 20:45:54.500 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 2.4292ms
+2024-11-01 20:47:06.426 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 20:47:06.429 +01:00 [INF] The file /css/site.css was not modified
+2024-11-01 20:47:06.430 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 4.5645ms
+2024-11-01 20:48:57.382 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/clear-browser-cache - null null
+2024-11-01 20:48:57.390 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/clear-browser-cache - 200 0 null 8.4113ms
+2024-11-01 20:49:02.722 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css?nonce=1730490542695 - null null
+2024-11-01 20:49:02.754 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/css/site.css'
+2024-11-01 20:49:02.754 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css?nonce=1730490542695 - 200 10097 text/css 32.571ms
+2024-11-01 20:49:14.948 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/clear-browser-cache - null null
+2024-11-01 20:49:14.950 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/clear-browser-cache - 200 0 null 1.3737ms
+2024-11-01 20:49:18.909 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css?nonce=1730490558902 - null null
+2024-11-01 20:49:18.922 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/css/site.css'
+2024-11-01 20:49:18.923 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css?nonce=1730490558902 - 200 10079 text/css 14.7933ms
+2024-11-01 20:52:30.573 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/clear-browser-cache - null null
+2024-11-01 20:52:30.578 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/clear-browser-cache - 200 0 null 4.5785ms
+2024-11-01 20:52:34.971 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css?nonce=1730490754941 - null null
+2024-11-01 20:52:34.981 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/css/site.css'
+2024-11-01 20:52:34.981 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css?nonce=1730490754941 - 200 10135 text/css 10.8951ms
+2024-11-01 20:52:41.169 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/clear-browser-cache - null null
+2024-11-01 20:52:41.170 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/clear-browser-cache - 200 0 null 0.8254ms
+2024-11-01 20:52:45.168 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css?nonce=1730490765162 - null null
+2024-11-01 20:52:45.171 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/css/site.css'
+2024-11-01 20:52:45.172 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css?nonce=1730490765162 - 200 10163 text/css 3.9786ms
+2024-11-01 20:53:58.367 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Settings - null null
+2024-11-01 20:53:58.427 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Settings (NoteApp)'
+2024-11-01 20:53:58.443 +01:00 [INF] Route matched with {action = "Settings", controller = "User", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Settings() on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-01 20:53:58.446 +01:00 [INF] Accessed Settings page.
+2024-11-01 20:53:58.461 +01:00 [INF] Executing ViewResult, running view Settings.
+2024-11-01 20:53:58.502 +01:00 [INF] Executed ViewResult - view Settings executed in 52.1284ms.
+2024-11-01 20:53:58.502 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Settings (NoteApp) in 59.6051ms
+2024-11-01 20:53:58.503 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Settings (NoteApp)'
+2024-11-01 20:53:58.503 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Settings - 200 null text/html; charset=utf-8 137.0903ms
+2024-11-01 20:53:58.603 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 20:53:58.603 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/icon.svg - null null
+2024-11-01 20:53:58.605 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/css/site.css'
+2024-11-01 20:53:58.605 +01:00 [INF] Sending file. Request path: '/images/icon.svg'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/images/icon.svg'
+2024-11-01 20:53:58.605 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 200 10163 text/css 2.5696ms
+2024-11-01 20:53:58.605 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/icon.svg - 200 1427 image/svg+xml 2.0256ms
+2024-11-01 20:53:58.647 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/js/site.js - null null
+2024-11-01 20:53:58.647 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/lib/jquery-validation/dist/jquery.validate.min.js - null null
+2024-11-01 20:53:58.650 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js - null null
+2024-11-01 20:53:58.650 +01:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/js/site.js'
+2024-11-01 20:53:58.650 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/js/site.js - 200 1148 text/javascript 3.2482ms
+2024-11-01 20:53:58.651 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 20:53:58.651 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/SnapNoteLogo.png - null null
+2024-11-01 20:53:58.652 +01:00 [INF] Sending file. Request path: '/lib/jquery-validation/dist/jquery.validate.min.js'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js'
+2024-11-01 20:53:58.658 +01:00 [INF] Sending file. Request path: '/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js'
+2024-11-01 20:53:58.660 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/lib/jquery-validation/dist/jquery.validate.min.js - 200 24601 text/javascript 10.9158ms
+2024-11-01 20:53:58.658 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js - 200 5824 text/javascript 8.5893ms
+2024-11-01 20:53:58.660 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 9.3433ms
+2024-11-01 20:53:58.662 +01:00 [INF] Sending file. Request path: '/images/SnapNoteLogo.png'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/images/SnapNoteLogo.png'
+2024-11-01 20:53:58.662 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/SnapNoteLogo.png - 200 82911 image/png 11.3452ms
+2024-11-01 20:54:02.929 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 20:54:02.949 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:54:02.950 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:54:02.952 +01:00 [INF] Fetching all posts
+2024-11-01 20:54:02.980 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:54:02.983 +01:00 [INF] Fetched all posts
+2024-11-01 20:54:02.983 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 20:54:02.986 +01:00 [INF] Executed ViewResult - view Index executed in 2.7447ms.
+2024-11-01 20:54:02.986 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 35.4367ms
+2024-11-01 20:54:02.986 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:54:02.986 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 59.5731ms
+2024-11-01 20:54:03.010 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/icon.svg - null null
+2024-11-01 20:54:03.010 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 20:54:03.042 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/css/site.css'
+2024-11-01 20:54:03.042 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 200 10163 text/css 31.7341ms
+2024-11-01 20:54:03.044 +01:00 [INF] Sending file. Request path: '/images/icon.svg'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/images/icon.svg'
+2024-11-01 20:54:03.044 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/icon.svg - 200 1427 image/svg+xml 33.8781ms
+2024-11-01 20:54:03.011 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/more.svg - null null
+2024-11-01 20:54:03.047 +01:00 [INF] Sending file. Request path: '/images/more.svg'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/images/more.svg'
+2024-11-01 20:54:03.047 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/more.svg - 200 282 image/svg+xml 35.9298ms
+2024-11-01 20:54:03.088 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/js/site.js - null null
+2024-11-01 20:54:03.089 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/delete.svg - null null
+2024-11-01 20:54:03.089 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/edit.svg - null null
+2024-11-01 20:54:03.090 +01:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/js/site.js'
+2024-11-01 20:54:03.090 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/js/site.js - 200 1148 text/javascript 1.7537ms
+2024-11-01 20:54:03.090 +01:00 [INF] Sending file. Request path: '/images/delete.svg'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/images/delete.svg'
+2024-11-01 20:54:03.090 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/delete.svg - 200 577 image/svg+xml 0.4061ms
+2024-11-01 20:54:03.090 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 20:54:03.090 +01:00 [INF] Sending file. Request path: '/images/edit.svg'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/images/edit.svg'
+2024-11-01 20:54:03.090 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/edit.svg - 200 575 image/svg+xml 0.4847ms
+2024-11-01 20:54:03.090 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1066ms
+2024-11-01 20:54:03.090 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/SnapNoteLogo.png - null null
+2024-11-01 20:54:03.093 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/report.svg - null null
+2024-11-01 20:54:03.093 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/uploads/IMG_5182.jpeg - null null
+2024-11-01 20:54:03.094 +01:00 [INF] Sending file. Request path: '/images/report.svg'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/images/report.svg'
+2024-11-01 20:54:03.095 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/report.svg - 200 638 image/svg+xml 0.5637ms
+2024-11-01 20:54:03.098 +01:00 [INF] Sending file. Request path: '/images/SnapNoteLogo.png'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/images/SnapNoteLogo.png'
+2024-11-01 20:54:03.098 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/SnapNoteLogo.png - 200 82911 image/png 8.0298ms
+2024-11-01 20:54:03.107 +01:00 [INF] Sending file. Request path: '/uploads/IMG_5182.jpeg'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/uploads/IMG_5182.jpeg'
+2024-11-01 20:54:03.107 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/uploads/IMG_5182.jpeg - 200 3545426 image/jpeg 13.2615ms
+2024-11-01 20:54:34.671 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/clear-browser-cache - null null
+2024-11-01 20:54:34.672 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/clear-browser-cache - 200 0 null 1.0609ms
+2024-11-01 20:54:38.811 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css?nonce=1730490878711 - null null
+2024-11-01 20:54:38.814 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/css/site.css'
+2024-11-01 20:54:38.814 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css?nonce=1730490878711 - 200 10163 text/css 3.2095ms
+2024-11-01 20:56:04.460 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css?nonce=1730490878711 - null null
+2024-11-01 20:56:04.463 +01:00 [INF] The file /css/site.css was not modified
+2024-11-01 20:56:04.464 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css?nonce=1730490878711 - 304 null text/css 3.8869ms
+2024-11-01 20:58:12.181 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/clear-browser-cache - null null
+2024-11-01 20:58:12.183 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/clear-browser-cache - 200 0 null 1.1092ms
+2024-11-01 20:58:16.333 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css?nonce=1730491096185 - null null
+2024-11-01 20:58:16.338 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/css/site.css'
+2024-11-01 20:58:16.338 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css?nonce=1730491096185 - 200 10163 text/css 4.8307ms
+2024-11-01 20:58:53.212 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - null null
+2024-11-01 20:58:53.235 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 20:58:53.256 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-01 20:58:53.395 +01:00 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-01 20:58:53.416 +01:00 [INF] Fetching posts for user b93599ec-ad78-48c5-90ea-00dcca10c35b
+2024-11-01 20:58:53.422 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:58:53.423 +01:00 [INF] Displaying profile for user b93599ec-ad78-48c5-90ea-00dcca10c35b.
+2024-11-01 20:58:53.425 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-01 20:58:53.430 +01:00 [INF] Executed ViewResult - view Profile executed in 6.6525ms.
+2024-11-01 20:58:53.430 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 173.7558ms
+2024-11-01 20:58:53.430 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 20:58:53.431 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - 200 null text/html; charset=utf-8 218.6903ms
+2024-11-01 20:58:53.465 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 20:58:53.465 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/default-profile.png - null null
+2024-11-01 20:58:53.465 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/icon.svg - null null
+2024-11-01 20:58:53.467 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/css/site.css'
+2024-11-01 20:58:53.469 +01:00 [INF] Sending file. Request path: '/images/icon.svg'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/images/icon.svg'
+2024-11-01 20:58:53.469 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/icon.svg - 200 1427 image/svg+xml 3.5735ms
+2024-11-01 20:58:53.469 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 200 10163 text/css 3.949ms
+2024-11-01 20:58:53.482 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/default-profile.png - 404 0 null 16.5466ms
+2024-11-01 20:58:53.484 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5164/images/default-profile.png, Response status code: 404
+2024-11-01 20:58:53.504 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/js/site.js - null null
+2024-11-01 20:58:53.506 +01:00 [INF] Sending file. Request path: '/js/site.js'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/js/site.js'
+2024-11-01 20:58:53.506 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/js/site.js - 200 1148 text/javascript 1.7852ms
+2024-11-01 20:58:53.506 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 20:58:53.506 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/SnapNoteLogo.png - null null
+2024-11-01 20:58:53.506 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.3702ms
+2024-11-01 20:58:53.507 +01:00 [INF] Sending file. Request path: '/images/SnapNoteLogo.png'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/images/SnapNoteLogo.png'
+2024-11-01 20:58:53.507 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/SnapNoteLogo.png - 200 82911 image/png 1.3045ms
+2024-11-01 20:58:55.019 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 20:58:55.022 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:58:55.022 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 20:58:55.026 +01:00 [INF] Fetching all posts
+2024-11-01 20:58:55.029 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:58:55.031 +01:00 [INF] Fetched all posts
+2024-11-01 20:58:55.031 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 20:58:55.037 +01:00 [INF] Executed ViewResult - view Index executed in 6.1969ms.
+2024-11-01 20:58:55.038 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 15.3461ms
+2024-11-01 20:58:55.038 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 20:58:55.038 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 18.7837ms
+2024-11-01 20:58:55.058 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/more.svg - null null
+2024-11-01 20:58:55.059 +01:00 [INF] Sending file. Request path: '/images/more.svg'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/images/more.svg'
+2024-11-01 20:58:55.059 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/more.svg - 200 282 image/svg+xml 1.0326ms
+2024-11-01 20:58:55.070 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/edit.svg - null null
+2024-11-01 20:58:55.070 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/delete.svg - null null
+2024-11-01 20:58:55.071 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 20:58:55.071 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.0784ms
+2024-11-01 20:58:55.071 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/report.svg - null null
+2024-11-01 20:58:55.071 +01:00 [INF] Sending file. Request path: '/images/delete.svg'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/images/delete.svg'
+2024-11-01 20:58:55.071 +01:00 [INF] Sending file. Request path: '/images/edit.svg'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/images/edit.svg'
+2024-11-01 20:58:55.071 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/delete.svg - 200 577 image/svg+xml 0.7173ms
+2024-11-01 20:58:55.071 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/edit.svg - 200 575 image/svg+xml 0.744ms
+2024-11-01 20:58:55.072 +01:00 [INF] Sending file. Request path: '/images/report.svg'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/images/report.svg'
+2024-11-01 20:58:55.072 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/report.svg - 200 638 image/svg+xml 0.9395ms
+2024-11-01 20:58:55.077 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/uploads/IMG_5182.jpeg - null null
+2024-11-01 20:58:55.096 +01:00 [INF] Sending file. Request path: '/uploads/IMG_5182.jpeg'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/uploads/IMG_5182.jpeg'
+2024-11-01 20:58:55.096 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/uploads/IMG_5182.jpeg - 200 3545426 image/jpeg 19.5562ms
+2024-11-01 20:58:58.093 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - null null
+2024-11-01 20:58:58.095 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 20:58:58.095 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-01 20:58:58.105 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-01 20:58:58.109 +01:00 [INF] Fetching posts for user b93599ec-ad78-48c5-90ea-00dcca10c35b
+2024-11-01 20:58:58.113 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:58:58.116 +01:00 [INF] Displaying profile for user b93599ec-ad78-48c5-90ea-00dcca10c35b.
+2024-11-01 20:58:58.119 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-01 20:58:58.121 +01:00 [INF] Executed ViewResult - view Profile executed in 2.6509ms.
+2024-11-01 20:58:58.121 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 26.0014ms
+2024-11-01 20:58:58.121 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 20:58:58.122 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - 200 null text/html; charset=utf-8 28.6365ms
+2024-11-01 20:58:58.142 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 20:58:58.143 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 20:58:58.143 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/default-profile.png - null null
+2024-11-01 20:58:58.147 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 3.7125ms
+2024-11-01 20:58:58.147 +01:00 [INF] The file /css/site.css was not modified
+2024-11-01 20:58:58.150 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/default-profile.png - 404 0 null 6.8364ms
+2024-11-01 20:58:58.150 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5164/images/default-profile.png, Response status code: 404
+2024-11-01 20:58:58.150 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 7.8172ms
+2024-11-01 20:58:59.224 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Post/ViewPost/6 - null null
+2024-11-01 20:58:59.226 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Post/ViewPost/6 - 404 0 null 2.3144ms
+2024-11-01 20:58:59.226 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5164/Post/ViewPost/6, Response status code: 404
+2024-11-01 20:59:00.335 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - null null
+2024-11-01 20:59:00.336 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 20:59:00.336 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-01 20:59:00.339 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-01 20:59:00.339 +01:00 [INF] Fetching posts for user b93599ec-ad78-48c5-90ea-00dcca10c35b
+2024-11-01 20:59:00.341 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 20:59:00.342 +01:00 [INF] Displaying profile for user b93599ec-ad78-48c5-90ea-00dcca10c35b.
+2024-11-01 20:59:00.342 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-01 20:59:00.345 +01:00 [INF] Executed ViewResult - view Profile executed in 2.8685ms.
+2024-11-01 20:59:00.345 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 8.4904ms
+2024-11-01 20:59:00.345 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 20:59:00.345 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - 200 null text/html; charset=utf-8 10.688ms
+2024-11-01 20:59:00.417 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 20:59:00.417 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.207ms
+2024-11-01 21:00:48.506 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - null null
+2024-11-01 21:00:48.508 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 21:00:48.514 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-01 21:00:48.522 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-01 21:00:48.523 +01:00 [INF] Fetching posts for user b93599ec-ad78-48c5-90ea-00dcca10c35b
+2024-11-01 21:00:48.523 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 21:00:48.524 +01:00 [INF] Displaying profile for user b93599ec-ad78-48c5-90ea-00dcca10c35b.
+2024-11-01 21:00:48.526 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-01 21:00:48.529 +01:00 [INF] Executed ViewResult - view Profile executed in 5.0365ms.
+2024-11-01 21:00:48.529 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 14.9ms
+2024-11-01 21:00:48.530 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 21:00:48.530 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - 200 null text/html; charset=utf-8 24.3776ms
+2024-11-01 21:00:48.627 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 21:00:48.635 +01:00 [INF] The file /css/site.css was not modified
+2024-11-01 21:00:48.636 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 8.599ms
+2024-11-01 21:00:48.638 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/default-profile.png - null null
+2024-11-01 21:00:48.641 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/default-profile.png - 404 0 null 3.1551ms
+2024-11-01 21:00:48.646 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5164/images/default-profile.png, Response status code: 404
+2024-11-01 21:00:48.652 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 21:00:48.653 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.5933ms
+2024-11-01 21:00:48.755 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/favicon.ico - null null
+2024-11-01 21:00:48.757 +01:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: '/Users/amiinahmed/Desktop/Github/NoteApp/wwwroot/favicon.ico'
+2024-11-01 21:00:48.757 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/favicon.ico - 200 5430 image/x-icon 1.3065ms
+2024-11-01 21:00:51.254 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 21:00:51.313 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:00:51.316 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 21:00:51.317 +01:00 [INF] Fetching all posts
+2024-11-01 21:00:51.319 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 21:00:51.322 +01:00 [INF] Fetched all posts
+2024-11-01 21:00:51.324 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 21:00:51.335 +01:00 [INF] Executed ViewResult - view Index executed in 12.4052ms.
+2024-11-01 21:00:51.335 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 18.8837ms
+2024-11-01 21:00:51.335 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:00:51.336 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 81.6907ms
+2024-11-01 21:00:51.369 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 21:00:51.370 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.5475ms
+2024-11-01 21:02:15.461 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 21:02:15.465 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:02:15.471 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 21:02:15.471 +01:00 [INF] Fetching all posts
+2024-11-01 21:02:15.479 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 21:02:15.480 +01:00 [INF] Fetched all posts
+2024-11-01 21:02:15.482 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 21:02:15.500 +01:00 [INF] Executed ViewResult - view Index executed in 19.2245ms.
+2024-11-01 21:02:15.500 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 28.8052ms
+2024-11-01 21:02:15.500 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:02:15.500 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 39.363ms
+2024-11-01 21:02:15.573 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 21:02:15.573 +01:00 [INF] The file /css/site.css was not modified
+2024-11-01 21:02:15.573 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 0.6334ms
+2024-11-01 21:02:15.590 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 21:02:15.590 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.2107ms
+2024-11-01 21:03:53.591 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 21:03:53.597 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:03:53.601 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 21:03:53.602 +01:00 [INF] Fetching all posts
+2024-11-01 21:03:53.609 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 21:03:53.610 +01:00 [INF] Fetched all posts
+2024-11-01 21:03:53.614 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 21:03:53.624 +01:00 [INF] Executed ViewResult - view Index executed in 14.1137ms.
+2024-11-01 21:03:53.624 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 22.9638ms
+2024-11-01 21:03:53.624 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:03:53.624 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 33.5317ms
+2024-11-01 21:03:53.674 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 21:03:53.675 +01:00 [INF] The file /css/site.css was not modified
+2024-11-01 21:03:53.675 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 0.9505ms
+2024-11-01 21:03:53.684 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 21:03:53.685 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 1.0954ms
+2024-11-01 21:04:55.754 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 21:04:55.757 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:04:55.762 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 21:04:55.762 +01:00 [INF] Fetching all posts
+2024-11-01 21:04:55.786 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 21:04:55.789 +01:00 [INF] Fetched all posts
+2024-11-01 21:04:55.791 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 21:04:55.806 +01:00 [INF] Executed ViewResult - view Index executed in 16.7695ms.
+2024-11-01 21:04:55.806 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 44.206ms
+2024-11-01 21:04:55.806 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:04:55.807 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 52.2478ms
+2024-11-01 21:04:55.878 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-01 21:04:55.893 +01:00 [INF] The file /css/site.css was not modified
+2024-11-01 21:04:55.893 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 15.1487ms
+2024-11-01 21:04:55.896 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 21:04:55.897 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 1.5149ms
+2024-11-01 21:05:11.244 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 21:05:11.247 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:05:11.250 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 21:05:11.250 +01:00 [INF] Fetching all posts
+2024-11-01 21:05:11.258 +01:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 21:05:11.259 +01:00 [INF] Fetched all posts
+2024-11-01 21:05:11.260 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 21:05:11.275 +01:00 [INF] Executed ViewResult - view Index executed in 16.1673ms.
+2024-11-01 21:05:11.275 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 24.9757ms
+2024-11-01 21:05:11.275 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:05:11.276 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 31.4964ms
+2024-11-01 21:05:11.374 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 21:05:11.374 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.2305ms
+2024-11-01 21:05:16.101 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - null null
+2024-11-01 21:05:16.111 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 21:05:16.120 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-01 21:05:16.127 +01:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-01 21:05:16.128 +01:00 [INF] Fetching posts for user b93599ec-ad78-48c5-90ea-00dcca10c35b
+2024-11-01 21:05:16.128 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 21:05:16.129 +01:00 [INF] Displaying profile for user b93599ec-ad78-48c5-90ea-00dcca10c35b.
+2024-11-01 21:05:16.130 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-01 21:05:16.132 +01:00 [INF] Executed ViewResult - view Profile executed in 3.0213ms.
+2024-11-01 21:05:16.132 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 11.8858ms
+2024-11-01 21:05:16.132 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 21:05:16.132 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - 200 null text/html; charset=utf-8 30.9447ms
+2024-11-01 21:05:16.157 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/default-profile.png - null null
+2024-11-01 21:05:16.158 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 21:05:16.159 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.6441ms
+2024-11-01 21:05:16.167 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/default-profile.png - 404 0 null 10.1881ms
+2024-11-01 21:05:16.167 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5164/images/default-profile.png, Response status code: 404
+2024-11-01 21:05:18.552 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 21:05:18.555 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:05:18.555 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 21:05:18.555 +01:00 [INF] Fetching all posts
+2024-11-01 21:05:18.557 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 21:05:18.558 +01:00 [INF] Fetched all posts
+2024-11-01 21:05:18.558 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 21:05:18.561 +01:00 [INF] Executed ViewResult - view Index executed in 3.4089ms.
+2024-11-01 21:05:18.561 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 6.0282ms
+2024-11-01 21:05:18.562 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:05:18.562 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 9.9255ms
+2024-11-01 21:05:18.580 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 21:05:18.580 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.2421ms
+2024-11-01 21:05:20.430 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - null null
+2024-11-01 21:05:20.433 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 21:05:20.434 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-01 21:05:20.436 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-01 21:05:20.437 +01:00 [INF] Fetching posts for user b93599ec-ad78-48c5-90ea-00dcca10c35b
+2024-11-01 21:05:20.437 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 21:05:20.438 +01:00 [INF] Displaying profile for user b93599ec-ad78-48c5-90ea-00dcca10c35b.
+2024-11-01 21:05:20.438 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-01 21:05:20.439 +01:00 [INF] Executed ViewResult - view Profile executed in 1.3291ms.
+2024-11-01 21:05:20.439 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 5.5132ms
+2024-11-01 21:05:20.439 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 21:05:20.440 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - 200 null text/html; charset=utf-8 9.2846ms
+2024-11-01 21:05:20.458 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/default-profile.png - null null
+2024-11-01 21:05:20.460 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 21:05:20.460 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/default-profile.png - 404 0 null 1.8674ms
+2024-11-01 21:05:20.460 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5164/images/default-profile.png, Response status code: 404
+2024-11-01 21:05:20.460 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.8422ms
+2024-11-01 21:05:23.789 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 21:05:23.791 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:05:23.791 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 21:05:23.791 +01:00 [INF] Fetching all posts
+2024-11-01 21:05:23.793 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 21:05:23.794 +01:00 [INF] Fetched all posts
+2024-11-01 21:05:23.795 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 21:05:23.797 +01:00 [INF] Executed ViewResult - view Index executed in 2.4167ms.
+2024-11-01 21:05:23.797 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 6.0617ms
+2024-11-01 21:05:23.797 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:05:23.798 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 9.0238ms
+2024-11-01 21:05:23.815 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 21:05:23.816 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.5004ms
+2024-11-01 21:05:28.811 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - null null
+2024-11-01 21:05:28.837 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 21:05:28.839 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-01 21:05:28.848 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-01 21:05:28.849 +01:00 [INF] Fetching posts for user b93599ec-ad78-48c5-90ea-00dcca10c35b
+2024-11-01 21:05:28.849 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 21:05:28.849 +01:00 [INF] Displaying profile for user b93599ec-ad78-48c5-90ea-00dcca10c35b.
+2024-11-01 21:05:28.850 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-01 21:05:28.851 +01:00 [INF] Executed ViewResult - view Profile executed in 1.0932ms.
+2024-11-01 21:05:28.851 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 11.9855ms
+2024-11-01 21:05:28.851 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 21:05:28.851 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - 200 null text/html; charset=utf-8 39.6775ms
+2024-11-01 21:05:28.876 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 21:05:28.876 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/default-profile.png - null null
+2024-11-01 21:05:28.877 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.8152ms
+2024-11-01 21:05:28.879 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/default-profile.png - 404 0 null 2.9796ms
+2024-11-01 21:05:28.879 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5164/images/default-profile.png, Response status code: 404
+2024-11-01 21:05:29.647 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Post/ViewPost/5 - null null
+2024-11-01 21:05:29.649 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Post/ViewPost/5 - 404 0 null 1.5078ms
+2024-11-01 21:05:29.649 +01:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5164/Post/ViewPost/5, Response status code: 404
+2024-11-01 21:05:33.203 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - null null
+2024-11-01 21:05:33.205 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 21:05:33.205 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-01 21:05:33.207 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-01 21:05:33.207 +01:00 [INF] Fetching posts for user b93599ec-ad78-48c5-90ea-00dcca10c35b
+2024-11-01 21:05:33.208 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 36)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 21:05:33.208 +01:00 [INF] Displaying profile for user b93599ec-ad78-48c5-90ea-00dcca10c35b.
+2024-11-01 21:05:33.208 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-01 21:05:33.210 +01:00 [INF] Executed ViewResult - view Profile executed in 1.7815ms.
+2024-11-01 21:05:33.210 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 5.2324ms
+2024-11-01 21:05:33.210 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-01 21:05:33.210 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile?userId=b93599ec-ad78-48c5-90ea-00dcca10c35b - 200 null text/html; charset=utf-8 7.1944ms
+2024-11-01 21:05:33.303 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 21:05:33.304 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1995ms
+2024-11-01 21:05:34.994 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-01 21:05:34.996 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:05:34.996 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-01 21:05:34.997 +01:00 [INF] Fetching all posts
+2024-11-01 21:05:34.998 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageUrl", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-01 21:05:34.999 +01:00 [INF] Fetched all posts
+2024-11-01 21:05:34.999 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-01 21:05:35.003 +01:00 [INF] Executed ViewResult - view Index executed in 3.5586ms.
+2024-11-01 21:05:35.003 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 6.7213ms
+2024-11-01 21:05:35.004 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-01 21:05:35.004 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 9.772ms
+2024-11-01 21:05:35.033 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-01 21:05:35.033 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.2681ms

@@ -69,7 +69,7 @@
                     <img src="~/images/icon.svg" alt="Avatar" class="rounded-circle" /> 
                 </div> 
                 <div class="post-info"> 
-                    <a href="@Url.Action("Profile", "User", new { userId = Model.UserId })">
+                    <a class="link-offset-2 link-underline link-underline-opacity-0 " href="@Url.Action("Profile", "User", new { userId = Model.UserId })">
                     <span class="username">@Model.Username</span> 
                     </a>
                     <p class="post-date">@Model.CreatedAt.ToString("g")</p> 
