@@ -7,3 +7,4 @@ namespace NoteApp.Models
         public string? ProfilePictureUrl { get; set; }
     }
 }
+
