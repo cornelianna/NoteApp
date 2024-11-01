@@ -60,23 +60,21 @@
         </ul>
     </div>
 
-    <!-- Right side: Post Details and Comments -->
-    <div class="right-content">
-        <div class="post-details-box">
-            <!-- Post header -->
-            <div class="post-header">
-                <div class="userImg">
-                    <img src="~/images/icon.svg" alt="Avatar" class="rounded-circle" />
-                </div>
-                <div class="post-info">
-                    <span class="username">
-                        <a href="@Url.Action("Profile", "User", new { userId = Model.UserId })">
-                            @Model.Username
-                        </a>
-                    </span>
-                    <p class="post-date">@Model.CreatedAt.ToString("g")</p>
-                </div>
-            </div>
+     <!-- Right side: Post Details and Comments --> 
+    <div class="right-content"> 
+        <div class="post-details-box"> 
+            <!-- Post header --> 
+            <div class="post-header"> 
+                <div class="userImg"> 
+                    <img src="~/images/icon.svg" alt="Avatar" class="rounded-circle" /> 
+                </div> 
+                <div class="post-info"> 
+                    <a class="link-offset-2 link-underline link-underline-opacity-0 " href="@Url.Action("Profile", "User", new { userId = Model.UserId })">
+                    <span class="username">@Model.Username</span> 
+                    </a>
+                    <p class="post-date">@Model.CreatedAt.ToString("g")</p> 
+                </div> 
+            </div> 
 
             @if (!string.IsNullOrEmpty(Model.ImageUrl))
             {

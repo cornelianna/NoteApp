@@ -5,16 +5,17 @@
     <div class="d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <div class="userImg d-flex align-items-center">
-    <img src="~/images/icon.svg" alt="Avatar" style="width: 25px; height: 25px;">
-    <strong class="ms-2 mb-1">
-        <a href="@Url.Action("Profile", "User", new { userId = Model.UserId })">
+                <img src="~/images/icon.svg" alt="Avatar" style="width: 25px; height: 25px;">
+               <strong class="ms-2 mb-1">
+        <a class="link-offset-2 link-underline link-underline-opacity-0 text-dark"  href="@Url.Action("Profile", "User", new { userId = Model.UserId })">
             @Model.Username
         </a>
     </strong>
-    <div class="comment-date">
-        <small>@Model.CreatedAt.ToString("g")</small>
-    </div>
-</div>
+                <div class="comment-date">
+                    <small>@Model.CreatedAt.ToString("g")</small>
+                </div>
+            </div>
+        </div>
 
         <!-- Dropdown for comment actions -->
         <div class="dropdown">
