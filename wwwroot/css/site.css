@@ -94,7 +94,7 @@ html, body {
 } 
 
 @media (min-width: 992px) { 
-    .main-content, .settings-container, con { 
+    .main-content, .settings-container { 
         
         padding: 20px; 
     } 
@@ -423,7 +423,41 @@ footer {
   @media (min-width: 768px) {
     .ml-responsive {
         width: 100%;
-      margin-left: 187px;
+        margin-left: 187px;
       
     }
+  
   }
+.sidebar.show {
+    position: fixed;
+    top: 0;
+    animation: linear infinite;
+    position: relative;
+    animation: mymove 2s ;
+    animation-fill-mode: forwards;
+}
+.show.side {
+   
+    display: contents;
+}
+@keyframes mymove {
+  from {
+    height: 0px;
+    position: relative;}
+  to {
+    position: fixed;
+    height: 100%;
+}
+}
+
+  @media (min-width: 993px) {
+    .sidebar ul {
+     position: relative;
+     top: 40px;
+    
+      
+    }
+     .sidebar.show {
+      display: none;
+     }
+    }
