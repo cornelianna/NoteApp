@@ -65,8 +65,8 @@
                                 <li>
                                     <form
                                         class="form-inline"
-                                        asp-area="Identity"
-                                        asp-page="/Account/Logout"
+                                        asp-controller="Account"
+                                        asp-action="Logout"
                                         method="post"
                                         id="logoutForm"
                                     >
@@ -80,10 +80,10 @@
                     {
                         <!-- Login and Register Links -->
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                            <a class="nav-link" asp-controller="Account" asp-action="Login">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                            <a class="nav-link" asp-controller="Account" asp-action="Register">Register</a>
                         </li>
                     }
                 </ul>
