@@ -7,10 +7,10 @@
 <div class="post"> 
     <!-- Left side: Image or Note --> 
     <div class="left-content"> 
-        @if (!string.IsNullOrEmpty(Model.ImageUrl)) 
+        @if (Model.ImageData != null && Model.ImageData.Length > 0) 
         { 
             <div class="imagecontent">
-                <img src="@Model.ImageUrl" alt="Post image" class="img-fluid" />
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.ImageData)" alt="Post image" class="img-fluid" />
             </div> 
         } 
         else 
@@ -60,7 +60,7 @@
         </ul>
     </div>
 
-     <!-- Right side: Post Details and Comments --> 
+    <!-- Right side: Post Details and Comments --> 
     <div class="right-content"> 
         <div class="post-details-box"> 
             <!-- Post header --> 
@@ -76,7 +76,7 @@
                 </div> 
             </div> 
 
-            @if (!string.IsNullOrEmpty(Model.ImageUrl)) 
+            @if (Model.ImageData != null && Model.ImageData.Length > 0) 
             { 
                 <div class="noteContentWithImage"> 
                     <p>@Html.Raw(Model.Content)</p> 
