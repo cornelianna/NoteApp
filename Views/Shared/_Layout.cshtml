@@ -99,7 +99,7 @@
                 @if (SignInManager.IsSignedIn(User))
                 {
                     <li class="nav-item">
-                        <a href="#home" class="nav-link text-black">
+                        <a href="@Url.Action("Profile", "User")" class="nav-link text-black">
                             <img src="~/images/icon.svg" alt="AvatarImg" />
                             @UserManager.GetUserName(User)
                         </a>
