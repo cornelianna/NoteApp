@@ -19,6 +19,35 @@ namespace NoteApp.Controllers
             _postRepository = postRepository;
             _logger = logger;
         }
+        
+        public IActionResult Settings()
+        {
+            _logger.LogInformation("Accessed Settings page.");
+            var model = new EditProfileViewModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateProfile(EditProfileViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                _logger.LogWarning("Invalid model state for UpdateProfile.");
+                return View("Settings", model);
+            }
+            try
+            {
+                // Update profile logic here
+                _logger.LogInformation("Profile updated successfully.");
+                return RedirectToAction("Settings");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error occurred while updating profile.");
+                ModelState.AddModelError(string.Empty, "An error occurred while updating your profile. Please try again later.");
+                return View("Settings", model);
+            }
+        }
 
         // View any user's profile
         public async Task<IActionResult> Profile(string userId)
@@ -52,15 +81,6 @@ namespace NoteApp.Controllers
             };
 
             _logger.LogInformation("Displaying profile for user {UserId}.", userId);
-            return View(model);
-        }
-
-        // Existing Settings action
-        [Authorize]
-        public IActionResult Settings()
-        {
-            var model = new EditProfileViewModel();
-            // Optionally, populate the model with current user data
             return View(model);
         }
     }

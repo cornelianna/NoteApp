@@ -134,33 +134,33 @@ namespace NoteApp.Migrations
                         {
                             Id = "user1-id",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "58bf7c80-24d4-42d5-a07a-45e17e3aaf98",
+                            ConcurrencyStamp = "df6eeada-75d6-480a-91da-3cbe22b8f991",
                             Email = "user1@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER1@EXAMPLE.COM",
-                            NormalizedUserName = "USER1",
-                            PasswordHash = "AQAAAAIAAYagAAAAEAzUJKbU+bMwz75METVLYCGuOqRnJlOK1PBLBlVQgLCjFC3NXQlN6ZaC8G8Aj/tvOQ==",
+                            NormalizedUserName = "USER1@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHHz+acrYJL+/a2Jd0eigqnh215ft06W+nv3OwIQmS6NhLo57ufafsfDWlR1OrFMsw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bf6f2227-14ed-42ad-bf79-cfda3a45085f",
+                            SecurityStamp = "b05f9c9b-402f-42da-91fb-3237277d804c",
                             TwoFactorEnabled = false,
-                            UserName = "user1"
+                            UserName = "user1@example.com"
                         },
                         new
                         {
                             Id = "user2-id",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "9eb21bdb-aa78-4374-8e95-07edc6124b8d",
+                            ConcurrencyStamp = "a0b29221-7f31-4ac2-ad06-c7257025726c",
                             Email = "user2@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER2@EXAMPLE.COM",
-                            NormalizedUserName = "USER2",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJpLy767WxcMbVEVIQsNqh41PaQEXjscC71CECLcQ+NBndy7CnrQrmtRzRxiwwfGGA==",
+                            NormalizedUserName = "USER2@EXAMPLE.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKhuVYRPfTTAbj/ND++aCrlKfOHklEw1rMuxG4vJUpZE1mxCARX+mZSsB8ze8yV08g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "211f940a-6ed0-47b5-bceb-46e3e599dd66",
+                            SecurityStamp = "b6c9d28c-ccad-449b-8560-da032ee0cc55",
                             TwoFactorEnabled = false,
-                            UserName = "user2"
+                            UserName = "user1@example.com"
                         });
                 });
 
@@ -285,11 +285,9 @@ namespace NoteApp.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("FriendId")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -314,8 +312,8 @@ namespace NoteApp.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("TEXT");
+                    b.Property<byte[]>("ImageData")
+                        .HasColumnType("BLOB");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -397,14 +395,12 @@ namespace NoteApp.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "FriendUser")
                         .WithMany()
                         .HasForeignKey("FriendId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("FriendUser");
 

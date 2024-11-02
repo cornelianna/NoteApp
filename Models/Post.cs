@@ -3,11 +3,11 @@ namespace NoteApp.Models
     public class Post
     {
         public int Id { get; set; }
-        public required string Content { get; set; }
-        public string? ImageUrl { get; set; }
+        public string Content { get; set; } = string.Empty;
+        public byte[]? ImageData { get; set; } // Image stored as byte array
         public DateTime CreatedAt { get; set; }
-        public required string UserId { get; set; }
-        public required string Username { get; set; }
+        public string UserId { get; set; } = string.Empty;
+        public string Username { get; set; } = string.Empty;
         public List<Comment> Comments { get; set; } = new();
     }
 }

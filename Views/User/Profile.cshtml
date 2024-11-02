@@ -24,17 +24,18 @@
             @foreach (var post in Model.Posts.OrderByDescending(p => p.CreatedAt))
             {
                 <div class="col">
-                    <div class="card h-100">
-                        @if (!string.IsNullOrEmpty(post.ImageUrl))
-                        {
-                            <img src="@post.ImageUrl" class="card-img-top" alt="Post image">
-                        }
-                        <div class="card-body">
-                            <p class="card-text text-truncate">@post.Content</p>
-                            <a href="@Url.Action("ViewPost", "Post", new { id = post.Id })" class="stretched-link"></a>
-                        </div>
-                    </div>
-                </div>
+    <div class="card h-100">
+        @if (post.ImageData != null && post.ImageData.Length > 0)
+        {
+            <img src="data:image/jpeg;base64,@Convert.ToBase64String(post.ImageData)" class="card-img-top" alt="Post image">
+        }
+        <div class="card-body">
+            <p class="card-text text-truncate">@post.Content</p>
+            <a href="@Url.Action("ViewPost", "Post", new { id = post.Id })" class="stretched-link"></a>
+        </div>
+    </div>
+</div>
+
             }
         </div>
     }
