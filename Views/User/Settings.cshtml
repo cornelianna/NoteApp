@@ -1,41 +1,38 @@
+<!-- Views/User/Settings.cshtml -->
 @model NoteApp.Models.EditProfileViewModel
 
 <div class="settings-container">
     <h2>Edit Profile</h2>
-    <form asp-action="Settings" method="post" enctype="multipart/form-data">
+    <form asp-action="Settings" method="post">
         <div class="form-group">
             <label asp-for="Username"></label>
             <input asp-for="Username" class="form-control" />
             <span asp-validation-for="Username" class="text-danger"></span>
         </div>
-
         <div class="form-group">
             <label asp-for="Email"></label>
             <input asp-for="Email" class="form-control" />
             <span asp-validation-for="Email" class="text-danger"></span>
         </div>
-
         <div class="form-group">
             <label asp-for="CurrentPassword"></label>
-            <input asp-for="CurrentPassword" type="password" class="form-control" />
+            <input asp-for="CurrentPassword" class="form-control" />
             <span asp-validation-for="CurrentPassword" class="text-danger"></span>
         </div>
-
         <div class="form-group">
             <label asp-for="NewPassword"></label>
-            <input asp-for="NewPassword" type="password" class="form-control" />
+            <input asp-for="NewPassword" class="form-control" />
             <span asp-validation-for="NewPassword" class="text-danger"></span>
         </div>
-
         <div class="form-group">
-            <label for="profilePicture">Profile Picture</label>
-            <input type="file" id="profilePicture" name="profilePicture" class="form-control" />
+            <label asp-for="ConfirmNewPassword"></label>
+            <input asp-for="ConfirmNewPassword" class="form-control" />
+            <span asp-validation-for="ConfirmNewPassword" class="text-danger"></span>
         </div>
-
         <button type="submit" class="btn btn-primary">Save Changes</button>
     </form>
 </div>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
