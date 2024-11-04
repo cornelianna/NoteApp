@@ -1,16 +1,24 @@
+/* ------------------------------------------------- */
+/* 1. Import Fonts */
+/* ------------------------------------------------- */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-/* Apply Poppins font to sidebar, username, post header, and posts header */
+
+/* ------------------------------------------------- */
+/* 2. Global Styles */
+/* ------------------------------------------------- */
+
 .body, .navbar, .sidebar, .content-wrapper, .create-post-container, .posts-header, .post, .noteContent, footer {
     font-family: 'Poppins', sans-serif;
 }
-.home{
-    margin-top: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* General Styles */
+html, body {
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-color: #dae8f2;
+    margin: 0; /* Ensure no default margin affects the layout */
 }
-
-/* additional weight adjustments */
+/* weight adjustments */
 .username {
     font-weight: 600; 
 }
@@ -19,13 +27,9 @@
     font-weight: 500; 
 }
 
-/* General Styles */
-html, body {
-    height: 100%;
-    font-family: 'Roboto', sans-serif;
-    background-color: #dae8f2;
-    margin: 0; /* Ensure no default margin affects the layout */
-}
+/* ------------------------------------------------- */
+/* 3. Navbar Styles */
+/* ------------------------------------------------- */
 
 .navbar {
     position: fixed;
@@ -41,6 +45,9 @@ html, body {
     display: none;
     margin-left: 15px;
 }
+/* ------------------------------------------------- */
+/* 4. Sidebar Styles */
+/* ------------------------------------------------- */
 
 .sidebar {
     position: fixed;
@@ -54,107 +61,96 @@ html, body {
     overflow-y: auto;
     padding-top: 1rem;
     transition: left 0.3s ease;
+    flex-shrink: 0;
 }
 
-.content-wrapper {
+.sidebar .nav-link {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+    background-color: #bcd7d2;
+}
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+}
+/* ------------------------------------------------- */
+/* 5. d.flex Styles */
+/* ------------------------------------------------- */
+.d-flex {
+    display: flex;
+}
+/* ------------------------------------------------- */
+/* 6. Main Content Styling */
+/* ------------------------------------------------- */
+
+.main-content {
     margin-top: 56px;
     margin-left: 200px;
     padding: 20px;
-    min-height: calc(100vh - 56px);
+    flex-grow: 1;
     box-sizing: border-box;
+    transition: margin-left 0.3s ease-in-out;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 991px) {
-    .content-wrapper {
-        margin-left: 0;
+.content-inner {
+    max-width: 100%;
+    padding: 0 20px;
+}
+
+@media (min-width: 1200px) {
+    .content-inner {
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
     }
+}
+
+/* ------------------------------------------------- */
+/* 7. Responsive Adjustments */
+/* ------------------------------------------------- */
+
+.nav-mobile {
+    display: none;
+    margin-left: 15px;
 }
 
 @media (max-width: 991.98px) {
     .nav-mobile {
         display: block;
     }
-    .sidebar {
-        width: 100%;
-    }
-    .sidebar.show {
-        left: 0; /* Show sidebar */
-    }
-}
-.ml-responsive {
-    margin-left: 0;
-    }
 
-  /* Set margin-left to 187px on medium screens and larger */
-    @media (min-width: 768px) {
-    .ml-responsive {
-        width: 100%;
-        margin-left: 187px;   
-    }
-    }
-.sidebar.show {
-    position: fixed;
-    margin-top: 0;
-    animation: linear infinite;
-    position: relative;
-    animation: mymove 2s ;
-    animation-fill-mode: forwards;
-}
-.show.side { 
-    display: contents;
-}
-@keyframes mymove {
-    from {
-    position: fixed;
-    height: 0px;
-    padding: 0px;
-    margin: 0px;
-    display: none;
-    }
-    to {
-    height: 100%;
-    position: fixed; 
-    display: block;
-    }
-}
-
-@media (max-width: 991px) {
-    .ml-responsive {
-        max-width: 1100px;
-        width: 100%;
+    .main-content {
         margin-left: 0;
+        padding: 15px;
+    }
+
+    .create-post-container {
+        flex-direction: column;
+        max-width: 100%;
     }
 }
-@media screen and (max-width: 993px) and (min-width: 768px) {
-}
-@media (-width: 768px) {
-}
-/* Main Content Styling */
-.main-content, .settings-container { 
-    margin-top: 20px; 
-    max-width: 1100px; 
-    width: 100%; 
-    margin-left: auto; 
-    margin-right: auto; 
-    padding: 20px; 
-    box-sizing: border-box;/
-} 
 
-@media (min-width: 992px) { 
-    .main-content, .settings-container { 
-        padding: 20px; 
-    } 
-} 
+@media (max-width: 767.98px) {
+    .main-content {
+        padding: 10px;
+    }
 
-@media (max-width: 991px) { /* For tablet and mobile screens */ 
-    .main-content, .settings-container { 
-        margin-left: 0; 
-        margin-right: 0; 
-        padding: 15px;
-    } 
+    body {
+        font-size: 15px;
+    }
 }
-/* Create Post Section */
+/* ------------------------------------------------- */
+/* 8. Create Post Section */
+/* ------------------------------------------------- */
+
 .create-post-container { 
     display: flex; 
     flex-direction: row; 
@@ -163,8 +159,7 @@ html, body {
     background-color: #f7f9fc; 
     border-radius: 10px; 
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
-    margin: 0 auto 20px auto; /* Center horizontally with margin-bottom */
-    max-width: 1100px; /* Constrain max width */
+    margin: 0 auto 20px auto;
     width: 100%; 
     box-sizing: border-box; 
 } 
@@ -183,10 +178,10 @@ html, body {
 .create-post-container .custom-file-upload { 
     border: 1px solid #ccc; 
     background-color: #d1e6dd; 
-    padding: 5px 10px; /* Add padding for better click area */
-    border-radius: 5px; /* Smooth corners */
-    cursor: pointer; /* Indicate clickable area */
-    text-align: center; /* Center text and icons */
+    padding: 5px 10px; 
+    border-radius: 5px;
+    cursor: pointer; 
+    text-align: center; 
 } 
 
 .create-post-container .custom-file-upload:hover { 
@@ -252,17 +247,10 @@ html, body {
     } 
 }
 
-/* Posts Section */
-.posts-header {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333333;
-    text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #bcd7d2;
-    padding-bottom: 10px;
-}
-/* Posts Section */
+/* ------------------------------------------------- */
+/* 9. Posts Section */
+/* ------------------------------------------------- */
+
 .posts-header {
     font-size: 24px;
     font-weight: bold;
@@ -346,7 +334,6 @@ html, body {
         display: contents;
     }
 }
-
 /* Post Header */
 .post-details-box {
     background-color: #dfe6ed;
@@ -417,17 +404,18 @@ html, body {
     margin-bottom: 10px;
     border-radius: 5px;
 }
-    .comment .userImg img {
-        width: 35px;
-        height: 35px;
+    .comment .userImg img {   
         margin-right: 10px;
         border-radius: 50%;
+        margin-bottom: 3px;
     }
-
+    .userImg img {
+        margin-bottom: 3px;
+    }
 .comment-date {
     color: #888;
     font-size: 12px;
-    margin-left: 300px;
+    margin-left: 280px;
 }
 
 /* Input and Button Styling */
@@ -450,8 +438,17 @@ input.btn-primary {
 input.btn-primary:hover {
     background-color: #86b0a9;
 }
+/* Responsive Adjustments for comments */
+@media (max-width: 767.98px) { 
+    .comment-date {
+        margin-left: 10px;
 
-/* Footer */
+    }
+}
+/* ------------------------------------------------- */
+/* 10. Footer Styles */
+/* ------------------------------------------------- */
+
 footer {
     background-color: #e0e7f1;
     padding: 10px;
