@@ -10,20 +10,18 @@ namespace NoteApp.Controllers
     public class UserController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IPostRepository _postRepository;
         private readonly ILogger<UserController> _logger;
 
-        public UserController(UserManager<IdentityUser> userManager, IPostRepository postRepository, ILogger<UserController> logger)
+        public UserController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IPostRepository postRepository, ILogger<UserController> logger)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
             _postRepository = postRepository;
             _logger = logger;
         }
-
-
-
-   
-        [Authorize]
+        
         public IActionResult Settings()
         {
             _logger.LogInformation("Accessed Settings page.");
@@ -32,29 +30,68 @@ namespace NoteApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult UpdateProfile(EditProfileViewModel model)
+        public async Task<IActionResult> Settings(EditProfileViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                _logger.LogWarning("Invalid model state for UpdateProfile.");
-                return View("Settings", model);
+                return View(model);
             }
-            try
+
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
             {
-                // Update profile logic here
-                _logger.LogInformation("Profile updated successfully.");
-                return RedirectToAction("Settings");
+                _logger.LogWarning("User not found.");
+                return RedirectToAction("Login", "Account");
             }
-            catch (Exception ex)
+
+            // Update username
+            if (user.UserName != model.Username)
             {
-                _logger.LogError(ex, "Error occurred while updating profile.");
-                ModelState.AddModelError(string.Empty, "An error occurred while updating your profile. Please try again later.");
-                return View("Settings", model);
+                var setUsernameResult = await _userManager.SetUserNameAsync(user, model.Username);
+                if (!setUsernameResult.Succeeded)
+                {
+                    foreach (var error in setUsernameResult.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    return View(model);
+                }
             }
+
+            // Update email
+            if (user.Email != model.Email)
+            {
+                var setEmailResult = await _userManager.SetEmailAsync(user, model.Email);
+                if (!setEmailResult.Succeeded)
+                {
+                    foreach (var error in setEmailResult.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    return View(model);
+                }
+            }
+
+            // Change password
+            if (!string.IsNullOrEmpty(model.NewPassword))
+            {
+                var changePasswordResult = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+                if (!changePasswordResult.Succeeded)
+                {
+                    foreach (var error in changePasswordResult.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    return View(model);
+                }
+            }
+
+            await _signInManager.RefreshSignInAsync(user);
+            return RedirectToAction("Index", "Post");
         }
 
-          // View any user's profile
-        public async Task<IActionResult> Profile(string userId)
+        // View any user's profile
+        public async Task<IActionResult> Profile(string? userId)
         {
             if (string.IsNullOrEmpty(userId))
             {
@@ -87,7 +124,5 @@ namespace NoteApp.Controllers
             _logger.LogInformation("Displaying profile for user {UserId}.", userId);
             return View(model);
         }
-
-       
     }
 }
