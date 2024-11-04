@@ -3,6 +3,12 @@
 .body, .navbar, .sidebar, .content-wrapper, .create-post-container, .posts-header, .post, .noteContent, .comment, footer {
     font-family: 'Poppins', sans-serif;
 }
+.home{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* additional weight adjustments */
 .username {
@@ -31,6 +37,10 @@ html, body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: 56px;
 }
+.nav-mobile{
+    display: none;
+    margin-left: 15px;
+}
 
 .sidebar {
     position: fixed;
@@ -56,21 +66,19 @@ html, body {
 
 /* Responsive Adjustments */
 @media (max-width: 991px) {
-    .sidebar {
-        position: static;
-        margin-top: 56px;
-        width: 100%;
-        height: auto;
-    }
+ 
 
     .content-wrapper {
         margin-left: 0;
     }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 991.98px) {
+    .nav-mobile {
+        display: block;
+    }
     .sidebar {
-        left: -240px; /* Hide sidebar off-screen */
+        width: 100%;
     }
 
         .sidebar.show {
@@ -90,8 +98,7 @@ html, body {
 
 @media (min-width: 992px) { 
     .main-content, .settings-container { 
-        margin-left: 210px; 
-        margin-right: 10px; 
+        
         padding: 20px; 
     } 
 } 
@@ -190,6 +197,7 @@ html, body {
 /* Responsive Adjustments for Create Post Section */
 @media (max-width: 767.98px) { 
     .create-post-container { 
+        margin-top: 20px;
         flex-direction: column; /* Stack columns vertically */
         max-width: 100%; /* Allow full width on small screens */
     } 
@@ -243,7 +251,7 @@ html, body {
 /* Square Aspect Ratio for Image and Note Content */
 .imagecontent, .notecontentwithoutimage { 
     position: relative; 
-    width: 100%; 
+    width: 97%; 
     aspect-ratio: 1 / 1;
     background-color: #dfe6ed; 
     border-radius: 10px; 
@@ -289,12 +297,16 @@ html, body {
     .imagecontent, .notecontentwithoutimage { 
         aspect-ratio: 1 / 1; 
     } 
+    .ml-responsive { 
+        margin-left: 0; 
+        display: contents;
+    }
 }
 
 /* Post Header */
 .post-details-box {
   background-color: #dfe6ed;
-  padding: 15px;
+  padding: 10px;
   border-radius: 10px;
   margin-bottom: 20px;
 }
@@ -407,3 +419,61 @@ footer {
     border-top: 1px solid #b4c8dc;
     margin-top: auto;
 }
+.ml-responsive {
+    margin-left: 0;
+  }
+
+  /* Set margin-left to 187px on medium screens and larger */
+  @media (min-width: 768px) {
+    .ml-responsive {
+        width: 100%;
+        margin-left: 187px;
+      
+    }
+  
+  }
+.sidebar.show {
+    position: fixed;
+    margin-top: 0;
+    animation: linear infinite;
+    position: relative;
+    animation: mymove 2s ;
+    animation-fill-mode: forwards;
+}
+.show.side {
+   
+    display: contents;
+}
+@keyframes mymove {
+  from {
+    position: fixed;
+    height: 0px;
+    padding: 0px;
+    margin: 0px;
+    display: none;
+    }
+  to {
+    height: 100%;
+    position: fixed;
+    
+    display: block;
+}
+}
+
+  @media (max-width: 991px) {
+   
+    .ml-responsive {
+        max-width: 1100px;
+        width: 100%;
+        margin-left: 0;
+    
+    }
+    
+    }
+    @media screen and (max-width: 993px) and (min-width: 768px) {
+   
+}
+  @media (-width: 768px) {
+   
+   
+    }
