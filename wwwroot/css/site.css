@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 /* Apply Poppins font to sidebar, username, post header, and posts header */
-.body, .navbar, .sidebar, .content-wrapper, .create-post-container, .posts-header, .post, .noteContent, .comment, footer {
+.body, .navbar, .sidebar, .content-wrapper, .create-post-container, .posts-header, .post, .noteContent, footer {
     font-family: 'Poppins', sans-serif;
 }
 .home{
@@ -66,8 +66,6 @@ html, body {
 
 /* Responsive Adjustments */
 @media (max-width: 991px) {
- 
-
     .content-wrapper {
         margin-left: 0;
     }
@@ -80,10 +78,57 @@ html, body {
     .sidebar {
         width: 100%;
     }
+    .sidebar.show {
+        left: 0; /* Show sidebar */
+    }
+}
+.ml-responsive {
+    margin-left: 0;
+    }
 
-        .sidebar.show {
-            left: 0; /* Show sidebar */
-        }
+  /* Set margin-left to 187px on medium screens and larger */
+    @media (min-width: 768px) {
+    .ml-responsive {
+        width: 100%;
+        margin-left: 187px;   
+    }
+    }
+.sidebar.show {
+    position: fixed;
+    margin-top: 0;
+    animation: linear infinite;
+    position: relative;
+    animation: mymove 2s ;
+    animation-fill-mode: forwards;
+}
+.show.side { 
+    display: contents;
+}
+@keyframes mymove {
+    from {
+    position: fixed;
+    height: 0px;
+    padding: 0px;
+    margin: 0px;
+    display: none;
+    }
+    to {
+    height: 100%;
+    position: fixed; 
+    display: block;
+    }
+}
+
+@media (max-width: 991px) {
+    .ml-responsive {
+        max-width: 1100px;
+        width: 100%;
+        margin-left: 0;
+    }
+}
+@media screen and (max-width: 993px) and (min-width: 768px) {
+}
+@media (-width: 768px) {
 }
 /* Main Content Styling */
 .main-content, .settings-container { 
@@ -98,16 +143,15 @@ html, body {
 
 @media (min-width: 992px) { 
     .main-content, .settings-container { 
-        
         padding: 20px; 
     } 
 } 
 
 @media (max-width: 991px) { /* For tablet and mobile screens */ 
     .main-content, .settings-container { 
-        margin-left: 0; /* Remove left margin on smaller screens */ 
+        margin-left: 0; 
         margin-right: 0; 
-        padding: 15px; /* Adjust padding */
+        padding: 15px;
     } 
 }
 /* Create Post Section */
@@ -204,7 +248,7 @@ html, body {
     .create-post-container .left-column, 
     .create-post-container .right-column { 
         width: 100%; /* Ensure full width */
-        margin: 0; /* Remove any side margins */
+        margin: 0; 
     } 
 }
 
@@ -251,7 +295,7 @@ html, body {
 /* Square Aspect Ratio for Image and Note Content */
 .imagecontent, .notecontentwithoutimage { 
     position: relative; 
-    width: 97%; 
+    width: 100%; 
     aspect-ratio: 1 / 1;
     background-color: #dfe6ed; 
     border-radius: 10px; 
@@ -305,10 +349,10 @@ html, body {
 
 /* Post Header */
 .post-details-box {
-  background-color: #dfe6ed;
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 20px;
+    background-color: #dfe6ed;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 .post-header {
     display: flex;
@@ -348,7 +392,6 @@ html, body {
     scrollbar-width: thin; /* Firefox */
     scrollbar-color: #bcd7d2 #f7f9fc; /* Custom color for Firefox */
 }
-
     /* WebKit (Chrome, Safari) */
     .comments-scrollable::-webkit-scrollbar {
         width: 8px;
@@ -368,14 +411,12 @@ html, body {
         background-color: #f7f9fc;
         border-radius: 4px;
     }
-
 .comment {
     background-color: #eef4f8;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
 }
-
     .comment .userImg img {
         width: 35px;
         height: 35px;
@@ -386,6 +427,7 @@ html, body {
 .comment-date {
     color: #888;
     font-size: 12px;
+    margin-left: 300px;
 }
 
 /* Input and Button Styling */
@@ -405,10 +447,9 @@ input.btn-primary {
     padding: 10px 15px;
     border: none;
 }
-
-    input.btn-primary:hover {
-        background-color: #86b0a9;
-    }
+input.btn-primary:hover {
+    background-color: #86b0a9;
+}
 
 /* Footer */
 footer {
@@ -419,61 +460,3 @@ footer {
     border-top: 1px solid #b4c8dc;
     margin-top: auto;
 }
-.ml-responsive {
-    margin-left: 0;
-  }
-
-  /* Set margin-left to 187px on medium screens and larger */
-  @media (min-width: 768px) {
-    .ml-responsive {
-        width: 100%;
-        margin-left: 187px;
-      
-    }
-  
-  }
-.sidebar.show {
-    position: fixed;
-    margin-top: 0;
-    animation: linear infinite;
-    position: relative;
-    animation: mymove 2s ;
-    animation-fill-mode: forwards;
-}
-.show.side {
-   
-    display: contents;
-}
-@keyframes mymove {
-  from {
-    position: fixed;
-    height: 0px;
-    padding: 0px;
-    margin: 0px;
-    display: none;
-    }
-  to {
-    height: 100%;
-    position: fixed;
-    
-    display: block;
-}
-}
-
-  @media (max-width: 991px) {
-   
-    .ml-responsive {
-        max-width: 1100px;
-        width: 100%;
-        margin-left: 0;
-    
-    }
-    
-    }
-    @media screen and (max-width: 993px) and (min-width: 768px) {
-   
-}
-  @media (-width: 768px) {
-   
-   
-    }
