@@ -29,27 +29,27 @@ namespace NoteApp.Controllers
     }
 
     [Authorize]
-    [HttpPost]
-    public async Task<IActionResult> CreatePost(Post post, IFormFile image)
+[HttpPost]
+public async Task<IActionResult> CreatePost(Post post, IFormFile image)
+{
+    if (image != null && image.Length > 0)
     {
-        if (image != null && image.Length > 0)
+        using (var ms = new MemoryStream())
         {
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", image.FileName);
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await image.CopyToAsync(stream);
-            }
-            post.ImageUrl = "/uploads/" + image.FileName;
+            await image.CopyToAsync(ms);
+            post.ImageData = ms.ToArray(); // Save image as byte array in the database
         }
-
-        post.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        post.Username = User.Identity?.Name;
-        post.CreatedAt = DateTime.Now;
-
-        await _postRepository.AddPostAsync(post);
-        _logger.LogInformation("Post created successfully.");
-        return RedirectToAction("Index");
     }
+
+    post.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    post.Username = User.Identity?.Name;
+    post.CreatedAt = DateTime.Now;
+
+    await _postRepository.AddPostAsync(post);
+    _logger.LogInformation("Post created successfully.");
+    return RedirectToAction("Index");
+}
+
 
     [Authorize]
     [HttpPost]
@@ -80,26 +80,24 @@ namespace NoteApp.Controllers
     }
 
     [Authorize]
-    [HttpPost]
-    public async Task<IActionResult> UpdatePost(int id, Post updatedPost, IFormFile? newImage)
+[HttpPost]
+public async Task<IActionResult> UpdatePost(int id, Post updatedPost, IFormFile? newImage)
+{
+    var post = await _postRepository.GetPostByIdAsync(id);
+    
+    if (newImage != null && newImage.Length > 0)
     {
-        var post = await _postRepository.GetPostByIdAsync(id);
-            
-            if (newImage != null && newImage.Length > 0)
-            {
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", newImage.FileName);
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await newImage.CopyToAsync(stream);
-                }
-                updatedPost.ImageUrl = "/uploads/" + newImage.FileName;
-            }
-        post.ImageUrl = updatedPost.ImageUrl;
-        post.Content = updatedPost.Content;
-        await _postRepository.UpdatePostAsync(post);
-        _logger.LogInformation("Post updated successfully.");
-        return RedirectToAction("Index");
+        using (var ms = new MemoryStream())
+        {
+            await newImage.CopyToAsync(ms);
+            post.ImageData = ms.ToArray(); // Save updated image as byte array
+        }
     }
+    post.Content = updatedPost.Content;
+    await _postRepository.UpdatePostAsync(post);
+    _logger.LogInformation("Post updated successfully.");
+    return RedirectToAction("Index");
+}
     
     [Authorize]
     [HttpPost]
@@ -155,5 +153,17 @@ namespace NoteApp.Controllers
         return RedirectToAction("Index");
         
     }
+
+    public async Task<IActionResult> ViewPost(int id)
+    {
+        var post = await _postRepository.GetPostByIdAsync(id);
+        if (post == null)
+        {
+            return NotFound();
+        }
+
+        return View(post);
+    }
+
 }
 }

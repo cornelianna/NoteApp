@@ -4,7 +4,6 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<div class="main-content">
     @if (SignInManager.IsSignedIn(User))
     {
         @Html.Partial("_CreatePostPartial")
@@ -21,4 +20,3 @@
     {
         @Html.Partial("_PostPartial", post)
     }
-</div>
