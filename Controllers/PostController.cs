@@ -4,166 +4,180 @@ using NoteApp.Models;
 using System.Security.Claims;
 using NoteApp.Repositories;
 using Serilog;
+using System.Diagnostics;
+using Microsoft.AspNetCore.Diagnostics;
 
 namespace NoteApp.Controllers
 {
     public class PostController : Controller
-{
-    private readonly IPostRepository _postRepository;
-    private readonly ICommentRepository _commentRepository;
-    private readonly ILogger<PostController> _logger;
-
-    public PostController(IPostRepository postRepository, ICommentRepository commentRepository, ILogger<PostController> logger)
     {
-        _postRepository = postRepository;
-        _commentRepository = commentRepository;
-        _logger = logger;
+        private readonly IPostRepository _postRepository;
+        private readonly ICommentRepository _commentRepository;
+        private readonly ILogger<PostController> _logger;
+
+        public PostController(IPostRepository postRepository, ICommentRepository commentRepository, ILogger<PostController> logger)
+        {
+            _postRepository = postRepository;
+            _commentRepository = commentRepository;
+            _logger = logger;
         }
     
 
-    public async Task<IActionResult> Index()
-    {
-        var posts = await _postRepository.GetAllPostsAsync();
-        _logger.LogInformation("Fetched all posts");
-        return View(posts);
-    }
-
-    [Authorize]
-[HttpPost]
-public async Task<IActionResult> CreatePost(Post post, IFormFile image)
-{
-    if (image != null && image.Length > 0)
-    {
-        using (var ms = new MemoryStream())
+        public async Task<IActionResult> Index()
         {
-            await image.CopyToAsync(ms);
-            post.ImageData = ms.ToArray(); // Save image as byte array in the database
+            var posts = await _postRepository.GetAllPostsAsync();
+            _logger.LogInformation("Fetched all posts");
+            return View(posts);
         }
-    }
 
-    post.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-    post.Username = User.Identity?.Name;
-    post.CreatedAt = DateTime.Now;
-
-    await _postRepository.AddPostAsync(post);
-    _logger.LogInformation("Post created successfully.");
-    return RedirectToAction("Index");
-}
-
-
-    [Authorize]
-    [HttpPost]
-    public async Task<IActionResult> DeletePost(int id)
-    {
-        await _postRepository.DeletePostAsync(id);
-        _logger.LogInformation("Post deleted successfully.");
-        return RedirectToAction("Index");
-    }
-
-    [Authorize]
-    [HttpGet]
-    public async Task<IActionResult> UpdatePost(int id)
-    {
-        var post = await _postRepository.GetPostByIdAsync(id);
-
-        if (post == null)
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CreatePost(Post post, IFormFile image)
         {
-            return NotFound();
+        if (image != null && image.Length > 0)
+        {
+            using (var ms = new MemoryStream())
+            {
+                await image.CopyToAsync(ms);
+                post.ImageData = ms.ToArray(); // Save image as byte array in the database
+            }
+        }
+
+        post.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        post.Username = User.Identity?.Name;
+        post.CreatedAt = DateTime.Now;
+
+        await _postRepository.AddPostAsync(post);
+        _logger.LogInformation("Post created successfully.");
+        return RedirectToAction("Index");
+        }   
+
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> DeletePost(int id)
+        {
+            await _postRepository.DeletePostAsync(id);
+            _logger.LogInformation("Post deleted successfully.");
+            return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> UpdatePost(int id)
+        {
+            var post = await _postRepository.GetPostByIdAsync(id);
+
+            if (post == null)
+            {
+                return NotFound();
+            }
+            
+            if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                _logger.LogWarning("User not authorized to update this post.");
+                return Forbid();  
+            }
+            return View(post);  
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> UpdatePost(int id, Post updatedPost, IFormFile? newImage)
+        {
+            var post = await _postRepository.GetPostByIdAsync(id);
+            
+            if (newImage != null && newImage.Length > 0)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    await newImage.CopyToAsync(ms);
+                    post.ImageData = ms.ToArray(); // Save updated image as byte array
+                }
+            }
+            post.Content = updatedPost.Content;
+            await _postRepository.UpdatePostAsync(post);
+            _logger.LogInformation("Post updated successfully.");
+            return RedirectToAction("Index");
         }
         
-        if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> AddComment(Comment comment)
         {
-            _logger.LogWarning("User not authorized to update this post.");
-            return Forbid();  
-        }
-        return View(post);  
-    }
+            comment.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            comment.Username = User.Identity?.Name;
+            comment.CreatedAt = DateTime.Now;
 
-    [Authorize]
-[HttpPost]
-public async Task<IActionResult> UpdatePost(int id, Post updatedPost, IFormFile? newImage)
-{
-    var post = await _postRepository.GetPostByIdAsync(id);
-    
-    if (newImage != null && newImage.Length > 0)
-    {
-        using (var ms = new MemoryStream())
-        {
-            await newImage.CopyToAsync(ms);
-            post.ImageData = ms.ToArray(); // Save updated image as byte array
-        }
-    }
-    post.Content = updatedPost.Content;
-    await _postRepository.UpdatePostAsync(post);
-    _logger.LogInformation("Post updated successfully.");
-    return RedirectToAction("Index");
-}
-    
-    [Authorize]
-    [HttpPost]
-    public async Task<IActionResult> AddComment(Comment comment)
-    {
-        comment.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        comment.Username = User.Identity?.Name;
-        comment.CreatedAt = DateTime.Now;
-
-        await _commentRepository.AddCommentAsync(comment);
-        _logger.LogInformation("Comment added successfully.");
-        return RedirectToAction("Index");
-    }
-
-    [Authorize]
-    [HttpPost]
-    public async Task<IActionResult> DeleteComment(int id)
-    {
-        await _commentRepository.DeleteCommentAsync(id);
-        _logger.LogInformation("Comment deleted successfully.");
-        return RedirectToAction("Index");
-    }
-
-    [Authorize]
-    [HttpGet]
-    public async Task<IActionResult> UpdateComment(int id)
-    {
-        var comment = await _commentRepository.GetCommentByIdAsync(id);
-
-        if (comment == null)
-        {
-            return NotFound();
+            await _commentRepository.AddCommentAsync(comment);
+            _logger.LogInformation("Comment added successfully.");
+            return RedirectToAction("Index");
         }
 
-        if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> DeleteComment(int id)
         {
-            _logger.LogWarning("User not authorized to update this comment.");
-            return Forbid();
+            await _commentRepository.DeleteCommentAsync(id);
+            _logger.LogInformation("Comment deleted successfully.");
+            return RedirectToAction("Index");
         }
 
-        return View(comment); 
-    }
-
-    [Authorize]
-    [HttpPost]
-    public async Task<IActionResult> UpdateComment(int id, Comment updatedComment)
-    {   
-        var comment = await _commentRepository.GetCommentByIdAsync(id);
-        
-        comment.Content = updatedComment.Content;
-        _logger.LogInformation("Comment updated successfully.");
-        await _commentRepository.UpdateCommentAsync(comment);
-        return RedirectToAction("Index");
-        
-    }
-
-    public async Task<IActionResult> ViewPost(int id)
-    {
-        var post = await _postRepository.GetPostByIdAsync(id);
-        if (post == null)
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> UpdateComment(int id)
         {
-            return NotFound();
+            var comment = await _commentRepository.GetCommentByIdAsync(id);
+
+            if (comment == null)
+            {
+                return NotFound();
+            }
+
+            if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            {
+                _logger.LogWarning("User not authorized to update this comment.");
+                return Forbid();
+            }
+
+            return View(comment); 
         }
 
-        return View(post);
-    }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> UpdateComment(int id, Comment updatedComment)
+        {   
+            var comment = await _commentRepository.GetCommentByIdAsync(id);
+            
+            comment.Content = updatedComment.Content;
+            _logger.LogInformation("Comment updated successfully.");
+            await _commentRepository.UpdateCommentAsync(comment);
+            return RedirectToAction("Index");
+            
+        }
 
-}
+        public async Task<IActionResult> ViewPost(int id)
+        {
+            var post = await _postRepository.GetPostByIdAsync(id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            return View(post);
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            var exceptionHandlerPathFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+            if (exceptionHandlerPathFeature?.Error != null)
+            {
+                _logger.LogError(exceptionHandlerPathFeature.Error, "Unhandled exception occurred.");
+            }
+
+            var errorViewModel = new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier };
+            return View(errorViewModel);
+        }
+    }
 }

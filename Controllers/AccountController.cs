@@ -9,10 +9,12 @@ namespace NoteApp.Controllers
     public class AccountController : Controller
     {
         private readonly IAccountRepository _accountRepository;
+        private readonly ILogger<AccountController> _logger;
 
-        public AccountController(IAccountRepository accountRepository)
+        public AccountController(IAccountRepository accountRepository, ILogger<AccountController> logger)
         {
             _accountRepository = accountRepository;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -24,19 +26,27 @@ namespace NoteApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var result = await _accountRepository.RegisterAsync(model);
-                if (result.Succeeded)
+                if (ModelState.IsValid)
                 {
-                    return RedirectToAction("Index", "Post");
+                    var result = await _accountRepository.RegisterAsync(model);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index", "Post");
+                    }
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
                 }
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError(string.Empty, error.Description);
-                }
+                return View(model);
             }
-            return View(model);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred during registration.");
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         [HttpGet]
@@ -48,23 +58,39 @@ namespace NoteApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var result = await _accountRepository.LoginAsync(model);
-                if (result.Succeeded)
+                if (ModelState.IsValid)
                 {
-                    return RedirectToAction("Index", "Post");
+                    var result = await _accountRepository.LoginAsync(model);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index", "Post");
+                    }
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                 }
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return View(model);
             }
-            return View(model);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred during login.");
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
-            await _accountRepository.LogoutAsync();
-            return RedirectToAction("Index", "Post");
+            try
+            {
+                await _accountRepository.LogoutAsync();
+                return RedirectToAction("Index", "Post");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred during logout.");
+                return RedirectToAction("Error", "Home");
+            }
         }
     }
 }

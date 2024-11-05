@@ -31,26 +31,22 @@ builder.Services.AddRazorPages();
 // Add authentication middleware
 builder.Services.AddAuthentication();
 
-// Register the IPostRepository service
+// Register the repositories
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
-builder.Services.AddScoped<IFriendRepository, FriendRepository>(); 
+builder.Services.AddScoped<IFriendRepository, FriendRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
-
-
 var app = builder.Build();
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-}
-else
-{
-    // Optional: Configure error handling for production environment
-    // app.UseExceptionHandler("/Home/Error");
-    // app.UseHsts();
-}
+
+Log.Information("Current Environment: {Environment}", app.Environment.EnvironmentName);
+
+// Configure the HTTP request pipeline.
+
+// Always use the exception handler middleware
+app.UseExceptionHandler("/Post/Error"); // Redirect to the Error action in PostController
+app.UseHsts();
 
 app.UseStaticFiles();
 app.UseRouting();
