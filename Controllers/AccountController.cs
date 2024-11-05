@@ -1,19 +1,18 @@
-using Microsoft.AspNetCore.Identity;
+// AccountController.cs
 using Microsoft.AspNetCore.Mvc;
 using NoteApp.Models;
+using NoteApp.Repositories;
 using System.Threading.Tasks;
 
 namespace NoteApp.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IAccountRepository _accountRepository;
 
-        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AccountController(IAccountRepository accountRepository)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            _accountRepository = accountRepository;
         }
 
         [HttpGet]
@@ -27,11 +26,9 @@ namespace NoteApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = model.Username, Email = model.Email };
-                var result = await _userManager.CreateAsync(user, model.Password);
+                var result = await _accountRepository.RegisterAsync(model);
                 if (result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Post");
                 }
                 foreach (var error in result.Errors)
@@ -53,7 +50,7 @@ namespace NoteApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _accountRepository.LoginAsync(model);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Post");
@@ -66,7 +63,7 @@ namespace NoteApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Logout()
         {
-            await _signInManager.SignOutAsync();
+            await _accountRepository.LogoutAsync();
             return RedirectToAction("Index", "Post");
         }
     }

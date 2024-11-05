@@ -1,27 +1,24 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+// UserController.cs
 using Microsoft.AspNetCore.Mvc;
 using NoteApp.Models;
 using NoteApp.Repositories;
-using Serilog;
+using System.Threading.Tasks;
 
 namespace NoteApp.Controllers
 {
     public class UserController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly IUserRepository _userRepository;
         private readonly IPostRepository _postRepository;
         private readonly ILogger<UserController> _logger;
 
-        public UserController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IPostRepository postRepository, ILogger<UserController> logger)
+        public UserController(IUserRepository userRepository, IPostRepository postRepository, ILogger<UserController> logger)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            _userRepository = userRepository;
             _postRepository = postRepository;
             _logger = logger;
         }
-        
+
         public IActionResult Settings()
         {
             _logger.LogInformation("Accessed Settings page.");
@@ -37,7 +34,7 @@ namespace NoteApp.Controllers
                 return View(model);
             }
 
-            var user = await _userManager.GetUserAsync(User);
+            var user = await _userRepository.GetUserAsync(User);
             if (user == null)
             {
                 _logger.LogWarning("User not found.");
@@ -47,7 +44,7 @@ namespace NoteApp.Controllers
             // Update username
             if (user.UserName != model.Username)
             {
-                var setUsernameResult = await _userManager.SetUserNameAsync(user, model.Username);
+                var setUsernameResult = await _userRepository.SetUserNameAsync(user, model.Username);
                 if (!setUsernameResult.Succeeded)
                 {
                     foreach (var error in setUsernameResult.Errors)
@@ -61,7 +58,7 @@ namespace NoteApp.Controllers
             // Update email
             if (user.Email != model.Email)
             {
-                var setEmailResult = await _userManager.SetEmailAsync(user, model.Email);
+                var setEmailResult = await _userRepository.SetEmailAsync(user, model.Email);
                 if (!setEmailResult.Succeeded)
                 {
                     foreach (var error in setEmailResult.Errors)
@@ -75,7 +72,7 @@ namespace NoteApp.Controllers
             // Change password
             if (!string.IsNullOrEmpty(model.NewPassword))
             {
-                var changePasswordResult = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+                var changePasswordResult = await _userRepository.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
                 if (!changePasswordResult.Succeeded)
                 {
                     foreach (var error in changePasswordResult.Errors)
@@ -86,7 +83,7 @@ namespace NoteApp.Controllers
                 }
             }
 
-            await _signInManager.RefreshSignInAsync(user);
+            await _userRepository.RefreshSignInAsync(user);
             return RedirectToAction("Index", "Post");
         }
 
@@ -96,7 +93,7 @@ namespace NoteApp.Controllers
             if (string.IsNullOrEmpty(userId))
             {
                 // If no userId is provided, show the current user's profile
-                userId = _userManager.GetUserId(User);
+                userId = await _userRepository.GetUserIdAsync(User);
                 if (userId == null)
                 {
                     _logger.LogWarning("No user is logged in and no userId was provided.");
@@ -104,7 +101,7 @@ namespace NoteApp.Controllers
                 }
             }
 
-            var user = await _userManager.FindByIdAsync(userId);
+            var user = await _userRepository.FindByIdAsync(userId);
             if (user == null)
             {
                 _logger.LogWarning("User with ID {UserId} not found.", userId);
