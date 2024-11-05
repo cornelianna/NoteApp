@@ -29,26 +29,32 @@ namespace NoteApp.Controllers
     }
 
     [Authorize]
-[HttpPost]
-public async Task<IActionResult> CreatePost(Post post, IFormFile image)
-{
-    if (image != null && image.Length > 0)
+    [HttpPost]
+    public async Task<IActionResult> CreatePost(Post post, IFormFile image)
     {
-        using (var ms = new MemoryStream())
+        
+        if (!ModelState.IsValid) // Error handling
         {
-            await image.CopyToAsync(ms);
-            post.ImageData = ms.ToArray(); // Save image as byte array in the database
+            return View(post); 
         }
+
+        if (image != null && image.Length > 0) 
+        {
+            using (var ms = new MemoryStream())
+            {
+                await image.CopyToAsync(ms);
+                post.ImageData = ms.ToArray(); // Save image as byte array in the database
+            }
+        }
+
+        post.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        post.Username = User.Identity?.Name;
+        post.CreatedAt = DateTime.Now;
+
+        await _postRepository.AddPostAsync(post);
+        _logger.LogInformation("Post created successfully.");
+        return RedirectToAction("Index");
     }
-
-    post.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-    post.Username = User.Identity?.Name;
-    post.CreatedAt = DateTime.Now;
-
-    await _postRepository.AddPostAsync(post);
-    _logger.LogInformation("Post created successfully.");
-    return RedirectToAction("Index");
-}
 
 
     [Authorize]
