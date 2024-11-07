@@ -26,34 +26,37 @@ builder.Services.AddDbContext<NoteAppContext>(options =>
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<NoteAppContext>();
 
+// Add authentication with custom login path
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Account/Login"; // Path to custom login page
+});
+
 builder.Services.AddRazorPages();
 
 // Add authentication middleware
 builder.Services.AddAuthentication();
 
-// Register the IPostRepository service
+// Register the repositories
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
-builder.Services.AddScoped<IFriendRepository, FriendRepository>(); 
+builder.Services.AddScoped<IFriendRepository, FriendRepository>();
 builder.Services.AddScoped<IAccountRepository, AccountRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
-
-
 var app = builder.Build();
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-}
-else
-{
-    // Optional: Configure error handling for production environment
-    // app.UseExceptionHandler("/Home/Error");
-    // app.UseHsts();
-}
 
+Log.Information("Current Environment: {Environment}", app.Environment.EnvironmentName);
+
+// Configure the HTTP request pipeline.
+
+// Always use the exception handler middleware
+app.UseExceptionHandler("/Error");
+app.UseHsts();
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
 
 // Use authentication and authorization middleware
 app.UseAuthentication();
