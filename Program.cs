@@ -26,6 +26,12 @@ builder.Services.AddDbContext<NoteAppContext>(options =>
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<NoteAppContext>();
 
+// Add authentication with custom login path
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Account/Login"; // Path to custom login page
+});
+
 builder.Services.AddRazorPages();
 
 // Add authentication middleware
