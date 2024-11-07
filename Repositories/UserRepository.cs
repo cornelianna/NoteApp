@@ -1,7 +1,8 @@
-// UserRepository.cs
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System;
 
 namespace NoteApp.Repositories
 {
@@ -9,46 +10,119 @@ namespace NoteApp.Repositories
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly ILogger<UserRepository> _logger;
 
-        public UserRepository(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public UserRepository(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ILogger<UserRepository> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _logger = logger;
         }
 
         public async Task<IdentityUser> GetUserAsync(ClaimsPrincipal principal)
         {
-            return await _userManager.GetUserAsync(principal);
+            try
+            {
+                _logger.LogInformation("Fetching user details.");
+                return await _userManager.GetUserAsync(principal);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while fetching user details.");
+                throw; // Re-throw to let higher-level handling (e.g., controller) manage it
+            }
         }
 
         public Task<string> GetUserIdAsync(ClaimsPrincipal principal)
         {
-            return Task.FromResult(_userManager.GetUserId(principal));
+            try
+            {
+                var userId = _userManager.GetUserId(principal);
+                _logger.LogInformation("Fetched user ID: {UserId}", userId);
+                return Task.FromResult(userId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while fetching user ID.");
+                throw; // Re-throw to let higher-level handling (e.g., controller) manage it
+            }
         }
 
         public async Task<IdentityUser> FindByIdAsync(string userId)
         {
-            return await _userManager.FindByIdAsync(userId);
+            try
+            {
+                _logger.LogInformation("Fetching user with ID {UserId}", userId);
+                var user = await _userManager.FindByIdAsync(userId);
+                
+                if (user == null)
+                {
+                    _logger.LogWarning("User with ID {UserId} not found", userId);
+                }
+
+                return user;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while fetching user with ID {UserId}", userId);
+                throw; // Re-throw to let higher-level handling (e.g., controller) manage it
+            }
         }
 
         public async Task<IdentityResult> SetUserNameAsync(IdentityUser user, string userName)
         {
-            return await _userManager.SetUserNameAsync(user, userName);
+            try
+            {
+                _logger.LogInformation("Setting username for user {UserId}", user.Id);
+                return await _userManager.SetUserNameAsync(user, userName);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while setting username for user {UserId}", user.Id);
+                throw; // Re-throw to let higher-level handling (e.g., controller) manage it
+            }
         }
 
         public async Task<IdentityResult> SetEmailAsync(IdentityUser user, string email)
         {
-            return await _userManager.SetEmailAsync(user, email);
+            try
+            {
+                _logger.LogInformation("Setting email for user {UserId}", user.Id);
+                return await _userManager.SetEmailAsync(user, email);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while setting email for user {UserId}", user.Id);
+                throw; // Re-throw to let higher-level handling (e.g., controller) manage it
+            }
         }
 
         public async Task<IdentityResult> ChangePasswordAsync(IdentityUser user, string currentPassword, string newPassword)
         {
-            return await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+            try
+            {
+                _logger.LogInformation("Changing password for user {UserId}", user.Id);
+                return await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while changing password for user {UserId}", user.Id);
+                throw; // Re-throw to let higher-level handling (e.g., controller) manage it
+            }
         }
 
         public async Task RefreshSignInAsync(IdentityUser user)
         {
-            await _signInManager.RefreshSignInAsync(user);
+            try
+            {
+                _logger.LogInformation("Refreshing sign-in for user {UserId}", user.Id);
+                await _signInManager.RefreshSignInAsync(user);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while refreshing sign-in for user {UserId}", user.Id);
+                throw; // Re-throw to let higher-level handling (e.g., controller) manage it
+            }
         }
     }
 }

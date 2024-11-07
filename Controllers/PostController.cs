@@ -6,6 +6,7 @@ using NoteApp.Repositories;
 using Serilog;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Diagnostics;
+using System;
 
 namespace NoteApp.Controllers
 {
@@ -21,150 +22,298 @@ namespace NoteApp.Controllers
             _commentRepository = commentRepository;
             _logger = logger;
         }
-    
 
         public async Task<IActionResult> Index()
         {
-            var posts = await _postRepository.GetAllPostsAsync();
-            _logger.LogInformation("Fetched all posts");
-            return View(posts);
+            try
+            {
+                var posts = await _postRepository.GetAllPostsAsync();
+                _logger.LogInformation("Fetched all posts");
+                return View(posts);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while fetching all posts.");
+                return RedirectToAction("Error");
+            }
         }
 
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreatePost(Post post, IFormFile image)
         {
-        if (image != null && image.Length > 0)
-        {
-            using (var ms = new MemoryStream())
+            try
             {
-                await image.CopyToAsync(ms);
-                post.ImageData = ms.ToArray(); // Save image as byte array in the database
+                if (post == null)
+                {
+                    _logger.LogWarning("Invalid post object provided.");
+                    return BadRequest("Invalid post object.");
+                }
+
+                if (image != null && image.Length > 0)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        await image.CopyToAsync(ms);
+                        post.ImageData = ms.ToArray(); // Save image as byte array in the database
+                    }
+                }
+
+                post.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                post.Username = User.Identity?.Name;
+                post.CreatedAt = DateTime.Now;
+
+                await _postRepository.AddPostAsync(post);
+                _logger.LogInformation("Post created successfully by user {UserId}", post.UserId);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while creating a post.");
+                return RedirectToAction("Error");
             }
         }
-
-        post.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        post.Username = User.Identity?.Name;
-        post.CreatedAt = DateTime.Now;
-
-        await _postRepository.AddPostAsync(post);
-        _logger.LogInformation("Post created successfully.");
-        return RedirectToAction("Index");
-        }   
-
 
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> DeletePost(int id)
         {
-            await _postRepository.DeletePostAsync(id);
-            _logger.LogInformation("Post deleted successfully.");
-            return RedirectToAction("Index");
+            try
+            {
+                if (id <= 0)
+                {
+                    _logger.LogWarning("Invalid post ID provided for deletion: {PostId}", id);
+                    return BadRequest("Invalid post ID.");
+                }
+
+                var post = await _postRepository.GetPostByIdAsync(id);
+                if (post == null)
+                {
+                    _logger.LogWarning("Post not found for ID {PostId}", id);
+                    return NotFound();
+                }
+
+                if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+                {
+                    _logger.LogWarning("User not authorized to delete post {PostId}", id);
+                    return Forbid();
+                }
+
+                await _postRepository.DeletePostAsync(id);
+                _logger.LogInformation("Post {PostId} deleted successfully by user {UserId}", id, User.FindFirstValue(ClaimTypes.NameIdentifier));
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while deleting post {PostId}", id);
+                return RedirectToAction("Error");
+            }
         }
 
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> UpdatePost(int id)
         {
-            var post = await _postRepository.GetPostByIdAsync(id);
+            try
+            {
+                if (id <= 0)
+                {
+                    _logger.LogWarning("Invalid post ID provided for update: {PostId}", id);
+                    return BadRequest("Invalid post ID.");
+                }
 
-            if (post == null)
-            {
-                return NotFound();
+                var post = await _postRepository.GetPostByIdAsync(id);
+                if (post == null)
+                {
+                    _logger.LogWarning("Post not found for ID {PostId}", id);
+                    return NotFound();
+                }
+
+                if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+                {
+                    _logger.LogWarning("User not authorized to update post {PostId}", id);
+                    return Forbid();
+                }
+
+                return View(post);
             }
-            
-            if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+            catch (Exception ex)
             {
-                _logger.LogWarning("User not authorized to update this post.");
-                return Forbid();  
+                _logger.LogError(ex, "An error occurred while fetching post {PostId} for update", id);
+                return RedirectToAction("Error");
             }
-            return View(post);  
         }
 
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> UpdatePost(int id, Post updatedPost, IFormFile? newImage)
         {
-            var post = await _postRepository.GetPostByIdAsync(id);
-            
-            if (newImage != null && newImage.Length > 0)
+            try
             {
-                using (var ms = new MemoryStream())
+                if (id <= 0 || updatedPost == null)
                 {
-                    await newImage.CopyToAsync(ms);
-                    post.ImageData = ms.ToArray(); // Save updated image as byte array
+                    _logger.LogWarning("Invalid post ID or updated post provided for update.");
+                    return BadRequest("Invalid data.");
                 }
+
+                var post = await _postRepository.GetPostByIdAsync(id);
+                if (post == null)
+                {
+                    _logger.LogWarning("Post not found for ID {PostId}", id);
+                    return NotFound();
+                }
+
+                if (post.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+                {
+                    _logger.LogWarning("User not authorized to update post {PostId}", id);
+                    return Forbid();
+                }
+
+                if (newImage != null && newImage.Length > 0)
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        await newImage.CopyToAsync(ms);
+                        post.ImageData = ms.ToArray(); // Save updated image as byte array
+                    }
+                }
+
+                post.Content = updatedPost.Content;
+                await _postRepository.UpdatePostAsync(post);
+                _logger.LogInformation("Post {PostId} updated successfully by user {UserId}", id, post.UserId);
+                return RedirectToAction("Index");
             }
-            post.Content = updatedPost.Content;
-            await _postRepository.UpdatePostAsync(post);
-            _logger.LogInformation("Post updated successfully.");
-            return RedirectToAction("Index");
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while updating post {PostId}", id);
+                return RedirectToAction("Error");
+            }
         }
-        
+
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddComment(Comment comment)
         {
-            comment.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            comment.Username = User.Identity?.Name;
-            comment.CreatedAt = DateTime.Now;
+            try
+            {
+                if (comment == null)
+                {
+                    _logger.LogWarning("Invalid comment object provided.");
+                    return BadRequest("Invalid comment.");
+                }
 
-            await _commentRepository.AddCommentAsync(comment);
-            _logger.LogInformation("Comment added successfully.");
-            return RedirectToAction("Index");
+                comment.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                comment.Username = User.Identity?.Name;
+                comment.CreatedAt = DateTime.Now;
+
+                await _commentRepository.AddCommentAsync(comment);
+                _logger.LogInformation("Comment added successfully by user {UserId}", comment.UserId);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while adding a comment.");
+                return RedirectToAction("Error");
+            }
         }
 
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> DeleteComment(int id)
         {
-            await _commentRepository.DeleteCommentAsync(id);
-            _logger.LogInformation("Comment deleted successfully.");
-            return RedirectToAction("Index");
-        }
-
-        [Authorize]
-        [HttpGet]
-        public async Task<IActionResult> UpdateComment(int id)
-        {
-            var comment = await _commentRepository.GetCommentByIdAsync(id);
-
-            if (comment == null)
+            try
             {
-                return NotFound();
-            }
+                if (id <= 0)
+                {
+                    _logger.LogWarning("Invalid comment ID provided for deletion: {CommentId}", id);
+                    return BadRequest("Invalid comment ID.");
+                }
 
-            if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+                var comment = await _commentRepository.GetCommentByIdAsync(id);
+                if (comment == null)
+                {
+                    _logger.LogWarning("Comment not found for ID {CommentId}", id);
+                    return NotFound();
+                }
+
+                if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+                {
+                    _logger.LogWarning("User not authorized to delete comment {CommentId}", id);
+                    return Forbid();
+                }
+
+                await _commentRepository.DeleteCommentAsync(id);
+                _logger.LogInformation("Comment {CommentId} deleted successfully by user {UserId}", id, User.FindFirstValue(ClaimTypes.NameIdentifier));
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
             {
-                _logger.LogWarning("User not authorized to update this comment.");
-                return Forbid();
+                _logger.LogError(ex, "An error occurred while deleting comment {CommentId}", id);
+                return RedirectToAction("Error");
             }
-
-            return View(comment); 
         }
 
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> UpdateComment(int id, Comment updatedComment)
-        {   
-            var comment = await _commentRepository.GetCommentByIdAsync(id);
-            
-            comment.Content = updatedComment.Content;
-            _logger.LogInformation("Comment updated successfully.");
-            await _commentRepository.UpdateCommentAsync(comment);
-            return RedirectToAction("Index");
-            
+        {
+            try
+            {
+                if (id <= 0 || updatedComment == null)
+                {
+                    _logger.LogWarning("Invalid comment ID or updated comment provided for update.");
+                    return BadRequest("Invalid data.");
+                }
+
+                var comment = await _commentRepository.GetCommentByIdAsync(id);
+                if (comment == null)
+                {
+                    _logger.LogWarning("Comment not found for ID {CommentId}", id);
+                    return NotFound();
+                }
+
+                if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+                {
+                    _logger.LogWarning("User not authorized to update comment {CommentId}", id);
+                    return Forbid();
+                }
+
+                comment.Content = updatedComment.Content;
+                await _commentRepository.UpdateCommentAsync(comment);
+                _logger.LogInformation("Comment {CommentId} updated successfully by user {UserId}", id, comment.UserId);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while updating comment {CommentId}", id);
+                return RedirectToAction("Error");
+            }
         }
 
         public async Task<IActionResult> ViewPost(int id)
         {
-            var post = await _postRepository.GetPostByIdAsync(id);
-            if (post == null)
+            try
             {
-                return NotFound();
-            }
+                if (id <= 0)
+                {
+                    _logger.LogWarning("Invalid post ID provided for viewing: {PostId}", id);
+                    return BadRequest("Invalid post ID.");
+                }
 
-            return View(post);
+                var post = await _postRepository.GetPostByIdAsync(id);
+                if (post == null)
+                {
+                    _logger.LogWarning("Post not found for ID {PostId}", id);
+                    return NotFound();
+                }
+
+                return View(post);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while viewing post {PostId}", id);
+                return RedirectToAction("Error");
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

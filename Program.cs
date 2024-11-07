@@ -45,11 +45,12 @@ Log.Information("Current Environment: {Environment}", app.Environment.Environmen
 // Configure the HTTP request pipeline.
 
 // Always use the exception handler middleware
-app.UseExceptionHandler("/Post/Error"); // Redirect to the Error action in PostController
+app.UseExceptionHandler("/Error");
 app.UseHsts();
-
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
 
 // Use authentication and authorization middleware
 app.UseAuthentication();

@@ -5,6 +5,9 @@ using NoteApp.Models;
 using Serilog;
 using NoteApp.Repositories;
 using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
+using System;
+using System.Linq;
 
 namespace NoteApp.Controllers
 {
@@ -34,13 +37,12 @@ namespace NoteApp.Controllers
                 }
 
                 var friends = await _friendRepository.GetFriendsByUserIdAsync(currentUser.Id);
-                _logger.LogInformation("Fetched friends for user {UserId}", currentUser.Id);
+                _logger.LogInformation("Fetched {FriendCount} friends for user {UserId}", friends.Count(), currentUser.Id);
                 return View(friends);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred while fetching friends.");
-                // Redirect to the Error action in PostController
+                _logger.LogError(ex, "An error occurred while fetching friends for user.");
                 return RedirectToAction("Error", "Post");
             }
         }
@@ -50,16 +52,22 @@ namespace NoteApp.Controllers
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(searchTerm))
+                {
+                    _logger.LogWarning("Search term is null or empty.");
+                    return PartialView("_Error", new { message = "Search term cannot be empty." });
+                }
+
                 var users = await _userManager.Users
                     .Where(u => u.UserName.Contains(searchTerm) || u.Email.Contains(searchTerm))
                     .ToListAsync();
 
-                _logger.LogInformation("Fetched users for search term {SearchTerm}", searchTerm);
+                _logger.LogInformation("Fetched {UserCount} users for search term {SearchTerm}", users.Count, searchTerm);
                 return PartialView("_UserSearchResults", users);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred while searching for users.");
+                _logger.LogError(ex, "An error occurred while searching for users with term: {SearchTerm}", searchTerm);
                 return PartialView("_Error", new { message = "An error occurred while searching for users." });
             }
         }
@@ -69,6 +77,12 @@ namespace NoteApp.Controllers
         {
             try
             {
+                if (string.IsNullOrEmpty(friendId))
+                {
+                    _logger.LogWarning("Friend ID is null or empty.");
+                    return Json(new { success = false, message = "Invalid friend ID." });
+                }
+
                 var currentUser = await _userManager.GetUserAsync(User);
                 if (currentUser == null)
                 {
@@ -78,14 +92,14 @@ namespace NoteApp.Controllers
 
                 if (currentUser.Id == friendId)
                 {
-                    _logger.LogWarning("User tried to add themselves as a friend.");
+                    _logger.LogWarning("User {UserId} tried to add themselves as a friend.", currentUser.Id);
                     return Json(new { success = false, message = "You cannot add yourself as a friend." });
                 }
 
                 var existingFriendship = await _friendRepository.GetFriendshipAsync(currentUser.Id, friendId);
                 if (existingFriendship != null)
                 {
-                    _logger.LogWarning("User tried to add a friend they are already friends with.");
+                    _logger.LogWarning("User {UserId} tried to add a friend {FriendId} they are already friends with.", currentUser.Id, friendId);
                     return Json(new { success = false, message = "You are already friends with this user." });
                 }
 
@@ -101,7 +115,7 @@ namespace NoteApp.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred while adding a friend.");
+                _logger.LogError(ex, "An error occurred while adding friend {FriendId} for user {UserId}", friendId, User?.Identity?.Name);
                 return Json(new { success = false, message = "An error occurred while adding the friend." });
             }
         }
@@ -111,6 +125,12 @@ namespace NoteApp.Controllers
         {
             try
             {
+                if (string.IsNullOrEmpty(friendId))
+                {
+                    _logger.LogWarning("Friend ID is null or empty.");
+                    return Json(new { success = false, message = "Invalid friend ID." });
+                }
+
                 var currentUser = await _userManager.GetUserAsync(User);
                 if (currentUser == null)
                 {
@@ -124,7 +144,7 @@ namespace NoteApp.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred while deleting a friend.");
+                _logger.LogError(ex, "An error occurred while deleting friend {FriendId} for user {UserId}", friendId, User?.Identity?.Name);
                 return Json(new { success = false, message = "An error occurred while deleting the friend." });
             }
         }
