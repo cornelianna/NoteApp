@@ -30,7 +30,7 @@ namespace NoteApp.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while accessing the settings page.");
-                return RedirectToAction("Error", "Home");
+                return RedirectToAction("Error", "Error");
             }
         }
 
@@ -104,7 +104,7 @@ namespace NoteApp.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while updating settings for user.");
-                return RedirectToAction("Error", "Home");
+                return RedirectToAction("Error", "Error");
             }
         }
 
@@ -148,7 +148,7 @@ namespace NoteApp.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while displaying the profile for user {UserId}.", userId);
-                return RedirectToAction("Error", "Home");
+                return RedirectToAction("Error", "Error");
             }
         }
     }

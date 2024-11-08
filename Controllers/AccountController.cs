@@ -57,7 +57,7 @@ namespace NoteApp.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred during registration for user: {Username}", model.Username);
-                return RedirectToAction("Error", "Home");
+                return RedirectToAction("Error", "Error");
             }
         }
 
@@ -94,7 +94,7 @@ namespace NoteApp.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred during login for user: {Username}", model.Username);
-                return RedirectToAction("Error", "Home");
+                return RedirectToAction("Error", "Error");
             }
         }
 
@@ -110,7 +110,7 @@ namespace NoteApp.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred during logout.");
-                return RedirectToAction("Error", "Home");
+                return RedirectToAction("Error", "Error");
             }
         }
     }
