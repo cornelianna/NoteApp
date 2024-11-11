@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Friends";
 }
-<div class="main-content">
+
 <h2>Friends</h2>
 
 <button id="findFriendsButton" class="btn btn-primary">Find Friends</button>
@@ -31,7 +31,7 @@
                     @foreach (var friend in Model)
                     {
                         <tr>
-                            <td>@friend.FriendUser.UserName</td>
+                            <td>@friend.FriendUser?.UserName ?? "Unknown"</td>
                             <td>
                                 <button class="btn btn-danger delete-friend-btn" data-friend-id="@friend.FriendId">Delete</button>
                             </td>

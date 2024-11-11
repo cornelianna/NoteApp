@@ -23,23 +23,3 @@
         <button type="submit" class=" postbutton btn btn-primary mt-3">Post</button>
     </div>
 </form>
-
-@section Scripts {
-    <script>
-        function previewImage(event) {
-            const imagePreview = document.getElementById('imagePreview');
-            const imageText = document.getElementById('imageText');
-
-                if (event.target.files && event.target.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    imagePreview.style.backgroundImage = `url(${e.target.result})`;
-                    imagePreview.style.backgroundSize = 'cover';
-                    imagePreview.style.backgroundPosition = 'center';
-                    imageText.style.display = 'none'; // Hide the placeholder text
-                };
-                reader.readAsDataURL(event.target.files[0]);
-            }
-        }
-    </script>
-}

@@ -37,6 +37,7 @@ namespace NoteApp.Data
         {
             var hasher = new PasswordHasher<IdentityUser>();
 
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
             IdentityUser user1 = new IdentityUser
             {
                 Id = "user1-id", // Generate unique IDs or use GUIDs
@@ -47,7 +48,9 @@ namespace NoteApp.Data
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "Password123!")
             };
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
+#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
             IdentityUser user2 = new IdentityUser
             {
                 Id = "user2-id",
@@ -58,6 +61,7 @@ namespace NoteApp.Data
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "Password123!")
             };
+#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
             builder.Entity<IdentityUser>().HasData(user1, user2);
         }
