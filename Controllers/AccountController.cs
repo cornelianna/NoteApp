@@ -1,6 +1,3 @@
-
-
-
 // AccountController.cs
 using Microsoft.AspNetCore.Mvc;
 using NoteApp.Models;
@@ -32,31 +29,31 @@ namespace NoteApp.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    var result = await _accountRepository.RegisterAsync(model);
-                    if (result.Succeeded)
-                    {
-                        _logger.LogInformation("User registered successfully with username: {Username}", model.Username);
-                        return RedirectToAction("Index", "Post");
-                    }
-
-                    // Log validation errors from the registration process
-                    foreach (var error in result.Errors)
-                    {
-                        _logger.LogWarning("Registration error: {ErrorDescription}", error.Description);
-                        ModelState.AddModelError(string.Empty, error.Description);
-                    }
-                }
-                else
+                if (!ModelState.IsValid)
                 {
                     _logger.LogWarning("Invalid registration model state for user: {Username}", model.Username);
+                    return View(model);
                 }
+
+                var result = await _accountRepository.RegisterAsync(model);
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation("User registered successfully with username: {Username}", model.Username);
+                    return RedirectToAction("Index", "Post");
+                }
+
+                // Log validation errors from the registration process
+                foreach (var error in result.Errors)
+                {
+                    _logger.LogWarning("Registration error: {ErrorDescription}", error.Description);
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+
                 return View(model);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred during registration for user: {Username}", model.Username);
+                _logger.LogError(ex, "An unexpected error occurred during registration for user: {Username}", model.Username);
                 return RedirectToAction("Error", "Error");
             }
         }
@@ -72,28 +69,27 @@ namespace NoteApp.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    var result = await _accountRepository.LoginAsync(model);
-                    if (result.Succeeded)
-                    {
-                        _logger.LogInformation("User logged in successfully with username: {Username}", model.Username);
-                        return RedirectToAction("Index", "Post");
-                    }
-
-                    // Log the invalid login attempt
-                    _logger.LogWarning("Invalid login attempt for user: {Username}", model.Username);
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                }
-                else
+                if (!ModelState.IsValid)
                 {
                     _logger.LogWarning("Invalid login model state for user: {Username}", model.Username);
+                    return View(model);
                 }
+
+                var result = await _accountRepository.LoginAsync(model);
+                if (result.Succeeded)
+                {
+                    _logger.LogInformation("User logged in successfully with username: {Username}", model.Username);
+                    return RedirectToAction("Index", "Post");
+                }
+
+                _logger.LogWarning("Invalid login attempt for user: {Username}", model.Username);
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                
                 return View(model);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred during login for user: {Username}", model.Username);
+                _logger.LogError(ex, "An unexpected error occurred during login for user: {Username}", model.Username);
                 return RedirectToAction("Error", "Error");
             }
         }
@@ -109,7 +105,7 @@ namespace NoteApp.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "An error occurred during logout.");
+                _logger.LogError(ex, "An unexpected error occurred during logout.");
                 return RedirectToAction("Error", "Error");
             }
         }
