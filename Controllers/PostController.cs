@@ -302,6 +302,40 @@ namespace NoteApp.Controllers
             }
         }
 
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> UpdateComment(int id)
+        {
+            try
+            {
+                if (id <= 0)
+                {
+                    _logger.LogWarning("Invalid comment ID provided for update: {CommentId}", id);
+                    return BadRequest("Invalid comment ID.");
+                }
+
+                var comment = await _commentRepository.GetCommentByIdAsync(id);
+                if (comment == null)
+                {
+                    _logger.LogWarning("Comment not found for ID {CommentId}", id);
+                    return NotFound();
+                }
+
+                if (comment.UserId != User.FindFirstValue(ClaimTypes.NameIdentifier))
+                {
+                    _logger.LogWarning("User not authorized to update comment {CommentId}", id);
+                    return Forbid();
+                }
+
+                return View(comment);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while fetching comment {CommentId} for update", id);
+                return RedirectToAction("Error");
+            }
+        }
+
         public async Task<IActionResult> ViewPost(int id)
         {
             try
