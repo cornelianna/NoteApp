@@ -3,18 +3,19 @@ using Microsoft.EntityFrameworkCore;
 using NoteApp.Data;
 using NoteApp.Repositories;
 using Serilog;
+using Serilog.Events;
+using Serilog.Sinks.SystemConsole.Themes;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Configure Serilog
-Log.Logger = new LoggerConfiguration()
-    .ReadFrom.Configuration(builder.Configuration)
-    .Enrich.FromLogContext()
-    .WriteTo.Console()
-    .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
-    .CreateLogger();
+var loggerConfiguration = new LoggerConfiguration()
+    .MinimumLevel.Information() // Levels: Trace < Debug < Information < Warning < Error < Fatal
+    .WriteTo.Console() // Console output
+    .WriteTo.File($"Logs/app_{DateTime.Now:yyyyMMdd_HHmmss}.log"); // File output with timestamped filename
 
-builder.Host.UseSerilog();
+var logger = loggerConfiguration.CreateLogger();
+builder.Logging.AddSerilog(logger); 
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
