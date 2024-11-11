@@ -43,7 +43,7 @@ namespace NoteApp.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while fetching friends for user.");
-                return RedirectToAction("Error", "Post");
+                return RedirectToAction("Error", "Error");
             }
         }
 
