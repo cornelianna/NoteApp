@@ -42,8 +42,16 @@ namespace NoteApp.Repositories
             try
             {
                 _logger.LogInformation("Fetching friendship between {UserId} and {FriendId}", userId, friendId);
-                return await _context.Friends
+                var friendship = await _context.Friends
                     .FirstOrDefaultAsync(f => f.UserId == userId && f.FriendId == friendId);
+
+                if (friendship == null)
+                {
+                    _logger.LogWarning("Friendship between {UserId} and {FriendId} not found", userId, friendId);
+                    throw new KeyNotFoundException($"Friendship between {userId} and {friendId} not found");
+                }
+
+                return friendship;
             }
             catch (Exception ex)
             {

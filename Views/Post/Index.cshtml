@@ -6,7 +6,7 @@
 
     @if (SignInManager.IsSignedIn(User))
     {
-        @Html.Partial("_CreatePostPartial")
+        <partial name="_CreatePostPartial" />
     }
     else
     {
@@ -18,5 +18,5 @@
     <h2 class="posts-header">LATEST POSTS</h2>
     @foreach (var post in Model)
     {
-        @Html.Partial("_PostPartial", post)
+        <partial name="_PostPartial" model="post" />
     }

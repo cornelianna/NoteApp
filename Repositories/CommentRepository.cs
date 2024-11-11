@@ -29,7 +29,7 @@ namespace NoteApp.Repositories
                     _logger.LogWarning("Comment with ID {Id} not found", id);
                 }
 
-                return comment;
+                return comment!;
             }
             catch (Exception ex)
             {

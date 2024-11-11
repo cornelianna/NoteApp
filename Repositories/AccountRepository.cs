@@ -24,6 +24,10 @@ namespace NoteApp.Repositories
             try
             {
                 var user = new IdentityUser { UserName = model.Username, Email = model.Email };
+                if (string.IsNullOrEmpty(model.Password))
+                {
+                    throw new ArgumentException("Password must not be null or empty.");
+                }
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -47,6 +51,11 @@ namespace NoteApp.Repositories
         {
             try
             {
+                if (string.IsNullOrEmpty(model.Username) || string.IsNullOrEmpty(model.Password))
+                {
+                    throw new ArgumentException("Username and password must not be null or empty.");
+                }
+
                 var result = await _signInManager.PasswordSignInAsync(
                     model.Username, model.Password, model.RememberMe, lockoutOnFailure: false);
 

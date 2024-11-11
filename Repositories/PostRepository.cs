@@ -34,7 +34,7 @@ namespace NoteApp.Repositories
                     _logger.LogWarning("Post with ID {Id} not found", id);
                 }
 
-                return post;
+                return post!;
             }
             catch (Exception ex)
             {

@@ -88,10 +88,10 @@
         <h5 class="comments-header">Comments</h5> 
         <div class="discussions"> 
             <div class="comments-scrollable"> 
-                @foreach (var comment in Model.Comments) 
-                { 
-                    @Html.Partial("_CommentPartial.cshtml", comment) 
-                } 
+            @foreach (var comment in Model.Comments) 
+            { 
+                <partial name="_CommentPartial" model="comment" />
+            } 
             </div> 
         </div> 
         <!-- Comment form --> 

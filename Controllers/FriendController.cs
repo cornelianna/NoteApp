@@ -59,7 +59,7 @@ namespace NoteApp.Controllers
                 }
 
                 var users = await _userManager.Users
-                    .Where(u => u.UserName.Contains(searchTerm) || u.Email.Contains(searchTerm))
+                    .Where(u => (u.UserName != null && u.UserName.Contains(searchTerm)) || (u.Email != null && u.Email.Contains(searchTerm)))
                     .ToListAsync();
 
                 _logger.LogInformation("Fetched {UserCount} users for search term {SearchTerm}", users.Count, searchTerm);

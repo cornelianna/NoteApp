@@ -59,8 +59,14 @@ namespace NoteApp.Controllers
                     }
                 }
 
-                post.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                post.Username = User.Identity?.Name;
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (userId == null)
+                {
+                    _logger.LogWarning("User ID not found.");
+                    return Forbid();
+                }
+                post.UserId = userId;
+                post.Username = User.Identity?.Name ?? "Unknown";
                 post.CreatedAt = DateTime.Now;
 
                 await _postRepository.AddPostAsync(post);
@@ -202,8 +208,14 @@ namespace NoteApp.Controllers
                     return BadRequest("Invalid comment.");
                 }
 
-                comment.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                comment.Username = User.Identity?.Name;
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (userId == null)
+                {
+                    _logger.LogWarning("User ID not found.");
+                    return Forbid();
+                }
+                comment.UserId = userId;
+                comment.Username = User.Identity?.Name ?? "Unknown";
                 comment.CreatedAt = DateTime.Now;
 
                 await _commentRepository.AddCommentAsync(comment);

@@ -31,7 +31,7 @@
                     @foreach (var friend in Model)
                     {
                         <tr>
-                            <td>@friend.FriendUser.UserName</td>
+                            <td>@friend.FriendUser?.UserName ?? "Unknown"</td>
                             <td>
                                 <button class="btn btn-danger delete-friend-btn" data-friend-id="@friend.FriendId">Delete</button>
                             </td>

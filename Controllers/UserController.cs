@@ -55,6 +55,11 @@ namespace NoteApp.Controllers
                 // Update username
                 if (user.UserName != model.Username)
                 {
+                    if (string.IsNullOrEmpty(model.Username))
+                    {
+                        ModelState.AddModelError(string.Empty, "Username cannot be empty.");
+                        return View(model);
+                    }
                     var setUsernameResult = await _userRepository.SetUserNameAsync(user, model.Username);
                     if (!setUsernameResult.Succeeded)
                     {
@@ -70,6 +75,11 @@ namespace NoteApp.Controllers
                 // Update email
                 if (user.Email != model.Email)
                 {
+                    if (string.IsNullOrEmpty(model.Email))
+                    {
+                        ModelState.AddModelError(string.Empty, "Email cannot be empty.");
+                        return View(model);
+                    }
                     var setEmailResult = await _userRepository.SetEmailAsync(user, model.Email);
                     if (!setEmailResult.Succeeded)
                     {
@@ -85,6 +95,12 @@ namespace NoteApp.Controllers
                 // Change password
                 if (!string.IsNullOrEmpty(model.NewPassword))
                 {
+                    if (string.IsNullOrEmpty(model.CurrentPassword))
+                    {
+                        ModelState.AddModelError(string.Empty, "Current password is required.");
+                        return View(model);
+                    }
+
                     var changePasswordResult = await _userRepository.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
                     if (!changePasswordResult.Succeeded)
                     {

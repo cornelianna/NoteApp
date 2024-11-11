@@ -24,7 +24,13 @@ namespace NoteApp.Repositories
             try
             {
                 _logger.LogInformation("Fetching user details.");
-                return await _userManager.GetUserAsync(principal);
+                var user = await _userManager.GetUserAsync(principal);
+                if (user == null)
+                {
+                    _logger.LogWarning("User not found for the given principal.");
+                    throw new Exception("User not found.");
+                }
+                return user!;
             }
             catch (Exception ex)
             {
@@ -38,6 +44,11 @@ namespace NoteApp.Repositories
             try
             {
                 var userId = _userManager.GetUserId(principal);
+                if (userId == null)
+                {
+                    _logger.LogWarning("User ID not found for the given principal.");
+                    throw new Exception("User ID not found.");
+                }
                 _logger.LogInformation("Fetched user ID: {UserId}", userId);
                 return Task.FromResult(userId);
             }
@@ -60,6 +71,11 @@ namespace NoteApp.Repositories
                     _logger.LogWarning("User with ID {UserId} not found", userId);
                 }
 
+                if (user == null)
+                {
+                    _logger.LogWarning("User with ID {UserId} not found", userId);
+                    throw new Exception($"User with ID {userId} not found.");
+                }
                 return user;
             }
             catch (Exception ex)
