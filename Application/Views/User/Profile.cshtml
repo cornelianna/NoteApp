@@ -5,16 +5,6 @@
 @{
     ViewData["Title"] = $"{Model.Username}'s Profile";
 }
-
-<div class="main-content">
-    <!-- User Information -->
-    <div class="profile-header mb-4">
-        <div class="profile-picture text-center">
-            <img src="@Model.ProfilePictureUrl" alt="Profile Picture" class="rounded-circle" width="150" height="150" />
-        </div>
-        <h2 class="text-center mt-3">@Model.Username</h2>
-    </div>
-
     <!-- User's Posts -->
     <h3 class="posts-header">@Model.Username's Posts</h3>
 

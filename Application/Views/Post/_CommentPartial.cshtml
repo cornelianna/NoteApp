@@ -6,9 +6,9 @@
         <div class="d-flex align-items-center">
             <!-- User info -->
             <div class="userImg d-flex align-items-center">
-                <a href="@Url.Action("Profile", "User")" class="nav-link text-black">
-                    <img src="~/images/icon.svg" alt="Avatar" style="width: 25px; height: 25px;">
-                    <strong class="ms-2 mb-1">@Model.Username</strong>
+                <a href="@Url.Action("Profile", "User", new { userId = Model.UserId })" class="nav-link text-black">
+                    <span class="username">@Model.Username</span> 
+                    <p class="post-date">@Model.CreatedAt.ToString("g")</p> 
                 </a>
             </div>
             <div class="comment-date">
