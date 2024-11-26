@@ -1,0 +1,22 @@
+@model List<NoteApp.Models.Post>
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <partial name="_CreatePostPartial" />
+    }
+    else
+    {
+        <div class="alert alert-success" role="alert">
+            Login to create a post
+        </div>
+    }
+
+    <h2 class="posts-header">LATEST POSTS</h2>
+    @foreach (var post in Model)
+    {
+        <partial name="_PostPartial" model="post" />
+    }
