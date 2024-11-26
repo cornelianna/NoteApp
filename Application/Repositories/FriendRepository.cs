@@ -37,7 +37,7 @@ namespace NoteApp.Repositories
             }
         }
 
-        public async Task<Friend> GetFriendshipAsync(string userId, string friendId)
+        public async Task<Friend?> GetFriendshipAsync(string userId, string friendId)
         {
             try
             {
@@ -48,7 +48,6 @@ namespace NoteApp.Repositories
                 if (friendship == null)
                 {
                     _logger.LogWarning("Friendship between {UserId} and {FriendId} not found", userId, friendId);
-                    throw new KeyNotFoundException($"Friendship between {userId} and {friendId} not found");
                 }
 
                 return friendship;
