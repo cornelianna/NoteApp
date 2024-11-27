@@ -456,9 +456,8 @@ textarea.form-control {
     }
 }
 button.buttonstandard { 
-    background-color: #86b0a9; 
+    background-color: #476C66; 
     color: #ffffff;
-    padding: 10px 20px; 
     border: none; 
     border-radius: 5px; 
     cursor: pointer; 
@@ -467,7 +466,7 @@ button.buttonstandard {
 } 
 
 button.buttonstandard:hover { 
-    background-color: #63958d; 
+    background-color: #5d8a83; 
     color: #ffffff; 
 }
 /* ------------------------------------------------- */

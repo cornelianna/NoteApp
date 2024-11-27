@@ -6,11 +6,12 @@
 }
 
 <h2>Friends</h2>
-<div id="searchBar" style="display:none; margin-bottom: 20px;">
+<div id="searchBar" style="display:none; margin-top: 20px;">
     <input type="text" id="searchInput" class="form-control" placeholder="Search by username or email" />
     <ul id="searchResults" class="list-group mt-2" style="display:none;"></ul>
 </div>
-<button id="findFriendsButton" class="buttonstandard btn btn-primary">Find Friends</button>
+<button id="findFriendsButton" class="buttonstandard btn btn-primary" style="margin-top: 20px;">Find Friends</button>
+
 
 @if (Model != null && Model.Any())
 {
