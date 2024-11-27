@@ -11,6 +11,9 @@
 .body, .navbar, .sidebar, .content-wrapper, .create-post-container, .posts-header, .post, .noteContent, footer {
     font-family: 'Poppins', sans-serif;
 }
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+}
 /* General Styles */
 html, body {
     height: 100%;
@@ -451,6 +454,21 @@ textarea.form-control {
         margin-left: 10px;
 
     }
+}
+button.buttonstandard { 
+    background-color: #86b0a9; 
+    color: #ffffff;
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    align-self: flex-start; 
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover transition */
+} 
+
+button.buttonstandard:hover { 
+    background-color: #63958d; 
+    color: #ffffff; 
 }
 /* ------------------------------------------------- */
 /* 10. Footer Styles */
