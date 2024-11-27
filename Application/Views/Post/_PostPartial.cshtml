@@ -68,14 +68,13 @@
                 <div class="userImg"> 
                     <img src="~/images/icon.svg" alt="Avatar" class="rounded-circle" aria-label="User avatar"/> 
                 </div> 
-                <div class="post-info">
                     <a href="@Url.Action("Profile", "User", new { userId = Model.UserId })" class="nav-link text-black" aria-label="User profile">
                         <span class="username" aria-label="Username">@Model.Username</span> 
-                        <p class="post-date" aria-label="Post date">@Model.CreatedAt.ToString("g")</p> 
                     </a>
-                </div> 
+                    <div class="post-date" aria-label="Post date">
+                            @Model.CreatedAt.ToString("g")
+                    </div>
             </div> 
-
             @if (Model.ImageData != null && Model.ImageData.Length > 0) 
             { 
                 <div class="noteContentWithImage"> 

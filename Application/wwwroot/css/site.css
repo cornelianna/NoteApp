@@ -353,22 +353,22 @@ html, body {
     gap: 10px;
 }
 
-    .post-header .userImg img {
+    .userImg img {
         width: 35px;
         height: 35px;
         border-radius: 50%;
-        margin-top:-10px;
     }
 
-    .post-header .username {
+    .username {
         font-size: 16px;
         font-weight: bold;
         color: #2f4f4f;
     }
 
-    .post-header .post-date {
+    .post-date {
         font-size: 14px;
         color: #4A4A4A;
+        margin-left: 220px;
     }
 
 /* Comments Section */
@@ -453,6 +453,9 @@ textarea.form-control {
     .comment-date {
         margin-left: 10px;
 
+    }
+    .post-header .post-date {
+        margin-left: 10px;
     }
 }
 button.buttonstandard { 
