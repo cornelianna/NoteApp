@@ -175,17 +175,20 @@ html, body {
     align-items: center; 
 } 
 
-.create-post-container .custom-file-upload { 
-    border: 1px solid #ccc; 
-    background-color: #d1e6dd; 
-    padding: 5px 10px; 
-    border-radius: 5px;
+.create-post-container .custom-file-upload {  
+    background-color: #bcd7d2; 
+    color: #2f4f4f; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
     cursor: pointer; 
-    text-align: center; 
+    align-self: flex-start; 
+    transition: background-color 0.3s ease, color 0.3s ease;
 } 
 
 .create-post-container .custom-file-upload:hover { 
-    background-color: #bcd7d2; 
+    background-color: #86b0a9; 
+    color: #ffffff;
 } 
 
 .create-post-container .image-placeholder { 
@@ -196,7 +199,7 @@ html, body {
     justify-content: center; 
     align-items: center; 
     font-size: 18px; 
-    color: #4f6b7f; 
+    color: #3D4A61; 
     border-radius: 10px; 
     margin-bottom: 15px; 
     overflow: hidden; 
@@ -362,7 +365,7 @@ html, body {
 
     .post-header .post-date {
         font-size: 14px;
-        color: #888888;
+        color: #4A4A4A;
     }
 
 /* Comments Section */
@@ -376,10 +379,10 @@ html, body {
     max-height: 200px;
     overflow-y: auto;
     margin-top: 10px;
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: #bcd7d2 #f7f9fc; /* Custom color for Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #bcd7d2 #f7f9fc; 
 }
-    /* WebKit (Chrome, Safari) */
+    
     .comments-scrollable::-webkit-scrollbar {
         width: 8px;
     }
@@ -428,15 +431,19 @@ textarea.form-control {
     color: #4f4f4f;
 }
 
-input.btn-primary {
-    background-color: #bcd7d2;
-    color: #2f4f4f;
-    border-radius: 5px;
-    padding: 10px 15px;
-    border: none;
+.comment-form button.submitcomment {
+    background-color: #bcd7d2; 
+    color: #2f4f4f; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    align-self: flex-start; 
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
-input.btn-primary:hover {
-    background-color: #86b0a9;
+.comment-form button.submitcomment:hover {
+    background-color: #86b0a9; 
+    color: #ffffff; 
 }
 /* Responsive Adjustments for comments */
 @media (max-width: 767.98px) { 

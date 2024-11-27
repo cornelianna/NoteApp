@@ -31,8 +31,8 @@
         </button>
 
         <!-- Navbar Brand -->
-        <a class="navbar-brand" href="/">
-            <img src="~/images/SnapNoteLogo.png" alt="SnapNote" width="100" height="40" class="d-inline-block align-text-top" />
+        <a class="navbar-brand" href="/" aria-label="Home">
+            <img src="~/images/SnapNoteLogo.png" alt="SnapNoteLogo" width="100" height="40" class="d-inline-block align-text-top" />
         </a>
 
         <!-- Navbar Content (Right-aligned) -->
@@ -42,8 +42,8 @@
                 {
                     <!-- Settings Icon -->
                     <li class="nav-item">
-                        <a class="nav-link" href="/User/Settings">
-                            <i class="bi bi-gear" style="font-size: 1.5rem;"></i>
+                        <a class="nav-link" href="/User/Settings" aria-label="Settings">
+                            <i class="bi bi-gear" alt="SettingIcon" style="font-size: 1.5rem;"></i>
                         </a>
                     </li>
                     <!-- Profile Icon with Dropdown -->
@@ -56,9 +56,9 @@
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                         >
-                            <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
+                            <i class="bi bi-person-circle" style="font-size: 1.5rem;" aria-label="Profile Icon"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu dropdown-menu-end" aria-label="navbarDropdown">
                             <li>
                                 <a class="dropdown-item" href="/User/Settings">Settings</a>
                             </li>
