@@ -194,7 +194,7 @@ html, body {
 .create-post-container .image-placeholder { 
     width: 100%; 
     height: 200px; 
-    background-color: #dae8f2; 
+    background-color: #dfe6ed; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
