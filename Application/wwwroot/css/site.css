@@ -20,6 +20,7 @@ html, body {
     font-family: 'Roboto', sans-serif;
     background-color: #dae8f2;
     margin: 0; /* Ensure no default margin affects the layout */
+    color: #4f4f4f;
 }
 /* weight adjustments */
 .username {
