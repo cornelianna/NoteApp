@@ -1,0 +1,184 @@
+2024-11-28 14:34:09.370 +01:00 [INF] Current Environment: Development
+2024-11-28 14:34:09.416 +01:00 [INF] User profile is available. Using 'C:\Users\selme\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-28 14:34:09.489 +01:00 [INF] Now listening on: http://localhost:5164
+2024-11-28 14:34:09.490 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-28 14:34:09.491 +01:00 [INF] Hosting environment: Development
+2024-11-28 14:34:09.491 +01:00 [INF] Content root path: C:\Users\selme\Documents\GitHub\NoteApp\Application
+2024-11-28 14:34:11.029 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-28 14:34:11.035 +01:00 [WRN] Failed to determine the https port for redirect.
+2024-11-28 14:34:11.055 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 14:34:11.057 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-28 14:34:11.070 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-28 14:34:11.119 +01:00 [INF] Fetching all posts
+2024-11-28 14:34:11.593 +01:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-28 14:34:11.627 +01:00 [INF] Fetched all posts
+2024-11-28 14:34:11.631 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-28 14:34:11.664 +01:00 [INF] Executed ViewResult - view Index executed in 33.7982ms.
+2024-11-28 14:34:11.666 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 594.4952ms
+2024-11-28 14:34:11.667 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-28 14:34:11.671 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 642.5377ms
+2024-11-28 14:34:11.684 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-28 14:34:11.687 +01:00 [INF] The file /css/site.css was not modified
+2024-11-28 14:34:11.688 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 4.6996ms
+2024-11-28 14:35:57.074 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Post/AddComment - application/x-www-form-urlencoded 201
+2024-11-28 14:35:57.078 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 14:35:57.081 +01:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2024-11-28 14:35:57.084 +01:00 [INF] AuthenticationScheme: Identity.Application was challenged.
+2024-11-28 14:35:57.085 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Post/AddComment - 302 0 null 10.6523ms
+2024-11-28 14:35:57.087 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Account/Login?ReturnUrl=%2FPost%2FAddComment - null null
+2024-11-28 14:35:57.090 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 14:35:57.091 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.AccountController.Login (NoteApp)'
+2024-11-28 14:35:57.092 +01:00 [INF] Route matched with {action = "Login", controller = "Account", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller NoteApp.Controllers.AccountController (NoteApp).
+2024-11-28 14:35:57.096 +01:00 [INF] Executing ViewResult, running view Login.
+2024-11-28 14:35:57.115 +01:00 [INF] Executed ViewResult - view Login executed in 19.6588ms.
+2024-11-28 14:35:57.116 +01:00 [INF] Executed action NoteApp.Controllers.AccountController.Login (NoteApp) in 22.4558ms
+2024-11-28 14:35:57.117 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.AccountController.Login (NoteApp)'
+2024-11-28 14:35:57.118 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Account/Login?ReturnUrl=%2FPost%2FAddComment - 200 null text/html; charset=utf-8 31.3593ms
+2024-11-28 14:35:57.144 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/lib/jquery-validation/dist/jquery.validate.min.js - null null
+2024-11-28 14:35:57.144 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js - null null
+2024-11-28 14:35:57.145 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-28 14:35:57.150 +01:00 [INF] The file /css/site.css was not modified
+2024-11-28 14:35:57.150 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 5.4793ms
+2024-11-28 14:35:57.180 +01:00 [INF] Sending file. Request path: '/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js'. Physical path: 'C:\Users\selme\Documents\GitHub\NoteApp\Application\wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js'
+2024-11-28 14:35:57.181 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js - 200 5831 text/javascript 36.6763ms
+2024-11-28 14:35:57.182 +01:00 [INF] Sending file. Request path: '/lib/jquery-validation/dist/jquery.validate.min.js'. Physical path: 'C:\Users\selme\Documents\GitHub\NoteApp\Application\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js'
+2024-11-28 14:35:57.184 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/lib/jquery-validation/dist/jquery.validate.min.js - 200 24604 text/javascript 39.9768ms
+2024-11-28 14:36:19.684 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Account/Login - application/x-www-form-urlencoded 238
+2024-11-28 14:36:19.686 +01:00 [INF] Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+2024-11-28 14:36:19.687 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.AccountController.Login (NoteApp)'
+2024-11-28 14:36:19.692 +01:00 [INF] Route matched with {action = "Login", controller = "Account", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(NoteApp.Models.LoginViewModel) on controller NoteApp.Controllers.AccountController (NoteApp).
+2024-11-28 14:36:19.720 +01:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?' (Size = 5)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2024-11-28 14:36:19.788 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."ClaimType", "a"."ClaimValue", "a"."UserId"
+FROM "AspNetUserClaims" AS "a"
+WHERE "a"."UserId" = @__user_Id_0
+2024-11-28 14:36:19.791 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2024-11-28 14:36:19.792 +01:00 [INF] User logged in successfully with username: user1
+2024-11-28 14:36:19.793 +01:00 [INF] User logged in successfully with username: user1
+2024-11-28 14:36:19.794 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2024-11-28 14:36:19.795 +01:00 [INF] Executed action NoteApp.Controllers.AccountController.Login (NoteApp) in 101.6136ms
+2024-11-28 14:36:19.796 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.AccountController.Login (NoteApp)'
+2024-11-28 14:36:19.797 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Account/Login - 302 0 null 112.9202ms
+2024-11-28 14:36:19.799 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-28 14:36:19.802 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-28 14:36:19.802 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-28 14:36:19.804 +01:00 [INF] Fetching all posts
+2024-11-28 14:36:19.834 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-28 14:36:19.836 +01:00 [INF] Fetched all posts
+2024-11-28 14:36:19.836 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-28 14:36:19.840 +01:00 [INF] Executed ViewResult - view Index executed in 3.9738ms.
+2024-11-28 14:36:19.841 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 37.4415ms
+2024-11-28 14:36:19.842 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-28 14:36:19.843 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 43.7823ms
+2024-11-28 14:36:26.215 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Post/CreatePost - multipart/form-data; boundary=----WebKitFormBoundaryAMdPgi0JjXq5BHje 695
+2024-11-28 14:36:26.219 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-11-28 14:36:26.223 +01:00 [INF] Route matched with {action = "CreatePost", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePost(NoteApp.Models.Post, Microsoft.AspNetCore.Http.IFormFile) on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-28 14:36:26.282 +01:00 [ERR] Failed executing DbCommand (1ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Binary), @p3='?' (Size = 8), @p4='?' (Size = 5)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("Content", "CreatedAt", "ImageData", "UserId", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+2024-11-28 14:36:26.289 +01:00 [ERR] An exception occurred in the database while saving changes for context type 'NoteApp.Data.NoteAppContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'NOT NULL constraint failed: Posts.Content'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'NOT NULL constraint failed: Posts.Content'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2024-11-28 14:36:26.296 +01:00 [ERR] An error occurred while adding a new post for user user1-id
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'NOT NULL constraint failed: Posts.Content'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at NoteApp.Repositories.PostRepository.AddPostAsync(Post post) in C:\Users\selme\Documents\GitHub\NoteApp\Application\Repositories\PostRepository.cs:line 68
+2024-11-28 14:36:26.307 +01:00 [ERR] An error occurred while creating a post.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'NOT NULL constraint failed: Posts.Content'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at NoteApp.Repositories.PostRepository.AddPostAsync(Post post) in C:\Users\selme\Documents\GitHub\NoteApp\Application\Repositories\PostRepository.cs:line 68
+   at NoteApp.Controllers.PostController.CreatePost(Post post, IFormFile image) in C:\Users\selme\Documents\GitHub\NoteApp\Application\Controllers\PostController.cs:line 72
+2024-11-28 14:36:26.312 +01:00 [INF] Executing RedirectResult, redirecting to /Post/Error.
+2024-11-28 14:36:26.313 +01:00 [INF] Executed action NoteApp.Controllers.PostController.CreatePost (NoteApp) in 88.3227ms
+2024-11-28 14:36:26.314 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-11-28 14:36:26.314 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Post/CreatePost - 302 0 null 99.4723ms
+2024-11-28 14:36:26.316 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Post/Error - null null
+2024-11-28 14:36:26.322 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Error (NoteApp)'
+2024-11-28 14:36:26.323 +01:00 [INF] Route matched with {action = "Error", controller = "Post", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Error() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-28 14:36:26.325 +01:00 [INF] Executing ViewResult, running view Error.
+2024-11-28 14:36:26.328 +01:00 [INF] Executed ViewResult - view Error executed in 2.6758ms.
+2024-11-28 14:36:26.328 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Error (NoteApp) in 4.0981ms
+2024-11-28 14:36:26.329 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Error (NoteApp)'
+2024-11-28 14:36:26.330 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Post/Error - 200 null text/html; charset=utf-8 13.7648ms
