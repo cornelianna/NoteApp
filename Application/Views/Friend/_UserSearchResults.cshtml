@@ -1,0 +1,10 @@
+@using Microsoft.AspNetCore.Identity
+@model IEnumerable<IdentityUser>
+
+@foreach (var user in Model)
+{
+    <li class="list-group-item">
+        @user.UserName
+        <button class="buttonstandard btn btn-primary btn-sm float-end add-friend-btn" data-friend-id="@user.Id">Add Friend</button>
+    </li>
+}

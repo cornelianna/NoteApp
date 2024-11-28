@@ -1,0 +1,38 @@
+<!-- Views/User/Settings.cshtml -->
+@model NoteApp.Models.EditProfileViewModel
+
+<div class="settings-container">
+    <h2>Edit Profile</h2>
+    <form asp-action="Settings" method="post">
+        <div class="form-group">
+            <label asp-for="Username"></label>
+            <input asp-for="Username" class="form-control" />
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CurrentPassword"></label>
+            <input asp-for="CurrentPassword" class="form-control" />
+            <span asp-validation-for="CurrentPassword" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewPassword"></label>
+            <input asp-for="NewPassword" class="form-control" />
+            <span asp-validation-for="NewPassword" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmNewPassword"></label>
+            <input asp-for="ConfirmNewPassword" class="form-control" />
+            <span asp-validation-for="ConfirmNewPassword" class="text-danger"></span>
+        </div>
+        <button type="submit" class="buttonstandard btn btn-primary" style="margin-top: 10px; margin-bottom: 20px">Save Changes</button>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

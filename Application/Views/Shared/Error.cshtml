@@ -1,0 +1,11 @@
+﻿@model NoteApp.Models.ErrorViewModel
+
+<h2>Oops! Something went wrong.</h2>
+<p>@Model.Message</p>
+
+@if (Model.ShowRequestId)
+{
+    <p>Request ID: @Model.RequestId</p>
+}
+
+<a href="/">Go to Home Page</a>
