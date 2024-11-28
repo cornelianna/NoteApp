@@ -1,6 +1,3 @@
-
-
-
 // AccountController.cs
 using Microsoft.AspNetCore.Mvc;
 using NoteApp.Models;
