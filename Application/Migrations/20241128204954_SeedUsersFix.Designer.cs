@@ -11,8 +11,8 @@ using NoteApp.Data;
 namespace NoteApp.Migrations
 {
     [DbContext(typeof(NoteAppContext))]
-    [Migration("20241128171433_seedusersfix")]
-    partial class seedusersfix
+    [Migration("20241128204954_SeedUsersFix")]
+    partial class SeedUsersFix
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -137,15 +137,15 @@ namespace NoteApp.Migrations
                         {
                             Id = "user1-id",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c467b45c-deb9-4cd7-b70b-755437217add",
+                            ConcurrencyStamp = "3855e7d0-0ed0-4580-894e-00b8c4f35fce",
                             Email = "user1@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER1@EXAMPLE.COM",
                             NormalizedUserName = "USER1",
-                            PasswordHash = "AQAAAAIAAYagAAAAENyRa7noPHCHT8UhFnnOOkrguMERilrGmYY3Qd3KkDJdTzuTJlbu9iP1mEGghlLJSQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEK79u5jVibvUMA24g3F9T8OoWU06YIvSeSJGLaub2KbQhekPiq6JOav4+8TrjFJHhQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9d16c6c4-2cbb-4727-acd3-5bbcd0d19425",
+                            SecurityStamp = "f6e9eb9b-542a-4ee2-85d2-69ce32f3bd66",
                             TwoFactorEnabled = false,
                             UserName = "user1"
                         },
@@ -153,15 +153,15 @@ namespace NoteApp.Migrations
                         {
                             Id = "user2-id",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "656f7486-9bf3-4060-b0a1-b09a6a9ab0a1",
+                            ConcurrencyStamp = "557d0f48-fc51-4a8c-a007-7f78b7c5ab2f",
                             Email = "user2@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER2@EXAMPLE.COM",
                             NormalizedUserName = "USER2",
-                            PasswordHash = "AQAAAAIAAYagAAAAEPKnC6YN4FHi+MR4OzAKliX1sBDwDommGE9pJPWrVGtpi5pQJGMWwVBIMpSIYNkNDA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENs9OYEuXdfl2EfbZnLXB91S+JveB7EpRNkpPnOgWyXwB0gargVuHTR8rjbi6oFGMQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fcea69f8-5562-4627-9014-edd4796696e0",
+                            SecurityStamp = "a8bf888b-3997-4ffa-811b-b79bc399ee99",
                             TwoFactorEnabled = false,
                             UserName = "user2"
                         });

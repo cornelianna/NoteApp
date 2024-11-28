@@ -7,9 +7,9 @@ namespace NoteApp.Data
 {
     public class NoteAppContext : IdentityDbContext<IdentityUser>
     {
-        public DbSet<Post> Posts { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<Friend> Friends { get; set; }
+        public DbSet<Post>? Posts { get; set; }
+        public DbSet<Comment>? Comments { get; set; }
+        public DbSet<Friend>? Friends { get; set; }
 
         public NoteAppContext(DbContextOptions<NoteAppContext> options)
             : base(options)
@@ -34,11 +34,11 @@ namespace NoteApp.Data
                 .OnDelete(DeleteBehavior.Restrict);
         }
 
-        private void SeedUsers(ModelBuilder builder)
+        private static void SeedUsers(ModelBuilder builder)
         {
             var hasher = new PasswordHasher<IdentityUser>();
 
-            IdentityUser user1 = new IdentityUser
+            var user1 = new IdentityUser
             {
                 Id = "user1-id",
                 UserName = "user1",
@@ -49,7 +49,7 @@ namespace NoteApp.Data
                 PasswordHash = hasher.HashPassword(null, "Password123!")
             };
 
-            IdentityUser user2 = new IdentityUser
+            var user2 = new IdentityUser
             {
                 Id = "user2-id",
                 UserName = "user2",
