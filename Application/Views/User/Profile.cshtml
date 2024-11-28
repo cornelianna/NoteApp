@@ -7,12 +7,10 @@
 }
     <!-- User's Posts -->
     <div class="profile-header d-flex justify-content-between align-items-center">
-    <h3 class="posts-header" style="margin: 20px;"> <img src="~/images/icon.svg" alt="Avatar" style="margin-right: 20px; width: 45px; height: 45px;">@Model.Username's Posts</h3>
-    <button type="button" class="buttonstandard btn btn-primary add-friend-btn" style="margin: 30px" data-friend-id="@Model.UserId">Add Friend</button>
+        <h3 class="posts-header" style="margin: 20px;"> <img src="~/images/icon.svg" alt="Avatar" style="margin-right: 20px; width: 45px; height: 45px;">@Model.Username's Posts</h3>
+        <button type="button" class="buttonstandard btn btn-primary add-friend-btn" style="margin: 30px" data-friend-id="@Model.UserId">Add Friend</button>
     </div>
     
-
-    </div>
     @if (Model.Posts.Any())
     {
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
