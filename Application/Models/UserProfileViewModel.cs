@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace NoteApp.Models
 {
-    public class UserProfileViewModel
+    public class UserProfileViewModel  // View model for user profile information
     {
         [Required(ErrorMessage = "User ID is required.")]
         [MaxLength(50, ErrorMessage = "User ID cannot exceed 50 characters.")]
