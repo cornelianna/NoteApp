@@ -45,9 +45,9 @@ namespace NoteApp.Data
                 NormalizedUserName = "USER1",
                 Email = "user1@example.com",
                 NormalizedEmail = "USER1@EXAMPLE.COM",
-                EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "Password123!")
+                EmailConfirmed = true
             };
+            user1.PasswordHash = hasher.HashPassword(user1, "Password123!");
 
             var user2 = new IdentityUser
             {
@@ -57,8 +57,8 @@ namespace NoteApp.Data
                 Email = "user2@example.com",
                 NormalizedEmail = "USER2@EXAMPLE.COM",
                 EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "Password123!")
             };
+            user2.PasswordHash = hasher.HashPassword(user2, "Password123!");
 
             builder.Entity<IdentityUser>().HasData(user1, user2);
         }

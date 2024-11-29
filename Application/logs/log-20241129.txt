@@ -1,0 +1,1058 @@
+2024-11-29 15:40:33.291 +01:00 [INF] Current Environment: Development
+2024-11-29 15:40:33.343 +01:00 [INF] User profile is available. Using 'C:\Users\selme\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-11-29 15:40:33.432 +01:00 [INF] Now listening on: http://localhost:5164
+2024-11-29 15:40:33.433 +01:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-11-29 15:40:33.433 +01:00 [INF] Hosting environment: Development
+2024-11-29 15:40:33.433 +01:00 [INF] Content root path: C:\Users\selme\Documents\GitHub\NoteApp\Application
+2024-11-29 15:40:33.604 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-29 15:40:33.610 +01:00 [WRN] Failed to determine the https port for redirect.
+2024-11-29 15:40:34.452 +01:00 [INF] Executed DbCommand (9ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:40:34.491 +01:00 [INF] AuthenticationScheme: Identity.Application signed out.
+2024-11-29 15:40:34.492 +01:00 [INF] AuthenticationScheme: Identity.External signed out.
+2024-11-29 15:40:34.492 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorUserId signed out.
+2024-11-29 15:40:34.492 +01:00 [INF] AuthenticationScheme: Identity.TwoFactorRememberMe signed out.
+2024-11-29 15:40:34.493 +01:00 [INF] Identity.Application was not authenticated. Failure message: No principal.
+2024-11-29 15:40:34.495 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-29 15:40:34.500 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-29 15:40:34.501 +01:00 [INF] Fetching all posts
+2024-11-29 15:40:34.534 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:40:34.534 +01:00 [INF] Fetched all posts
+2024-11-29 15:40:34.537 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:40:34.564 +01:00 [INF] Executed ViewResult - view Index executed in 27.7688ms.
+2024-11-29 15:40:34.565 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 64.8805ms
+2024-11-29 15:40:34.565 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-29 15:40:34.569 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 965.2381ms
+2024-11-29 15:40:34.586 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-29 15:40:34.589 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:40:34.589 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/js/site.js - null null
+2024-11-29 15:40:34.590 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 1.0215ms
+2024-11-29 15:40:34.590 +01:00 [INF] The file /js/site.js was not modified
+2024-11-29 15:40:34.590 +01:00 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\Users\selme\Documents\GitHub\NoteApp\Application\wwwroot\css\site.css'
+2024-11-29 15:40:34.590 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 200 11665 text/css 4.6414ms
+2024-11-29 15:40:34.590 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/js/site.js - 304 null text/javascript 0.9639ms
+2024-11-29 15:40:34.595 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/SnapNoteLogo.png - null null
+2024-11-29 15:40:34.596 +01:00 [INF] The file /images/SnapNoteLogo.png was not modified
+2024-11-29 15:40:34.596 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/SnapNoteLogo.png - 304 null image/png 0.3346ms
+2024-11-29 15:40:47.905 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-29 15:40:47.906 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-29 15:40:47.907 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-29 15:40:47.907 +01:00 [INF] Fetching all posts
+2024-11-29 15:40:47.937 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:40:47.937 +01:00 [INF] Fetched all posts
+2024-11-29 15:40:47.937 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:40:47.943 +01:00 [INF] Executed ViewResult - view Index executed in 6.2661ms.
+2024-11-29 15:40:47.943 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 36.7042ms
+2024-11-29 15:40:47.943 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-29 15:40:47.944 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 38.3923ms
+2024-11-29 15:40:47.967 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:40:47.967 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.2512ms
+2024-11-29 15:40:49.107 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Account/Login - null null
+2024-11-29 15:40:49.108 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.AccountController.Login (NoteApp)'
+2024-11-29 15:40:49.109 +01:00 [INF] Route matched with {action = "Login", controller = "Account", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller NoteApp.Controllers.AccountController (NoteApp).
+2024-11-29 15:40:49.112 +01:00 [INF] Executing ViewResult, running view Login.
+2024-11-29 15:40:49.130 +01:00 [INF] Executed ViewResult - view Login executed in 18.47ms.
+2024-11-29 15:40:49.130 +01:00 [INF] Executed action NoteApp.Controllers.AccountController.Login (NoteApp) in 20.3318ms
+2024-11-29 15:40:49.130 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.AccountController.Login (NoteApp)'
+2024-11-29 15:40:49.130 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Account/Login - 200 null text/html; charset=utf-8 23.05ms
+2024-11-29 15:40:49.153 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/lib/jquery-validation/dist/jquery.validate.min.js - null null
+2024-11-29 15:40:49.153 +01:00 [INF] The file /lib/jquery-validation/dist/jquery.validate.min.js was not modified
+2024-11-29 15:40:49.153 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js - null null
+2024-11-29 15:40:49.153 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/lib/jquery-validation/dist/jquery.validate.min.js - 304 null text/javascript 0.6028ms
+2024-11-29 15:40:49.154 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:40:49.154 +01:00 [INF] The file /lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js was not modified
+2024-11-29 15:40:49.154 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js - 304 null text/javascript 0.3459ms
+2024-11-29 15:40:49.154 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1877ms
+2024-11-29 15:40:59.821 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Account/Login - application/x-www-form-urlencoded 238
+2024-11-29 15:40:59.823 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.AccountController.Login (NoteApp)'
+2024-11-29 15:40:59.829 +01:00 [INF] Route matched with {action = "Login", controller = "Account", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(NoteApp.Models.LoginViewModel) on controller NoteApp.Controllers.AccountController (NoteApp).
+2024-11-29 15:40:59.855 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__normalizedUserName_0='?' (Size = 5)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2024-11-29 15:40:59.908 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__user_Id_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."ClaimType", "a"."ClaimValue", "a"."UserId"
+FROM "AspNetUserClaims" AS "a"
+WHERE "a"."UserId" = @__user_Id_0
+2024-11-29 15:40:59.909 +01:00 [INF] AuthenticationScheme: Identity.Application signed in.
+2024-11-29 15:40:59.909 +01:00 [INF] User logged in successfully with username: user1
+2024-11-29 15:40:59.909 +01:00 [INF] User logged in successfully with username: user1
+2024-11-29 15:40:59.910 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2024-11-29 15:40:59.910 +01:00 [INF] Executed action NoteApp.Controllers.AccountController.Login (NoteApp) in 81.1795ms
+2024-11-29 15:40:59.910 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.AccountController.Login (NoteApp)'
+2024-11-29 15:40:59.910 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Account/Login - 302 0 null 88.7629ms
+2024-11-29 15:40:59.911 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-29 15:40:59.912 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-29 15:40:59.912 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-29 15:40:59.913 +01:00 [INF] Fetching all posts
+2024-11-29 15:40:59.913 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:40:59.913 +01:00 [INF] Fetched all posts
+2024-11-29 15:40:59.914 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:40:59.918 +01:00 [INF] Executed ViewResult - view Index executed in 4.0195ms.
+2024-11-29 15:40:59.918 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 5.4039ms
+2024-11-29 15:40:59.918 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-29 15:40:59.918 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 6.326ms
+2024-11-29 15:40:59.944 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/icon.svg - null null
+2024-11-29 15:40:59.945 +01:00 [INF] The file /images/icon.svg was not modified
+2024-11-29 15:40:59.945 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/icon.svg - 304 null image/svg+xml 0.4845ms
+2024-11-29 15:40:59.948 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:40:59.949 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1288ms
+2024-11-29 15:41:02.639 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Friend - null null
+2024-11-29 15:41:02.643 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:02.645 +01:00 [INF] Route matched with {action = "Index", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:41:02.647 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:02.651 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0
+2024-11-29 15:41:02.651 +01:00 [INF] Fetched 0 friends for user user1-id
+2024-11-29 15:41:02.652 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:41:02.654 +01:00 [INF] Executed ViewResult - view Index executed in 2.5169ms.
+2024-11-29 15:41:02.654 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.Index (NoteApp) in 8.5461ms
+2024-11-29 15:41:02.654 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:02.654 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Friend - 200 null text/html; charset=utf-8 14.7273ms
+2024-11-29 15:41:02.675 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:02.675 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1748ms
+2024-11-29 15:41:03.435 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile - null null
+2024-11-29 15:41:03.436 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:03.438 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-29 15:41:03.440 +01:00 [INF] Fetched user ID: user1-id
+2024-11-29 15:41:03.441 +01:00 [INF] Fetching user with ID user1-id
+2024-11-29 15:41:03.442 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:03.443 +01:00 [INF] Fetching posts for user user1-id
+2024-11-29 15:41:03.449 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:41:03.449 +01:00 [INF] Fetched 0 posts for user user1-id
+2024-11-29 15:41:03.449 +01:00 [INF] Displaying profile for user user1-id.
+2024-11-29 15:41:03.450 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-29 15:41:03.452 +01:00 [INF] Executed ViewResult - view Profile executed in 3.1463ms.
+2024-11-29 15:41:03.452 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 13.9019ms
+2024-11-29 15:41:03.452 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:03.452 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile - 200 null text/html; charset=utf-8 16.9916ms
+2024-11-29 15:41:03.468 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:03.468 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1741ms
+2024-11-29 15:41:04.659 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Friend - null null
+2024-11-29 15:41:04.660 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:04.660 +01:00 [INF] Route matched with {action = "Index", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:41:04.661 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:04.662 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0
+2024-11-29 15:41:04.662 +01:00 [INF] Fetched 0 friends for user user1-id
+2024-11-29 15:41:04.662 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:41:04.663 +01:00 [INF] Executed ViewResult - view Index executed in 0.836ms.
+2024-11-29 15:41:04.663 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.Index (NoteApp) in 2.2777ms
+2024-11-29 15:41:04.663 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:04.663 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Friend - 200 null text/html; charset=utf-8 3.875ms
+2024-11-29 15:41:04.678 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:04.679 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.163ms
+2024-11-29 15:41:07.240 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Friend/SearchUsers - application/x-www-form-urlencoded; charset=UTF-8 14
+2024-11-29 15:41:07.241 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.SearchUsers (NoteApp)'
+2024-11-29 15:41:07.243 +01:00 [INF] Route matched with {action = "SearchUsers", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String) on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:41:07.251 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__searchTerm_0='?' (Size = 3)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE ("a"."UserName" IS NOT NULL AND instr("a"."UserName", @__searchTerm_0) > 0) OR ("a"."Email" IS NOT NULL AND instr("a"."Email", @__searchTerm_0) > 0)
+2024-11-29 15:41:07.252 +01:00 [INF] Fetched 2 users for search term use
+2024-11-29 15:41:07.252 +01:00 [INF] Executing PartialViewResult, running view _UserSearchResults.
+2024-11-29 15:41:07.254 +01:00 [INF] Executed PartialViewResult - view _UserSearchResults executed in 2.1938ms.
+2024-11-29 15:41:07.254 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.SearchUsers (NoteApp) in 11.4089ms
+2024-11-29 15:41:07.254 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.SearchUsers (NoteApp)'
+2024-11-29 15:41:07.254 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Friend/SearchUsers - 200 null text/html; charset=utf-8 14.4896ms
+2024-11-29 15:41:07.410 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Friend/SearchUsers - application/x-www-form-urlencoded; charset=UTF-8 15
+2024-11-29 15:41:07.411 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.SearchUsers (NoteApp)'
+2024-11-29 15:41:07.411 +01:00 [INF] Route matched with {action = "SearchUsers", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String) on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:41:07.412 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__searchTerm_0='?' (Size = 4)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE ("a"."UserName" IS NOT NULL AND instr("a"."UserName", @__searchTerm_0) > 0) OR ("a"."Email" IS NOT NULL AND instr("a"."Email", @__searchTerm_0) > 0)
+2024-11-29 15:41:07.412 +01:00 [INF] Fetched 2 users for search term user
+2024-11-29 15:41:07.412 +01:00 [INF] Executing PartialViewResult, running view _UserSearchResults.
+2024-11-29 15:41:07.413 +01:00 [INF] Executed PartialViewResult - view _UserSearchResults executed in 0.38ms.
+2024-11-29 15:41:07.413 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.SearchUsers (NoteApp) in 1.4861ms
+2024-11-29 15:41:07.413 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.SearchUsers (NoteApp)'
+2024-11-29 15:41:07.413 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Friend/SearchUsers - 200 null text/html; charset=utf-8 2.6393ms
+2024-11-29 15:41:08.998 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Friend/AddFriend - application/x-www-form-urlencoded; charset=UTF-8 17
+2024-11-29 15:41:08.999 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.AddFriend (NoteApp)'
+2024-11-29 15:41:09.001 +01:00 [INF] Route matched with {action = "AddFriend", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddFriend(System.String) on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:41:09.002 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:09.005 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8), @__friendId_1='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0 AND "f"."FriendId" = @__friendId_1
+LIMIT 1
+2024-11-29 15:41:09.070 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 8), @p1='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Friends" ("FriendId", "UserId")
+VALUES (@p0, @p1)
+RETURNING "Id";
+2024-11-29 15:41:09.081 +01:00 [INF] User user1-id added friend user2-id
+2024-11-29 15:41:09.082 +01:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-11-29 15:41:09.089 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.AddFriend (NoteApp) in 88.4313ms
+2024-11-29 15:41:09.089 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.AddFriend (NoteApp)'
+2024-11-29 15:41:09.089 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Friend/AddFriend - 200 null application/json; charset=utf-8 91.0107ms
+2024-11-29 15:41:10.521 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Friend - null null
+2024-11-29 15:41:10.522 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:10.522 +01:00 [INF] Route matched with {action = "Index", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:41:10.522 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:10.523 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0
+2024-11-29 15:41:10.524 +01:00 [INF] Fetched 1 friends for user user1-id
+2024-11-29 15:41:10.524 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:41:10.525 +01:00 [INF] Executed ViewResult - view Index executed in 1.3243ms.
+2024-11-29 15:41:10.525 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.Index (NoteApp) in 3.4712ms
+2024-11-29 15:41:10.525 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:10.525 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Friend - 200 null text/html; charset=utf-8 4.3545ms
+2024-11-29 15:41:10.542 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:10.542 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1395ms
+2024-11-29 15:41:10.571 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/favicon.ico - null null
+2024-11-29 15:41:10.571 +01:00 [INF] The file /favicon.ico was not modified
+2024-11-29 15:41:10.571 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/favicon.ico - 304 null image/x-icon 0.3969ms
+2024-11-29 15:41:11.925 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile - null null
+2024-11-29 15:41:11.925 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:11.925 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-29 15:41:11.926 +01:00 [INF] Fetched user ID: user1-id
+2024-11-29 15:41:11.926 +01:00 [INF] Fetching user with ID user1-id
+2024-11-29 15:41:11.927 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:11.927 +01:00 [INF] Fetching posts for user user1-id
+2024-11-29 15:41:11.928 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:41:11.928 +01:00 [INF] Fetched 0 posts for user user1-id
+2024-11-29 15:41:11.928 +01:00 [INF] Displaying profile for user user1-id.
+2024-11-29 15:41:11.928 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-29 15:41:11.929 +01:00 [INF] Executed ViewResult - view Profile executed in 0.9064ms.
+2024-11-29 15:41:11.929 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 3.428ms
+2024-11-29 15:41:11.929 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:11.929 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile - 200 null text/html; charset=utf-8 4.574ms
+2024-11-29 15:41:11.949 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:11.949 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1333ms
+2024-11-29 15:41:13.823 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile - null null
+2024-11-29 15:41:13.825 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:13.825 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-29 15:41:13.825 +01:00 [INF] Fetched user ID: user1-id
+2024-11-29 15:41:13.825 +01:00 [INF] Fetching user with ID user1-id
+2024-11-29 15:41:13.826 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:13.826 +01:00 [INF] Fetching posts for user user1-id
+2024-11-29 15:41:13.827 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:41:13.827 +01:00 [INF] Fetched 0 posts for user user1-id
+2024-11-29 15:41:13.827 +01:00 [INF] Displaying profile for user user1-id.
+2024-11-29 15:41:13.827 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-29 15:41:13.828 +01:00 [INF] Executed ViewResult - view Profile executed in 1.1454ms.
+2024-11-29 15:41:13.828 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 3.2776ms
+2024-11-29 15:41:13.828 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:13.828 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile - 200 null text/html; charset=utf-8 4.6972ms
+2024-11-29 15:41:13.861 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:13.861 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1494ms
+2024-11-29 15:41:14.164 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-29 15:41:14.164 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-29 15:41:14.164 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-29 15:41:14.164 +01:00 [INF] Fetching all posts
+2024-11-29 15:41:14.165 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:41:14.165 +01:00 [INF] Fetched all posts
+2024-11-29 15:41:14.165 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:41:14.166 +01:00 [INF] Executed ViewResult - view Index executed in 1.3551ms.
+2024-11-29 15:41:14.166 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 2.3064ms
+2024-11-29 15:41:14.166 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-29 15:41:14.167 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 3.0196ms
+2024-11-29 15:41:14.181 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:14.182 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1258ms
+2024-11-29 15:41:16.170 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Post/CreatePost - multipart/form-data; boundary=----WebKitFormBoundarybgTSAJFSqF8X5nJd 695
+2024-11-29 15:41:16.171 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-11-29 15:41:16.175 +01:00 [INF] Route matched with {action = "CreatePost", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePost(NoteApp.Models.Post, Microsoft.AspNetCore.Http.IFormFile) on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-29 15:41:16.202 +01:00 [ERR] Failed executing DbCommand (1ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (DbType = Binary), @p3='?' (Size = 8), @p4='?' (Size = 5)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("Content", "CreatedAt", "ImageData", "UserId", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+2024-11-29 15:41:16.208 +01:00 [ERR] An exception occurred in the database while saving changes for context type 'NoteApp.Data.NoteAppContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'NOT NULL constraint failed: Posts.Content'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'NOT NULL constraint failed: Posts.Content'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2024-11-29 15:41:16.209 +01:00 [ERR] An error occurred while adding a new post for user user1-id
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'NOT NULL constraint failed: Posts.Content'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at NoteApp.Repositories.PostRepository.AddPostAsync(Post post) in C:\Users\selme\Documents\GitHub\NoteApp\Application\Repositories\PostRepository.cs:line 87
+2024-11-29 15:41:16.215 +01:00 [ERR] An error occurred while creating a post.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'NOT NULL constraint failed: Posts.Content'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at NoteApp.Repositories.PostRepository.AddPostAsync(Post post) in C:\Users\selme\Documents\GitHub\NoteApp\Application\Repositories\PostRepository.cs:line 87
+   at NoteApp.Controllers.PostController.CreatePost(Post post, IFormFile image) in C:\Users\selme\Documents\GitHub\NoteApp\Application\Controllers\PostController.cs:line 72
+2024-11-29 15:41:16.217 +01:00 [INF] Executing RedirectResult, redirecting to /Post/Error.
+2024-11-29 15:41:16.217 +01:00 [INF] Executed action NoteApp.Controllers.PostController.CreatePost (NoteApp) in 41.7533ms
+2024-11-29 15:41:16.217 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-11-29 15:41:16.217 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Post/CreatePost - 302 0 null 46.8835ms
+2024-11-29 15:41:16.219 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Post/Error - null null
+2024-11-29 15:41:16.220 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Error (NoteApp)'
+2024-11-29 15:41:16.220 +01:00 [INF] Route matched with {action = "Error", controller = "Post", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Error() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-29 15:41:16.222 +01:00 [INF] Executing ViewResult, running view Error.
+2024-11-29 15:41:16.223 +01:00 [INF] Executed ViewResult - view Error executed in 1.6207ms.
+2024-11-29 15:41:16.223 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Error (NoteApp) in 2.344ms
+2024-11-29 15:41:16.223 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Error (NoteApp)'
+2024-11-29 15:41:16.223 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Post/Error - 200 null text/html; charset=utf-8 4.2726ms
+2024-11-29 15:41:16.257 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:16.258 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1601ms
+2024-11-29 15:41:17.473 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-29 15:41:17.473 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-29 15:41:17.473 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-29 15:41:17.473 +01:00 [INF] Fetching all posts
+2024-11-29 15:41:17.474 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:41:17.474 +01:00 [INF] Fetched all posts
+2024-11-29 15:41:17.474 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:41:17.475 +01:00 [INF] Executed ViewResult - view Index executed in 0.5548ms.
+2024-11-29 15:41:17.475 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 1.2975ms
+2024-11-29 15:41:17.475 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-29 15:41:17.475 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 2.0988ms
+2024-11-29 15:41:17.493 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:17.493 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1163ms
+2024-11-29 15:41:23.801 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Post/CreatePost - multipart/form-data; boundary=----WebKitFormBoundaryjCxjzEwLYBl9xz7c 27741
+2024-11-29 15:41:23.802 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-11-29 15:41:23.802 +01:00 [INF] Route matched with {action = "CreatePost", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePost(NoteApp.Models.Post, Microsoft.AspNetCore.Http.IFormFile) on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-29 15:41:23.806 +01:00 [ERR] Failed executing DbCommand (0ms) [Parameters=[@p0='?', @p1='?' (DbType = DateTime), @p2='?' (Size = 27029) (DbType = Binary), @p3='?' (Size = 8), @p4='?' (Size = 5)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("Content", "CreatedAt", "ImageData", "UserId", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+2024-11-29 15:41:23.807 +01:00 [ERR] An exception occurred in the database while saving changes for context type 'NoteApp.Data.NoteAppContext'.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'NOT NULL constraint failed: Posts.Content'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'NOT NULL constraint failed: Posts.Content'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2024-11-29 15:41:23.808 +01:00 [ERR] An error occurred while adding a new post for user user1-id
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'NOT NULL constraint failed: Posts.Content'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at NoteApp.Repositories.PostRepository.AddPostAsync(Post post) in C:\Users\selme\Documents\GitHub\NoteApp\Application\Repositories\PostRepository.cs:line 87
+2024-11-29 15:41:23.810 +01:00 [ERR] An error occurred while creating a post.
+Microsoft.EntityFrameworkCore.DbUpdateException: An error occurred while saving the entity changes. See the inner exception for details.
+ ---> Microsoft.Data.Sqlite.SqliteException (0x80004005): SQLite Error 19: 'NOT NULL constraint failed: Posts.Content'.
+   at Microsoft.Data.Sqlite.SqliteException.ThrowExceptionForRC(Int32 rc, sqlite3 db)
+   at Microsoft.Data.Sqlite.SqliteDataReader.NextResult()
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReader(CommandBehavior behavior)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.Data.Sqlite.SqliteCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.EntityFrameworkCore.Update.ReaderModificationCommandBatch.ExecuteAsync(IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Update.Internal.BatchExecutor.ExecuteAsync(IEnumerable`1 commandBatches, IRelationalConnection connection, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at NoteApp.Repositories.PostRepository.AddPostAsync(Post post) in C:\Users\selme\Documents\GitHub\NoteApp\Application\Repositories\PostRepository.cs:line 87
+   at NoteApp.Controllers.PostController.CreatePost(Post post, IFormFile image) in C:\Users\selme\Documents\GitHub\NoteApp\Application\Controllers\PostController.cs:line 72
+2024-11-29 15:41:23.812 +01:00 [INF] Executing RedirectResult, redirecting to /Post/Error.
+2024-11-29 15:41:23.812 +01:00 [INF] Executed action NoteApp.Controllers.PostController.CreatePost (NoteApp) in 9.9028ms
+2024-11-29 15:41:23.812 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-11-29 15:41:23.813 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Post/CreatePost - 302 0 null 11.0743ms
+2024-11-29 15:41:23.814 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Post/Error - null null
+2024-11-29 15:41:23.814 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Error (NoteApp)'
+2024-11-29 15:41:23.814 +01:00 [INF] Route matched with {action = "Error", controller = "Post", page = "", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Error() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-29 15:41:23.814 +01:00 [INF] Executing ViewResult, running view Error.
+2024-11-29 15:41:23.815 +01:00 [INF] Executed ViewResult - view Error executed in 0.517ms.
+2024-11-29 15:41:23.815 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Error (NoteApp) in 0.6417ms
+2024-11-29 15:41:23.815 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Error (NoteApp)'
+2024-11-29 15:41:23.815 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Post/Error - 200 null text/html; charset=utf-8 1.1449ms
+2024-11-29 15:41:23.842 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:23.843 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1453ms
+2024-11-29 15:41:25.524 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-29 15:41:25.525 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-29 15:41:25.525 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-29 15:41:25.525 +01:00 [INF] Fetching all posts
+2024-11-29 15:41:25.526 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:41:25.526 +01:00 [INF] Fetched all posts
+2024-11-29 15:41:25.526 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:41:25.526 +01:00 [INF] Executed ViewResult - view Index executed in 0.5187ms.
+2024-11-29 15:41:25.526 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 1.2857ms
+2024-11-29 15:41:25.526 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-29 15:41:25.527 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 2.2052ms
+2024-11-29 15:41:25.546 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:25.546 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1255ms
+2024-11-29 15:41:30.887 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Post/CreatePost - multipart/form-data; boundary=----WebKitFormBoundarykFuqtNWmpVMRoi4z 27743
+2024-11-29 15:41:30.887 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-11-29 15:41:30.887 +01:00 [INF] Route matched with {action = "CreatePost", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreatePost(NoteApp.Models.Post, Microsoft.AspNetCore.Http.IFormFile) on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-29 15:41:30.889 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 3), @p1='?' (DbType = DateTime), @p2='?' (Size = 27029) (DbType = Binary), @p3='?' (Size = 8), @p4='?' (Size = 5)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Posts" ("Content", "CreatedAt", "ImageData", "UserId", "Username")
+VALUES (@p0, @p1, @p2, @p3, @p4)
+RETURNING "Id";
+2024-11-29 15:41:30.891 +01:00 [INF] Added new post with ID 1
+2024-11-29 15:41:30.891 +01:00 [INF] Post created successfully by user user1-id
+2024-11-29 15:41:30.892 +01:00 [INF] Executing RedirectResult, redirecting to /.
+2024-11-29 15:41:30.892 +01:00 [INF] Executed action NoteApp.Controllers.PostController.CreatePost (NoteApp) in 4.1329ms
+2024-11-29 15:41:30.892 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.CreatePost (NoteApp)'
+2024-11-29 15:41:30.892 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Post/CreatePost - 302 0 null 4.9114ms
+2024-11-29 15:41:30.893 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/ - null null
+2024-11-29 15:41:30.893 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-29 15:41:30.893 +01:00 [INF] Route matched with {action = "Index", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-29 15:41:30.893 +01:00 [INF] Fetching all posts
+2024-11-29 15:41:30.893 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:41:30.903 +01:00 [INF] Fetched all posts
+2024-11-29 15:41:30.903 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:41:30.910 +01:00 [INF] Executed ViewResult - view Index executed in 7.5013ms.
+2024-11-29 15:41:30.910 +01:00 [INF] Executed action NoteApp.Controllers.PostController.Index (NoteApp) in 17.3879ms
+2024-11-29 15:41:30.910 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.Index (NoteApp)'
+2024-11-29 15:41:30.911 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/ - 200 null text/html; charset=utf-8 17.7982ms
+2024-11-29 15:41:30.933 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/more.svg - null null
+2024-11-29 15:41:30.934 +01:00 [INF] The file /images/more.svg was not modified
+2024-11-29 15:41:30.934 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/more.svg - 304 null image/svg+xml 0.3653ms
+2024-11-29 15:41:30.936 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/edit.svg - null null
+2024-11-29 15:41:30.936 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/images/delete.svg - null null
+2024-11-29 15:41:30.936 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:30.937 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.0868ms
+2024-11-29 15:41:30.942 +01:00 [INF] Sending file. Request path: '/images/delete.svg'. Physical path: 'C:\Users\selme\Documents\GitHub\NoteApp\Application\wwwroot\images\delete.svg'
+2024-11-29 15:41:30.942 +01:00 [INF] Sending file. Request path: '/images/edit.svg'. Physical path: 'C:\Users\selme\Documents\GitHub\NoteApp\Application\wwwroot\images\edit.svg'
+2024-11-29 15:41:30.942 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/delete.svg - 200 579 image/svg+xml 5.9302ms
+2024-11-29 15:41:30.942 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/images/edit.svg - 200 578 image/svg+xml 6.499ms
+2024-11-29 15:41:33.997 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Friend - null null
+2024-11-29 15:41:33.997 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:33.997 +01:00 [INF] Route matched with {action = "Index", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:41:33.998 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:33.998 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0
+2024-11-29 15:41:33.999 +01:00 [INF] Fetched 1 friends for user user1-id
+2024-11-29 15:41:33.999 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:41:34.000 +01:00 [INF] Executed ViewResult - view Index executed in 1.2694ms.
+2024-11-29 15:41:34.000 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.Index (NoteApp) in 2.6768ms
+2024-11-29 15:41:34.000 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:34.000 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Friend - 200 null text/html; charset=utf-8 3.4679ms
+2024-11-29 15:41:34.026 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:34.026 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1314ms
+2024-11-29 15:41:34.588 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile - null null
+2024-11-29 15:41:34.589 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:34.589 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-29 15:41:34.590 +01:00 [INF] Fetched user ID: user1-id
+2024-11-29 15:41:34.590 +01:00 [INF] Fetching user with ID user1-id
+2024-11-29 15:41:34.590 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:34.591 +01:00 [INF] Fetching posts for user user1-id
+2024-11-29 15:41:34.591 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:41:34.591 +01:00 [INF] Fetched 1 posts for user user1-id
+2024-11-29 15:41:34.591 +01:00 [INF] Displaying profile for user user1-id.
+2024-11-29 15:41:34.591 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-29 15:41:34.593 +01:00 [INF] Executed ViewResult - view Profile executed in 1.3552ms.
+2024-11-29 15:41:34.593 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 3.1021ms
+2024-11-29 15:41:34.593 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:34.593 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile - 200 null text/html; charset=utf-8 4.4279ms
+2024-11-29 15:41:34.607 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:34.607 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1181ms
+2024-11-29 15:41:34.977 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Friend - null null
+2024-11-29 15:41:34.978 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:34.979 +01:00 [INF] Route matched with {action = "Index", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:41:34.979 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:34.980 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0
+2024-11-29 15:41:34.980 +01:00 [INF] Fetched 1 friends for user user1-id
+2024-11-29 15:41:34.980 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:41:34.981 +01:00 [INF] Executed ViewResult - view Index executed in 0.6355ms.
+2024-11-29 15:41:34.981 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.Index (NoteApp) in 1.9427ms
+2024-11-29 15:41:34.981 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:34.981 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Friend - 200 null text/html; charset=utf-8 3.3763ms
+2024-11-29 15:41:35.002 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:35.003 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1266ms
+2024-11-29 15:41:35.832 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile - null null
+2024-11-29 15:41:35.832 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:35.832 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-29 15:41:35.833 +01:00 [INF] Fetched user ID: user1-id
+2024-11-29 15:41:35.833 +01:00 [INF] Fetching user with ID user1-id
+2024-11-29 15:41:35.833 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:35.833 +01:00 [INF] Fetching posts for user user1-id
+2024-11-29 15:41:35.834 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:41:35.834 +01:00 [INF] Fetched 1 posts for user user1-id
+2024-11-29 15:41:35.834 +01:00 [INF] Displaying profile for user user1-id.
+2024-11-29 15:41:35.834 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-29 15:41:35.835 +01:00 [INF] Executed ViewResult - view Profile executed in 1.4938ms.
+2024-11-29 15:41:35.835 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 3.0034ms
+2024-11-29 15:41:35.835 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:35.836 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile - 200 null text/html; charset=utf-8 3.657ms
+2024-11-29 15:41:35.856 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:35.856 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1249ms
+2024-11-29 15:41:37.428 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile - null null
+2024-11-29 15:41:37.429 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:37.429 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-29 15:41:37.430 +01:00 [INF] Fetched user ID: user1-id
+2024-11-29 15:41:37.430 +01:00 [INF] Fetching user with ID user1-id
+2024-11-29 15:41:37.430 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:37.430 +01:00 [INF] Fetching posts for user user1-id
+2024-11-29 15:41:37.431 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:41:37.431 +01:00 [INF] Fetched 1 posts for user user1-id
+2024-11-29 15:41:37.431 +01:00 [INF] Displaying profile for user user1-id.
+2024-11-29 15:41:37.431 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-29 15:41:37.432 +01:00 [INF] Executed ViewResult - view Profile executed in 0.5901ms.
+2024-11-29 15:41:37.432 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 2.1393ms
+2024-11-29 15:41:37.432 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:37.432 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile - 200 null text/html; charset=utf-8 3.5532ms
+2024-11-29 15:41:37.461 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:37.461 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1117ms
+2024-11-29 15:41:37.872 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Friend - null null
+2024-11-29 15:41:37.873 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:37.873 +01:00 [INF] Route matched with {action = "Index", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:41:37.874 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:37.874 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0
+2024-11-29 15:41:37.874 +01:00 [INF] Fetched 1 friends for user user1-id
+2024-11-29 15:41:37.875 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:41:37.875 +01:00 [INF] Executed ViewResult - view Index executed in 0.4279ms.
+2024-11-29 15:41:37.875 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.Index (NoteApp) in 1.6453ms
+2024-11-29 15:41:37.875 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:37.875 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Friend - 200 null text/html; charset=utf-8 3.0874ms
+2024-11-29 15:41:37.891 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:37.891 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1093ms
+2024-11-29 15:41:39.470 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile - null null
+2024-11-29 15:41:39.472 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:39.472 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-29 15:41:39.472 +01:00 [INF] Fetched user ID: user1-id
+2024-11-29 15:41:39.472 +01:00 [INF] Fetching user with ID user1-id
+2024-11-29 15:41:39.472 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:39.473 +01:00 [INF] Fetching posts for user user1-id
+2024-11-29 15:41:39.473 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:41:39.473 +01:00 [INF] Fetched 1 posts for user user1-id
+2024-11-29 15:41:39.473 +01:00 [INF] Displaying profile for user user1-id.
+2024-11-29 15:41:39.474 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-29 15:41:39.474 +01:00 [INF] Executed ViewResult - view Profile executed in 0.9346ms.
+2024-11-29 15:41:39.474 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 2.5561ms
+2024-11-29 15:41:39.474 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:39.474 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile - 200 null text/html; charset=utf-8 3.9222ms
+2024-11-29 15:41:39.491 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:39.491 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1066ms
+2024-11-29 15:41:40.173 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Post/ViewPost/1 - null null
+2024-11-29 15:41:40.173 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.PostController.ViewPost (NoteApp)'
+2024-11-29 15:41:40.176 +01:00 [INF] Route matched with {action = "ViewPost", controller = "Post", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ViewPost(Int32) on controller NoteApp.Controllers.PostController (NoteApp).
+2024-11-29 15:41:40.177 +01:00 [INF] Fetching post with ID 1
+2024-11-29 15:41:40.185 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."Content", "t"."CreatedAt", "t"."ImageData", "t"."UserId", "t"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM (
+    SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username"
+    FROM "Posts" AS "p"
+    WHERE "p"."Id" = @__id_0
+    LIMIT 1
+) AS "t"
+LEFT JOIN "Comments" AS "c" ON "t"."Id" = "c"."PostId"
+ORDER BY "t"."Id"
+2024-11-29 15:41:40.185 +01:00 [INF] Executing ViewResult, running view ViewPost.
+2024-11-29 15:41:40.188 +01:00 [INF] Executed ViewResult - view ViewPost executed in 3.025ms.
+2024-11-29 15:41:40.188 +01:00 [INF] Executed action NoteApp.Controllers.PostController.ViewPost (NoteApp) in 12.5577ms
+2024-11-29 15:41:40.188 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.PostController.ViewPost (NoteApp)'
+2024-11-29 15:41:40.188 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Post/ViewPost/1 - 200 null text/html; charset=utf-8 15.6148ms
+2024-11-29 15:41:40.208 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:40.208 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1167ms
+2024-11-29 15:41:41.320 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile - null null
+2024-11-29 15:41:41.321 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:41.321 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-29 15:41:41.321 +01:00 [INF] Fetched user ID: user1-id
+2024-11-29 15:41:41.321 +01:00 [INF] Fetching user with ID user1-id
+2024-11-29 15:41:41.322 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:41.323 +01:00 [INF] Fetching posts for user user1-id
+2024-11-29 15:41:41.323 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:41:41.323 +01:00 [INF] Fetched 1 posts for user user1-id
+2024-11-29 15:41:41.323 +01:00 [INF] Displaying profile for user user1-id.
+2024-11-29 15:41:41.323 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-29 15:41:41.324 +01:00 [INF] Executed ViewResult - view Profile executed in 0.7288ms.
+2024-11-29 15:41:41.324 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 3.1423ms
+2024-11-29 15:41:41.324 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:41.324 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile - 200 null text/html; charset=utf-8 4.0679ms
+2024-11-29 15:41:41.350 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:41.351 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.11ms
+2024-11-29 15:41:42.914 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Friend - null null
+2024-11-29 15:41:42.915 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:42.915 +01:00 [INF] Route matched with {action = "Index", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:41:42.915 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:42.916 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0
+2024-11-29 15:41:42.916 +01:00 [INF] Fetched 1 friends for user user1-id
+2024-11-29 15:41:42.916 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:41:42.917 +01:00 [INF] Executed ViewResult - view Index executed in 1.1688ms.
+2024-11-29 15:41:42.917 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.Index (NoteApp) in 2.397ms
+2024-11-29 15:41:42.917 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:42.917 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Friend - 200 null text/html; charset=utf-8 3.1188ms
+2024-11-29 15:41:42.934 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:42.934 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1162ms
+2024-11-29 15:41:45.574 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/User/Profile - null null
+2024-11-29 15:41:45.575 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:45.575 +01:00 [INF] Route matched with {action = "Profile", controller = "User", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Profile(System.String) on controller NoteApp.Controllers.UserController (NoteApp).
+2024-11-29 15:41:45.575 +01:00 [INF] Fetched user ID: user1-id
+2024-11-29 15:41:45.575 +01:00 [INF] Fetching user with ID user1-id
+2024-11-29 15:41:45.575 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:45.576 +01:00 [INF] Fetching posts for user user1-id
+2024-11-29 15:41:45.576 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Content", "p"."CreatedAt", "p"."ImageData", "p"."UserId", "p"."Username", "c"."Id", "c"."Content", "c"."CreatedAt", "c"."PostId", "c"."UserId", "c"."Username"
+FROM "Posts" AS "p"
+LEFT JOIN "Comments" AS "c" ON "p"."Id" = "c"."PostId"
+WHERE "p"."UserId" = @__userId_0
+ORDER BY "p"."CreatedAt" DESC, "p"."Id"
+2024-11-29 15:41:45.576 +01:00 [INF] Fetched 1 posts for user user1-id
+2024-11-29 15:41:45.576 +01:00 [INF] Displaying profile for user user1-id.
+2024-11-29 15:41:45.576 +01:00 [INF] Executing ViewResult, running view Profile.
+2024-11-29 15:41:45.577 +01:00 [INF] Executed ViewResult - view Profile executed in 1.1044ms.
+2024-11-29 15:41:45.577 +01:00 [INF] Executed action NoteApp.Controllers.UserController.Profile (NoteApp) in 2.637ms
+2024-11-29 15:41:45.577 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.UserController.Profile (NoteApp)'
+2024-11-29 15:41:45.577 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/User/Profile - 200 null text/html; charset=utf-8 3.2471ms
+2024-11-29 15:41:45.590 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:45.590 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1009ms
+2024-11-29 15:41:46.840 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Friend - null null
+2024-11-29 15:41:46.840 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:46.840 +01:00 [INF] Route matched with {action = "Index", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:41:46.841 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:46.841 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0
+2024-11-29 15:41:46.842 +01:00 [INF] Fetched 1 friends for user user1-id
+2024-11-29 15:41:46.842 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:41:46.842 +01:00 [INF] Executed ViewResult - view Index executed in 0.3836ms.
+2024-11-29 15:41:46.842 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.Index (NoteApp) in 1.501ms
+2024-11-29 15:41:46.842 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:41:46.842 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Friend - 200 null text/html; charset=utf-8 2.173ms
+2024-11-29 15:41:46.863 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:41:46.863 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.125ms
+2024-11-29 15:41:52.779 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Friend/SearchUsers - application/x-www-form-urlencoded; charset=UTF-8 14
+2024-11-29 15:41:52.779 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.SearchUsers (NoteApp)'
+2024-11-29 15:41:52.779 +01:00 [INF] Route matched with {action = "SearchUsers", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String) on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:41:52.780 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__searchTerm_0='?' (Size = 3)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE ("a"."UserName" IS NOT NULL AND instr("a"."UserName", @__searchTerm_0) > 0) OR ("a"."Email" IS NOT NULL AND instr("a"."Email", @__searchTerm_0) > 0)
+2024-11-29 15:41:52.781 +01:00 [INF] Fetched 2 users for search term use
+2024-11-29 15:41:52.781 +01:00 [INF] Executing PartialViewResult, running view _UserSearchResults.
+2024-11-29 15:41:52.781 +01:00 [INF] Executed PartialViewResult - view _UserSearchResults executed in 0.476ms.
+2024-11-29 15:41:52.781 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.SearchUsers (NoteApp) in 1.6748ms
+2024-11-29 15:41:52.781 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.SearchUsers (NoteApp)'
+2024-11-29 15:41:52.781 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Friend/SearchUsers - 200 null text/html; charset=utf-8 2.3138ms
+2024-11-29 15:41:52.930 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Friend/SearchUsers - application/x-www-form-urlencoded; charset=UTF-8 15
+2024-11-29 15:41:52.930 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.SearchUsers (NoteApp)'
+2024-11-29 15:41:52.930 +01:00 [INF] Route matched with {action = "SearchUsers", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] SearchUsers(System.String) on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:41:52.931 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__searchTerm_0='?' (Size = 4)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE ("a"."UserName" IS NOT NULL AND instr("a"."UserName", @__searchTerm_0) > 0) OR ("a"."Email" IS NOT NULL AND instr("a"."Email", @__searchTerm_0) > 0)
+2024-11-29 15:41:52.931 +01:00 [INF] Fetched 2 users for search term user
+2024-11-29 15:41:52.931 +01:00 [INF] Executing PartialViewResult, running view _UserSearchResults.
+2024-11-29 15:41:52.931 +01:00 [INF] Executed PartialViewResult - view _UserSearchResults executed in 0.3114ms.
+2024-11-29 15:41:52.931 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.SearchUsers (NoteApp) in 1.2508ms
+2024-11-29 15:41:52.931 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.SearchUsers (NoteApp)'
+2024-11-29 15:41:52.931 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Friend/SearchUsers - 200 null text/html; charset=utf-8 1.8064ms
+2024-11-29 15:41:54.007 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Friend/AddFriend - application/x-www-form-urlencoded; charset=UTF-8 17
+2024-11-29 15:41:54.008 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.AddFriend (NoteApp)'
+2024-11-29 15:41:54.008 +01:00 [INF] Route matched with {action = "AddFriend", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddFriend(System.String) on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:41:54.008 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:54.009 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8), @__friendId_1='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0 AND "f"."FriendId" = @__friendId_1
+LIMIT 1
+2024-11-29 15:41:54.009 +01:00 [WRN] User user1-id tried to add a friend user2-id they are already friends with.
+2024-11-29 15:41:54.009 +01:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-11-29 15:41:54.009 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.AddFriend (NoteApp) in 1.6734ms
+2024-11-29 15:41:54.009 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.AddFriend (NoteApp)'
+2024-11-29 15:41:54.010 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Friend/AddFriend - 200 null application/json; charset=utf-8 2.4033ms
+2024-11-29 15:41:55.563 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Friend/AddFriend - application/x-www-form-urlencoded; charset=UTF-8 17
+2024-11-29 15:41:55.563 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.AddFriend (NoteApp)'
+2024-11-29 15:41:55.563 +01:00 [INF] Route matched with {action = "AddFriend", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AddFriend(System.String) on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:41:55.564 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:41:55.565 +01:00 [WRN] User user1-id tried to add themselves as a friend.
+2024-11-29 15:41:55.565 +01:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-11-29 15:41:55.565 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.AddFriend (NoteApp) in 1.0953ms
+2024-11-29 15:41:55.565 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.AddFriend (NoteApp)'
+2024-11-29 15:41:55.565 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Friend/AddFriend - 200 null application/json; charset=utf-8 1.8776ms
+2024-11-29 15:42:00.925 +01:00 [INF] Request starting HTTP/1.1 POST http://localhost:5164/Friend/DeleteFriend - application/x-www-form-urlencoded; charset=UTF-8 17
+2024-11-29 15:42:00.926 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.DeleteFriend (NoteApp)'
+2024-11-29 15:42:00.928 +01:00 [INF] Route matched with {action = "DeleteFriend", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteFriend(System.String) on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:42:00.929 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:42:00.930 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8), @__friendId_1='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0 AND "f"."FriendId" = @__friendId_1
+LIMIT 1
+2024-11-29 15:42:00.934 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "Friends"
+WHERE "Id" = @p0
+RETURNING 1;
+2024-11-29 15:42:00.943 +01:00 [INF] User user1-id deleted friend user2-id
+2024-11-29 15:42:00.943 +01:00 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`2[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2024-11-29 15:42:00.943 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.DeleteFriend (NoteApp) in 15.5109ms
+2024-11-29 15:42:00.943 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.DeleteFriend (NoteApp)'
+2024-11-29 15:42:00.944 +01:00 [INF] Request finished HTTP/1.1 POST http://localhost:5164/Friend/DeleteFriend - 200 null application/json; charset=utf-8 18.0249ms
+2024-11-29 15:42:02.095 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Friend - null null
+2024-11-29 15:42:02.096 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:42:02.096 +01:00 [INF] Route matched with {action = "Index", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:42:02.096 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:42:02.097 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0
+2024-11-29 15:42:02.097 +01:00 [INF] Fetched 0 friends for user user1-id
+2024-11-29 15:42:02.097 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:42:02.097 +01:00 [INF] Executed ViewResult - view Index executed in 0.5524ms.
+2024-11-29 15:42:02.097 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.Index (NoteApp) in 1.7983ms
+2024-11-29 15:42:02.097 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:42:02.098 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Friend - 200 null text/html; charset=utf-8 2.4168ms
+2024-11-29 15:42:02.112 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-29 15:42:02.113 +01:00 [INF] The file /css/site.css was not modified
+2024-11-29 15:42:02.113 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 0.3448ms
+2024-11-29 15:42:02.121 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:42:02.121 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.0742ms
+2024-11-29 15:42:41.250 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Friend - null null
+2024-11-29 15:42:41.250 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:42:41.252 +01:00 [INF] Route matched with {action = "Index", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:42:41.252 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:42:41.253 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0
+2024-11-29 15:42:41.253 +01:00 [INF] Fetched 0 friends for user user1-id
+2024-11-29 15:42:41.254 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:42:41.255 +01:00 [INF] Executed ViewResult - view Index executed in 2.3529ms.
+2024-11-29 15:42:41.255 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.Index (NoteApp) in 3.3234ms
+2024-11-29 15:42:41.255 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:42:41.255 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Friend - 200 null text/html; charset=utf-8 5.5075ms
+2024-11-29 15:42:41.288 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:42:41.288 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1258ms
+2024-11-29 15:43:00.240 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Friend - null null
+2024-11-29 15:43:00.241 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:43:00.241 +01:00 [INF] Route matched with {action = "Index", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:43:00.241 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:43:00.241 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0
+2024-11-29 15:43:00.242 +01:00 [INF] Fetched 0 friends for user user1-id
+2024-11-29 15:43:00.242 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:43:00.242 +01:00 [INF] Executed ViewResult - view Index executed in 0.3652ms.
+2024-11-29 15:43:00.242 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.Index (NoteApp) in 1.3568ms
+2024-11-29 15:43:00.242 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:43:00.242 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Friend - 200 null text/html; charset=utf-8 2.3247ms
+2024-11-29 15:43:00.275 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:43:00.276 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1291ms
+2024-11-29 15:44:12.002 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Friend - null null
+2024-11-29 15:44:12.002 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:44:12.002 +01:00 [INF] Route matched with {action = "Index", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:44:12.003 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:44:12.003 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0
+2024-11-29 15:44:12.003 +01:00 [INF] Fetched 0 friends for user user1-id
+2024-11-29 15:44:12.003 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:44:12.003 +01:00 [INF] Executed ViewResult - view Index executed in 0.3224ms.
+2024-11-29 15:44:12.003 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.Index (NoteApp) in 1.184ms
+2024-11-29 15:44:12.003 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:44:12.004 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Friend - 200 null text/html; charset=utf-8 1.8349ms
+2024-11-29 15:44:12.051 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/css/site.css - null null
+2024-11-29 15:44:12.051 +01:00 [INF] The file /css/site.css was not modified
+2024-11-29 15:44:12.051 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/css/site.css - 304 null text/css 0.3093ms
+2024-11-29 15:44:12.062 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:44:12.062 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.1083ms
+2024-11-29 15:44:50.695 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/Friend - null null
+2024-11-29 15:44:50.695 +01:00 [INF] Executing endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:44:50.697 +01:00 [INF] Route matched with {action = "Index", controller = "Friend", page = "", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller NoteApp.Controllers.FriendController (NoteApp).
+2024-11-29 15:44:50.697 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "a"."Id", "a"."AccessFailedCount", "a"."ConcurrencyStamp", "a"."Email", "a"."EmailConfirmed", "a"."LockoutEnabled", "a"."LockoutEnd", "a"."NormalizedEmail", "a"."NormalizedUserName", "a"."PasswordHash", "a"."PhoneNumber", "a"."PhoneNumberConfirmed", "a"."SecurityStamp", "a"."TwoFactorEnabled", "a"."UserName"
+FROM "AspNetUsers" AS "a"
+WHERE "a"."Id" = @__p_0
+LIMIT 1
+2024-11-29 15:44:50.698 +01:00 [INF] Executed DbCommand (0ms) [Parameters=[@__userId_0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+SELECT "f"."Id", "f"."FriendId", "f"."UserId"
+FROM "Friends" AS "f"
+WHERE "f"."UserId" = @__userId_0
+2024-11-29 15:44:50.698 +01:00 [INF] Fetched 0 friends for user user1-id
+2024-11-29 15:44:50.698 +01:00 [INF] Executing ViewResult, running view Index.
+2024-11-29 15:44:50.700 +01:00 [INF] Executed ViewResult - view Index executed in 2.031ms.
+2024-11-29 15:44:50.700 +01:00 [INF] Executed action NoteApp.Controllers.FriendController.Index (NoteApp) in 2.7938ms
+2024-11-29 15:44:50.700 +01:00 [INF] Executed endpoint 'NoteApp.Controllers.FriendController.Index (NoteApp)'
+2024-11-29 15:44:50.700 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/Friend - 200 null text/html; charset=utf-8 4.6985ms
+2024-11-29 15:44:50.748 +01:00 [INF] Request starting HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - null null
+2024-11-29 15:44:50.748 +01:00 [INF] Request finished HTTP/1.1 GET http://localhost:5164/_framework/aspnetcore-browser-refresh.js - 200 13732 application/javascript; charset=utf-8 0.135ms

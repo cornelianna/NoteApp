@@ -20,12 +20,19 @@ namespace NoteApp.Repositories
             _logger = logger;
         }
 
-        public async Task<Post> GetPostByIdAsync(int id)
+        public async Task<Post?> GetPostByIdAsync(int id)
         {
             try
             {
                 _logger.LogInformation("Fetching post with ID {Id}", id);
-                var post = await _context.Posts
+                var posts = _context.Posts;
+                if (posts == null)
+                {
+                    _logger.LogWarning("Posts DbSet is null");
+                    return null;
+                }
+
+                var post = await posts
                     .Include(p => p.Comments)
                     .FirstOrDefaultAsync(p => p.Id == id);
                 
@@ -48,7 +55,14 @@ namespace NoteApp.Repositories
             try
             {
                 _logger.LogInformation("Fetching all posts");
-                return await _context.Posts
+                var posts = _context.Posts;
+                if (posts == null)
+                {
+                    _logger.LogWarning("Posts DbSet is null");
+                    return Enumerable.Empty<Post>();
+                }
+
+                return await posts
                     .OrderByDescending(post => post.CreatedAt)
                     .Include(post => post.Comments)
                     .ToListAsync();
@@ -64,6 +78,11 @@ namespace NoteApp.Repositories
         {
             try
             {
+                if (_context.Posts == null)
+                {
+                    _logger.LogWarning("Posts DbSet is null");
+                    return;
+                }
                 await _context.Posts.AddAsync(post);
                 await _context.SaveChangesAsync();
                 _logger.LogInformation("Added new post with ID {Id}", post.Id);
@@ -79,6 +98,11 @@ namespace NoteApp.Repositories
         {
             try
             {
+                if (_context.Posts == null)
+                {
+                    _logger.LogWarning("Posts DbSet is null");
+                    return;
+                }
                 _context.Posts.Update(post);
                 await _context.SaveChangesAsync();
                 _logger.LogInformation("Updated post with ID {Id}", post.Id);
@@ -94,6 +118,12 @@ namespace NoteApp.Repositories
         {
             try
             {
+                if (_context.Posts == null)
+                {
+                    _logger.LogWarning("Posts DbSet is null");
+                    return;
+                }
+
                 var post = await _context.Posts.FindAsync(id);
                 if (post != null)
                 {
@@ -118,7 +148,14 @@ namespace NoteApp.Repositories
             try
             {
                 _logger.LogInformation("Fetching posts for user {UserId}", userId);
-                return await _context.Posts
+                var posts = _context.Posts;
+                if (posts == null)
+                {
+                    _logger.LogWarning("Posts DbSet is null");
+                    return Enumerable.Empty<Post>();
+                }
+
+                return await posts
                     .Where(p => p.UserId == userId)
                     .Include(p => p.Comments)
                     .OrderByDescending(p => p.CreatedAt)

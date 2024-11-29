@@ -1,10 +1,11 @@
 using NoteApp.Models;
+using NoteApp.Repositories;
 using Microsoft.EntityFrameworkCore;
 using NoteApp.Data;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Linq.Expressions;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace NoteApp.Repositories
@@ -12,90 +13,60 @@ namespace NoteApp.Repositories
     public class FriendRepository : IFriendRepository
     {
         private readonly NoteAppContext _context;
-        private readonly ILogger<FriendRepository> _logger;
 
-        public FriendRepository(NoteAppContext context, ILogger<FriendRepository> logger)
+        public FriendRepository(NoteAppContext context)
         {
-            _context = context;
-            _logger = logger;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public async Task<IEnumerable<Friend>> GetFriendsByUserIdAsync(string userId)
         {
-            try
+            if (_context.Friends == null)
             {
-                _logger.LogInformation("Fetching friends for user {UserId}", userId);
-                return await _context.Friends
-                    .Include(f => f.FriendUser)
-                    .Where(f => f.UserId == userId)
-                    .ToListAsync();
+                throw new InvalidOperationException("Friends collection is not initialized.");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "An error occurred while fetching friends for user {UserId}", userId);
-                throw; // Re-throw to let higher-level handling (e.g., controller) manage it
-            }
+
+            return await _context.Friends
+                .Where(f => f.UserId == userId)
+                .ToListAsync();
         }
 
         public async Task<Friend?> GetFriendshipAsync(string userId, string friendId)
         {
-            try
+            if (_context.Friends == null)
             {
-                _logger.LogInformation("Fetching friendship between {UserId} and {FriendId}", userId, friendId);
-                var friendship = await _context.Friends
-                    .FirstOrDefaultAsync(f => f.UserId == userId && f.FriendId == friendId);
-
-                if (friendship == null)
-                {
-                    _logger.LogWarning("Friendship between {UserId} and {FriendId} not found", userId, friendId);
-                }
-
-                return friendship;
+                throw new InvalidOperationException("Friends collection is not initialized.");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "An error occurred while fetching friendship between {UserId} and {FriendId}", userId, friendId);
-                throw; // Re-throw to let higher-level handling (e.g., controller) manage it
-            }
+
+            return await _context.Friends
+                .FirstOrDefaultAsync(f => f.UserId == userId && f.FriendId == friendId);
         }
 
         public async Task AddFriendAsync(Friend friendship)
         {
-            try
+            if (_context.Friends == null)
             {
-                await _context.Friends.AddAsync(friendship);
-                await _context.SaveChangesAsync();
-                _logger.LogInformation("Added new friendship between {UserId} and {FriendId}", friendship.UserId, friendship.FriendId);
+                throw new InvalidOperationException("Friends collection is not initialized.");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "An error occurred while adding friendship between {UserId} and {FriendId}", friendship.UserId, friendship.FriendId);
-                throw; // Re-throw to let higher-level handling (e.g., controller) manage it
-            }
+
+            await _context.Friends.AddAsync(friendship);
+            await _context.SaveChangesAsync();
         }
 
         public async Task DeleteFriendAsync(string userId, string friendId)
         {
-            try
+            if (_context.Friends == null)
             {
-                var friendship = await _context.Friends
-                    .FirstOrDefaultAsync(f => f.UserId == userId && f.FriendId == friendId);
-
-                if (friendship != null)
-                {
-                    _context.Friends.Remove(friendship);
-                    await _context.SaveChangesAsync();
-                    _logger.LogInformation("Deleted friendship between {UserId} and {FriendId}", userId, friendId);
-                }
-                else
-                {
-                    _logger.LogWarning("Attempt to delete non-existent friendship between {UserId} and {FriendId}", userId, friendId);
-                }
+                throw new InvalidOperationException("Friends collection is not initialized.");
             }
-            catch (Exception ex)
+
+            var friendship = await _context.Friends
+                .FirstOrDefaultAsync(f => f.UserId == userId && f.FriendId == friendId);
+
+            if (friendship != null)
             {
-                _logger.LogError(ex, "An error occurred while deleting friendship between {UserId} and {FriendId}", userId, friendId);
-                throw; // Re-throw to let higher-level handling (e.g., controller) manage it
+                _context.Friends.Remove(friendship);
+                await _context.SaveChangesAsync();
             }
         }
     }
