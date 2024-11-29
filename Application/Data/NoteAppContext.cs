@@ -41,7 +41,7 @@ namespace NoteApp.Data
                 .WithMany(p => p.Comments)
                 .HasForeignKey(c => c.PostId)
                 .OnDelete(DeleteBehavior.Cascade);
-
+            
             builder.Entity<Comment>()
                 .HasOne(c => c.User)
                 .WithMany(u => u.Comments)
