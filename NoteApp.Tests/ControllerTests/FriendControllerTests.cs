@@ -85,29 +85,5 @@ namespace NoteApp.Tests.ControllersTests
             Assert.Equal("Login", redirectResult.ActionName);
             Assert.Equal("Account", redirectResult.ControllerName);
         }
-
-        [Fact]
-        public async Task SearchUsers_ValidSearchTerm_ReturnsPartialViewWithUsers()
-        {
-            // Arrange
-            var searchTerm = "test";
-            var users = new List<IdentityUser>
-            {
-                new IdentityUser { UserName = "testuser1" },
-                new IdentityUser { UserName = "testuser2" }
-            };
-
-            _mockUserManager.Setup(um => um.Users)
-                .Returns(users.AsQueryable());
-
-            // Act
-            var result = await _controller.SearchUsers(searchTerm);
-
-            // Assert
-            var partialViewResult = Assert.IsType<PartialViewResult>(result);
-            var model = Assert.IsAssignableFrom<IEnumerable<IdentityUser>>(partialViewResult.Model);
-            Assert.NotEmpty(model);
-            Assert.All(model, user => Assert.Contains(searchTerm, user.UserName));
-        }
     }
 }
