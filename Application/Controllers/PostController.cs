@@ -3,10 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using NoteApp.Models;
 using System.Security.Claims;
 using NoteApp.Repositories;
-using Serilog;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Diagnostics;
-using System;
 
 namespace NoteApp.Controllers
 {
@@ -214,6 +212,16 @@ namespace NoteApp.Controllers
                     _logger.LogWarning("User ID not found.");
                     return Forbid();
                 }
+
+                // Fetch the Post object from the database using the PostId
+                    var post = await _postRepository.GetPostByIdAsync(comment.PostId);
+                    if (post == null)
+                    {
+                        _logger.LogWarning("Post not found for ID {PostId}", comment.PostId);
+                        return NotFound("Post not found.");
+                    }
+                // Initialize the Comment object with the Post object
+                comment.Post = post;
                 comment.UserId = userId;
                 comment.Username = User.Identity?.Name ?? "Unknown";
                 comment.CreatedAt = DateTime.Now;

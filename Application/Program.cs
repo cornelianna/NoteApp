@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NoteApp.Data;
+using NoteApp.Models;
 using NoteApp.Repositories;
 using Serilog;
 
@@ -23,8 +24,13 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<NoteAppContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("NoteAppContext")));
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
-    .AddEntityFrameworkStores<NoteAppContext>();
+// Identity configuration
+builder.Services.AddIdentity<User, IdentityRole>(options => 
+    {
+    options.SignIn.RequireConfirmedAccount = false;
+    })
+    .AddEntityFrameworkStores<NoteAppContext>()
+    .AddDefaultTokenProviders();
 
 // Add authentication with custom login path
 builder.Services.ConfigureApplicationCookie(options =>
@@ -56,7 +62,6 @@ app.UseHsts();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
 
 // Use authentication and authorization middleware
 app.UseAuthentication();

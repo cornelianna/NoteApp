@@ -1,6 +1,7 @@
 @model NoteApp.Models.UserProfileViewModel
 @using Microsoft.AspNetCore.Identity
-@inject UserManager<IdentityUser> UserManager
+@inject UserManager<User> UserManager
+@inject SignInManager<User> SignInManager
 
 @{
     ViewData["Title"] = $"{Model.Username}'s Profile";

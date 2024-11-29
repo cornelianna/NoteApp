@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using NoteApp.Models;
 using NoteApp.Repositories;
-using System.Threading.Tasks;
-using System;
 
 namespace NoteApp.Controllers
 {

@@ -21,11 +21,11 @@ namespace NoteApp.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            SeedUsers(builder);
 
+            // Configure Friend relationships
             builder.Entity<Friend>()
                 .HasOne(f => f.User)
-                .WithMany()
+                .WithMany(u => u.Friends)
                 .HasForeignKey(f => f.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
@@ -34,6 +34,21 @@ namespace NoteApp.Data
                 .WithMany()
                 .HasForeignKey(f => f.FriendId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            // Configure Comment relationships 
+            builder.Entity<Comment>()
+                .HasOne(c => c.Post)
+                .WithMany(p => p.Comments)
+                .HasForeignKey(c => c.PostId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Comment>()
+                .HasOne(c => c.User)
+                .WithMany(u => u.Comments)
+                .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            SeedUsers(builder);
         }
 
         private static void SeedUsers(ModelBuilder builder)
@@ -51,7 +66,7 @@ namespace NoteApp.Data
                 PasswordHash = hasher.HashPassword(new User(), "Password123!")
             };
 
-            var user2 = new IdentityUser
+            var user2 = new User
             {
                 Id = "user2-id",
                 UserName = "user2",
@@ -62,7 +77,7 @@ namespace NoteApp.Data
                 PasswordHash = hasher.HashPassword(new User(), "Password123!")
             };
 
-            builder.Entity<IdentityUser>().HasData(user1, user2);
+            builder.Entity<User>().HasData(user1, user2);
         }
     }
 }

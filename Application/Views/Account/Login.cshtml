@@ -1,4 +1,6 @@
 @model NoteApp.Models.LoginViewModel
+@inject SignInManager<User> SignInManager;
+@inject UserManager<User> UserManager;
 
 @{
     ViewData["Title"] = "Login";

@@ -1,25 +1,23 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Logging;
+using NoteApp.Models;
 using System.Security.Claims;
-using System.Threading.Tasks;
-using System;
 
 namespace NoteApp.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
         private readonly ILogger<UserRepository> _logger;
 
-        public UserRepository(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ILogger<UserRepository> logger)
+        public UserRepository(UserManager<User> userManager, SignInManager<User> signInManager, ILogger<UserRepository> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
         }
 
-        public async Task<IdentityUser> GetUserAsync(ClaimsPrincipal principal)
+        public async Task<User> GetUserAsync(ClaimsPrincipal principal)
         {
             try
             {
@@ -59,7 +57,7 @@ namespace NoteApp.Repositories
             }
         }
 
-        public async Task<IdentityUser> FindByIdAsync(string userId)
+        public async Task<User> FindByIdAsync(string userId)
         {
             try
             {
@@ -85,7 +83,7 @@ namespace NoteApp.Repositories
             }
         }
 
-        public async Task<IdentityResult> SetUserNameAsync(IdentityUser user, string userName)
+        public async Task<IdentityResult> SetUserNameAsync(User user, string userName)
         {
             try
             {
@@ -99,7 +97,7 @@ namespace NoteApp.Repositories
             }
         }
 
-        public async Task<IdentityResult> SetEmailAsync(IdentityUser user, string email)
+        public async Task<IdentityResult> SetEmailAsync(User user, string email)
         {
             try
             {
@@ -113,7 +111,7 @@ namespace NoteApp.Repositories
             }
         }
 
-        public async Task<IdentityResult> ChangePasswordAsync(IdentityUser user, string currentPassword, string newPassword)
+        public async Task<IdentityResult> ChangePasswordAsync(User user, string currentPassword, string newPassword)
         {
             try
             {
@@ -127,7 +125,7 @@ namespace NoteApp.Repositories
             }
         }
 
-        public async Task RefreshSignInAsync(IdentityUser user)
+        public async Task RefreshSignInAsync(User user)
         {
             try
             {

@@ -1,8 +1,8 @@
 @model NoteApp.Models.Post
 @using System.Security.Claims
 @using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 
 <div class="post"> 
     <!-- Left side: Image or Note --> 
