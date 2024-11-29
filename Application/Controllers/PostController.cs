@@ -198,7 +198,7 @@ namespace NoteApp.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> AddComment(Comment comment)
+        public async Task<IActionResult> AddComment(Comment comment, string returnUrl)
         {
             try
             {
@@ -220,7 +220,18 @@ namespace NoteApp.Controllers
 
                 await _commentRepository.AddCommentAsync(comment);
                 _logger.LogInformation("Comment added successfully by user {UserId}", comment.UserId);
-                return RedirectToAction("Index");
+                
+                // Redirect based on the returnUrl
+                if (string.Equals(returnUrl, "ViewPost", StringComparison.OrdinalIgnoreCase))
+                {
+                    // Redirect back to the ViewPost action with the post ID
+                    return RedirectToAction("ViewPost", new { id = comment.PostId });
+                }
+                else
+                {
+                    // Default redirection to Index
+                    return RedirectToAction("Index");
+                }
             }
             catch (Exception ex)
             {

@@ -1,11 +1,11 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace NoteApp.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        public int Id { get; set; }
-
         [Required(ErrorMessage = "Username is required.")]
         [MaxLength(50, ErrorMessage = "Username cannot exceed 50 characters.")]
         public string Username { get; set; } = string.Empty;

@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -8,14 +7,15 @@ namespace NoteApp.Data
 {
     public class NoteAppContext : IdentityDbContext<IdentityUser>
     {
-        public DbSet<Post> Posts { get; set; }
-        public DbSet<Comment> Comments { get; set; }
-        public DbSet<Friend> Friends { get; set; }
+        public DbSet<Post>? Posts { get; set; }
+        public DbSet<Comment>? Comments { get; set; }
+        public DbSet<Friend>? Friends { get; set; }
 
         public NoteAppContext(DbContextOptions<NoteAppContext> options)
             : base(options)
         {
         }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -33,35 +33,32 @@ namespace NoteApp.Data
                 .HasForeignKey(f => f.FriendId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
-        private void SeedUsers(ModelBuilder builder)
+
+        private static void SeedUsers(ModelBuilder builder)
         {
             var hasher = new PasswordHasher<IdentityUser>();
 
-#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-            IdentityUser user1 = new IdentityUser
+            var user1 = new IdentityUser
             {
-                Id = "user1-id", // Generate unique IDs or use GUIDs
-                UserName = "user1@example.com",
-                NormalizedUserName = "USER1@EXAMPLE.COM",
+                Id = "user1-id",
+                UserName = "user1",
+                NormalizedUserName = "USER1",
                 Email = "user1@example.com",
                 NormalizedEmail = "USER1@EXAMPLE.COM",
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "Password123!")
             };
-#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
-#pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-            IdentityUser user2 = new IdentityUser
+            var user2 = new IdentityUser
             {
                 Id = "user2-id",
-                UserName = "user1@example.com",
-                NormalizedUserName = "USER2@EXAMPLE.COM",
+                UserName = "user2",
+                NormalizedUserName = "USER2",
                 Email = "user2@example.com",
                 NormalizedEmail = "USER2@EXAMPLE.COM",
                 EmailConfirmed = true,
                 PasswordHash = hasher.HashPassword(null, "Password123!")
             };
-#pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
             builder.Entity<IdentityUser>().HasData(user1, user2);
         }

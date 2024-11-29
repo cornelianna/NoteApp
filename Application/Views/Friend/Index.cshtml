@@ -6,13 +6,11 @@
 }
 
 <h2>Friends</h2>
-
-<button id="findFriendsButton" class="btn btn-primary">Find Friends</button>
-
 <div id="searchBar" style="display:none; margin-top: 20px;">
     <input type="text" id="searchInput" class="form-control" placeholder="Search by username or email" />
     <ul id="searchResults" class="list-group mt-2" style="display:none;"></ul>
 </div>
+<button id="findFriendsButton" class="buttonstandard btn btn-primary" style="margin-top: 20px;">Find Friends</button>
 
 @if (Model != null && Model.Any())
 {
@@ -31,7 +29,12 @@
                     @foreach (var friend in Model)
                     {
                         <tr>
-                            <td>@friend.FriendUser?.UserName</td>
+                            <td>
+                                <a href="@Url.Action("Profile", "User", new { userId = friend.FriendUser?.Id })" class="nav-link text-black">
+                                    <img src="~/images/icon.svg" alt="Avatar" style="width: 25px; height: 25px;">
+                                    <span class="username">@friend.FriendUser?.UserName</span>
+                                </a>
+                            </td>
                             <td>
                                 <button class="btn btn-danger delete-friend-btn" data-friend-id="@friend.FriendId">Delete</button>
                             </td>
