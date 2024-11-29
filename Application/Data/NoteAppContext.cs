@@ -5,16 +5,18 @@ using NoteApp.Models;
 
 namespace NoteApp.Data
 {
-    public class NoteAppContext : IdentityDbContext<IdentityUser>
+    public class NoteAppContext : IdentityDbContext<User>
     {
-        public DbSet<Post>? Posts { get; set; }
-        public DbSet<Comment>? Comments { get; set; }
-        public DbSet<Friend>? Friends { get; set; }
-
         public NoteAppContext(DbContextOptions<NoteAppContext> options)
             : base(options)
         {
+            Posts = Set<Post>();
+            Comments = Set<Comment>();
+            Friends = Set<Friend>();
         }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Friend> Friends { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -36,9 +38,9 @@ namespace NoteApp.Data
 
         private static void SeedUsers(ModelBuilder builder)
         {
-            var hasher = new PasswordHasher<IdentityUser>();
+            var hasher = new PasswordHasher<User>();
 
-            var user1 = new IdentityUser
+            var user1 = new User
             {
                 Id = "user1-id",
                 UserName = "user1",
@@ -46,7 +48,7 @@ namespace NoteApp.Data
                 Email = "user1@example.com",
                 NormalizedEmail = "USER1@EXAMPLE.COM",
                 EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "Password123!")
+                PasswordHash = hasher.HashPassword(new User(), "Password123!")
             };
 
             var user2 = new IdentityUser
@@ -57,7 +59,7 @@ namespace NoteApp.Data
                 Email = "user2@example.com",
                 NormalizedEmail = "USER2@EXAMPLE.COM",
                 EmailConfirmed = true,
-                PasswordHash = hasher.HashPassword(null, "Password123!")
+                PasswordHash = hasher.HashPassword(new User(), "Password123!")
             };
 
             builder.Entity<IdentityUser>().HasData(user1, user2);
