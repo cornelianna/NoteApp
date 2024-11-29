@@ -5,7 +5,7 @@
 namespace NoteApp.Migrations
 {
     /// <inheritdoc />
-    public partial class seedusersfix : Migration
+    public partial class SeedUsersFix : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -73,14 +73,14 @@ namespace NoteApp.Migrations
                 keyColumn: "Id",
                 keyValue: "user1-id",
                 columns: new[] { "ConcurrencyStamp", "NormalizedUserName", "PasswordHash", "SecurityStamp", "UserName" },
-                values: new object[] { "c467b45c-deb9-4cd7-b70b-755437217add", "USER1", "AQAAAAIAAYagAAAAENyRa7noPHCHT8UhFnnOOkrguMERilrGmYY3Qd3KkDJdTzuTJlbu9iP1mEGghlLJSQ==", "9d16c6c4-2cbb-4727-acd3-5bbcd0d19425", "user1" });
+                values: new object[] { "3855e7d0-0ed0-4580-894e-00b8c4f35fce", "USER1", "AQAAAAIAAYagAAAAEK79u5jVibvUMA24g3F9T8OoWU06YIvSeSJGLaub2KbQhekPiq6JOav4+8TrjFJHhQ==", "f6e9eb9b-542a-4ee2-85d2-69ce32f3bd66", "user1" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "user2-id",
                 columns: new[] { "ConcurrencyStamp", "NormalizedUserName", "PasswordHash", "SecurityStamp", "UserName" },
-                values: new object[] { "656f7486-9bf3-4060-b0a1-b09a6a9ab0a1", "USER2", "AQAAAAIAAYagAAAAEPKnC6YN4FHi+MR4OzAKliX1sBDwDommGE9pJPWrVGtpi5pQJGMWwVBIMpSIYNkNDA==", "fcea69f8-5562-4627-9014-edd4796696e0", "user2" });
+                values: new object[] { "557d0f48-fc51-4a8c-a007-7f78b7c5ab2f", "USER2", "AQAAAAIAAYagAAAAENs9OYEuXdfl2EfbZnLXB91S+JveB7EpRNkpPnOgWyXwB0gargVuHTR8rjbi6oFGMQ==", "a8bf888b-3997-4ffa-811b-b79bc399ee99", "user2" });
         }
 
         /// <inheritdoc />
