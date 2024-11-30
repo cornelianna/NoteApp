@@ -52,8 +52,8 @@ namespace NoteApp.Test.Controllers
                 LogLevel.Information,
                 It.IsAny<EventId>(),
                 It.Is<It.IsAnyType>((v, t) => true), // Ignorerer meldingens innhold her
-                It.IsAny<Exception>(),
-                It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)), Times.Once);
+                It.IsAny<Exception?>(),
+                It.Is<Func<It.IsAnyType, Exception?, string>>((v, t) => true)), Times.Once);
         }
 
         // Negative test for unsuccesfull registration
@@ -206,8 +206,8 @@ namespace NoteApp.Test.Controllers
                 LogLevel.Error,
                 It.IsAny<EventId>(),
                 It.Is<It.IsAnyType>((v, t) => v.ToString().Contains("An error occurred during logout")),  // Kontrollerer meldingens innhold
-                It.IsAny<Exception>(),
-                It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)), Times.Once);
+                It.IsAny<Exception?>(),
+                It.Is<Func<It.IsAnyType, Exception?, string>>((v, t) => true)), Times.Once);
         }
 
     }

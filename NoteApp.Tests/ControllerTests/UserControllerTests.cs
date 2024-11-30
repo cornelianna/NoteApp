@@ -46,18 +46,17 @@ namespace NoteApp.Tests
             var viewResult = Assert.IsType<ViewResult>(result);
 
             // Verify that the model passed to the view is of type EditProfileViewModel
-            var model = Assert.IsType<EditProfileViewModel>(viewResult.Model);
-            Assert.NotNull(model); // Ensure the model is not null
+            var model = Assert.IsAssignableFrom<EditProfileViewModel>(viewResult.ViewData.Model);
 
-            // Verify that an informational log entry was made
+            // Verify that the logger was called with the correct parameters
             _mockLogger.Verify(
                 logger => logger.Log(
-                    LogLevel.Information,
+                    It.Is<LogLevel>(logLevel => logLevel == LogLevel.Information),
                     It.IsAny<EventId>(),
-                    It.Is<It.IsAnyType>((v, t) => true), // Ignore the state parameter's content
-                    It.IsAny<Exception>(),
-                    It.IsAny<Func<It.IsAnyType, Exception, string>>()),
-                Times.Once); // Ensure it was called exactly once
+                    It.IsAny<object>(),
+                    It.IsAny<Exception?>(),
+                    It.Is<Func<object, Exception?, string>>((state, exception) => true)),
+                Times.Once);
         }
 
         // Negative test for Settings GET action
@@ -71,8 +70,8 @@ namespace NoteApp.Tests
                     LogLevel.Information,
                     It.IsAny<EventId>(),
                     It.IsAny<It.IsAnyType>(),
-                    It.IsAny<Exception>(),
-                    It.IsAny<Func<It.IsAnyType, Exception, string>>()))
+                    It.IsAny<Exception?>(),
+                    It.IsAny<Func<It.IsAnyType, Exception?, string>>()))
                 .Throws(new Exception("Test exception"));
 
             // Act
@@ -89,8 +88,8 @@ namespace NoteApp.Tests
                     LogLevel.Error,
                     It.IsAny<EventId>(),
                     It.Is<It.IsAnyType>((v, t) => v.ToString() == "An error occurred while accessing the settings page."),
-                    It.IsAny<Exception>(),
-                    It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                    It.IsAny<Exception?>(),
+                    It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
                 Times.Once);
         }
 
@@ -123,8 +122,8 @@ namespace NoteApp.Tests
                     LogLevel.Warning,
                     It.IsAny<EventId>(),
                     It.Is<It.IsAnyType>((v, t) => v.ToString().Contains("Invalid model state for settings update.")),
-                    It.IsAny<Exception>(),
-                    It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                    It.IsAny<Exception?>(),
+                    It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
                 Times.Once);
         }
 
@@ -159,8 +158,8 @@ namespace NoteApp.Tests
                     LogLevel.Warning,
                     It.IsAny<EventId>(),
                     It.Is<It.IsAnyType>((v, t) => v.ToString().Contains("Failed to update username for user user-id")),
-                    It.IsAny<Exception>(),
-                    It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                    It.IsAny<Exception?>(),
+                    It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
                 Times.Once);
         }
 
@@ -206,8 +205,8 @@ namespace NoteApp.Tests
                     LogLevel.Warning,
                     It.IsAny<EventId>(),
                     It.Is<It.IsAnyType>((v, t) => v.ToString().Contains("Failed to update email for user user-id")),
-                    It.IsAny<Exception>(),
-                    It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                    It.IsAny<Exception?>(),
+                    It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
                 Times.Once);
         }
 
@@ -253,8 +252,8 @@ namespace NoteApp.Tests
                     LogLevel.Warning,
                     It.IsAny<EventId>(),
                     It.Is<It.IsAnyType>((v, t) => v.ToString().Contains("Failed to change password for user user-id")),
-                    It.IsAny<Exception>(),
-                    It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                    It.IsAny<Exception?>(),
+                    It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
                 Times.Once);
         }
 
@@ -301,8 +300,8 @@ namespace NoteApp.Tests
                     LogLevel.Information,
                     It.IsAny<EventId>(),
                     It.Is<It.IsAnyType>((v, t) => v.ToString().Contains($"Fetched {posts.Count} posts for user {userId}")),
-                    It.IsAny<Exception>(),
-                    It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                    It.IsAny<Exception?>(),
+                    It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
                 Times.Once);
 
             _mockLogger.Verify(
@@ -310,8 +309,8 @@ namespace NoteApp.Tests
                     LogLevel.Information,
                     It.IsAny<EventId>(),
                     It.Is<It.IsAnyType>((v, t) => v.ToString().Contains($"Displaying profile for user {userId}")),
-                    It.IsAny<Exception>(),
-                    It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                    It.IsAny<Exception?>(),
+                    It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
                 Times.Once);
         }
 
@@ -338,15 +337,10 @@ namespace NoteApp.Tests
                     LogLevel.Warning,
                     It.IsAny<EventId>(),
                     It.Is<It.IsAnyType>((v, t) => v.ToString().Contains($"User with ID {userId} not found.")),
-                    It.IsAny<Exception>(),
-                    It.IsAny<Func<It.IsAnyType, Exception, string>>()),
+                    It.IsAny<Exception?>(),
+                    It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
                 Times.Once);
         }
-
-
-
-
-
 
     }
 }
