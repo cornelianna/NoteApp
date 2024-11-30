@@ -404,15 +404,19 @@ namespace NoteApp.Tests
 
         // Positive test for AddComment action
         [Fact]
-        public async Task AddComment_ValidComment_RedirectsToIndex()
+        public async Task AddComment_ValidComment_RedirectsToViewPost()
         {
             // Arrange
             var userId = "user123";
             var userName = "testuser";
-            var comment = new Comment { Content = "Test comment", PostId = 1 };
-            var returnUrl = "Index";
+            var postId = 1;
+            var commentContent = "Test comment";
+            var returnUrl = "ViewPost";
 
-            // Set up User in ControllerContext
+            // Create the comment to be added
+            var comment = new Comment { Content = commentContent, PostId = postId };
+
+            // Set up the User in ControllerContext (simulate logged-in user)
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, userId),
@@ -425,24 +429,37 @@ namespace NoteApp.Tests
                 HttpContext = new DefaultHttpContext { User = claimsPrincipal }
             };
 
+            // Mock GetPostByIdAsync to return a valid post
+            var post = new Post { Id = postId, Content = "Test post", UserId = "user456" };
+            _mockPostRepository.Setup(repo => repo.GetPostByIdAsync(postId))
+                .ReturnsAsync(post);
+
             // Act
             var result = await _controller.AddComment(comment, returnUrl);
 
             // Assert
             var redirectResult = Assert.IsType<RedirectToActionResult>(result);
-            Assert.Equal("Index", redirectResult.ActionName);
+            Assert.Equal("ViewPost", redirectResult.ActionName);
+            Assert.Equal(postId, redirectResult.RouteValues["id"]);
 
-            // Verify that AddCommentAsync was called
-            _mockCommentRepository.Verify(repo => repo.AddCommentAsync(It.Is<Comment>(c => c.Content == comment.Content && c.UserId == userId)), Times.Once);
+            // Verify that AddCommentAsync was called with the correct comment
+            _mockCommentRepository.Verify(repo => repo.AddCommentAsync(It.Is<Comment>(c =>
+                c.Content == commentContent &&
+                c.UserId == userId &&
+                c.Username == userName &&
+                c.PostId == postId &&
+                c.Post == post)), Times.Once);
 
             // Verify that LogInformation was called
             _mockLogger.Verify(logger => logger.Log(
                 LogLevel.Information,
                 It.IsAny<EventId>(),
-                It.Is<It.IsAnyType>((v, t) => true), // Ignore message content
+                It.Is<object>((v, t) => true), // Ignore message content
                 It.IsAny<Exception>(),
-                It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)), Times.Once);
+                It.Is<Func<object, Exception, string>>((v, t) => true)), Times.Once);
         }
+
+
 
         // Negative test for AddComment action when comment is null
         [Fact]
