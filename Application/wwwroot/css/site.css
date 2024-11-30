@@ -499,20 +499,6 @@ textarea.form-control {
         margin-left: 10px;
     }
 }
-button.buttonstandard { 
-    background-color: #476C66; 
-    color: #ffffff;
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
-    align-self: flex-start; 
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover transition */
-} 
-
-button.buttonstandard:hover { 
-    background-color: #5d8a83; 
-    color: #ffffff; 
-}
 
 /* ------------------------------------------------- */
 /* Profile Style */
@@ -700,6 +686,31 @@ button.buttonstandard:hover {
     .postcontentwithoutimage {
         font-size: 1.5rem;
     }
+}
+button.buttonstandard { 
+    background-color: #476C66; 
+    color: #ffffff;
+    border: none; 
+    cursor: pointer; 
+    align-self: flex-start; 
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover transition */
+} 
+
+button.buttonstandard:hover { 
+    background-color: #5d8a83; 
+    color: #ffffff; 
+}
+.buttonstandardCancel { 
+    background-color: #ec6a6a; 
+    color: #ffffff;
+    border: none; 
+    cursor: pointer; 
+    align-self: flex-start; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+.buttonstandardCancel:hover { 
+    background-color: #c63c3c; 
+    color: #ffffff; 
 }
 /* ------------------------------------------------- */
 /* 10. Footer Styles */
