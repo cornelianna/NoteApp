@@ -22,7 +22,7 @@
     </div> 
 
     <!-- Dropdown for post actions -->
-    <div class="dropdown" aria-label="Post actions">
+    <div class="dropdown" style="cursor: pointer" aria-label="Post actions">
         <!-- Toggle for the dropdown menu -->
         <img class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" src="~/images/more.svg" alt="More" />
 
@@ -65,14 +65,16 @@
         <div class="post-details-box" aria-label="Post details and comments"> 
             <!-- Post header --> 
             <div class="post-header"> 
-                <div class="userImg"> 
-                    <img src="~/images/icon.svg" alt="Avatar" class="rounded-circle" aria-label="User avatar"/> 
-                </div> 
-                    <a href="@Url.Action("Profile", "User", new { userId = Model.UserId })" class="nav-link text-black" aria-label="User profile">
-                        <span class="username" aria-label="Username">@Model.Username</span> 
-                    </a>
+                <div class="userinfo" aria-label="userinfo">
+                    <div class="userImg"> 
+                        <img src="~/images/icon.svg" alt="Avatar" class="rounded-circle" aria-label="User avatar"/> 
+                    </div> 
+                        <a href="@Url.Action("Profile", "User", new { userId = Model.UserId })" class="nav-link text-black" aria-label="User profile">
+                            <span class="username" aria-label="Username">@Model.Username</span> 
+                        </a>
+                </div>
                     <div class="post-date" aria-label="Post date">
-                            @Model.CreatedAt.ToString("g")
+                        @Model.CreatedAt.ToString("g")
                     </div>
             </div> 
             @if (Model.ImageData != null && Model.ImageData.Length > 0) 
@@ -85,7 +87,7 @@
 
         <!-- Comments section --> 
         <h5 class="comments-header" aria-label="Comments section header">Comments</h5> 
-        <div class="discussions" aria-label="Comments section"> 
+        <div class="commentsection" aria-label="Comments section"> 
             <div class="comments-scrollable" aria-label="Scrollable comments list"> 
             @foreach (var comment in Model.Comments) 
             { 

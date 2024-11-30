@@ -304,7 +304,7 @@ html, body {
     left: 0; 
     width: 100%; 
     height: 100%; 
-    object-fit: cover; /
+    object-fit: cover;
 }
 
 /* Note Content Styling */
@@ -349,10 +349,18 @@ html, body {
     margin-bottom: 20px;
 }
 .post-header {
+    justify-content: space-between;
     display: flex;
     align-items: center;
     gap: 10px;
+    padding-bottom: 10px;
 }
+    .userinfo {
+        justify-content: row;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
     .userImg img {
         width: 35px;
@@ -365,15 +373,18 @@ html, body {
         font-weight: bold;
         color: #2f4f4f;
     }
+        .username:hover {
+            color: #549a8e; 
+            cursor: pointer;
+        }
 
     .post-date {
         font-size: 14px;
         color: #4A4A4A;
-        margin-left: 220px;
     }
 
 /* Comments Section */
-.discussions {
+.commentsection {
     border-top: 1px solid #cfd9dd;
     margin-top: 20px;
     font-size: small;
@@ -405,27 +416,53 @@ html, body {
         background-color: #f7f9fc;
         border-radius: 4px;
     }
-.comment {
+
+.comment-content {
     background-color: #edf1f4;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid #dfe6ed;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1); 
-
 }
-    .comment .userImg img {   
-        margin-right: 10px;
+.comment-details-box {
+    display: flex;
+    justify-content: space-between;
+}
+.commentuserinfo {
+    justify-content: row;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+    .commentuserImg img {
+        width: 25px; 
+        height: 25px;
         border-radius: 50%;
-        margin-bottom: 3px;
     }
-    .userImg img {
-        margin-bottom: 3px;
+    .commentusername {
+        font-size: 14px;
+        font-weight: bold;
+        color: #2f4f4f;
     }
+    .commentusername:hover {
+        color: #549a8e;
+        cursor: pointer; 
+    }
+
+.commentdateanddropdown {
+    justify-content: row;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+}
 .comment-date {
     color: #888;
     font-size: 12px;
-    margin-left: 280px;
+}
+.comment {
+    padding-top: 10px;
 }
 
 /* Input and Button Styling */
@@ -476,6 +513,7 @@ button.buttonstandard:hover {
     background-color: #5d8a83; 
     color: #ffffff; 
 }
+
 /* ------------------------------------------------- */
 /* Profile Style */
 /* ------------------------------------------------- */
@@ -534,7 +572,135 @@ button.buttonstandard:hover {
     transition: transform 0.3s;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
+/* ------------------------------------------------- */
+/* Postview styling */
+/* ------------------------------------------------- */
+.postviewdetails-box {
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    display: flex;
+    margin: auto;
+}
+    .postviewowner {
+        justify-content: row;
+        flex-direction: row;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+        .postViewuserImg img {
+            width: 50px;
+            height: 50px;
+        }
+    .postviewdateanddropdown {
+        justify-content: row;
+        flex-direction: row;
+        align-items: center;
+        display: flex;
+        gap: 10px;
+    }
+    .postview-date {
+        font-size: 14px;
+        color: #4A4A4A;
+    }
 
+
+/* Post card styling */
+.post-card {
+    position: relative;
+    flex-direction: column; /* Default to column for responsiveness */
+    display: flex; 
+    padding: 20px; 
+    background-color: #f7f9fc; 
+    margin-bottom: 30px; 
+    border-radius: 10px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    align-items: stretch;
+}
+
+
+.post-image, .postcontentwithoutimage {
+    position: relative; 
+    width: 100%; 
+    aspect-ratio: 1 / 1;
+    border-radius: 10px; 
+    overflow: hidden;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px auto;
+}
+
+/* Post image container */
+.post-image img{
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
+}
+
+/* Post info styling when there is an image */
+.post-info {
+    position: relative;
+    width: 80%; /* Match the image container */
+    background-color: #dfe6ed; 
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px auto; /* Center horizontally with space around */
+}
+.post-card .card-text,
+.post-card.no-image .card-text {
+    margin: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    color: #333333; /* Darker text for better readability */
+}
+/* Post content without image */
+.postcontentwithoutimage {
+    background-color: #dfe6ed; 
+    overflow: hidden; 
+    font-size: 2rem; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .post-card.has-image {
+        flex-direction: column; /* Stack image and content vertically */
+    }
+
+    .post-image, 
+    .post-info, 
+    .postcontentwithoutimage {
+        width: 150px; /* Slightly smaller on mobile */
+        height: 150px;
+    }
+
+    .post-info {
+        font-size: 1.2rem;
+    }
+
+    .postcontentwithoutimage {
+        font-size: 1.5rem;
+    }
+}
 /* ------------------------------------------------- */
 /* 10. Footer Styles */
 /* ------------------------------------------------- */
