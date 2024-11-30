@@ -1,8 +1,5 @@
 using Microsoft.AspNetCore.Identity;
 using NoteApp.Models;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using System;
 
 namespace NoteApp.Repositories
 {

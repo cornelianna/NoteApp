@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace NoteApp.Models
 {
-    public class User : IdentityUser // IdentityUser includes username and password properties
+    public class User : IdentityUser // IdentityUser includes username and password properties. User inherits from IdentityUser
     {
         [MaxLength(200, ErrorMessage = "Profile picture URL cannot exceed 200 characters.")]
         [Url(ErrorMessage = "The profile picture URL must be a valid URL.")]

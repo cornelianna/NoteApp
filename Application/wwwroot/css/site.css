@@ -477,6 +477,65 @@ button.buttonstandard:hover {
     color: #ffffff; 
 }
 /* ------------------------------------------------- */
+/* Profile Style */
+/* ------------------------------------------------- */
+
+
+/* Square card styling */
+.square-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Ensures square aspect ratio */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shadow */
+    transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Image styling */
+.square-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+/* Card body styling */
+.card-body {  
+    width: 100%; 
+    height: 100%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 2rem; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #3D4A61;
+    background-color: #ffffff;
+}
+
+
+/* Text styling */
+.square-card .card-text {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limits text to 3 lines */
+    line-clamp: 3; /* Standard property for compatibility */
+    -webkit-box-orient: vertical;
+}
+
+/* Hover effect (Optional) */
+.square-card:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* ------------------------------------------------- */
 /* 10. Footer Styles */
 /* ------------------------------------------------- */
 

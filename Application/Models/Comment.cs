@@ -6,9 +6,11 @@ namespace NoteApp.Models
     public class Comment 
     {
         public Comment() { }
+        
         // Navigation property to Post
         [ForeignKey("PostId")]
         public Post Post { get; set; } = null!;
+        
         // Constructor with scalar properties
         public Comment(int postId, string content, string userId)
         {

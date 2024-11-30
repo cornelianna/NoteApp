@@ -123,7 +123,7 @@ namespace NoteApp.Controllers
         }
 
         // View any user's profile
-        public async Task<IActionResult> Profile(string? userId)
+        public async Task<IActionResult> Profile(string userId)
         {
             try
             {
@@ -151,9 +151,9 @@ namespace NoteApp.Controllers
                 var model = new UserProfileViewModel
                 {
                     UserId = user.Id,
-                    Username = user.UserName,
-                    ProfilePictureUrl = "/images/default-profile.png", // Update this if you have profile pictures
-                    Posts = posts.ToList()
+                    Username = user.UserName ?? string.Empty,
+                    Posts = posts.ToList(),
+                    ProfilePictureUrl = "/images/default-profile.png" // Optional property
                 };
 
                 _logger.LogInformation("Displaying profile for user {UserId}.", userId);
