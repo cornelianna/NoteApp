@@ -1,6 +1,7 @@
 @model NoteApp.Models.UserProfileViewModel
 @using Microsoft.AspNetCore.Identity
-@inject UserManager<IdentityUser> UserManager
+@inject UserManager<User> UserManager
+@inject SignInManager<User> SignInManager
 
 @{
     ViewData["Title"] = $"{Model.Username}'s Profile";
@@ -12,32 +13,33 @@
     </div>
     
     @if (Model.Posts.Any())
-    {
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-            @foreach (var post in Model.Posts.OrderByDescending(p => p.CreatedAt))
-            {
-                <div class="col">
-    <div class="card h-100">
-        @if (post.ImageData != null && post.ImageData.Length > 0)
+{
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        @foreach (var post in Model.Posts.OrderByDescending(p => p.CreatedAt))
         {
-            <img src="data:image/jpeg;base64,@Convert.ToBase64String(post.ImageData)" class="card-img-top" alt="Post image">
+            <div class="col">
+                <div class="card square-card">
+                    @if (post.ImageData != null && post.ImageData.Length > 0)
+                    {
+                        <img src="data:image/jpeg;base64,@Convert.ToBase64String(post.ImageData)" class="card-img-top" alt="Post image">
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                        <p class="card-text">@post.Content</p>
+                    </div>
+                    }
+                    
+                    <a href="@Url.Action("ViewPost", "Post", new { id = post.Id })" class="stretched-link"></a>
+                </div>
+            </div>
         }
-        <div class="card-body">
-            <p class="card-text text-truncate">@post.Content</p>
-            <a href="@Url.Action("ViewPost", "Post", new { id = post.Id })" class="stretched-link"></a>
-        </div>
     </div>
-</div>
-
-            }
-        </div>
-    }
-    else
-    {
-        <p>@Model.Username hasn't made any posts yet.</p>
-    }
-    
-</div>
+}
+else
+{
+    <p>@Model.Username hasn't made any posts yet.</p>
+}
 @section Scripts {
     <script>
         $(document).on('click', '.add-friend-btn', function () {

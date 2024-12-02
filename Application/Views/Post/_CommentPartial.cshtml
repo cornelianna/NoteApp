@@ -1,62 +1,64 @@
 @model NoteApp.Models.Comment
 @using System.Security.Claims
 
-<div class="discussion mb-3">
-    <div class="d-flex justify-content-between align-items-center"> 
-        <div class="d-flex align-items-center">
+<div class="comment-content">
+    <div class="comment-details-box"> 
             <!-- User info -->
-            <div class="userImg d-flex align-items-center">
-                <a href="@Url.Action("Profile", "User", new { userId = Model.UserId })" class="nav-link text-black">
-                    <img src="~/images/icon.svg" alt="Avatar" style="width: 25px; height: 25px;">
-                    <span class="username">@Model.Username</span> 
+            <div class="commentuserinfo" aria-label="userinfo">
+                <div class="commentuserImg"> 
+                    <img src="~/images/icon.svg" alt="Avatar">
+                </div> 
+                <a href="@Url.Action("Profile", "User", new { userId = Model.UserId })" class="nav-link text-black" aria-label="User profile">
+                    <span class="commentusername" aria-label="Username">@Model.Username</span> 
                 </a>
             </div>
+        <div class="commentdateanddropdown">
+            <!-- Comment date -->
             <div class="comment-date">
                 <small>@Model.CreatedAt.ToString("g")</small>
             </div>
-        </div>
+            <!-- Dropdown for comment actions -->
+            <div class="dropdown" style="cursor: pointer">
+                <!-- Toggle for the dropdown menu -->
+                <img class="tool dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" src="~/images/more.svg" alt="More" />
 
-        <!-- Dropdown for comment actions -->
-        <div class="dropdown">
-            <!-- Toggle for the dropdown menu -->
-            <img class="tool dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" src="~/images/more.svg" alt="More" />
-
-            <!-- Dropdown menu -->
-            <ul class="dropdown-menu">
-                @if (Model.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
-                {
-                    <!-- User is the owner -->
-                    <!-- Edit option -->
-                    <li>
-                        <a class="dropdown-item d-flex align-items-center" href="@Url.Action("UpdateComment", new { id = Model.Id })">
-                            <img class="p-1 me-2" src="~/images/edit.svg" alt="Edit" style="width: 16px; height: 16px;" />
-                            Edit
-                        </a>
-                    </li>
-                    <!-- Delete option -->
-                    <li>
-                        <form asp-action="DeleteComment" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this comment?');">
-                            <input type="hidden" name="id" value="@Model.Id" />
-                            <button type="submit" class="dropdown-item text-danger d-flex align-items-center">
-                                <img class="p-1 me-2" src="~/images/delete.svg" alt="Delete" style="width: 16px; height: 16px;" />
-                                Delete
-                            </button>
-                        </form>
-                    </li>
-                    <!-- Do not show 'Report' option to the owner -->
-                }
-                else
-                {
-                    <!-- User is not the owner -->
-                    <!-- Report option -->
-                    <li>
-                        <a class="dropdown-item text-danger d-flex align-items-center" href="#">
-                            <img class="p-1 me-2" src="~/images/report.svg" alt="Report" style="width: 16px; height: 16px;" />
-                            Report
-                        </a>
-                    </li>
-                }
-            </ul>
+                <!-- Dropdown menu -->
+                <ul class="dropdown-menu">
+                    @if (Model.UserId == User.FindFirstValue(ClaimTypes.NameIdentifier))
+                    {
+                        <!-- User is the owner -->
+                        <!-- Edit option -->
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="@Url.Action("UpdateComment", new { id = Model.Id })">
+                                <img class="p-1 me-2" src="~/images/edit.svg" alt="Edit" style="width: 16px; height: 16px;" />
+                                Edit
+                            </a>
+                        </li>
+                        <!-- Delete option -->
+                        <li>
+                            <form asp-action="DeleteComment" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this comment?');">
+                                <input type="hidden" name="id" value="@Model.Id" />
+                                <button type="submit" class="dropdown-item text-danger d-flex align-items-center">
+                                    <img class="p-1 me-2" src="~/images/delete.svg" alt="Delete" style="width: 16px; height: 16px;" />
+                                    Delete
+                                </button>
+                            </form>
+                        </li>
+                        <!-- Do not show 'Report' option to the owner -->
+                    }
+                    else
+                    {
+                        <!-- User is not the owner -->
+                        <!-- Report option -->
+                        <li>
+                            <a class="dropdown-item text-danger d-flex align-items-center" href="#">
+                                <img class="p-1 me-2" src="~/images/report.svg" alt="Report" style="width: 16px; height: 16px;" />
+                                Report
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
         </div>
     </div>
     <!-- Comment content -->

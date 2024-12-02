@@ -1,18 +1,15 @@
 using Microsoft.AspNetCore.Identity;
 using NoteApp.Models;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using System;
 
 namespace NoteApp.Repositories
 {
     public class AccountRepository : IAccountRepository
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
         private readonly ILogger<AccountRepository> _logger;
 
-        public AccountRepository(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ILogger<AccountRepository> logger)
+        public AccountRepository(UserManager<User> userManager, SignInManager<User> signInManager, ILogger<AccountRepository> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -23,7 +20,7 @@ namespace NoteApp.Repositories
         {
             try
             {
-                var user = new IdentityUser { UserName = model.Username, Email = model.Email };
+                var user = new User { UserName = model.Username, Email = model.Email };
                 if (string.IsNullOrEmpty(model.Password))
                 {
                     throw new ArgumentException("Password must not be null or empty.");

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NoteApp.Data;
 
@@ -10,9 +11,11 @@ using NoteApp.Data;
 namespace NoteApp.Migrations
 {
     [DbContext(typeof(NoteAppContext))]
-    partial class NoteAppContextModelSnapshot : ModelSnapshot
+    [Migration("20241129171348_UpdateIdentityConfiguration")]
+    partial class UpdateIdentityConfiguration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
@@ -312,15 +315,15 @@ namespace NoteApp.Migrations
                         {
                             Id = "user1-id",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "66bf222e-839a-4fb7-9bd5-5f9e8e9c633c",
+                            ConcurrencyStamp = "00d32224-192c-4ead-be7c-fdc86264b1ce",
                             Email = "user1@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER1@EXAMPLE.COM",
                             NormalizedUserName = "USER1",
-                            PasswordHash = "AQAAAAIAAYagAAAAEN77G7q07Ns54JmMYfIGFkMG7eJlQvCRIDH+Fhd2jP/t80KfnNLX6Oxy8dx0QP6HKA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEATQGB65x6FBvKHV4bXejpZM6n+lbESuiKVewyq1Q01J/skW4GRTwHp2GMCYQoZNXg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d8630b28-1adc-4f62-994c-e8ee9bfc1809",
+                            SecurityStamp = "bed144bc-3ff3-44e4-b91b-83fe5be17608",
                             TwoFactorEnabled = false,
                             UserName = "user1"
                         },
@@ -328,15 +331,15 @@ namespace NoteApp.Migrations
                         {
                             Id = "user2-id",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b1dd98dd-d0b2-4b33-8793-a87a32fe7634",
+                            ConcurrencyStamp = "ffe6390c-c557-4d48-8dcb-7179d00b95cb",
                             Email = "user2@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER2@EXAMPLE.COM",
                             NormalizedUserName = "USER2",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIF9gCeeyWh1CqbaQJlDrajKImhwah5OxTl2D7YiywQmTjNgubFSMi8+6yyRNUXfLw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOWeyDmReYb/CdFXdGDzrhTdDs6gVbS2TF4qaLQL3UJTtfjYZl52uBXbRCwBgwHp6A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "06f572af-9943-4514-b7f6-86414f2c33a4",
+                            SecurityStamp = "bba80ada-b6ab-45c3-9b9a-3ec65de5d9a5",
                             TwoFactorEnabled = false,
                             UserName = "user2"
                         });

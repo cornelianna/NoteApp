@@ -1,8 +1,5 @@
 using NoteApp.Data;
 using NoteApp.Models;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
 
 namespace NoteApp.Repositories
 {

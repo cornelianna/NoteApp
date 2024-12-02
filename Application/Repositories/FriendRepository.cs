@@ -1,11 +1,6 @@
 using NoteApp.Models;
 using Microsoft.EntityFrameworkCore;
 using NoteApp.Data;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace NoteApp.Repositories
 {

@@ -1,7 +1,7 @@
 @using System.Security.Claims
 @using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
 
 <form asp-action="CreatePost" method="post" enctype="multipart/form-data" class="create-post-container d-flex"> 
     <!-- Left side for image preview and selecting image -->

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NoteApp.Data;
 
@@ -10,9 +11,11 @@ using NoteApp.Data;
 namespace NoteApp.Migrations
 {
     [DbContext(typeof(NoteAppContext))]
-    partial class NoteAppContextModelSnapshot : ModelSnapshot
+    [Migration("20241129164745_UpdateUserManagerConfiguration")]
+    partial class UpdateUserManagerConfiguration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
@@ -176,8 +179,6 @@ namespace NoteApp.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Comments");
                 });
 
@@ -312,15 +313,15 @@ namespace NoteApp.Migrations
                         {
                             Id = "user1-id",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "66bf222e-839a-4fb7-9bd5-5f9e8e9c633c",
+                            ConcurrencyStamp = "59b443aa-fb64-430e-abcf-aba185101156",
                             Email = "user1@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER1@EXAMPLE.COM",
                             NormalizedUserName = "USER1",
-                            PasswordHash = "AQAAAAIAAYagAAAAEN77G7q07Ns54JmMYfIGFkMG7eJlQvCRIDH+Fhd2jP/t80KfnNLX6Oxy8dx0QP6HKA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEHQqh87hGecECZECELOq/sbBm95dPS0mRKBy6XqTMKBHSjUKm+Jonb/97EaBRl6HVA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d8630b28-1adc-4f62-994c-e8ee9bfc1809",
+                            SecurityStamp = "3cc60e58-9dfb-4620-a258-8121c14908c0",
                             TwoFactorEnabled = false,
                             UserName = "user1"
                         },
@@ -328,15 +329,15 @@ namespace NoteApp.Migrations
                         {
                             Id = "user2-id",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "b1dd98dd-d0b2-4b33-8793-a87a32fe7634",
+                            ConcurrencyStamp = "b9ad8ce2-03fc-4932-b59e-fe933856dcb4",
                             Email = "user2@example.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER2@EXAMPLE.COM",
                             NormalizedUserName = "USER2",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIF9gCeeyWh1CqbaQJlDrajKImhwah5OxTl2D7YiywQmTjNgubFSMi8+6yyRNUXfLw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOf51Il8EMX5DtywDx+UuXLUV2h4E96bdnlp+/WFkdrjXooU2nd53TrRUk4lqnNBMA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "06f572af-9943-4514-b7f6-86414f2c33a4",
+                            SecurityStamp = "aa2548bd-bdf0-4058-94cf-d727a52c6d2e",
                             TwoFactorEnabled = false,
                             UserName = "user2"
                         });
@@ -401,15 +402,7 @@ namespace NoteApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NoteApp.Models.User", "User")
-                        .WithMany("Comments")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Post");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("NoteApp.Models.Friend", b =>
@@ -421,7 +414,7 @@ namespace NoteApp.Migrations
                         .IsRequired();
 
                     b.HasOne("NoteApp.Models.User", "User")
-                        .WithMany("Friends")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -447,10 +440,6 @@ namespace NoteApp.Migrations
 
             modelBuilder.Entity("NoteApp.Models.User", b =>
                 {
-                    b.Navigation("Comments");
-
-                    b.Navigation("Friends");
-
                     b.Navigation("Posts");
                 });
 #pragma warning restore 612, 618
